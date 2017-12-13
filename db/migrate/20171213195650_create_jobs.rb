@@ -14,7 +14,7 @@ class CreateJobs < ActiveRecord::Migration[5.1]
       t.integer :outSalesSoft
       t.integer :outSalesHard
       t.text :summary
-      t.text :functions
+      t.text :funtions
       t.text :skills
       t.text :competencies
       t.integer :deptSize

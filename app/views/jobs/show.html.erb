@@ -1,0 +1,10 @@
+ <%= link_to "Back to all jobs", jobs_path %><br/>
+
+
+    <h2><%= @job.title %> (<%= link_to "edit", edit_job_path(@job) %>, <%= link_to "delete", job_path(@job), method: :delete, data: {confirm: "You sure?"} %>)</h2>
+    <h3><%= @job.expiry %></h3>
+    <p><%= @job.jobType %><p>
+    <p><%= @job.payLow %><p>
+    <p><%= @job.payHigh %><p>
+    <p><%= @job.summary %></p>
+    <p><%= @job.skills %><p>

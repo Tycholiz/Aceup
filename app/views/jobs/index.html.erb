@@ -1,0 +1,9 @@
+    <h1>Aceup</h1>
+    <%= link_to "Submit a job!", new_job_path %>
+    <hr>
+    <% @jobs.each do |job| %>
+      <h2><%= link_to job.title, job_path(job) %></h2>
+      <h3><%= job.expiry %></h3>
+      <p><%= job.summary %></p>
+      <hr>
+    <% end %>
