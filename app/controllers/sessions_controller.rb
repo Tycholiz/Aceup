@@ -8,8 +8,9 @@ class SessionsController < ApplicationController
 
       if user && user.authenticate(params[:password])
         session[:user_id] = user.id
-        redirect_to jobs_path
+        redirect_to jobs_path, notice: "Welcome back, #{user.firstName}!"
       else
+        flash.now[:alert] = "Log in failed..."
         render :new
       end
     end

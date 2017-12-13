@@ -1,19 +1,7 @@
 class JobsController < ApplicationController
-  # def index
-  # end
-
-  # def show
-  # end
-
-  # def new
-  # end
-
-  # def edit
-  # end
-
-   def index
-	 @jobs = Job.all
-   end
+  def index
+	  @jobs = Job.all
+  end
 
   def show
     @job = Job.find(params[:id])
@@ -31,7 +19,7 @@ class JobsController < ApplicationController
     @job = Job.new(job_params)
 
     if @job.save
-      redirect_to jobs_path
+      redirect_to jobs_path, notice: "#{@job.title} was submitted successfully!"
     else
       render :new
     end
