@@ -1,4 +1,17 @@
     <%= form_for @job do |f| %>
+
+      <% if @job.errors.any? %>
+        <div>
+          <%= pluralize(@job.errors.count, "error") %> prevented this job from being submitted:
+          <ul>
+            <% @job.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+
       <div>
         <%= f.label :title %><br>
         <%= f.text_field :title %>
