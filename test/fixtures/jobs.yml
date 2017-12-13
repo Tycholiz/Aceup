@@ -1,0 +1,41 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  type: 
+  expiry: 2017-12-13 11:56:50
+  status: MyString
+  temp: false
+  salary: MyString
+  payLow: 1
+  payHigh: 1
+  inSalesSoft: 1
+  inSalesHard: 1
+  outSalesSoft: 1
+  outSalesHard: 1
+  summary: MyText
+  funtions: MyText
+  skills: MyText
+  competencies: MyText
+  deptSize: 1
+  benefits: MyText
+
+two:
+  title: MyString
+  type: 
+  expiry: 2017-12-13 11:56:50
+  status: MyString
+  temp: false
+  salary: MyString
+  payLow: 1
+  payHigh: 1
+  inSalesSoft: 1
+  inSalesHard: 1
+  outSalesSoft: 1
+  outSalesHard: 1
+  summary: MyText
+  funtions: MyText
+  skills: MyText
+  competencies: MyText
+  deptSize: 1
+  benefits: MyText
