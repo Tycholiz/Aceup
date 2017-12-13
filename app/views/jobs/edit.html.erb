@@ -1,33 +1,4 @@
     <%= link_to "Back to all jobs", jobs_path %>
 
     <h2>Edit this job!</h2>
-    <%= form_for @job do |f| %>
-      <div>
-        <%= f.label :title %><br>
-        <%= f.text_field :title %>
-      </div>
-      <div>
-        <%= f.label :jobType %><br>
-        <%= f.select :jobType, ['part-time', 'full-time']%>
-
-      </div>
-      <div>
-        <%= f.label :payLow %><br>
-        <%= f.number_field :payLow %>
-      </div>
-      <div>
-        <%= f.label :payHigh %><br>
-        <%= f.number_field :payHigh %>
-      </div>
-      <div>
-        <%= f.label :summary %><br>
-        <%= f.text_field :summary %>
-      </div>
-      <div>
-        <%= f.label :skills %><br>
-        <%= f.text_area :skills %>
-      </div>
-      <div>
-        <%= f.submit "Submit" %> 
-      </div>
-    <% end %>
+    <%= render 'form' %>
