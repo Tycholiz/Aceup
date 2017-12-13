@@ -6,7 +6,34 @@
       <div>
         <%= f.label :jobType %><br>
         <%= f.select :jobType, ['part-time', 'full-time']%>
-
+      </div>
+      <div>
+        <%= f.label :salary %><br>
+        <%= f.select :salary, ['Salary', 'Hourly', 'Commission']%>
+      </div>
+      <div>
+        <%= f.label :temp %><br>
+        <%= f.check_box :temp %>
+      </div>
+      <div>
+        <%= f.label :expiry %><br>
+        <%= f.date_field :expiry %>
+      </div>
+      <div>
+        <%= f.label :inSalesSoft %><br>
+        <%= f.number_field :inSalesSoft %>
+      </div>
+      <div>
+        <%= f.label :inSalesHard %><br>
+        <%= f.number_field :inSalesHard %>
+      </div>
+      <div>
+        <%= f.label :outSalesSoft %><br>
+        <%= f.number_field :outSalesSoft %>
+      </div>
+      <div>
+        <%= f.label :outSalesHard %><br>
+        <%= f.number_field :outSalesHard %>
       </div>
       <div>
         <%= f.label :payLow %><br>
@@ -21,8 +48,24 @@
         <%= f.text_field :summary %>
       </div>
       <div>
+        <%= f.label :functions %><br>
+        <%= f.text_field :functions %>
+      </div>
+      <div>
         <%= f.label :skills %><br>
         <%= f.text_area :skills %>
+      </div>
+      <div>
+        <%= f.label :competencies %><br>
+        <%= f.text_field :competencies %>
+      </div>
+       <div>
+        <%= f.label :deptSize %><br>
+        <%= f.number_field :deptSize %>
+      </div>
+       <div>
+        <%= f.label :benefits %><br>
+        <%= f.text_field :benefits %>
       </div>
       <div>
         <%= f.submit "Submit" %> 
