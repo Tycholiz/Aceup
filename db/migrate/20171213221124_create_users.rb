@@ -9,8 +9,8 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.string :postalCode
       t.string :educationLevel
       t.string :degree
-      t.string :inSales
-      t.string :outSales
+      t.integer :inSales
+      t.integer :outSales
       t.boolean :inboundSales
       t.boolean :outboundSales
 

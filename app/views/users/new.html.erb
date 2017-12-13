@@ -1,0 +1,60 @@
+<h1>Sign Up</h1>
+<%= form_for @user do |f| %>
+  <% if @user.errors.any? %>
+    <div>
+      <%= pluralize(@user.errors.count, "error") %> prevented the account from being created:
+      <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div>
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div>
+    <%= f.label :firstName, "First Name" %><br>
+    <%= f.text_field :firstName %>
+  </div>
+  <div>
+    <%= f.label :lastName, "Last Name" %><br>
+    <%= f.text_field :lastName %>
+  </div>
+  <div>
+    <%= f.label :password %><br>
+    <%= f.password_field :password %>
+  </div>
+  <div>
+    <%= f.label :password_confirmation %><br>
+    <%= f.password_field :password_confirmation %>
+  </div>
+  <div>
+    <%= f.label :phoneNo %><br>
+    <%= f.text_field :phoneNo %>
+  </div>
+  <div>
+    <%= f.label :postalCode %><br>
+    <%= f.text_field :postalCode %>
+  </div>
+  <div>
+    <%= f.label :inSales %><br>
+    <%= f.number_field :inSales %>
+  </div>
+  <div>
+    <%= f.label :outSales %><br>
+    <%= f.number_field :outSales %>
+  </div>
+  <div>
+    <%= f.label :inboundSales %><br>
+    <%= f.check_box :inboundSales %>
+  </div>
+  <div>
+    <%= f.label :outboundSales %><br>
+    <%= f.check_box :outboundSales %>
+  </div>
+
+
+  <div><%= f.submit "Submit" %></div>
+<% end %>

@@ -47,8 +47,8 @@ ActiveRecord::Schema.define(version: 20171213221124) do
     t.string "postalCode"
     t.string "educationLevel"
     t.string "degree"
-    t.string "inSales"
-    t.string "outSales"
+    t.integer "inSales"
+    t.integer "outSales"
     t.boolean "inboundSales"
     t.boolean "outboundSales"
     t.datetime "created_at", null: false
