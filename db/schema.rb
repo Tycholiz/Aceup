@@ -44,13 +44,7 @@ ActiveRecord::Schema.define(version: 20171213221124) do
     t.string "firstName"
     t.string "lastName"
     t.string "phoneNo"
-    t.string "postalCode"
-    t.string "educationLevel"
-    t.string "degree"
-    t.integer "inSales"
-    t.integer "outSales"
-    t.boolean "inboundSales"
-    t.boolean "outboundSales"
+    t.string "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

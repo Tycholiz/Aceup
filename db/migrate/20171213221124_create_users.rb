@@ -6,13 +6,7 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.string :firstName
       t.string :lastName
       t.string :phoneNo
-      t.string :postalCode
-      t.string :educationLevel
-      t.string :degree
-      t.integer :inSales
-      t.integer :outSales
-      t.boolean :inboundSales
-      t.boolean :outboundSales
+      t.string :role
 
       t.timestamps
     end

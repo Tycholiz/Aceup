@@ -31,30 +31,14 @@
     <%= f.password_field :password_confirmation %>
   </div>
   <div>
-    <%= f.label :phoneNo %><br>
+    <%= f.label :phoneNo, "Phone Number" %><br>
     <%= f.text_field :phoneNo %>
   </div>
   <div>
-    <%= f.label :postalCode %><br>
-    <%= f.text_field :postalCode %>
+    <%= f.label :role %><br>
+    <%= f.select :role, ['Seeker', 'Employer']%>
   </div>
-  <div>
-    <%= f.label :inSales %><br>
-    <%= f.number_field :inSales %>
-  </div>
-  <div>
-    <%= f.label :outSales %><br>
-    <%= f.number_field :outSales %>
-  </div>
-  <div>
-    <%= f.label :inboundSales %><br>
-    <%= f.check_box :inboundSales %>
-  </div>
-  <div>
-    <%= f.label :outboundSales %><br>
-    <%= f.check_box :outboundSales %>
-  </div>
-
+  <br>
 
   <div><%= f.submit "Submit" %></div>
 <% end %>
