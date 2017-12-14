@@ -19,6 +19,22 @@ class CreateJobs < ActiveRecord::Migration[5.1]
       t.text :competencies
       t.integer :deptSize
       t.text :benefits
+      t.boolean :coldCall
+      t.boolean :doorToDoor
+      t.boolean :custService
+      t.boolean :acctManagment
+      t.boolean :negotiation
+      t.boolean :presenting
+      t.boolean :leadership
+      t.boolean :closing
+      t.boolean :hunterBased
+      t.boolean :farmerBased
+      t.boolean :commBased
+      t.boolean :B2C
+      t.boolean :B2B
+      t.boolean :consSales
+      t.boolean :directSales
+      t.boolean :solutionSales
 
       t.timestamps
     end
