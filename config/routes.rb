@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 	
+  get 'seekers/new'
+
+  get 'seekers/create'
+
   get 'sessions/new'
 
   get 'sessions/create'
@@ -11,6 +15,8 @@ Rails.application.routes.draw do
   resources :jobs
 
   resources :users, only: [:new, :create]
+
+  resources :seekers, only: [:new, :create]
 
   resources :sessions, only: [:new, :create, :destroy]
 

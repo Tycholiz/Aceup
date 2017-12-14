@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  postalCode: MyString
+  educationLevel: MyString
+  degree: MyString
+  inSales: 1
+  outSales: 1
+  inboundSales: false
+  outboundSales: false
+
+two:
+  postalCode: MyString
+  educationLevel: MyString
+  degree: MyString
+  inSales: 1
+  outSales: 1
+  inboundSales: false
+  outboundSales: false

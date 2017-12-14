@@ -2,7 +2,7 @@ class CreateJobs < ActiveRecord::Migration[5.1]
   def change
     create_table :jobs do |t|
       t.string :title
-      t.string :type
+      t.string :jobType
       t.datetime :expiry
       t.string :status
       t.boolean :temp
@@ -14,7 +14,7 @@ class CreateJobs < ActiveRecord::Migration[5.1]
       t.integer :outSalesSoft
       t.integer :outSalesHard
       t.text :summary
-      t.text :funtions
+      t.text :functions
       t.text :skills
       t.text :competencies
       t.integer :deptSize
