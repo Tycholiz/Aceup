@@ -1,7 +1,7 @@
 class User < ApplicationRecord
 	has_secure_password
 
-	has_one :seeker, optional: true
+	has_one :seeker
 
 	validates :email,
 	presence: true
@@ -15,7 +15,7 @@ class User < ApplicationRecord
 	validates :phoneNo,
 	presence: true
 
-	validate :role,
+	validates :role,
 	presence: true
 
 	validates :password,

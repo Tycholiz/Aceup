@@ -1,10 +1,11 @@
 class SeekersController < ApplicationController
   def new
-    @seeker = seeker.new
+    @seeker = Seeker.new
   end
 
   def create
-    @seeker = seeker.new(seeker_params)
+    @seeker = Seeker.new(seeker_params)
+    @seeker.user_id = current_user.id
 
     if @seeker.save
       redirect_to jobs_path, notice: "Welcome aboard"

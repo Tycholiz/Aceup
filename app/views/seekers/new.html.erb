@@ -1,2 +1,44 @@
-<h1>Seekers#new</h1>
-<p>Find me in app/views/seekers/new.html.erb</p>
+<h1>Sign Up</h1>
+<%= form_for @seeker do |f| %>
+  <% if @seeker.errors.any? %>
+    <div>
+      <%= pluralize(@seeker.errors.count, "error") %> prevented the account from being created:
+      <ul>
+        <% @seeker.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div>
+    <%= f.label :postalCode %><br>
+    <%= f.text_field :postalCode %>
+  </div>
+  <div>
+    <%= f.label :educationLevel, "Education Level" %><br>
+    <%= f.text_field :educationLevel %>
+  </div>
+  <div>
+    <%= f.label :degree, "Degree" %><br>
+    <%= f.text_field :degree %>
+  </div>
+  <div>
+    <%= f.label :inSales %><br>
+    <%= f.number_field :inSales %>
+  </div>
+  <div>
+    <%= f.label :outSales %><br>
+    <%= f.number_field :outSales %>
+  </div>
+  <div>
+    <%= f.label :inboundSales %><br>
+    <%= f.check_box :inboundSales %>
+  </div>
+  <div>
+    <%= f.label :outboundSales %><br>
+    <%= f.check_box :outboundSales %>
+  </div>
+  <br>
+
+  <div><%= f.submit "Submit" %></div>
+<% end %>

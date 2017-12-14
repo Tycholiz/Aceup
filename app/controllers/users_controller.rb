@@ -8,7 +8,11 @@ class UsersController < ApplicationController
 
     if @user.save
       session[:user_id] = @user.id # auto log in
-      redirect_to jobs_path, notice: "Welcome aboard, #{@user.firstName}!"
+      if @user.role == "Seeker"
+      	redirect_to new_seeker_path, notice: "Welcome aboard, #{@user.firstName}!"
+      else
+      	redirect_to jobs_path, notice: "Welcome aboard, #{@user.firstName}!"
+      end
     else
       render :new
     end
