@@ -1,6 +1,7 @@
 class Seeker < ApplicationRecord
 
 	belongs_to :user
+	has_one :skill
 
 	validates :postalCode,
 	presence: true
@@ -19,9 +20,6 @@ class Seeker < ApplicationRecord
 	presence: true,
 	numericality: { only_integer: true }
 
-	validates :inboundSales,
-	presence: true
 
-	validates :outboundSales,
-	presence: true
+
 end

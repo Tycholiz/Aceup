@@ -1,16 +1,21 @@
 Rails.application.routes.draw do
-	
-  get 'seekers/new'
 
-  get 'seekers/create'
 
-  get 'sessions/new'
+  # get 'employers/new'
 
-  get 'sessions/create'
+  # get 'employers/create'
 
-  get 'users/new'
+  # get 'seekers/new'
 
-  get 'users/create'
+  # get 'seekers/create'
+
+  # get 'sessions/new'
+
+  # get 'sessions/create'
+
+  # get 'users/new'
+
+  # get 'users/create'
 
   resources :jobs
 

@@ -1,5 +1,7 @@
 class Job < ApplicationRecord
 
+      has_one :skill
+
       validates :title,
         presence: true
      
