@@ -17,6 +17,8 @@ class JobsController < ApplicationController
 
   def create
     @job = Job.new(job_params)
+    employer = Employer.where(user_id: current_user.id)
+    @job.employer_id = employer.first.id
 
     if @job.save
       redirect_to jobs_path, notice: "#{@job.title} was submitted successfully!"

@@ -1,6 +1,7 @@
 class CreateJobs < ActiveRecord::Migration[5.1]
   def change
     create_table :jobs do |t|
+      t.references :employer, foreign_key: true
       t.string :title
       t.string :jobType
       t.datetime :expiry
