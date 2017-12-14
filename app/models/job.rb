@@ -1,6 +1,9 @@
 class Job < ApplicationRecord
 
-      has_one :skill
+      belongs_to :employer
+
+      validates :employer_id,
+        presence: true
 
       validates :title,
         presence: true

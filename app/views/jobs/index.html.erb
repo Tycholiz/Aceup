@@ -2,24 +2,12 @@
     <%= link_to "Submit a job!", new_job_path %>
     <hr>
     <% @jobs.each do |job| %>
+      <% employer = Employer.where(id: job.employer_id).first %>
       <h2><%= link_to job.title, job_path(job) %></h2>
-      <h3><%= job.expiry %></h3>
-      <p><%= job.jobType %><p>
-      <p><%= job.temp %><p>
-      <p><%= job.salary %><p>
-      <p><%= job.payLow %><p>
+      <h2><%= employer.compName %></h2>
+      <h2><%= employer.city %></h2>
+      <h2><%= job.jobType %><h2>
       <p><%= job.payHigh %><p>
-      <p><%= job.inSalesSoft %><p>
-      <p><%= job.inSalesHard %><p>
-      <p><%= job.outSalesSoft %><p>
-      <p><%= job.outSalesHard %><p>
-      <p><%= job.summary %></p>
-      <p><%= job.functions %><p>
-      <p><%= job.skills %><p>
-      <p><%= job.competencies %><p>
-      <p><%= job.deptSize %><p>
-      <p><%= job.benefits %><p>
-      <p><%= job.created_at %><p>
-      <p><%= job.updated_at %><p>
+
       <hr>
     <% end %>
