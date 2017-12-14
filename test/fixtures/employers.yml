@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  compName: MyString
+  compSize: 1
+  city: MyString
+  logo: 
+  compDesc: MyString
+
+two:
+  user: two
+  compName: MyString
+  compSize: 1
+  city: MyString
+  logo: 
+  compDesc: MyString

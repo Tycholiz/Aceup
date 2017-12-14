@@ -3,6 +3,8 @@ class User < ApplicationRecord
 
 	has_one :seeker
 
+	has_one :employer
+
 	validates :email,
 	presence: true
 

@@ -1,7 +1,7 @@
 class CreateSeekers < ActiveRecord::Migration[5.1]
   def change
     create_table :seekers do |t|
-      t.belongs_to :user, index: true
+      t.references :user, foreign_key: true
       t.string :postalCode
       t.string :educationLevel
       t.string :degree
