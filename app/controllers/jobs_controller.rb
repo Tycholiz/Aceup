@@ -3,20 +3,20 @@ class JobsController < ApplicationController
 	  @jobs = Job.all
     unless current_user
       redirect_to new_user_path
-    end
-    if current_user.role == "Seeker"
-      seeker = Seeker.where(user_id: current_user.id).first.attributes
-      seekSkills = seeker.select {|key, value| value == true }
-      @matchJobs = Array.new
-      @jobs.each do |job|
-        jobSkills = job.attributes.select {|key, value| value == true }
-        jobSkills.delete("temp") #should change temp to something else in database
+    else
+      if current_user.role == "Seeker"
+        seeker = Seeker.where(user_id: current_user.id).first.attributes
+        seekSkills = seeker.select {|key, value| value == true }
+        @matchJobs = Array.new
+        @jobs.each do |job|
+          jobSkills = job.attributes.select {|key, value| value == true }
+          jobSkills.delete("temp") #should change temp to something else in database
 
-        @matchJobs.push job if (jobSkills <= seekSkills)
+          @matchJobs.push job if (jobSkills <= seekSkills)
 
+        end
       end
     end
-
 
 
   end

@@ -2,21 +2,39 @@
 
 
     <h2><%= @job.title %> (<%= link_to "edit", edit_job_path(@job) %>, <%= link_to "delete", job_path(@job), method: :delete, data: {confirm: "You sure?"} %>)</h2>
-    <h3><%= @job.expiry %></h3>
-    <p><%= @job.jobType %><p>
-    <p><%= @job.temp %><p>
-    <p><%= @job.salary %><p>
-    <p><%= @job.payLow %><p>
-    <p><%= @job.payHigh %><p>
-    <p><%= @job.inSalesSoft %><p>
-    <p><%= @job.inSalesHard %><p>
-    <p><%= @job.outSalesSoft %><p>
-    <p><%= @job.outSalesHard %><p>
-    <p><%= @job.summary %></p>
-    <p><%= @job.functions %><p>
-    <p><%= @job.skills %><p>
-    <p><%= @job.competencies %><p>
-    <p><%= @job.deptSize %><p>
-    <p><%= @job.benefits %><p>
-    <p><%= @job.created_at %><p>
-    <p><%= @job.updated_at %><p>
+    <h3>Job expires: <%= @job.expiry %></h3>
+    <p>Job Type: <%= @job.jobType %><p>
+    <p>Temp? <%= @job.temp %><p>
+    <p>Salary: <%= @job.salary %><p>
+    <p>Pay range low: <%= @job.payLow %><p>
+    <p>Pay range high: <%= @job.payHigh %><p>
+    <p>Required Sales soft: <%= @job.inSalesSoft %><p>
+    <p>Required Sales hard: <%= @job.inSalesHard %><p>
+    <p>Outside Sales experience (S): <%= @job.outSalesSoft %><p>
+    <p>Outside Sales experience (H): <%= @job.outSalesHard %><p>
+    <p>Job Summary: <%= @job.summary %></p>
+    <p>Functions: <%= @job.functions %><p>
+    <p>Skills: <%= @job.skills %><p>
+    <p>Competencies: <%= @job.competencies %><p>
+    <p>Department size: <%= @job.deptSize %><p>
+    <p>Benefits: <%= @job.benefits %><p>
+    <p>Cold calling: <%= @job.coldCall %><p>
+    <p>Door to Door: <%= @job.doorToDoor %><p>
+    <p>Customer Service: <%= @job.custService %><p>
+    <p>Account Management: <%= @job.acctManagment %><p>
+    <p>Negotiation: <%= @job.negotiation %><p> 
+    <p>Presenting: <%= @job.presenting %><p>
+    <p>Leadership: <%= @job.leadership %><p>
+    <p>Closing: <%= @job.closing %><p>
+    <p>Hunter Based: <%= @job.hunterBased %><p>
+    <p>Farmer Based: <%= @job.farmerBased %><p>
+    <p>Comm Based: <%= @job.commBased %><p>
+    <p>B2C: <%= @job.B2C %><p>
+    <p>B2B: <%= @job.B2B %><p>
+    <p>Coms Sales?: <%= @job.consSales %><p>
+    <p>Direct Sales: <%= @job.directSales %><p>
+    <p>Solution Sales: <%= @job.solutionSales %><p>
+
+    <p>Created: <%= @job.created_at %><p>
+    <p>Updated: <%= @job.updated_at %><p>
+  
