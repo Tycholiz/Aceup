@@ -1,13 +1,16 @@
     <h1>Aceup</h1>
     <%= link_to "Submit a job!", new_job_path %>
     <hr>
-    <% @jobs.each do |job| %>
-      <% employer = Employer.where(id: job.employer_id).first %>
-      <h2><%= link_to job.title, job_path(job) %></h2>
-      <h2><%= employer.compName %></h2>
-      <h2><%= employer.city %></h2>
-      <h2><%= job.jobType %><h2>
-      <p><%= job.payHigh %><p>
-
-      <hr>
+    <% if current_user.role == "Seeker" %>
+      <% @matchJobs.each do |job| %>
+        <% employer = Employer.where(id: job.employer_id).first %>
+        <h2><%= link_to job.title, job_path(job) %></h2>
+        <h2><%= employer.compName %></h2>
+        <h2><%= employer.city %></h2>
+        <h2><%= job.jobType %><h2>
+        <p><%= job.payHigh %><p>
+      <% end %>
+        <hr>
+    <% else %>
+        <h2>You need to be a seeker</h2>
     <% end %>

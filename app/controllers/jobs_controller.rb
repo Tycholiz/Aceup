@@ -1,6 +1,21 @@
 class JobsController < ApplicationController
   def index
 	  @jobs = Job.all
+    if current_user.role == "Seeker"
+      seeker = Seeker.where(user_id: current_user.id).first.attributes
+      seekSkills = seeker.select {|key, value| value == true }
+      @matchJobs = Array.new
+      @jobs.each do |job|
+        jobSkills = job.attributes.select {|key, value| value == true }
+        jobSkills.delete("temp") #should change temp to something else in database
+
+        @matchJobs.push job if (jobSkills <= seekSkills)
+
+      end
+    end
+
+
+
   end
 
   def show
@@ -47,7 +62,7 @@ class JobsController < ApplicationController
 
   def job_params
     params.require(:job).permit(
-      :title, :jobType, :expiry, :status, :temp, :salary, :payLow, :payHigh, :inSalesSoft, :inSalesHard, :outSalesSoft, :outSalesHard, :functions, :skills, :summary, :competencies, :deptSize, :benefits
+      :title, :jobType, :expiry, :status, :temp, :salary, :payLow, :payHigh, :inSalesSoft, :inSalesHard, :outSalesSoft, :outSalesHard, :functions, :skills, :summary, :competencies, :deptSize, :benefits, :coldCall, :doorToDoor, :custService, :acctManagment, :negotiation, :presenting, :leadership, :closing, :hunterBased, :farmerBased, :commBased, :B2C, :B2B, :consSales, :directSales, :solutionSales
     )
   end
 
