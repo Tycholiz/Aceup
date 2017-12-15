@@ -116,7 +116,7 @@ p "Created #{Seeker.count} seekers"
 
 Job.destroy_all
 
-30.times do
+100.times do
 	Job.create! [
 		title: Faker::Job.title,
 		employer_id: 1,

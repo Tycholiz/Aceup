@@ -14,3 +14,6 @@
     <% else %>
         <h2>You need to be a seeker</h2>
     <% end %>
+
+    <%= paginate @matchJobs %>
+    <%= page_entries_info @matchJobs %>

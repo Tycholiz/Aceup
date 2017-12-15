@@ -15,6 +15,7 @@ class JobsController < ApplicationController
           @matchJobs.push job if (jobSkills <= seekSkills)
 
         end
+        @matchJobs = Kaminari.paginate_array(@matchJobs).page(params[:page]).per(10) 
       end
     end
 
