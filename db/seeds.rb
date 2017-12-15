@@ -5,3 +5,154 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'faker'
+
+User.destroy_all
+
+password = "testtest"
+
+User.create! [
+	email: "employer@test.com",
+	# password_digest: User.new(:password => password).password_digest,
+	password: password,
+	password_confirmation: password,
+	firstName: "Employer",
+	lastName:  "Name",
+	phoneNo:  Faker::PhoneNumber.cell_phone,
+	role:  "Employer"
+]
+
+User.create! [
+	email: "super@test.com",
+	password: password,
+	password_confirmation: password,
+	firstName: "Super",
+	lastName:  "Seeker",
+	phoneNo:  Faker::PhoneNumber.cell_phone,
+	role:  "Seeker"
+]
+
+User.create! [
+	email: "normal@test.com",
+	password: password,
+	password_confirmation: password,
+	firstName: "Normal",
+	lastName:  "Seeker",
+	phoneNo:  Faker::PhoneNumber.cell_phone,
+	role:  "Seeker"
+]
+
+
+p "Created #{User.count} users"
+
+Employer.destroy_all
+
+Employer.create! [
+	user_id: 1,
+	compName: Faker::Company.name,
+	compSize: Faker::Number.between(1, 1000),
+	city: Faker::Address.city,
+	compDesc: Faker::RickAndMorty.quote,
+]
+
+p "Created #{Employer.count} employers"
+
+Seeker.destroy_all
+
+Seeker.create! [
+	user_id: 2,
+	postalCode: Faker::Address.postcode,
+	educationLevel: Faker::Beer.style,
+	degree: Faker::Beer.style,
+	inSales: Faker::Number.between(1, 5),
+	outSales: Faker::Number.between(1, 5),
+	inboundSales: Faker::Boolean.boolean,
+	outboundSales: Faker::Boolean.boolean,
+	coldCall: true,
+	doorToDoor: true,
+	custService: true,
+	acctManagment: true,
+	negotiation: true,
+	presenting: true,
+	leadership: true,
+	closing: true,
+	hunterBased: true,
+	farmerBased: true,
+	commBased: true,
+	B2C: true,
+	B2B: true,
+	consSales: true,
+	directSales: true,
+	solutionSales: true
+]
+
+Seeker.create! [
+	user_id: 3,
+	postalCode: Faker::Address.postcode,
+	educationLevel: Faker::Beer.style,
+	degree: Faker::Beer.style,
+	inSales: Faker::Number.between(1, 5),
+	outSales: Faker::Number.between(1, 5),
+	inboundSales: Faker::Boolean.boolean,
+	outboundSales: Faker::Boolean.boolean,
+	coldCall: Faker::Boolean.boolean,
+	doorToDoor: Faker::Boolean.boolean,
+	custService: Faker::Boolean.boolean,
+	acctManagment: Faker::Boolean.boolean,
+	negotiation: Faker::Boolean.boolean,
+	presenting: Faker::Boolean.boolean,
+	leadership: Faker::Boolean.boolean,
+	closing: Faker::Boolean.boolean,
+	hunterBased: Faker::Boolean.boolean,
+	farmerBased: Faker::Boolean.boolean,
+	commBased: Faker::Boolean.boolean,
+	B2C: Faker::Boolean.boolean,
+	B2B: Faker::Boolean.boolean,
+	consSales: Faker::Boolean.boolean,
+	directSales: Faker::Boolean.boolean,
+	solutionSales: Faker::Boolean.boolean
+]
+p "Created #{Seeker.count} seekers"
+
+Job.destroy_all
+
+30.times do
+	Job.create! [
+		title: Faker::Job.title,
+		employer_id: 1,
+		jobType: ['part-time', 'full-time'].sample,
+		temp: true,
+		salary: ['Salary', 'Hourly', 'Commission'].sample,
+		payLow: Faker::Number.between(20000, 50000),
+		payHigh: Faker::Number.between(50000, 100000),
+		inSalesSoft: Faker::Number.between(1, 5),
+		inSalesHard: Faker::Number.between(1, 5),
+		outSalesSoft: Faker::Number.between(1, 5),
+		outSalesHard: Faker::Number.between(1, 5),
+		summary: Faker::RickAndMorty.quote,
+		functions: Faker::RickAndMorty.quote,
+		skills: Faker::Job.key_skill,
+		competencies: Faker::RickAndMorty.quote,
+		deptSize: Faker::Number.between(1, 1000),
+		benefits: Faker::Seinfeld.quote,
+		coldCall: Faker::Boolean.boolean,
+		doorToDoor: Faker::Boolean.boolean,
+		custService: Faker::Boolean.boolean,
+		acctManagment: Faker::Boolean.boolean,
+		negotiation: Faker::Boolean.boolean,
+		presenting: Faker::Boolean.boolean,
+		leadership: Faker::Boolean.boolean,
+		closing: Faker::Boolean.boolean,
+		hunterBased: Faker::Boolean.boolean,
+		farmerBased: Faker::Boolean.boolean,
+		commBased: Faker::Boolean.boolean,
+		B2C: Faker::Boolean.boolean,
+		B2B: Faker::Boolean.boolean,
+		consSales: Faker::Boolean.boolean,
+		directSales: Faker::Boolean.boolean,
+		solutionSales: Faker::Boolean.boolean
+	]
+	
+end
+
+p "Created #{Job.count} jobs"

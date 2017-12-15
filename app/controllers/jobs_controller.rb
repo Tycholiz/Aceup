@@ -1,6 +1,9 @@
 class JobsController < ApplicationController
   def index
 	  @jobs = Job.all
+    unless current_user
+      redirect_to new_user_path
+    end
     if current_user.role == "Seeker"
       seeker = Seeker.where(user_id: current_user.id).first.attributes
       seekSkills = seeker.select {|key, value| value == true }
