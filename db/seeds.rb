@@ -7,6 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 
+Faker::Config.locale = "en-CA"
+
 User.destroy_all
 
 password = "testtest"
@@ -18,6 +20,17 @@ User.create! [
 	password_confirmation: password,
 	firstName: "Employer",
 	lastName:  "Name",
+	phoneNo:  Faker::PhoneNumber.cell_phone,
+	role:  "Employer"
+]
+
+User.create! [
+	email: "employer2@test.com",
+	# password_digest: User.new(:password => password).password_digest,
+	password: password,
+	password_confirmation: password,
+	firstName: "Employer2",
+	lastName:  "Name2",
 	phoneNo:  Faker::PhoneNumber.cell_phone,
 	role:  "Employer"
 ]
@@ -55,12 +68,20 @@ Employer.create! [
 	compDesc: Faker::RickAndMorty.quote,
 ]
 
+Employer.create! [
+	user_id: 2,
+	compName: Faker::Company.name,
+	compSize: Faker::Number.between(1, 1000),
+	city: Faker::Address.city,
+	compDesc: Faker::RickAndMorty.quote,
+]
+
 p "Created #{Employer.count} employers"
 
 Seeker.destroy_all
 
 Seeker.create! [
-	user_id: 2,
+	user_id: 3,
 	postalCode: Faker::Address.postcode,
 	educationLevel: Faker::Beer.style,
 	degree: Faker::Beer.style,
@@ -87,7 +108,7 @@ Seeker.create! [
 ]
 
 Seeker.create! [
-	user_id: 3,
+	user_id: 4,
 	postalCode: Faker::Address.postcode,
 	educationLevel: Faker::Beer.style,
 	degree: Faker::Beer.style,
@@ -119,7 +140,7 @@ Job.destroy_all
 100.times do
 	Job.create! [
 		title: Faker::Job.title,
-		employer_id: 1,
+		employer_id: Faker::Number.between(1, 2),
 		jobType: ['part-time', 'full-time'].sample,
 		temp: true,
 		salary: ['Salary', 'Hourly', 'Commission'].sample,

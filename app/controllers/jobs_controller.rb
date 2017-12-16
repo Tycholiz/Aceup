@@ -2,7 +2,7 @@ class JobsController < ApplicationController
   def index
 	  @jobs = Job.all
     unless current_user
-      redirect_to new_user_path
+      redirect_to root_path
     else
       if current_user.role == "Seeker"
         seeker = Seeker.where(user_id: current_user.id).first.attributes
