@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create]
 
-  resources :seekers, only: [:new, :create]
+  resources :seekers #, only: [:new, :create, :show]
 
   resources :employers #, only: [:new, :create, :show, :edit]
 

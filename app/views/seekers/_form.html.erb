@@ -1,0 +1,163 @@
+
+<%= form_for @seeker do |f| %>
+  <% if @seeker.errors.any? %>
+    <div>
+      <%= pluralize(@seeker.errors.count, "error") %> prevented the account from being created:
+      <ul>
+        <% @seeker.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div>
+    <%= f.label :postalCode %><br>
+    <%= f.text_field :postalCode %>
+  </div>
+  <div>
+    <%= f.label :educationLevel, "Education Level" %><br>
+    <%= f.text_field :educationLevel %>
+  </div>
+  <div>
+    <%= f.label :degree, "Degree" %><br>
+    <%= f.text_field :degree %>
+  </div>
+
+  <div>
+    <%= f.label :inSales %><br>
+    <div id="inSales_slider" class="slider">
+      <div id="inSales_handle" class="ui-slider-handle"></div>
+    </div>
+    <%= f.hidden_field :inSales %>
+  </div>
+
+  <div>
+    <%= f.label :outSales %><br>
+    <div id="outSales_slider" class="slider">
+      <div id="outSales_handle" class="ui-slider-handle"></div>
+    </div>
+    <%= f.hidden_field :outSales %>
+  </div>
+
+  <div>
+    <%= f.label :inboundSales %><br>
+    <%= f.check_box :inboundSales %>
+  </div>
+  <div>
+    <%= f.label :outboundSales %><br>
+    <%= f.check_box :outboundSales %>
+  </div>
+  <div>
+    <%= f.label :coldCall, "Cold Calling" %><br>
+    <%= f.check_box :coldCall %>
+  </div>
+  <div>
+    <%= f.label :doorToDoor, "Door to Door" %><br>
+    <%= f.check_box :doorToDoor %>
+  </div>
+  <div>
+    <%= f.label :custService, "Customer Service" %><br>
+    <%= f.check_box :custService %>
+  </div>
+  <div>
+    <%= f.label :acctManagment, "Account Management" %><br>
+    <%= f.check_box :acctManagment %>
+  </div>
+  <div>
+    <%= f.label :negotiation %><br>
+    <%= f.check_box :negotiation %>
+  </div>
+  <div>
+    <%= f.label :presenting %><br>
+    <%= f.check_box :presenting %>
+  </div>
+  <div>
+    <%= f.label :leadership %><br>
+    <%= f.check_box :leadership %>
+  </div>
+  <div>
+    <%= f.label :closing %><br>
+    <%= f.check_box :closing %>
+  </div>
+  <div>
+    <%= f.label :hunterBased, "Hunter-based" %><br>
+    <%= f.check_box :hunterBased %>
+  </div>
+  <div>
+    <%= f.label :farmerBased, "Farmer Based" %><br>
+    <%= f.check_box :farmerBased %>
+  </div>
+  <div>
+    <%= f.label :commBased %><br>
+    <%= f.check_box :commBased %>
+  </div>
+  <div>
+    <%= f.label :B2C %><br>
+    <%= f.check_box :B2C %>
+  </div>
+  <div>
+    <%= f.label :B2B %><br>
+    <%= f.check_box :B2B %>
+  </div>
+  <div>
+    <%= f.label :consSales %><br>
+    <%= f.check_box :consSales %>
+  </div>
+  <div>
+    <%= f.label :directSales %><br>
+    <%= f.check_box :directSales %>
+  </div>
+  <div>
+    <%= f.label :solutionSales %><br>
+    <%= f.check_box :solutionSales %>
+  </div>
+  <br>
+
+  <div><%= f.submit "Submit" %></div>
+<% end %>
+
+
+ <script>
+  $( function() {
+      var handle = $( "#inSales_handle" );
+      $( "#inSales_slider" ).slider({
+        create: function() {
+          handle.text( $( this ).slider( "value" ) );
+        },
+            min: 1,
+            max: 10,
+            value: 3,
+            step: 1,
+        slide: function( event, ui ) {
+          handle.text( ui.value );
+          $("#seeker_inSales").val(ui.value);
+          console.log(ui.value);
+        }
+      });
+
+      var handle2 = $( "#outSales_handle" );
+      $( "#outSales_slider" ).slider({
+        create: function() {
+          handle2.text( $( this ).slider( "value" ) );
+        },
+            min: 1,
+            max: 10,
+            value: 3,
+            step: 1,
+        slide: function( event, ui ) {
+          handle2.text( ui.value );
+          $("#seeker_outSales").val(ui.value);
+          console.log(ui.value);
+        }
+      });
+
+
+
+
+
+
+
+
+
+    } );
+ </script>

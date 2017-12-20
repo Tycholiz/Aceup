@@ -1,5 +1,3 @@
-    <h1>Aceup</h1>
-    <%= link_to "Submit a job!", new_job_path %>
     <hr>
     <% if current_user.role == "Seeker" %>
       <% @matchJobs.each do |job| %>

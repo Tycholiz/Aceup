@@ -14,6 +14,37 @@ class SeekersController < ApplicationController
     end
   end
 
+  def show
+    @seeker = Seeker.find(params[:id])
+    @jobs = Job.all
+
+    seekSkills = @seeker.attributes.select {|key, value| value == true }
+    @matchJobs = Array.new
+    @jobs.each do |job|
+      jobSkills = job.attributes.select {|key, value| value == true }
+      jobSkills.delete("temp") #should change temp to something else in database
+
+      @matchJobs.push job if (jobSkills <= seekSkills)
+
+    end
+    @matchJobs = Kaminari.paginate_array(@matchJobs).page(params[:page]).per(10) 
+
+  end
+
+  def edit
+    @seeker  = Seeker.find(params[:id])
+  end
+
+   def update
+    @seeker = Seeker.find(params[:id])
+
+    if @seeker.update_attributes(seeker_params)
+      redirect_to seeker_path(@seeker)
+    else
+      render :edit
+    end
+  end
+
   protected
 
   def seeker_params
