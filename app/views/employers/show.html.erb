@@ -1,0 +1,30 @@
+ <% user = User.where(id: @employer.user_id).first %>
+ <%= user.email %>
+ <%= user.firstName %>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Status</th>
+    <th>Manage</th>
+    <th>Views</th>
+    <th>Applications</th>
+    <th>Post Date</th>
+    <th>Expiry</th>
+    <th>ID #</th>
+  </tr>
+
+   <% @jobs.each do |job|  %>
+  <tr>
+    <td><%= job.title %></td>
+    <td><%= job.status %></td>
+    <td>(<%= link_to "edit", edit_job_path(job) %>, <%= link_to "delete", job_path(job), method: :delete, data: {confirm: "You sure?"} %>)</td>
+    <td>Views WIP</td>
+    <td>Applications WIP</td>
+    <td><%= job.created_at %></td>
+    <td><%= job.expiry %></td>
+    <td><%= job.id %></td>
+  </tr>
+  <% end %>
+
+</table>

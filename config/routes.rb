@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   resources :seekers, only: [:new, :create]
 
-  resources :employers, only: [:new, :create]
+  resources :employers, only: [:new, :create, :show]
 
   resources :sessions, only: [:new, :create, :destroy]
 

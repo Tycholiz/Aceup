@@ -2,9 +2,15 @@
   <small>
     <% if current_user %>
       Signed in as <%= current_user.email %> (<%= link_to "Log out", session_path("current"), method: :delete %>)
+      
+      <% if current_user.role == "Employer" %>
+      	<% employer = Employer.where(user_id: current_user.id).first %>
+      	<%= link_to("Profile", employer_path(employer)) %>
+      <% end %>
+
       <p>User type: <%= current_user.role %><p>
     <% else %>
       <%= link_to "Log In", new_session_path %> | <%= link_to "Sign Up", new_user_path %>
     <% end %>
-  </small>
+	<%= link_to "Home", root_path %>  </small>
 </footer>

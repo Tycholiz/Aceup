@@ -14,6 +14,11 @@ class EmployersController < ApplicationController
     end
   end
 
+  def show
+    @employer = Employer.find(params[:id])
+    @jobs = Job.where(employer_id: @employer.id)
+  end
+
   protected
 
   def employer_params
