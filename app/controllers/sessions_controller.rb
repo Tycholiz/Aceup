@@ -8,7 +8,13 @@ class SessionsController < ApplicationController
 
       if user && user.authenticate(params[:password])
         session[:user_id] = user.id
+        if user.role == "Employer"
+          employer = Employer.where(user_id: current_user.id).first
+          redirect_to employer_path(employer), notice: "Welcome back, #{user.firstName}!"
+        else 
+        session[:user_id] = user.id
         redirect_to jobs_path, notice: "Welcome back, #{user.firstName}!"
+        end
       else
         flash.now[:alert] = "Log in failed..."
         render :new
