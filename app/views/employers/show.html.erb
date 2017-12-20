@@ -1,7 +1,7 @@
  <% user = User.where(id: @employer.user_id).first %>
  <%= user.email %>
  <%= user.firstName %>
-
+<p><%= link_to "profile", edit_employer_path(@employer) %></p>
  <h2><%= link_to "New Posting", new_job_path %></h2>
 
 <table>
@@ -18,7 +18,7 @@
 
    <% @jobs.each do |job|  %>
   <tr>
-    <td><%= job.title %></td>
+    <td><%= link_to job.title, job_path(job) %></td>
     <td><%= job.status %></td>
     <td>(<%= link_to "edit", edit_job_path(job) %>, <%= link_to "delete", job_path(job), method: :delete, data: {confirm: "You sure?"} %>)</td>
     <td>Views WIP</td>

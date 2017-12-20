@@ -8,7 +8,7 @@ class EmployersController < ApplicationController
     @employer.user_id = current_user.id
 
     if @employer.save
-      redirect_to jobs_path, notice: "Welcome aboard"
+      redirect_to employer_path(@employer), notice: "Welcome aboard"
     else
       render :new
     end
@@ -17,6 +17,20 @@ class EmployersController < ApplicationController
   def show
     @employer = Employer.find(params[:id])
     @jobs = Job.where(employer_id: @employer.id)
+  end
+
+  def edit
+    @employer = Employer.find(params[:id])
+  end
+
+   def update
+    @employer = Employer.find(params[:id])
+
+    if @employer.update_attributes(employer_params)
+      redirect_to employer_path(@employer)
+    else
+      render :edit
+    end
   end
 
   protected
