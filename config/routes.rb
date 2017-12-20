@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   resources :jobs
 
   resources :users, only: [:new, :create]
@@ -9,6 +10,8 @@ Rails.application.routes.draw do
   resources :employers #, only: [:new, :create, :show, :edit]
 
   resources :sessions, only: [:new, :create, :destroy]
+
+  resources :applications
 
   root to: "sessions#new"
 

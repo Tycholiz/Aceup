@@ -1,6 +1,7 @@
 class Job < ApplicationRecord
 
       belongs_to :employer
+      has_many :applications
 
       validates :employer_id,
         presence: true

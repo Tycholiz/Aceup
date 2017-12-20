@@ -2,6 +2,7 @@ class Seeker < ApplicationRecord
 
 	belongs_to :user
 	has_one :skill
+	has_many :applications
 
 	validates :postalCode,
 	presence: true
