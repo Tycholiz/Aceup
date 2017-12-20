@@ -1,7 +1,7 @@
 // Place all the styles related to the seekers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-#slider 
+.slider 
 {
     width: 80%;
     margin-left: 1em;
@@ -9,12 +9,12 @@
     margin-bottom: 1em;
 }
 
-#slider a {
+.slider a {
     text-decoration: none;
     outline: none;
 }
 
-#custom-handle {
+#inSales_handle {
     width: 3em;
     height: 1.6em;
     top: 50%;
@@ -23,7 +23,7 @@
     line-height: 1.6em;
   }
 
-  #custom-handle2 {
+  #outSales_handle {
     width: 3em;
     height: 1.6em;
     top: 50%;

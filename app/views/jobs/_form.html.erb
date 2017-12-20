@@ -32,21 +32,25 @@
         <%= f.label :expiry %><br>
         <%= f.date_field :expiry %>
       </div>
-      <div>
-        <%= f.label :inSalesSoft %><br>
-        <%= f.number_field :inSalesSoft %>
+
+       <div>
+        <%= f.label :inSales, "Inside Sales" %><br>
+        <div id="inSales_job_slider" class="slider">
+          <div id="inSales_job_handle" class="ui-slider-handle"></div>
+          <div id="inSales_job_handle2" class="ui-slider-handle"></div>
+        </div>
+        <%= f.hidden_field :inSalesSoft %>
+        <%= f.hidden_field :inSalesHard %>
       </div>
+
       <div>
-        <%= f.label :inSalesHard %><br>
-        <%= f.number_field :inSalesHard %>
-      </div>
-      <div>
-        <%= f.label :outSalesSoft %><br>
-        <%= f.number_field :outSalesSoft %>
-      </div>
-      <div>
-        <%= f.label :outSalesHard %><br>
-        <%= f.number_field :outSalesHard %>
+        <%= f.label :outSales, "outside Sales" %><br>
+        <div id="outSales_job_slider" class="slider">
+          <div id="outSales_job_handle" class="ui-slider-handle"></div>
+          <div id="outSales_job_handle2" class="ui-slider-handle"></div>
+        </div>
+        <%= f.hidden_field :outSalesSoft %>
+        <%= f.hidden_field :outSalesHard %>
       </div>
       <div>
         <%= f.label :payLow %><br>
@@ -148,3 +152,51 @@
         <%= f.submit "Submit" %> 
       </div>
     <% end %>
+
+
+
+<script>
+  $( function() {
+      var handle = $( "#inSales_job_handle" );
+      var handle2 = $( "#inSales_job_handle2" );
+      $( "#inSales_job_slider" ).slider({
+        create: function() {
+          handle.text( $( this ).slider( "values", 0 ) );
+          handle2.text( $( this ).slider( "values", 1 ) );
+        },
+        range: true,
+            min: 1,
+            max: 10,
+            values: [3, 5],
+        slide: function( event, ui ) {
+          handle.text( ui.values[0] );
+          handle2.text( ui.values[1] );
+          $("#job_inSalesSoft").val(ui.values[0]);
+          $("#job_inSalesHard").val(ui.values[1]);
+          console.log(ui.values[0]);
+          console.log(ui.values[1]);
+        }
+      });
+
+      var handle3 = $( "#outSales_job_handle" );
+      var handle4 = $( "#outSales_job_handle2" );
+      $( "#outSales_job_slider" ).slider({
+        create: function() {
+          handle3.text( $( this ).slider( "values", 0 ) );
+          handle4.text( $( this ).slider( "values", 1 ) );
+        },
+        range: true,
+            min: 1,
+            max: 10,
+            values: [3, 5],
+        slide: function( event, ui ) {
+          handle3.text( ui.values[0] );
+          handle4.text( ui.values[1] );
+          $("#job_outSalesSoft").val(ui.values[0]);
+          $("#job_outSalesHard").val(ui.values[1]);
+          console.log(ui.values[0]);
+          console.log(ui.values[1]);
+        }
+      });
+    } );
+ </script>

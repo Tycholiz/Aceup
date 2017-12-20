@@ -25,17 +25,20 @@
 
   <div>
     <%= f.label :inSales %><br>
-    <div id="slider">
-      <div id="custom-handle" class="ui-slider-handle"></div>
-      <div id="custom-handle2" class="ui-slider-handle"></div>
+    <div id="inSales_slider" class="slider">
+      <div id="inSales_handle" class="ui-slider-handle"></div>
     </div>
     <%= f.hidden_field :inSales %>
   </div>
 
   <div>
     <%= f.label :outSales %><br>
-    <%= f.number_field :outSales %>
+    <div id="outSales_slider" class="slider">
+      <div id="outSales_handle" class="ui-slider-handle"></div>
+    </div>
+    <%= f.hidden_field :outSales %>
   </div>
+
   <div>
     <%= f.label :inboundSales %><br>
     <%= f.check_box :inboundSales %>
@@ -116,23 +119,45 @@
 
  <script>
   $( function() {
-      var handle = $( "#custom-handle" );
-      var handle2 = $( "#custom-handle2" );
-      $( "#slider" ).slider({
+      var handle = $( "#inSales_handle" );
+      $( "#inSales_slider" ).slider({
         create: function() {
           handle.text( $( this ).slider( "value" ) );
-          handle2.text( $( this ).slider( "value" ) );
         },
-        range: true,
             min: 1,
             max: 10,
-            values: [3, 5],
+            value: 3,
+            step: 1,
         slide: function( event, ui ) {
-          handle.text( ui.values[0] );
-          handle2.text( ui.values[1] );
-          $("#seeker_inSales").val(ui.values[0]);
-          console.log(ui.values[0]);
+          handle.text( ui.value );
+          $("#seeker_inSales").val(ui.value);
+          console.log(ui.value);
         }
       });
+
+      var handle2 = $( "#outSales_handle" );
+      $( "#outSales_slider" ).slider({
+        create: function() {
+          handle2.text( $( this ).slider( "value" ) );
+        },
+            min: 1,
+            max: 10,
+            value: 3,
+            step: 1,
+        slide: function( event, ui ) {
+          handle2.text( ui.value );
+          $("#seeker_outSales").val(ui.value);
+          console.log(ui.value);
+        }
+      });
+
+
+
+
+
+
+
+
+
     } );
  </script>

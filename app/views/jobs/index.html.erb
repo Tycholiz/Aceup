@@ -10,10 +10,9 @@
         <h2>Job Type: <%= job.jobType %><h2>
         <p>Salary: <%= job.payHigh %><p>
       <% end %>
+      <%= paginate @matchJobs %>
+    <%= page_entries_info @matchJobs %>
         <hr>
     <% else %>
         <h2>You need to be a seeker</h2>
     <% end %>
-
-    <%= paginate @matchJobs %>
-    <%= page_entries_info @matchJobs %>
