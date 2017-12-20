@@ -22,10 +22,16 @@
     <%= f.label :degree, "Degree" %><br>
     <%= f.text_field :degree %>
   </div>
+
   <div>
     <%= f.label :inSales %><br>
-    <%= f.number_field :inSales %>
+    <div id="slider">
+      <div id="custom-handle" class="ui-slider-handle"></div>
+      <div id="custom-handle2" class="ui-slider-handle"></div>
+    </div>
+    <%= f.hidden_field :inSales %>
   </div>
+
   <div>
     <%= f.label :outSales %><br>
     <%= f.number_field :outSales %>
@@ -106,3 +112,27 @@
 
   <div><%= f.submit "Submit" %></div>
 <% end %>
+
+
+ <script>
+  $( function() {
+      var handle = $( "#custom-handle" );
+      var handle2 = $( "#custom-handle2" );
+      $( "#slider" ).slider({
+        create: function() {
+          handle.text( $( this ).slider( "value" ) );
+          handle2.text( $( this ).slider( "value" ) );
+        },
+        range: true,
+            min: 1,
+            max: 10,
+            values: [3, 5],
+        slide: function( event, ui ) {
+          handle.text( ui.values[0] );
+          handle2.text( ui.values[1] );
+          $("#seeker_inSales").val(ui.values[0]);
+          console.log(ui.values[0]);
+        }
+      });
+    } );
+ </script>
