@@ -1,4 +1,7 @@
 class JobsController < ApplicationController
+
+  impressionist actions: [:show], unique: [:impressionable_id, :session_hash]
+
   def index
 	  @jobs = Job.all
     unless current_user

@@ -21,7 +21,7 @@
     <td><%= link_to job.title, job_path(job) %></td>
     <td><%= job.status %></td>
     <td>(<%= link_to "edit", edit_job_path(job) %>, <%= link_to "delete", job_path(job), method: :delete, data: {confirm: "You sure?"} %>)</td>
-    <td>Views WIP</td>
+    <td><%= job.impressionist_count %></td>
     <td><%= job.applications.size %></td>
     <td><%= job.created_at.to_formatted_s(:short)  %></td>
     <td><%= job.expiry.to_formatted_s(:short) if job.expiry%></td>
