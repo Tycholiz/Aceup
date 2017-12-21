@@ -2,9 +2,9 @@ class ApplicationsController < ApplicationController
 
   def new
     @job = Job.find(params[:job_id])
-    seeker = Seeker.where(user_id: current_user.id).first
+    @seeker = Seeker.where(user_id: current_user.id).first
     @application = @job.applications.build
-    @application.seeker_id = seeker.id
+    @application.seeker_id = @seeker.id
     ## Add code for user to choose resume
     @application.save
 

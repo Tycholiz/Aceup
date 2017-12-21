@@ -1,6 +1,22 @@
 
-<p>You application was submitted</p>
-Job id <%= @application.job_id %>
-Seeker id <%= @application.seeker_id %>
-Application id <%= @application.id %>
-date <%= @application.created_at %>
+<h2>Thank you!</h2>
+<p>You application was submitted successfully.</p>
+<p>Job id <%= @application.job_id %></p>
+<p>Seeker id <%= @application.seeker_id %></p>
+<p>Application id <%= @application.id %></p>
+<p>date <%= @application.created_at %></p>
+
+
+
+ <% if @application.errors.any? %>
+    <div>
+      <%= pluralize(@application.errors.count, "error") %> prevented the application from being submitted:
+      <ul>
+        <% @application.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= button_to "Return to jobs",seeker_path(@seeker), :method => "get" %>
