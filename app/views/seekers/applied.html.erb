@@ -1,0 +1,12 @@
+<%= render 'header' %>
+
+<% @appliedJobs.each do |job| %>
+        <% employer = Employer.where(id: job.employer_id).first %>
+        <h2><%= link_to job.title, job_path(job) %></h2>
+        <% app = Application.where(seeker_id: @seeker.id, job_id: job.id).first %>
+        <h2>Applied on: <%= app.created_at.to_formatted_s(:short) %>
+        <h2>Company: <%= employer.compName %></h2>
+        <h2>Location: <%= employer.city %></h2>
+        <h2>Job Type: <%= job.jobType %><h2>
+        <p>Salary: <%= job.payHigh %><p>
+      <% end %>

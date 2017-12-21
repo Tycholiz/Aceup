@@ -45,6 +45,16 @@ class SeekersController < ApplicationController
     end
   end
 
+  def applied
+    @seeker  = Seeker.find(params[:id])
+    @applications = Application.where(seeker_id: @seeker.id)
+    @appliedJobs = Array.new
+    @applications.each do |app|
+      job = Job.where(id: app.job_id).first
+      @appliedJobs.push job
+    end
+  end
+
   protected
 
   def seeker_params

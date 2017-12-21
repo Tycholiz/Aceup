@@ -1,6 +1,2 @@
- <% user = User.where(id: @seeker.user_id).first %>
- <%= user.email %>
- <%= user.firstName %>
-<p><%= link_to "profile", edit_seeker_path(@seeker) %></p>
-
+<%= render 'header' %>
 <%= render 'jobs/index' %>
