@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
 
-  resources :jobs
+  resources :jobs do
+  	resources :applications
+  end
 
   resources :users, only: [:new, :create]
 
@@ -11,7 +13,6 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:new, :create, :destroy]
 
-  resources :applications
 
   root to: "sessions#new"
 

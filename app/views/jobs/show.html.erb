@@ -37,4 +37,7 @@
 
     <p>Created: <%= @job.created_at %><p>
     <p>Updated: <%= @job.updated_at %><p>
+
+    <%= link_to "Apply", new_job_application_path(@job) %>
+    <%= submit_tag 'Reprocess', :class =>'button' %>
   
