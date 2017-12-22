@@ -11,11 +11,7 @@
         </div>
       <% end %>
 
-
-      <div>
-        <%= f.label :title %><br>
-        <%= f.text_field :title %>
-      </div>
+      <h2>Job Type</h2>
       <div>
         <%= f.label :jobType %><br>
         <%= f.select :jobType, ['part-time', 'full-time']%>
@@ -28,11 +24,15 @@
         <%= f.label :temp %><br>
         <%= f.check_box :temp %>
       </div>
-      <div>
-        <%= f.label :expiry %><br>
-        <%= f.date_field :expiry %>
+      <h3>Average Pay</h3>
+      <div style="float: left">
+        $ <%= f.number_field :payLow %>
+        <span style="margin: 15px">  to  </span>
       </div>
-
+      <div style="float: left">
+        <%= f.number_field :payHigh %>
+      </div>
+      <div style="clear: both"></div>
        <div>
         <%= f.label :inSales, "Inside Sales" %><br>
         <div id="inSales_job_slider" class="slider">
@@ -52,105 +52,110 @@
         <%= f.hidden_field :outSalesSoft %>
         <%= f.hidden_field :outSalesHard %>
       </div>
-      <div>
-        <%= f.label :payLow %><br>
-        <%= f.number_field :payLow %>
+      <h2>Sales Skills</h2>
+      <div style="clear: both">
+        <%= f.label :coldCall, "Cold Calling" %><br>
+        <%= f.check_box :coldCall %>
       </div>
       <div>
-        <%= f.label :payHigh %><br>
-        <%= f.number_field :payHigh %>
+        <%= f.label :doorToDoor, "Door to Door" %><br>
+        <%= f.check_box :doorToDoor %>
       </div>
       <div>
-        <%= f.label :summary %><br>
-        <%= f.text_field :summary %>
+        <%= f.label :custService, "Customer Service" %><br>
+        <%= f.check_box :custService %>
       </div>
       <div>
-        <%= f.label :functions %><br>
-        <%= f.text_field :functions %>
+        <%= f.label :acctManagment, "Account Management" %><br>
+        <%= f.check_box :acctManagment %>
       </div>
       <div>
-        <%= f.label :skills %><br>
+        <%= f.label :negotiation %><br>
+        <%= f.check_box :negotiation %>
+      </div>
+      <div>
+        <%= f.label :presenting %><br>
+        <%= f.check_box :presenting %>
+      </div>
+      <div>
+        <%= f.label :leadership %><br>
+        <%= f.check_box :leadership %>
+      </div>
+      <div>
+        <%= f.label :closing %><br>
+        <%= f.check_box :closing %>
+      </div>
+      <div>
+        <%= f.label :hunterBased, "Hunter-based" %><br>
+        <%= f.check_box :hunterBased %>
+      </div>
+      <div>
+        <%= f.label :farmerBased, "Farmer Based" %><br>
+        <%= f.check_box :farmerBased %>
+      </div>
+      <div>
+        <%= f.label :commBased %><br>
+        <%= f.check_box :commBased %>
+      </div>
+      <hr>
+       <div>
+        <%= f.label :B2C, "B2C" %><br>
+        <%= f.check_box :B2C %>
+      </div>
+      <div>
+        <%= f.label :B2B, 'B2B' %><br>
+        <%= f.check_box :B2B %>
+      </div>
+      <h2> Sales Methodology</h2>
+       <div>
+        <%= f.label :consSales, "Consultive Sales" %><br>
+        <%= f.check_box :consSales %>
+      </div>
+      <div>
+        <%= f.label :directSales, "Direct Sales/Product Focused" %><br>
+        <%= f.check_box :directSales %>
+      </div>
+      <div>
+        <%= f.label :solutionSales, "Solution Sales" %><br>
+        <%= f.check_box :solutionSales %>
+      </div>
+      <h2>Job Description</h2>
+      <div>
+        <%= f.label :title %><br>
+        <%= f.text_field :title %>
+      </div>
+      <div>
+        <%= f.label :expiry, "Expiry Date" %><br>
+        <%= f.date_field :expiry %>
+      </div>
+      <div>
+        <%= f.label :summary, "Summary" %><br>
+        <%= f.text_area :summary %>
+      </div>
+      <div>
+        <%= f.label :functions, "Essential Functions" %><br>
+        <%= f.text_area :functions %>
+      </div>
+      <div>
+        <%= f.label :skills ,"Skills"%><br>
         <%= f.text_area :skills %>
       </div>
       <div>
-        <%= f.label :competencies %><br>
-        <%= f.text_field :competencies %>
+        <%= f.label :competencies, "Competencies" %><br>
+        <%= f.text_area :competencies %>
       </div>
        <div>
-        <%= f.label :deptSize %><br>
+        <%= f.label :deptSize, "Size of Department" %><br>
         <%= f.number_field :deptSize %>
       </div>
        <div>
-        <%= f.label :benefits %><br>
-        <%= f.text_field :benefits %>
+        <%= f.label :benefits, "Benefits" %><br>
+        <%= f.text_area :benefits %>
       </div>
-      <div>
-    <%= f.label :coldCall, "Cold Calling" %><br>
-    <%= f.check_box :coldCall %>
-  </div>
-  <div>
-    <%= f.label :doorToDoor, "Door to Door" %><br>
-    <%= f.check_box :doorToDoor %>
-  </div>
-  <div>
-    <%= f.label :custService, "Customer Service" %><br>
-    <%= f.check_box :custService %>
-  </div>
-  <div>
-    <%= f.label :acctManagment, "Account Management" %><br>
-    <%= f.check_box :acctManagment %>
-  </div>
-  <div>
-    <%= f.label :negotiation %><br>
-    <%= f.check_box :negotiation %>
-  </div>
-  <div>
-    <%= f.label :presenting %><br>
-    <%= f.check_box :presenting %>
-  </div>
-  <div>
-    <%= f.label :leadership %><br>
-    <%= f.check_box :leadership %>
-  </div>
-  <div>
-    <%= f.label :closing %><br>
-    <%= f.check_box :closing %>
-  </div>
-  <div>
-    <%= f.label :hunterBased, "Hunter-based" %><br>
-    <%= f.check_box :hunterBased %>
-  </div>
-  <div>
-    <%= f.label :farmerBased, "Farmer Based" %><br>
-    <%= f.check_box :farmerBased %>
-  </div>
-  <div>
-    <%= f.label :commBased %><br>
-    <%= f.check_box :commBased %>
-  </div>
-  <div>
-    <%= f.label :B2C %><br>
-    <%= f.check_box :B2C %>
-  </div>
-  <div>
-    <%= f.label :B2B %><br>
-    <%= f.check_box :B2B %>
-  </div>
-  <div>
-    <%= f.label :consSales %><br>
-    <%= f.check_box :consSales %>
-  </div>
-  <div>
-    <%= f.label :directSales %><br>
-    <%= f.check_box :directSales %>
-  </div>
-  <div>
-    <%= f.label :solutionSales %><br>
-    <%= f.check_box :solutionSales %>
-  </div>
       <div>
         <%= f.submit "Submit" %> 
       </div>
+
     <% end %>
 
 

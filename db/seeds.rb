@@ -104,7 +104,8 @@ Seeker.create! [
 	B2B: true,
 	consSales: true,
 	directSales: true,
-	solutionSales: true
+	solutionSales: true,
+	languages: ['English', 'French', 'Mandarin']
 ]
 
 Seeker.create! [
@@ -131,7 +132,8 @@ Seeker.create! [
 	B2B: Faker::Boolean.boolean,
 	consSales: Faker::Boolean.boolean,
 	directSales: Faker::Boolean.boolean,
-	solutionSales: Faker::Boolean.boolean
+	solutionSales: Faker::Boolean.boolean,
+	languages: ['English', 'French']
 ]
 p "Created #{Seeker.count} seekers"
 
