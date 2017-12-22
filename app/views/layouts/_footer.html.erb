@@ -6,7 +6,7 @@
       <% if current_user.role == "Employer" %>
       	<% employer = Employer.where(user_id: current_user.id).first %>
       	<%= link_to("Profile", employer_path(employer)) %>
-      <% elsif current_user.role == "Seeker" %>
+      <% elsif current_user.role == "Seeker" && Seeker.where(user_id: current_user.id).first%>
         <% seeker = Seeker.where(user_id: current_user.id).first %>
         <%= link_to("Profile", seeker_path(seeker)) %>
       <% end %>

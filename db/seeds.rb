@@ -142,6 +142,7 @@ Job.destroy_all
 		title: Faker::Job.title,
 		employer_id: Faker::Number.between(1, 2),
 		jobType: ['part-time', 'full-time'].sample,
+		expiry: Time.now.advance(weeks: 2), 
 		temp: true,
 		salary: ['Salary', 'Hourly', 'Commission'].sample,
 		payLow: Faker::Number.between(20000, 50000),

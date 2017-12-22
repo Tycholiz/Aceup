@@ -108,6 +108,7 @@ ActiveRecord::Schema.define(version: 20171221224817) do
     t.bigint "user_id"
     t.string "postalCode"
     t.string "educationLevel"
+    t.string "certifications"
     t.string "degree"
     t.integer "inSales"
     t.integer "outSales"
@@ -129,6 +130,7 @@ ActiveRecord::Schema.define(version: 20171221224817) do
     t.boolean "consSales"
     t.boolean "directSales"
     t.boolean "solutionSales"
+    t.text "languages"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_seekers_on_user_id"

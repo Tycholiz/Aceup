@@ -10,19 +10,25 @@
       </ul>
     </div>
   <% end %>
+  <h2>Personal</h2>
   <div>
     <%= f.label :postalCode %><br>
     <%= f.text_field :postalCode %>
   </div>
+  <h2>Education/Certifications</h2>
   <div>
     <%= f.label :educationLevel, "Education Level" %><br>
-    <%= f.text_field :educationLevel %>
+    <%= f.select :educationLevel, ['High School', 'Some University', 'University/College', 'Masters', 'PhD'] %>
   </div>
   <div>
-    <%= f.label :degree, "Degree" %><br>
-    <%= f.text_field :degree %>
+    <%= f.label :certifications, "Certifications" %><br>
+    <%= f.select :certifications, ['VSA', 'CFA (level 1,2,3)', 'CSC', 'CIP', 'LLQP', 'CPA (level 1,2,3)', 'CAIB', 'Insurance Broker (level 1,2,3)']%>
   </div>
-
+  <h2>Resume</h2>
+  <div>
+    Upload resume feature (WIP) <br><br>
+  </div>
+  <h2>Experience</h2>
   <div>
     <%= f.label :inSales %><br>
     <div id="inSales_slider" class="slider">
@@ -38,16 +44,17 @@
     </div>
     <%= f.hidden_field :outSales %>
   </div>
-
-  <div>
+  ***These should be greyed-out on default
+  <div style="float: left">
     <%= f.label :inboundSales %><br>
     <%= f.check_box :inboundSales %>
   </div>
-  <div>
+  <div style="float: left">
     <%= f.label :outboundSales %><br>
     <%= f.check_box :outboundSales %>
   </div>
-  <div>
+  <h2>Sales Skills</h2>
+  <div style="clear: both">
     <%= f.label :coldCall, "Cold Calling" %><br>
     <%= f.check_box :coldCall %>
   </div>
@@ -91,28 +98,36 @@
     <%= f.label :commBased %><br>
     <%= f.check_box :commBased %>
   </div>
-  <div>
-    <%= f.label :B2C %><br>
+  <hr>
+   <div>
+    <%= f.label :B2C, "B2C" %><br>
     <%= f.check_box :B2C %>
   </div>
   <div>
-    <%= f.label :B2B %><br>
+    <%= f.label :B2B, 'B2B' %><br>
     <%= f.check_box :B2B %>
   </div>
-  <div>
-    <%= f.label :consSales %><br>
+  <h2> Sales Methodology</h2>
+   <div>
+    <%= f.label :consSales, "Consultive Sales" %><br>
     <%= f.check_box :consSales %>
   </div>
   <div>
-    <%= f.label :directSales %><br>
+    <%= f.label :directSales, "Direct Sales/Product Focused" %><br>
     <%= f.check_box :directSales %>
   </div>
   <div>
-    <%= f.label :solutionSales %><br>
+    <%= f.label :solutionSales, "Solution Sales" %><br>
     <%= f.check_box :solutionSales %>
   </div>
-  <br>
+ 
+  <h2>Proficient Languages</h2>
+  <div>
+    <%= f.label :languages, "Hold CTRL to select multiple" %><br>
+    <%= f.select :languages, [ ["English", "English"], ["French", "French"], ["Korean", "Korean"], ["Mandarin", "Mandarin"], ["Punjabi", "Punjabi"], ["Spanish", "Spanish"], ["Arabic", "Arabic"], ["Cantonese", "Cantonese"]], {prompt: "Select Languages"},{:multiple => true, class: "input-lg"} %>
+  </div>
 
+   <br>
   <div><%= f.submit "Submit" %></div>
 <% end %>
 

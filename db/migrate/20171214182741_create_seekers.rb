@@ -4,6 +4,7 @@ class CreateSeekers < ActiveRecord::Migration[5.1]
       t.references :user, foreign_key: true
       t.string :postalCode
       t.string :educationLevel
+      t.string :certifications
       t.string :degree
       t.integer :inSales
       t.integer :outSales
@@ -25,6 +26,7 @@ class CreateSeekers < ActiveRecord::Migration[5.1]
       t.boolean :consSales
       t.boolean :directSales
       t.boolean :solutionSales
+      t.text :languages
       t.timestamps
     end
   end
