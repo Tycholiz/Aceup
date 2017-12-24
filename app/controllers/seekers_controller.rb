@@ -23,8 +23,11 @@ class SeekersController < ApplicationController
     @jobs.each do |job|
       jobSkills = job.attributes.select {|key, value| value == true }
       jobSkills.delete("temp") #should change temp to something else in database
+      # salesYears = false
+      @seeker.inSales >= job.inSalesHard ? inSales = true : inSales = false
+      @seeker.outSales >= job.outSalesHard ? outSales = true : outSales = false
 
-      @matchJobs.push job if (jobSkills <= seekSkills)
+      @matchJobs.push job if (jobSkills <= seekSkills && inSales && outSales)
 
     end
     @matchJobs = Kaminari.paginate_array(@matchJobs).page(params[:page]).per(10) 
