@@ -105,7 +105,8 @@ Seeker.create! [
 	consSales: true,
 	directSales: true,
 	solutionSales: true,
-	languages: ['English', 'French', 'Mandarin']
+	languages: ['English', 'French', 'Mandarin'],
+	certifications: ['VSA', 'CFA (level 1)', 'CFA (level 2)', 'CFA (level 3)', 'CSC', 'CIP', 'LLQP', 'CAIB', 'Insurance Broker (level 1)', 'Insurance Broker (level 2)', 'Insurance Broker (level 3)']
 ]
 
 Seeker.create! [

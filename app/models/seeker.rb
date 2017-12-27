@@ -5,6 +5,7 @@ class Seeker < ApplicationRecord
 	has_many :applications
 
 	serialize :languages
+	serialize :certifications
 
 	validates :postalCode,
 	presence: true

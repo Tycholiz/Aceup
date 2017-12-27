@@ -108,7 +108,7 @@ ActiveRecord::Schema.define(version: 20171221224817) do
     t.bigint "user_id"
     t.string "postalCode"
     t.string "educationLevel"
-    t.string "certifications"
+    t.text "certifications"
     t.string "degree"
     t.integer "inSales"
     t.integer "outSales"
