@@ -62,7 +62,7 @@
           <%= f.select :languages, [ ["English", "English"], ["French", "French"], ["Korean", "Korean"], ["Mandarin", "Mandarin"], ["Punjabi", "Punjabi"], ["Spanish", "Spanish"], ["Arabic", "Arabic"], ["Cantonese", "Cantonese"]], {prompt: "Select Languages"},{:multiple => true, class: "input-lg"} %>
         </div>
 
-        <div>
+        <div class="ck-button">
           <%= f.label :driversLicence, "Class 5 Drivers License?" %><br>
           <%= f.check_box :driversLicence %>
         </div>
@@ -217,12 +217,20 @@
           console.log(ui.values[1]);
         }
       });
-      $(":checkbox").change(function(){
+     var checkbox = $(".ck-button :checkbox")
+      checkbox.each(function() {
+          if ($(this).is(":checked")) {
+            $(this).parent().addClass("ck-button_bg");
+          }
+      });
+
+      checkbox.change(function(){
         if($(this).is(":checked")){
           $(this).parent().addClass("ck-button_bg"); 
         }else{
           $(this).parent().removeClass("ck-button_bg");  
-    }
-});
+        }
+        });
+
     } );
  </script>
