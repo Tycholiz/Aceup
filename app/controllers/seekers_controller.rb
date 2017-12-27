@@ -20,17 +20,20 @@ class SeekersController < ApplicationController
 
     skillsParams = [:driversLicence, :hasVehicle?, :coldCall, :doorToDoor, :custService, :acctManagment,:negotiation, :presenting, :leadership, :closing, :hunterBased, :farmerBased, :commBased, :B2C, :B2B]
     seekSkills = @seeker.slice(*skillsParams).select {|key, value| value == true }
+    seekLang = @seeker.languages
     @matchJobs = Array.new
     @jobs.each do |job|
       jobSkills = job.slice(*skillsParams).select {|key, value| value == true }
       @seeker.inSales >= job.inSalesHard ? inSales = true : inSales = false
       @seeker.outSales >= job.outSalesHard ? outSales = true : outSales = false
+      if job.languages
+        job.languages.all? { |i| @seeker.languages.include? i } ? langMatch = true : langMatch = false
+      end
+      if job.certifications
+        job.certifications.all? { |i| @seeker.certifications.include? i } ? certMatch = true : certMatch = false
+      end
 
-      @matchJobs.push job if (jobSkills <= seekSkills && inSales && outSales)
-
-        #:certifications => nil,
-        #:languages => nil,
-
+      @matchJobs.push job if (jobSkills <= seekSkills && inSales && outSales && langMatch && certMatch)
 
 
     end
