@@ -23,7 +23,6 @@ class SeekersController < ApplicationController
     @jobs.each do |job|
       jobSkills = job.attributes.select {|key, value| value == true }
       jobSkills.delete("temp") #should change temp to something else in database
-      # salesYears = false
       @seeker.inSales >= job.inSalesHard ? inSales = true : inSales = false
       @seeker.outSales >= job.outSalesHard ? outSales = true : outSales = false
 

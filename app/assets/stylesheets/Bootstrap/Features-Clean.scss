@@ -1,0 +1,85 @@
+.features-clean {
+  color: #313437;
+  background-color: #fff;
+  padding-bottom: 30px;
+  p {
+    color: #7d8285;
+  }
+  h2 {
+    font-weight: bold;
+    margin-bottom: 40px;
+    padding-top: 40px;
+    color: inherit;
+  }
+  .intro {
+    font-size: 16px;
+    max-width: 500px;
+    margin: 0 auto 60px;
+  }
+  .item {
+    min-height: 100px;
+    padding-left: 80px;
+    margin-bottom: 40px;
+    .name {
+      font-size: 20px;
+      font-weight: bold;
+      margin-top: 0;
+      margin-bottom: 20px;
+      color: inherit;
+    }
+    .description {
+      font-size: 15px;
+      margin-bottom: 0;
+    }
+    .icon {
+      font-size: 40px;
+      color: rgb(71, 74, 71);
+      float: left;
+      margin-left: -65px;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .features-clean {
+    padding-bottom: 10px;
+  }
+}
+
+@media (max-width: 767px) {
+  .features-clean h2 {
+    margin-bottom: 25px;
+    padding-top: 25px;
+    font-size: 24px;
+    /*text-shadow:500px 500px 500px #150303;*/
+  }
+}
+
+@media (max-width: 767px) {
+  .features-clean .intro {
+    margin-bottom: 40px;
+  }
+}
+
+@media (max-width: 767px) {
+  .features-clean .item {
+    min-height: 0;
+  }
+}
+
+.active {
+  font-size: 20px;
+}
+
+li {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+strong {
+  /*font-size:30px;*/
+}
+
+.navbar-brand {
+  font-size: 30px;
+}
