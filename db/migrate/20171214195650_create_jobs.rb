@@ -7,6 +7,8 @@ class CreateJobs < ActiveRecord::Migration[5.1]
       t.datetime :expiry
       t.string :status
       t.boolean :temp
+      t.boolean :driversLicence
+      t.boolean :hasVehicle?
       t.string :salary
       t.integer :payLow
       t.integer :payHigh
@@ -18,6 +20,8 @@ class CreateJobs < ActiveRecord::Migration[5.1]
       t.text :functions
       t.text :skills
       t.text :competencies
+      t.text :certifications
+      t.text :languages
       t.integer :deptSize
       t.text :benefits
       t.boolean :coldCall

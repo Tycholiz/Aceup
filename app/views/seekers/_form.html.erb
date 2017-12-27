@@ -24,6 +24,7 @@
     <%= f.label :certifications, "Certifications (Hold CTRL to select multiple)" %><br>
     <%= f.select :certifications, ['VSA', 'CFA (level 1)', 'CFA (level 2)', 'CFA (level 3)', 'CSC', 'CIP', 'LLQP', 'CAIB', 'Insurance Broker (level 1)', 'Insurance Broker (level 2)', 'Insurance Broker (level 3)'], {prompt: "Select Certifications"},{:multiple => true, class: "input-lg"}%>
   </div>
+
   <h2>Resume</h2>
   <div>
     Upload resume feature (WIP) <br><br>
@@ -36,7 +37,14 @@
     </div>
     <%= f.hidden_field :inSales %>
   </div>
-
+  <div>
+    <%= f.label :driversLicence, "Class 5 Drivers License?" %><br>
+    <%= f.check_box :driversLicence %>
+  </div>
+  <div>
+    <%= f.label :hasVehicle?, "Access to own vehicle?" %><br>
+    <%= f.check_box :hasVehicle? %>
+  </div>
   <div>
     <%= f.label :outSales %><br>
     <div id="outSales_slider" class="slider">

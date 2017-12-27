@@ -18,15 +18,20 @@ class SeekersController < ApplicationController
     @seeker = Seeker.find(params[:id])
     @jobs = Job.all
 
-    seekSkills = @seeker.attributes.select {|key, value| value == true }
+    skillsParams = [:driversLicence, :hasVehicle?, :coldCall, :doorToDoor, :custService, :acctManagment,:negotiation, :presenting, :leadership, :closing, :hunterBased, :farmerBased, :commBased, :B2C, :B2B]
+    seekSkills = @seeker.slice(*skillsParams).select {|key, value| value == true }
     @matchJobs = Array.new
     @jobs.each do |job|
-      jobSkills = job.attributes.select {|key, value| value == true }
-      jobSkills.delete("temp") #should change temp to something else in database
+      jobSkills = job.slice(*skillsParams).select {|key, value| value == true }
       @seeker.inSales >= job.inSalesHard ? inSales = true : inSales = false
       @seeker.outSales >= job.outSalesHard ? outSales = true : outSales = false
 
       @matchJobs.push job if (jobSkills <= seekSkills && inSales && outSales)
+
+        #:certifications => nil,
+        #:languages => nil,
+
+
 
     end
     @matchJobs = Kaminari.paginate_array(@matchJobs).page(params[:page]).per(10) 
@@ -60,6 +65,6 @@ class SeekersController < ApplicationController
   protected
 
   def seeker_params
-    params.require(:seeker).permit(:postalCode, :educationLevel, :degree, :inSales, :outSales, :inboundSales, :outboundSales, :coldCall, :doorToDoor, :custService, :acctManagment, :negotiation, :presenting, :leadership, :closing, :hunterBased, :farmerBased, :commBased, :B2C, :B2B, :consSales, :directSales, :solutionSales, :certifications, :languages => [])
+    params.require(:seeker).permit(:postalCode, :educationLevel, :degree, :driversLicence, :hasVehicle?, :inSales, :outSales, :inboundSales, :outboundSales, :coldCall, :doorToDoor, :custService, :acctManagment, :negotiation, :presenting, :leadership, :closing, :hunterBased, :farmerBased, :commBased, :B2C, :B2B, :consSales, :directSales, :solutionSales, :certifications, :languages => [])
   end
 end

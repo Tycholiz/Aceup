@@ -33,6 +33,7 @@
         <%= f.number_field :payHigh %>
       </div>
       <div style="clear: both"></div>
+      <h2>Experience</h2>
        <div>
         <%= f.label :inSales, "Inside Sales" %><br>
         <div id="inSales_job_slider" class="slider">
@@ -42,7 +43,6 @@
         <%= f.hidden_field :inSalesSoft %>
         <%= f.hidden_field :inSalesHard %>
       </div>
-
       <div>
         <%= f.label :outSales, "outside Sales" %><br>
         <div id="outSales_job_slider" class="slider">
@@ -51,6 +51,22 @@
         </div>
         <%= f.hidden_field :outSalesSoft %>
         <%= f.hidden_field :outSalesHard %>
+      </div>
+      <div>
+        <%= f.label :certifications, "Certifications (Hold CTRL to select multiple)" %><br>
+        <%= f.select :certifications, ['VSA', 'CFA (level 1)', 'CFA (level 2)', 'CFA (level 3)', 'CSC', 'CIP', 'LLQP', 'CAIB', 'Insurance Broker (level 1)', 'Insurance Broker (level 2)', 'Insurance Broker (level 3)'], {prompt: "Select Certifications"},{:multiple => true, class: "input-lg"}%>
+      </div>
+      <div>
+        <%= f.label :languages, "Proficient Languages (Hold CTRL to select multiple)" %><br>
+        <%= f.select :languages, [ ["English", "English"], ["French", "French"], ["Korean", "Korean"], ["Mandarin", "Mandarin"], ["Punjabi", "Punjabi"], ["Spanish", "Spanish"], ["Arabic", "Arabic"], ["Cantonese", "Cantonese"]], {prompt: "Select Languages"},{:multiple => true, class: "input-lg"} %>
+      </div>
+      <div>
+        <%= f.label :driversLicence, "Class 5 Drivers License?" %><br>
+        <%= f.check_box :driversLicence %>
+      </div>
+      <div>
+        <%= f.label :hasVehicle?, "Access to own vehicle?" %><br>
+        <%= f.check_box :hasVehicle? %>
       </div>
       <h2>Sales Skills</h2>
       <div style="clear: both">
@@ -123,10 +139,6 @@
       <div>
         <%= f.label :title %><br>
         <%= f.text_field :title %>
-      </div>
-      <div>
-        <%= f.label :expiry, "Expiry Date" %><br>
-        <%= f.date_field :expiry %>
       </div>
       <div>
         <%= f.label :summary, "Summary" %><br>

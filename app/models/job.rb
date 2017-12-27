@@ -3,6 +3,9 @@ class Job < ApplicationRecord
       belongs_to :employer
       has_many :applications
 
+      serialize :languages
+      serialize :certifications
+
       is_impressionable
 
       validates :employer_id,

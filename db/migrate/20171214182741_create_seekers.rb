@@ -6,6 +6,8 @@ class CreateSeekers < ActiveRecord::Migration[5.1]
       t.string :educationLevel
       t.text :certifications
       t.string :degree
+      t.boolean :driversLicence
+      t.boolean :hasVehicle?
       t.integer :inSales
       t.integer :outSales
       t.boolean :inboundSales
