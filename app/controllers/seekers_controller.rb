@@ -65,6 +65,6 @@ class SeekersController < ApplicationController
   protected
 
   def seeker_params
-    params.require(:seeker).permit(:postalCode, :educationLevel, :degree, :driversLicence, :hasVehicle?, :inSales, :outSales, :inboundSales, :outboundSales, :coldCall, :doorToDoor, :custService, :acctManagment, :negotiation, :presenting, :leadership, :closing, :hunterBased, :farmerBased, :commBased, :B2C, :B2B, :consSales, :directSales, :solutionSales, :certifications, :languages => [])
+    params.require(:seeker).permit(:postalCode, :educationLevel, :degree, :driversLicence, :hasVehicle?, :inSales, :outSales, :inboundSales, :outboundSales, :coldCall, :doorToDoor, :custService, :acctManagment, :negotiation, :presenting, :leadership, :closing, :hunterBased, :farmerBased, :commBased, :B2C, :B2B, :consSales, :directSales, :solutionSales, :certifications => [], :languages => [])
   end
 end

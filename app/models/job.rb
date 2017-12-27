@@ -20,6 +20,9 @@ class Job < ApplicationRecord
       validates :temp,
         presence: true
 
+      validates :languages,
+        presence: true
+
       validates :salary,
         presence: true
 
