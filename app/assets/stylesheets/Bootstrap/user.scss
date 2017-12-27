@@ -320,3 +320,43 @@ html {
 .navbar-default .navbar-nav > li > a {
   color: #186f1b;
 }
+
+.ck-button {
+    margin:4px;
+    background-color:#EFEFEF;
+    border-radius:4px;
+    border:1px solid #D0D0D0;
+    overflow: hidden;
+    max-width: 400px;
+    white-space: nowrap;
+
+    display: table;
+    vertical-align: middle;
+    clear: both;
+}
+
+.ck-button input[type='checkbox'] {
+  display: block;
+  height: 0;
+  width: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.ck-button:hover {
+    background:#f0f8ff;
+}
+
+.ck-button label {
+    float:left;
+    width: 30%;
+    text-align:center;
+    display:block;
+    padding-left: 5px;
+    padding-right: 5px;
+   
+}
+
+.ck-button_bg{
+    background-color:#40df27;
+}

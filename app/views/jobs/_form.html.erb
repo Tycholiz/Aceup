@@ -1,176 +1,177 @@
-    <%= form_for @job do |f| %>
+    <div class="container">
+      <%= form_for @job do |f| %>
 
-      <% if @job.errors.any? %>
+        <% if @job.errors.any? %>
+          <div>
+            <%= pluralize(@job.errors.count, "error") %> prevented this job from being submitted:
+            <ul>
+              <% @job.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <h2>Job Type</h2>
         <div>
-          <%= pluralize(@job.errors.count, "error") %> prevented this job from being submitted:
-          <ul>
-            <% @job.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
-            <% end %>
-          </ul>
+          <%= f.label :jobType %><br>
+          <%= f.select :jobType, ['part-time', 'full-time']%>
         </div>
+        <div>
+          <%= f.label :salary %><br>
+          <%= f.select :salary, ['Salary', 'Hourly', 'Commission']%>
+        </div>
+        <div>
+          <%= f.label :temp %><br>
+          <%= f.check_box :temp %>
+        </div>
+        <h3>Average Pay</h3>
+        <div style="float: left">
+          $ <%= f.number_field :payLow %>
+          <span style="margin: 15px">  to  </span>
+        </div>
+        <div style="float: left">
+          <%= f.number_field :payHigh %>
+        </div>
+        <div style="clear: both"></div>
+        <h2>Experience</h2>
+         <div>
+          <%= f.label :inSales, "Inside Sales" %><br>
+          <div id="inSales_job_slider" class="slider">
+            <div id="inSales_job_handle" class="ui-slider-handle"></div>
+            <div id="inSales_job_handle2" class="ui-slider-handle"></div>
+          </div>
+          <%= f.hidden_field :inSalesSoft %>
+          <%= f.hidden_field :inSalesHard %>
+        </div>
+        <div>
+          <%= f.label :outSales, "outside Sales" %><br>
+          <div id="outSales_job_slider" class="slider">
+            <div id="outSales_job_handle" class="ui-slider-handle"></div>
+            <div id="outSales_job_handle2" class="ui-slider-handle"></div>
+          </div>
+          <%= f.hidden_field :outSalesSoft %>
+          <%= f.hidden_field :outSalesHard %>
+        </div>
+        <div>
+          <%= f.label :certifications, "Certifications (Hold CTRL to select multiple)" %><br>
+          <%= f.select :certifications, ['VSA', 'CFA (level 1)', 'CFA (level 2)', 'CFA (level 3)', 'CSC', 'CIP', 'LLQP', 'CAIB', 'Insurance Broker (level 1)', 'Insurance Broker (level 2)', 'Insurance Broker (level 3)'], {prompt: "Select Certifications"},{:multiple => true, class: "input-lg"}%>
+        </div>
+        <div>
+          <%= f.label :languages, "Proficient Languages (Hold CTRL to select multiple)" %><br>
+          <%= f.select :languages, [ ["English", "English"], ["French", "French"], ["Korean", "Korean"], ["Mandarin", "Mandarin"], ["Punjabi", "Punjabi"], ["Spanish", "Spanish"], ["Arabic", "Arabic"], ["Cantonese", "Cantonese"]], {prompt: "Select Languages"},{:multiple => true, class: "input-lg"} %>
+        </div>
+
+        <div>
+          <%= f.label :driversLicence, "Class 5 Drivers License?" %><br>
+          <%= f.check_box :driversLicence %>
+        </div>
+        <div class="ck-button">
+          <%= f.label :hasVehicle?, "Access to own vehicle?" %><br>
+          <%= f.check_box :hasVehicle? %>
+        </div>
+        <h2>Sales Skills</h2>
+        <div class="ck-button">
+          <%= f.label :coldCall, "Cold Calling" %><br>
+          <%= f.check_box :coldCall %>
+        </div>
+        <div class="ck-button">
+          <%= f.label :doorToDoor, "Door to Door" %><br>
+          <%= f.check_box :doorToDoor %>
+        </div>
+        <div class="ck-button">
+          <%= f.label :custService, "Customer Service" %><br>
+          <%= f.check_box :custService %>
+        </div>
+        <div class="ck-button">
+          <%= f.label :acctManagment, "Account Management" %><br>
+          <%= f.check_box :acctManagment %>
+        </div>
+        <div class="ck-button">
+          <%= f.label :negotiation %><br>
+          <%= f.check_box :negotiation %>
+        </div>
+        <div class="ck-button">
+          <%= f.label :presenting %><br>
+          <%= f.check_box :presenting %>
+        </div>
+        <div class="ck-button">
+          <%= f.label :leadership %><br>
+          <%= f.check_box :leadership %>
+        </div>
+        <div class="ck-button">
+          <%= f.label :closing %><br>
+          <%= f.check_box :closing %>
+        </div>
+        <div class="ck-button">
+          <%= f.label :hunterBased, "Hunter-based" %><br>
+          <%= f.check_box :hunterBased %>
+        </div>
+        <div class="ck-button">
+          <%= f.label :farmerBased, "Farmer Based" %><br>
+          <%= f.check_box :farmerBased %>
+        </div>
+        <div class="ck-button">
+          <%= f.label :commBased %><br>
+          <%= f.check_box :commBased %>
+        </div>
+        <hr>
+         <div class="ck-button">
+          <%= f.label :B2C, "B2C" %><br>
+          <%= f.check_box :B2C %>
+        </div>
+        <div class="ck-button">
+          <%= f.label :B2B, 'B2B' %><br>
+          <%= f.check_box :B2B %>
+        </div>
+        <h2> Sales Methodology</h2>
+         <div class="ck-button">
+          <%= f.label :consSales, "Consultive Sales" %><br>
+          <%= f.check_box :consSales %>
+        </div>
+        <div class="ck-button">
+          <%= f.label :directSales, "Direct Sales/Product Focused" %><br>
+          <%= f.check_box :directSales %>
+        </div>
+        <div class="ck-button">
+          <%= f.label :solutionSales, "Solution Sales" %><br>
+          <%= f.check_box :solutionSales %>
+        </div>
+        <h2>Job Description</h2>
+        <div>
+          <%= f.label :title %><br>
+          <%= f.text_field :title %>
+        </div>
+        <div>
+          <%= f.label :summary, "Summary" %><br>
+          <%= f.text_area :summary %>
+        </div>
+        <div>
+          <%= f.label :functions, "Essential Functions" %><br>
+          <%= f.text_area :functions %>
+        </div>
+        <div>
+          <%= f.label :skills ,"Skills"%><br>
+          <%= f.text_area :skills %>
+        </div>
+        <div>
+          <%= f.label :competencies, "Competencies" %><br>
+          <%= f.text_area :competencies %>
+        </div>
+         <div>
+          <%= f.label :deptSize, "Size of Department" %><br>
+          <%= f.number_field :deptSize %>
+        </div>
+         <div>
+          <%= f.label :benefits, "Benefits" %><br>
+          <%= f.text_area :benefits %>
+        </div>
+        <div>
+          <%= f.submit "Submit" %> 
+        </div>
+
       <% end %>
-
-      <h2>Job Type</h2>
-      <div>
-        <%= f.label :jobType %><br>
-        <%= f.select :jobType, ['part-time', 'full-time']%>
-      </div>
-      <div>
-        <%= f.label :salary %><br>
-        <%= f.select :salary, ['Salary', 'Hourly', 'Commission']%>
-      </div>
-      <div>
-        <%= f.label :temp %><br>
-        <%= f.check_box :temp %>
-      </div>
-      <h3>Average Pay</h3>
-      <div style="float: left">
-        $ <%= f.number_field :payLow %>
-        <span style="margin: 15px">  to  </span>
-      </div>
-      <div style="float: left">
-        <%= f.number_field :payHigh %>
-      </div>
-      <div style="clear: both"></div>
-      <h2>Experience</h2>
-       <div>
-        <%= f.label :inSales, "Inside Sales" %><br>
-        <div id="inSales_job_slider" class="slider">
-          <div id="inSales_job_handle" class="ui-slider-handle"></div>
-          <div id="inSales_job_handle2" class="ui-slider-handle"></div>
-        </div>
-        <%= f.hidden_field :inSalesSoft %>
-        <%= f.hidden_field :inSalesHard %>
-      </div>
-      <div>
-        <%= f.label :outSales, "outside Sales" %><br>
-        <div id="outSales_job_slider" class="slider">
-          <div id="outSales_job_handle" class="ui-slider-handle"></div>
-          <div id="outSales_job_handle2" class="ui-slider-handle"></div>
-        </div>
-        <%= f.hidden_field :outSalesSoft %>
-        <%= f.hidden_field :outSalesHard %>
-      </div>
-      <div>
-        <%= f.label :certifications, "Certifications (Hold CTRL to select multiple)" %><br>
-        <%= f.select :certifications, ['VSA', 'CFA (level 1)', 'CFA (level 2)', 'CFA (level 3)', 'CSC', 'CIP', 'LLQP', 'CAIB', 'Insurance Broker (level 1)', 'Insurance Broker (level 2)', 'Insurance Broker (level 3)'], {prompt: "Select Certifications"},{:multiple => true, class: "input-lg"}%>
-      </div>
-      <div>
-        <%= f.label :languages, "Proficient Languages (Hold CTRL to select multiple)" %><br>
-        <%= f.select :languages, [ ["English", "English"], ["French", "French"], ["Korean", "Korean"], ["Mandarin", "Mandarin"], ["Punjabi", "Punjabi"], ["Spanish", "Spanish"], ["Arabic", "Arabic"], ["Cantonese", "Cantonese"]], {prompt: "Select Languages"},{:multiple => true, class: "input-lg"} %>
-      </div>
-
-      <div>
-        <%= f.label :driversLicence, "Class 5 Drivers License?" %><br>
-        <%= f.check_box :driversLicence %>
-      </div>
-      <div>
-        <%= f.label :hasVehicle?, "Access to own vehicle?" %><br>
-        <%= f.check_box :hasVehicle? %>
-      </div>
-      <h2>Sales Skills</h2>
-      <div style="clear: both">
-        <%= f.label :coldCall, "Cold Calling" %><br>
-        <%= f.check_box :coldCall %>
-      </div>
-      <div>
-        <%= f.label :doorToDoor, "Door to Door" %><br>
-        <%= f.check_box :doorToDoor %>
-      </div>
-      <div>
-        <%= f.label :custService, "Customer Service" %><br>
-        <%= f.check_box :custService %>
-      </div>
-      <div>
-        <%= f.label :acctManagment, "Account Management" %><br>
-        <%= f.check_box :acctManagment %>
-      </div>
-      <div>
-        <%= f.label :negotiation %><br>
-        <%= f.check_box :negotiation %>
-      </div>
-      <div>
-        <%= f.label :presenting %><br>
-        <%= f.check_box :presenting %>
-      </div>
-      <div>
-        <%= f.label :leadership %><br>
-        <%= f.check_box :leadership %>
-      </div>
-      <div>
-        <%= f.label :closing %><br>
-        <%= f.check_box :closing %>
-      </div>
-      <div>
-        <%= f.label :hunterBased, "Hunter-based" %><br>
-        <%= f.check_box :hunterBased %>
-      </div>
-      <div>
-        <%= f.label :farmerBased, "Farmer Based" %><br>
-        <%= f.check_box :farmerBased %>
-      </div>
-      <div>
-        <%= f.label :commBased %><br>
-        <%= f.check_box :commBased %>
-      </div>
-      <hr>
-       <div>
-        <%= f.label :B2C, "B2C" %><br>
-        <%= f.check_box :B2C %>
-      </div>
-      <div>
-        <%= f.label :B2B, 'B2B' %><br>
-        <%= f.check_box :B2B %>
-      </div>
-      <h2> Sales Methodology</h2>
-       <div>
-        <%= f.label :consSales, "Consultive Sales" %><br>
-        <%= f.check_box :consSales %>
-      </div>
-      <div>
-        <%= f.label :directSales, "Direct Sales/Product Focused" %><br>
-        <%= f.check_box :directSales %>
-      </div>
-      <div>
-        <%= f.label :solutionSales, "Solution Sales" %><br>
-        <%= f.check_box :solutionSales %>
-      </div>
-      <h2>Job Description</h2>
-      <div>
-        <%= f.label :title %><br>
-        <%= f.text_field :title %>
-      </div>
-      <div>
-        <%= f.label :summary, "Summary" %><br>
-        <%= f.text_area :summary %>
-      </div>
-      <div>
-        <%= f.label :functions, "Essential Functions" %><br>
-        <%= f.text_area :functions %>
-      </div>
-      <div>
-        <%= f.label :skills ,"Skills"%><br>
-        <%= f.text_area :skills %>
-      </div>
-      <div>
-        <%= f.label :competencies, "Competencies" %><br>
-        <%= f.text_area :competencies %>
-      </div>
-       <div>
-        <%= f.label :deptSize, "Size of Department" %><br>
-        <%= f.number_field :deptSize %>
-      </div>
-       <div>
-        <%= f.label :benefits, "Benefits" %><br>
-        <%= f.text_area :benefits %>
-      </div>
-      <div>
-        <%= f.submit "Submit" %> 
-      </div>
-
-    <% end %>
-
+  </div>
 
 
 <script>
@@ -216,5 +217,12 @@
           console.log(ui.values[1]);
         }
       });
+      $(":checkbox").change(function(){
+        if($(this).is(":checked")){
+          $(this).parent().addClass("ck-button_bg"); 
+        }else{
+          $(this).parent().removeClass("ck-button_bg");  
+    }
+});
     } );
  </script>
