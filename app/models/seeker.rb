@@ -7,6 +7,11 @@ class Seeker < ApplicationRecord
 	serialize :languages
 	serialize :certifications
 
+	before_validation do |model|
+        model.languages.reject!(&:blank?) if model.languages
+        model.certifications.reject!(&:blank?) if model.certifications
+      end
+
 	validates :postalCode,
 	presence: true
 

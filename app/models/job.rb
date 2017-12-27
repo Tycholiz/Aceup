@@ -8,6 +8,11 @@ class Job < ApplicationRecord
 
       is_impressionable
 
+      before_validation do |model|
+        model.languages.reject!(&:blank?) if model.languages
+        model.certifications.reject!(&:blank?) if model.certifications
+      end
+
       validates :employer_id,
         presence: true
 
