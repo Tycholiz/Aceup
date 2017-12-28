@@ -17,6 +17,8 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:new, :create, :destroy]
 
+  get "/pages/:page" => "pages#show"
+
 
   root to: "sessions#new"
 
