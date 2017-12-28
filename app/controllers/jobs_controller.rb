@@ -44,9 +44,10 @@ class JobsController < ApplicationController
     @job = Job.new(job_params)
     employer = Employer.where(user_id: current_user.id).first
     @job.employer_id = employer.id
+    @job.expiry = Time.now.advance(weeks: 4)
 
     if @job.save
-      redirect_to jobs_path, notice: "#{@job.title} was submitted successfully!"
+      redirect_to employer_path(employer), notice: "#{@job.title} was submitted successfully!"
     else
       render :new
     end

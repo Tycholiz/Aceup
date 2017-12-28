@@ -365,3 +365,34 @@ html {
   height: 400px;
   overflow: hidden;
 }
+
+#main_bg {
+  height: 100%;
+  width: 100%;
+  background-color: #000000;
+  background-image: url("https://www.transparenttextures.com/patterns/wood-pattern.png");
+}
+
+.main_img {
+  filter: invert 90%;
+    outline: transparent solid 1px;
+    width: 20%;
+    height: 325px;
+    
+    float: left;
+    color: white;
+    font-size: 20px;
+    text-align:center;
+    margin: 50px;
+    white-space: nowrap;
+}
+
+.main_img img {
+  filter:invert(90%);
+}
+
+.main_login {
+  clear: both;
+  margin-top: 80px;
+  color: white;
+}

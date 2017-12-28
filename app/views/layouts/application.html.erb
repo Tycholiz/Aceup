@@ -14,11 +14,16 @@
   <body>
     <% unless controller_name == "sessions" %>
       <%= render 'layouts/header' %>
+    <% else %>
+      <div id="main_bg">
     <% end %>
-  	<% flash.each do |key, value| %>
-        <%= content_tag(:div, value) %>
+      	<% flash.each do |key, value| %>
+            <%= content_tag(:div, value) %>
+        <% end %>
+        <%= yield %>
+        <%= render 'layouts/footer' %>
+    <% if controller_name == "sessions" %>
+      </div>
     <% end %>
-    <%= yield %>
-    <%= render 'layouts/footer' %>
   </body>
 </html>

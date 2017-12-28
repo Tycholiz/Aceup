@@ -14,10 +14,10 @@
                     
                     <% if current_user.role == "Employer" %>
                       <% employer = Employer.where(user_id: current_user.id).first %>
-                      <li role="presentation"><%= link_to("Profile", employer_path(employer)) %></li>
+                      <li role="presentation"><%= link_to("Dashboard", employer_path(employer)) %></li>
                     <% elsif current_user.role == "Seeker" && Seeker.where(user_id: current_user.id).first%>
                       <% seeker = Seeker.where(user_id: current_user.id).first %>
-                      <li role="presentation"><%= link_to("Profile", seeker_path(seeker)) %></li>
+                      <li role="presentation"><%= link_to("Dashboard", seeker_path(seeker)) %></li>
                     <% end %>
                   <% else %>
                     <li role="presentation"><%= link_to "Log In", new_session_path %> | <%= link_to "Sign Up", new_user_path %></li>
