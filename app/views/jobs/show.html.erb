@@ -1,7 +1,12 @@
+ <% if current_user.role == "Seeker" %>
  <%= link_to "Back to all jobs", seeker_path %><br/>
+<% end %>
 
-
-    <h2><%= @job.title %> (<%= link_to "edit", edit_job_path(@job) %>, <%= link_to "delete", job_path(@job), method: :delete, data: {confirm: "You sure?"} %>)</h2>
+    <h2><%= @job.title %> 
+    <% if current_user.role == "Employer" %>
+    (<%= link_to "edit", edit_job_path(@job) %>, <%= link_to "delete", job_path(@job), method: :delete, data: {confirm: "You sure?"} %>)
+    <% end %>
+    </h2>
     <h3>Job expires: <%= @job.expiry %></h3>
     <p>Job Type: <%= @job.jobType %><p>
     <p>Temp? <%= @job.temp %><p>
@@ -18,22 +23,6 @@
     <p>Competencies: <%= @job.competencies %><p>
     <p>Department size: <%= @job.deptSize %><p>
     <p>Benefits: <%= @job.benefits %><p>
-    <p>Cold calling: <%= @job.coldCall %><p>
-    <p>Door to Door: <%= @job.doorToDoor %><p>
-    <p>Customer Service: <%= @job.custService %><p>
-    <p>Account Management: <%= @job.acctManagment %><p>
-    <p>Negotiation: <%= @job.negotiation %><p> 
-    <p>Presenting: <%= @job.presenting %><p>
-    <p>Leadership: <%= @job.leadership %><p>
-    <p>Closing: <%= @job.closing %><p>
-    <p>Hunter Based: <%= @job.hunterBased %><p>
-    <p>Farmer Based: <%= @job.farmerBased %><p>
-    <p>Comm Based: <%= @job.commBased %><p>
-    <p>B2C: <%= @job.B2C %><p>
-    <p>B2B: <%= @job.B2B %><p>
-    <p>Coms Sales?: <%= @job.consSales %><p>
-    <p>Direct Sales: <%= @job.directSales %><p>
-    <p>Solution Sales: <%= @job.solutionSales %><p>
 
     <p>Created: <%= @job.created_at %><p>
     <p>Updated: <%= @job.updated_at %><p>

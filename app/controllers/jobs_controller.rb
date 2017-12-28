@@ -27,6 +27,9 @@ class JobsController < ApplicationController
 
   def show
     @job = Job.find(params[:id])
+    if current_user.role == "Seeker"
+        seeker = Seeker.where(user_id: current_user.id)
+    end
   end
 
   def new

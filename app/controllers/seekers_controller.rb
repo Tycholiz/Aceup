@@ -15,7 +15,7 @@ class SeekersController < ApplicationController
   end
 
   def show
-    @seeker = Seeker.find(params[:id])
+    @seeker = Seeker.where(user_id: current_user.id).first
     @jobs = Job.all
 
     skillsParams = [:driversLicence, :hasVehicle?, :coldCall, :doorToDoor, :custService, :acctManagment,:negotiation, :presenting, :leadership, :closing, :hunterBased, :farmerBased, :commBased, :B2C, :B2B]
@@ -28,9 +28,13 @@ class SeekersController < ApplicationController
       @seeker.outSales >= job.outSalesHard ? outSales = true : outSales = false
       if job.languages
         job.languages.all? { |i| @seeker.languages.include? i } ? langMatch = true : langMatch = false
+      else
+        langMatch = true
       end
       if job.certifications
         job.certifications.all? { |i| @seeker.certifications.include? i } ? certMatch = true : certMatch = false
+      else 
+        certMatch = true
       end
 
       @matchJobs.push job if (jobSkills <= seekSkills && inSales && outSales && langMatch && certMatch)

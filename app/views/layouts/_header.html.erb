@@ -7,8 +7,23 @@
               <ul class="nav navbar-nav navbar-right">
                   <li role="presentation" class="active"><a href="/">Home </a></li>
                   <li role="presentation" class="active"><a href="#">About Us</a></li>
-                  <li role="presentation"><a href="#">Log In</a></li>
-                  <li role="presentation"><a href="#">Sign Up</a></li>
+                  <% if current_user %>
+                  <li role="presentation">
+                    <%= link_to "Log out", session_path("current"), method: :delete %>
+                  </li>
+                    
+                    <% if current_user.role == "Employer" %>
+                      <% employer = Employer.where(user_id: current_user.id).first %>
+                      <li role="presentation"><%= link_to("Profile", employer_path(employer)) %></li>
+                    <% elsif current_user.role == "Seeker" && Seeker.where(user_id: current_user.id).first%>
+                      <% seeker = Seeker.where(user_id: current_user.id).first %>
+                      <li role="presentation"><%= link_to("Profile", seeker_path(seeker)) %></li>
+                    <% end %>
+                  <% else %>
+                    <li role="presentation"><%= link_to "Log In", new_session_path %> | <%= link_to "Sign Up", new_user_path %></li>
+                    <li role="presentation"><a href="#">Sign Up</a></li>
+                  <% end %>
+
               </ul>
           </div>
       </div>
