@@ -1,21 +1,22 @@
-    <hr>
-    <% if current_user.role == "Seeker" %>
-      <% @matchJobs.each do |job| %>
-        <% employer = Employer.where(id: job.employer_id).first %>
-        <div>
-            <h2><%= link_to job.title, job_path(job) %></h2>
-            <h2>Company: <%= employer.compName %></h2>
-            <h2>Location: <%= employer.city %></h2>
-            <h2>Job Type: <%= job.jobType %></h2>
-            <p>Salary: <%= job.payHigh %></p>
-            <p>Summary: <%= job.summary %></p>
-        </div>
-      <% end %>
-        <div style="clear: both">
-            <%= paginate @matchJobs %>
-            <%= page_entries_info @matchJobs %>
-        </div>
-        <hr>
-    <% else %>
-        <h2>You need to be a seeker</h2>
-    <% end %>
+    <div class="container-fluid">
+        <% if current_user.role == "Seeker" %>
+          <% @matchJobs.each do |job| %>
+            <% employer = Employer.where(id: job.employer_id).first %>
+            <div class="col-lg-6 col-xs-12 job_show">
+                <h2><%= link_to job.title, job_path(job) %></h2>
+                <h2>Company: <%= employer.compName %></h2>
+                <h2>Location: <%= employer.city %></h2>
+                <h2>Job Type: <%= job.jobType %></h2>
+                <h3>Salary: <%= job.payHigh %></h3>
+                <h3>Summary: <%= job.summary %></h3>
+            </div>
+          <% end %>
+            <div style="clear: both">
+                <%= paginate @matchJobs %>
+                <%= page_entries_info @matchJobs %>
+            </div>
+            <hr>
+        <% else %>
+            <h2>You need to be a seeker</h2>
+        <% end %>
+    </div>
