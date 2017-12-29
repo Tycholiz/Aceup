@@ -1,6 +1,7 @@
 /*
  *
  *= require jquery-ui/slider
+ *= jquery.mobile
  *= require style
  *= require_self
  *= require_tree .

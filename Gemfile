@@ -22,6 +22,7 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'therubyracer', platforms: :ruby
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
+gem "jquery_mobile_rails"
 gem 'impressionist'
 
 # Use CoffeeScript for .coffee assets and views

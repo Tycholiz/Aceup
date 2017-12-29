@@ -17,6 +17,7 @@ class UsersController < ApplicationController
       	redirect_to jobs_path, notice: "Welcome aboard, #{@user.firstName}!"
       end
     else
+      @role = params[:role]
       render :new
     end
   end

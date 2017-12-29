@@ -223,8 +223,9 @@
             $(this).parent().addClass("ck-button_bg");
           }
       });
-
-      checkbox.on('click touchend', function(){
+      // var custom_event = $.support.touch ? "touchstart" : "click";
+      checkbox.on('tap', function(e){
+        $(this).parent().addClass("ck-button_bg");
         if($(this).is(":checked")){
           $(this).parent().addClass("ck-button_bg"); 
         }else{
