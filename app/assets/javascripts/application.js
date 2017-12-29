@@ -11,10 +11,11 @@
 // about supported directives.
 //
 //= require jquery
-
+//= jquery.mobile
 //= require jquery-ui/widgets/slider
 //= require rails-ujs
 //= require turbolinks
 //= require bootstrap
 //= require bootstrap-sprockets
 //= require_self
+//= require_tree .

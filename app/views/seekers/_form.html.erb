@@ -181,7 +181,7 @@
             $(this).parent().addClass("ck-button_bg");
           }
       });
-      checkbox.on('click touch', function(){
+      checkbox.on('click touchend',function(){
         if($(this).is(":checked")){
           $(this).parent().addClass("ck-button_bg"); 
         }else{
