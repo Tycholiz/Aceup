@@ -1,47 +1,90 @@
-<h1>Sign Up</h1>
-<h2>User Role from link <%= @role %></h2>
-<%= form_for @user do |f| %>
-  <%= hidden_field_tag :role, @role %>
-  <% if @user.errors.any? %>
-    <div>
-      <%= pluralize(@user.errors.count, "error") %> prevented the account from being created:
-      <ul>
-        <% @user.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <div>
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  <div>
-    <%= f.label :firstName, "First Name" %><br>
-    <%= f.text_field :firstName %>
-  </div>
-  <div>
-    <%= f.label :lastName, "Last Name" %><br>
-    <%= f.text_field :lastName %>
-  </div>
-  <div>
-    <%= f.label :password %><br>
-    <%= f.password_field :password %>
-  </div>
-  <div>
-    <%= f.label :password_confirmation %><br>
-    <%= f.password_field :password_confirmation %>
-  </div>
-  <div>
-    <%= f.label :phoneNo, "Phone Number" %><br>
-    <%= f.text_field :phoneNo %>
-  </div>
-  <%= f.hidden_field :role, value: @role  %>
-<!--   <div>
-    <%= f.label :role %><br>
-    <%= f.select :role, ['Seeker', 'Employer']%>
-  </div> -->
-  <br>
 
-  <div><%= f.submit "Submit" %></div>
-<% end %>
+<div class="container">
+    <div class="intro"></div>
+</div>
+      <div class="register-photo">
+        <div class="form-container">
+            <div class="image-holder"></div>
+            <%= form_for @user, :html => { :class => "article-form" } do |f| %>
+                <%= hidden_field_tag :role, @role %>
+                <% if @user.errors.any? %>
+                    <div>
+                      <%= pluralize(@user.errors.count, "error") %> prevented the account from being created:
+                      <ul>
+                        <% @user.errors.full_messages.each do |msg| %>
+                          <li><%= msg %></li>
+                        <% end %>
+                      </ul>
+                    </div>
+                <% end %>
+                <h2 class="text-center"><strong>Create</strong> an account.</h2>
+                <div class="form-group">
+                  <%= f.text_field :email, placeholder: "Email", class: 'form-control' %>
+                </div>
+                <div class="form-group">
+                <%= f.text_field :firstName, placeholder: "First Name", class: 'form-control' %>
+                </div>
+                <div class="form-group">
+                <%= f.text_field :lastName, placeholder: "Last Name", class: 'form-control' %>
+                </div>
+                <div class="form-group">
+                <%= f.password_field :password, placeholder: "Password", class: 'form-control' %>
+                </div>
+                <div class="form-group">
+                <%= f.password_field :password_confirmation, placeholder: "Password Confirmation", class: 'form-control' %>
+                </div>
+                <div class="form-group">
+                <%= f.text_field :phoneNo, placeholder: "Phone Number", class: 'form-control' %>
+                </div>
+                <%= f.hidden_field :role, value: @role  %>
+                <div class="form-group">
+                    <div class="checkbox"><label class="control-label"><input type="checkbox">I agree to the license terms.</label></div>
+                </div>
+                <div >
+                <%= f.submit "Sign Up", class: 'btn btn-primary btn-block' %>
+                </div>  
+            <% end %>       
+        </div>
+    </div>
+    <div class="features-clean"></div>
+    <div></div>
+    <div class="simple-slider">
+        <div class="swiper-container">
+            <div class="swiper-wrapper"></div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+    </div>
+    <section class="testimonials"></section>
+    <section class="features" style="background-color:#010101;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+    <h2>Redefined Features</h2></div>
+                <div class="col-md-6">
+                    <div class="row icon-features">
+                        <div class="col-xs-4 icon-feature"><i class="glyphicon glyphicon-user"></i>
+                            <p>Easy to Make Profile</p>
+                        </div>
+                        <div class="col-xs-4 icon-feature"><i class="glyphicon glyphicon-piggy-bank"></i>
+                            <p>Save Time </p>
+                        </div>
+                        <div class="col-xs-4 icon-feature"><i class="glyphicon glyphicon-thumbs-up"></i>
+                            <p>Find the Right Job</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h5>aceup.co © 2016</h5>
+                </div>
+                <div class="col-sm-6 social-icons"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-instagram"></i></a></div>
+            </div>
+        </div>
+    </footer>
