@@ -29,8 +29,7 @@ class Job < ApplicationRecord
         presence: true
 
       validates :salary,
-        presence: true,
-        numericality: { only_integer: true }
+        presence: true
 
       validates :payLow,
         presence: true,
