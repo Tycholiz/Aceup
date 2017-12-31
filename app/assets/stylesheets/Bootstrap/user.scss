@@ -361,10 +361,7 @@ html {
     background-color:#40df27;
 }
 
-.job_show {
-  height: 400px;
-  overflow: hidden;
-}
+
 
 #main_bg {
   height: 100%;
@@ -492,4 +489,34 @@ html {
 }
 .hex.hex-3 {
   background: #455242;
+}
+
+.employer_img {
+    width: 20%;
+    height: 325px;
+}
+
+.employer_img img {
+  max-height: 90%;
+  max-width: 90%;
+}
+
+.job_show {
+  min-height: 400px;
+  overflow: hidden;
+}
+
+.job_show_img {
+  width: 150px;
+  height: 90%;
+  float: left;
+}
+
+.job_show_img img {
+  max-height: 90%;
+  max-width: 90%;
+}
+
+.job_show_text {
+  float: left;
 }

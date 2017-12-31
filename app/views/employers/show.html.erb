@@ -4,31 +4,35 @@
    <%= user.firstName %>
   <p><%= link_to "profile", edit_employer_path(@employer) %></p>
    <h2><%= link_to "New Posting", new_job_path %></h2>
+   <div class="employer_img">
+    <%= image_tag(@employer.logo_url.to_s) %>
+  </div>
+  <div>
+    <table class="table table-hover">
+      <tr>
+        <th>Title</th>
+        <th>Status</th>
+        <th>Manage</th>
+        <th>Views</th>
+        <th>Applications</th>
+        <th>Post Date</th>
+        <th>Expiry</th>
+        <th>ID #</th>
+      </tr>
 
-  <table class="table table-hover">
-    <tr>
-      <th>Title</th>
-      <th>Status</th>
-      <th>Manage</th>
-      <th>Views</th>
-      <th>Applications</th>
-      <th>Post Date</th>
-      <th>Expiry</th>
-      <th>ID #</th>
-    </tr>
+       <% @jobs.each do |job|  %>
+      <tr>
+        <td><%= link_to job.title, job_path(job) %></td>
+        <td><%= job.status %></td>
+        <td>(<%= link_to "edit", edit_job_path(job) %>, <%= link_to "delete", job_path(job), method: :delete, data: {confirm: "You sure?"} %>)</td>
+        <td><%= job.impressionist_count %></td>
+        <td><%= job.applications.size %></td>
+        <td><%= job.created_at.to_formatted_s(:short)  %></td>
+        <td><%= job.expiry.to_formatted_s(:short) if job.expiry%></td>
+        <td><%= job.id %></td>
+      </tr>
+      <% end %>
 
-     <% @jobs.each do |job|  %>
-    <tr>
-      <td><%= link_to job.title, job_path(job) %></td>
-      <td><%= job.status %></td>
-      <td>(<%= link_to "edit", edit_job_path(job) %>, <%= link_to "delete", job_path(job), method: :delete, data: {confirm: "You sure?"} %>)</td>
-      <td><%= job.impressionist_count %></td>
-      <td><%= job.applications.size %></td>
-      <td><%= job.created_at.to_formatted_s(:short)  %></td>
-      <td><%= job.expiry.to_formatted_s(:short) if job.expiry%></td>
-      <td><%= job.id %></td>
-    </tr>
-    <% end %>
-
-  </table>
+    </table>
+  </div>
 </div>

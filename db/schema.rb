@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171221224817) do
+ActiveRecord::Schema.define(version: 20171231195040) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20171221224817) do
     t.string "compName"
     t.integer "compSize"
     t.string "city"
-    t.binary "logo"
+    t.string "logo"
     t.string "compDesc"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
