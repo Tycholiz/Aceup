@@ -1,0 +1,32 @@
+<% if !flash[:notice].blank? %>
+  <div class="alert alert-info">
+  <%= flash[:notice] %>
+  </div>
+<% end %>
+<br />
+<%= link_to "New Resume", new_seeker_resume_path(@seeker), class: "btn btn-primary" %>
+<br />
+<br />
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Download Link</th>
+      <th>&nbsp;</th>
+      <th>Owner</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @resume.each do |resume| %>
+      <tr>
+        <td><%= resume.title %></td>
+        <td><%= link_to "Download Resume", resume.file_url %></td>
+        <td><%= button_to "Delete",  seeker_resumes_path(@seeker, resume), method: :delete, class: "btn btn-danger", confirm: "Are you sure that you wish to delete #{resume.title}?" %></td>
+        <% seeker = Seeker.where(id: resume.seeker_id).first %>
+        <% user = User.where(id: seeker.user_id).first %>
+        <td><%= user.firstName %></td>
+      </tr>
+
+    <% end %>
+  </tbody>
+</table>

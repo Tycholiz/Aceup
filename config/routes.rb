@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create]
 
   resources :seekers do
-    resources :resumes, only: [:new, :create]
+    resources :resumes, only: [:index, :new, :create]
   	member do
   		get  :applied
   	end
