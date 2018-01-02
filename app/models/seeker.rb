@@ -3,6 +3,7 @@ class Seeker < ApplicationRecord
 	belongs_to :user
 	has_one :skill
 	has_many :applications
+	has_many :resumes
 
 	serialize :languages
 	serialize :certifications

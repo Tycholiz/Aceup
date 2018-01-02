@@ -8,3 +8,4 @@
 		<li class="active"><%= link_to "applied jobs", applied_seeker_path(@seeker) %></li>
 	</ol>
 </div>
+<%= link_to "Download Resume", @seeker.resumes.first.file_url %>

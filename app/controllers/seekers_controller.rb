@@ -8,7 +8,7 @@ class SeekersController < ApplicationController
     @seeker.user_id = current_user.id
 
     if @seeker.save
-      redirect_to jobs_path, notice: "Welcome aboard"
+      redirect_to new_seeker_resume_path, notice: "Welcome aboard"
     else
       render :new
     end
@@ -17,6 +17,7 @@ class SeekersController < ApplicationController
   def show
     @seeker = Seeker.where(user_id: current_user.id).first
     @jobs = Job.all
+    @resume = @seeker.resumes.first.file_url
 
     skillsParams = [:driversLicence, :hasVehicle?, :coldCall, :doorToDoor, :custService, :acctManagment,:negotiation, :presenting, :leadership, :closing, :hunterBased, :farmerBased, :commBased, :B2C, :B2B]
     seekSkills = @seeker.slice(*skillsParams).select {|key, value| value == true }
@@ -53,7 +54,7 @@ class SeekersController < ApplicationController
     @seeker = Seeker.find(params[:id])
 
     if @seeker.update_attributes(seeker_params)
-      redirect_to seeker_path(@seeker)
+      redirect_to new_seeker_resume_path(@seeker)
     else
       render :edit
     end

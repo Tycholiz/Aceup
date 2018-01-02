@@ -1,3 +1,5 @@
+    = stylesheet_link_tag 'your-css.scss', media: 'all', 'data-turbolinks-track' => true
+
 <div class="container">
   <%= form_for @seeker do |f| %>
     <% if @seeker.errors.any? %>
@@ -29,6 +31,7 @@
     <div>
       Upload resume feature (WIP) <br><br>
     </div>
+    
     <h2>Experience</h2>
     <div>
       <%= f.label :inSales %><br>
@@ -158,7 +161,6 @@
           console.log(ui.value);
         }
       });
-
       var handle2 = $( "#outSales_handle" );
       $( "#outSales_slider" ).slider({
         create: function() {
@@ -174,7 +176,6 @@
           console.log(ui.value);
         }
       });
-
       var checkbox = $(".ck-button :checkbox")
       checkbox.each(function() {
           if ($(this).is(":checked")) {
@@ -188,13 +189,5 @@
           $(this).parent().removeClass("ck-button_bg");  
         }
         });
-
-
-
-
-
-
-
-
     } );
  </script>

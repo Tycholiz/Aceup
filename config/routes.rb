@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
 
+  get 'resumes/create'
+
+  get 'resumes/new'
+
   resources :jobs do
   	resources :applications
   end
@@ -8,6 +12,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create]
 
   resources :seekers do
+    resources :resumes, only: [:new, :create]
   	member do
   		get  :applied
   	end

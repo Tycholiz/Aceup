@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171231195040) do
+ActiveRecord::Schema.define(version: 20180102000041) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -108,6 +108,15 @@ ActiveRecord::Schema.define(version: 20171231195040) do
     t.index ["employer_id"], name: "index_jobs_on_employer_id"
   end
 
+  create_table "resumes", force: :cascade do |t|
+    t.bigint "seeker_id"
+    t.string "file"
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["seeker_id"], name: "index_resumes_on_seeker_id"
+  end
+
   create_table "seekers", force: :cascade do |t|
     t.bigint "user_id"
     t.string "postalCode"
@@ -157,5 +166,6 @@ ActiveRecord::Schema.define(version: 20171231195040) do
   add_foreign_key "applications", "seekers"
   add_foreign_key "employers", "users"
   add_foreign_key "jobs", "employers"
+  add_foreign_key "resumes", "seekers"
   add_foreign_key "seekers", "users"
 end

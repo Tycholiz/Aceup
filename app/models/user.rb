@@ -14,8 +14,10 @@ class User < ApplicationRecord
 	validates :lastName,
 	presence: true
 
-	validates :phoneNo, format: { with: /\d{3}-\d{3}-\d{4}/, message: "Phone number invalid, must be xxx-xxx-xxxx"},
+	# validates :phoneNo, format: { with: /\d{3}-\d{3}-\d{4}/, message: "Phone number invalid, must be xxx-xxx-xxxx"},
+	validates :phoneNo,
 	presence: true
+
 
 	validates :role,
 	presence: true

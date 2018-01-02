@@ -134,7 +134,8 @@ Seeker.create! [
 	consSales: Faker::Boolean.boolean,
 	directSales: Faker::Boolean.boolean,
 	solutionSales: Faker::Boolean.boolean,
-	languages: ['English', 'French']
+	languages: ['English', 'French'],
+	certifications: ['VSA', 'CFA (level 1)', 'CFA (level 2)', 'CFA (level 3)', 'CSC', 'CIP', 'LLQP', 'CAIB', 'Insurance Broker (level 1)', 'Insurance Broker (level 2)', 'Insurance Broker (level 3)']
 ]
 p "Created #{Seeker.count} seekers"
 
@@ -175,7 +176,8 @@ Job.destroy_all
 		B2B: Faker::Boolean.boolean,
 		consSales: Faker::Boolean.boolean,
 		directSales: Faker::Boolean.boolean,
-		solutionSales: Faker::Boolean.boolean
+		solutionSales: Faker::Boolean.boolean,
+		languages: ['English', 'French'],
 	]
 	
 end
