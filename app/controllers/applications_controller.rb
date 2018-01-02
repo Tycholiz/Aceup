@@ -17,12 +17,15 @@ class ApplicationsController < ApplicationController
   	# @application = @job.applications.build
   	# ## Add code for user to choose resume
   	# @application.seeker_id = seeker.id
-   #  redirect_to seeker_path(seeker), notice: "Application Saved, #{current_user.firstName}!"
+    @seeker = Seeker.where(user_id: current_user.id).first
+    redirect_to seeker_path(@seeker), notice: "Application Saved, #{current_user.firstName}!"
   end
 
   def delete
   end
 
   def update
+    @seeker = Seeker.where(user_id: current_user.id).first
+    redirect_to seeker_path(@seeker), notice: "Application Saved, #{current_user.firstName}!"
   end
 end
