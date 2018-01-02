@@ -1,0 +1,12 @@
+ <div class="employer_img">
+    <%= image_tag(@employer.logo_url.to_s) %>
+</div>
+<div class="container">
+	<ol class="breadcrumb">
+		<li><%= link_to "dashboard", employer_path(@employer) %></li>
+		<li><%= link_to "profile", edit_employer_path(@employer) %></li>
+		<li class="active"><%= link_to "new posting", new_job_path %></li>
+		<li><%= link_to "applications", applications_employer_path(@employer) %></li>
+	</ol>
+	
+</div>

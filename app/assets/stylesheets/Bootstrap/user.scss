@@ -492,8 +492,10 @@ html {
 }
 
 .employer_img {
-    width: 20%;
-    height: 325px;
+    max-width: 20%;
+    height: 60px;
+    float: left;
+    margin-right: 15px;
 }
 
 .employer_img img {

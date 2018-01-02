@@ -33,6 +33,19 @@ class EmployersController < ApplicationController
     end
   end
 
+  def applications
+    @employer = Employer.find(params[:id])
+    @jobs = Job.where(employer_id: @employer.id)
+    @applications = Array.new
+    @jobs.each do |job|
+      @applied = Application.where(job_id: job.id)
+      @applied.each do |app|
+        @applications.push app if @applied.length > 0
+      end
+    end
+
+  end
+
   protected
 
   def employer_params

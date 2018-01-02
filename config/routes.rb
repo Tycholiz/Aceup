@@ -18,7 +18,11 @@ Rails.application.routes.draw do
   	end
   end
 
-  resources :employers #, only: [:new, :create, :show, :edit]
+  resources :employers do #, only: [:new, :create, :show, :edit]
+    member do
+      get  :applications
+    end
+  end
 
   resources :sessions, only: [:new, :create, :destroy]
 

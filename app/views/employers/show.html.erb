@@ -1,12 +1,5 @@
+ <%= render 'header' %>
  <div class="container-fluid">
-   <% user = User.where(id: @employer.user_id).first %>
-   <%= user.email %>
-   <%= user.firstName %>
-  <p><%= link_to "profile", edit_employer_path(@employer) %></p>
-   <h2><%= link_to "New Posting", new_job_path %></h2>
-   <div class="employer_img">
-    <%= image_tag(@employer.logo_url.to_s) %>
-  </div>
   <div>
     <table class="table table-hover">
       <tr>

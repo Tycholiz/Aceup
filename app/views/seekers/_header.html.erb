@@ -4,7 +4,7 @@
 <div class="container ">
 	<ol class="breadcrumb">
 		<li><%= link_to "dashboard", seeker_path(@seeker) %></li>
-		<li><%= link_to "profile", edit_seeker_path(@seeker) %></li>
+		<li><%= link_to "profile", seeker_path(@seeker) %></li>
 		<li class="active"><%= link_to "applied jobs", applied_seeker_path(@seeker) %></li>
 		<li><%= link_to "resumes", seeker_resumes_path(@seeker) if @seeker.resumes.first%></li>
 	</ol>
