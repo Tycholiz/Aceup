@@ -1,146 +1,156 @@
-    = stylesheet_link_tag 'your-css.scss', media: 'all', 'data-turbolinks-track' => true
 
-<div class="container">
-  <%= form_for @seeker do |f| %>
-    <% if @seeker.errors.any? %>
-      <div>
-        <%= pluralize(@seeker.errors.count, "error") %> prevented the account from being created:
-        <ul>
-          <% @seeker.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
+    <div class="register-photo">
+      <div class="form-container">
+         <%= form_for @seeker do |f| %>
+          <% if @seeker.errors.any? %>
+            <div>
+              <%= pluralize(@seeker.errors.count, "error") %> prevented the account from being created:
+              <ul>
+                <% @seeker.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+                <% end %>
+              </ul>
+            </div>
           <% end %>
-        </ul>
-      </div>
-    <% end %>
-    <h2>Personal</h2>
-    <div>
-      <%= f.label :postalCode %><br>
-      <%= f.text_field :postalCode %>
-    </div>
-    <h2>Education/Certifications</h2>
-    <div>
-      <%= f.label :educationLevel, "Education Level" %><br>
-      <%= f.select :educationLevel, ['High School', 'Some University', 'University/College', 'Masters', 'PhD'] %>
-    </div>
-    <div>
-      <%= f.label :certifications, "Certifications (Hold CTRL to select multiple)" %><br>
-      <%= f.select :certifications, ['VSA', 'CFA (level 1)', 'CFA (level 2)', 'CFA (level 3)', 'CSC', 'CIP', 'LLQP', 'CAIB', 'Insurance Broker (level 1)', 'Insurance Broker (level 2)', 'Insurance Broker (level 3)'], {prompt: "Select Certifications"},{:multiple => true, class: "input-lg"}%>
-    </div>
+          <i class="material-icons">person_pin_circle</i>
+          <div class="editor">
+               <h1>Profile Editor</h1> <!--***Changed wording here -->
+          </div>
+          <div class="editor">
+            <h2>
+              <i class="glyphicon glyphicon-home"></i>
+              Location
+            </h2>
+          </div>
+          <div>
+            <%= f.label :postalCode, "Postal Code" %><br>
+            <%= f.text_field :postalCode %>
+          </div>
+          <div class="editor">
+            <h2>
+              <i class="glyphicon glyphicon-education"></i>
+              Education + Certifications
+            </h2>
+          </div>
+          <div>
+            <%= f.label :educationLevel, "Education Level" %><br>
+            <%= f.select :educationLevel, ['High School', 'Some Postsecondary Experience', 'Bachelors', 'Masters', 'PhD'] %>
+          </div>
+          <hr>
+          <div>
+            <%= f.label :certifications, "Certifications (Hold CTRL to select multiple)" %><br>
+            <%= f.select :certifications, ['VSA', 'CFA (level 1)', 'CFA (level 2)', 'CFA (level 3)', 'CSC', 'CIP', 'LLQP', 'CAIB', 'Insurance Broker (level 1)', 'Insurance Broker (level 2)', 'Insurance Broker (level 3)'], {prompt: "Select Certifications"},{:multiple => true, class: "input-lg"}%>
+          </div>
+          <div class="row">
+            <div class="ck-button">
+              <%= f.label :driversLicence, "Class 5 Drivers License?" %><br>
+              <%= f.check_box :driversLicence %>
+            </div>
+            <div class="ck-button">
+              <%= f.label :hasVehicle?, "Access to own vehicle?" %><br>
+              <%= f.check_box :hasVehicle? %>
+            </div>
+          </div>
 
-    <h2>Resume</h2>
-    <div>
-      Upload resume feature (WIP) <br><br>
-    </div>
-    
-    <h2>Experience</h2>
-    <div>
-      <%= f.label :inSales %><br>
-      <div id="inSales_slider" class="slider">
-        <div id="inSales_handle" class="ui-slider-handle"></div>
-      </div>
-      <%= f.hidden_field :inSales %>
-    </div>
-    <div>
-      <%= f.label :outSales %><br>
-      <div id="outSales_slider" class="slider">
-        <div id="outSales_handle" class="ui-slider-handle"></div>
-      </div>
-      <%= f.hidden_field :outSales %>
-    </div>
-    ***These should be greyed-out on default
-    <div style="float: left">
-      <%= f.label :inboundSales %><br>
-      <%= f.check_box :inboundSales %>
-    </div>
-    <div style="float: left">
-      <%= f.label :outboundSales %><br>
-      <%= f.check_box :outboundSales %>
-    </div>
-    <div class="ck-button">
-      <%= f.label :driversLicence, "Class 5 Drivers License?" %><br>
-      <%= f.check_box :driversLicence %>
-    </div>
-    <div class="ck-button">
-      <%= f.label :hasVehicle?, "Access to own vehicle?" %><br>
-      <%= f.check_box :hasVehicle? %>
-    </div>
-    <h2>Sales Skills</h2>
-    <div class="ck-button">
-      <%= f.label :coldCall, "Cold Calling" %><br>
-      <%= f.check_box :coldCall %>
-    </div>
-    <div class="ck-button">
-      <%= f.label :doorToDoor, "Door to Door" %><br>
-      <%= f.check_box :doorToDoor %>
-    </div>
-    <div class="ck-button">
-      <%= f.label :custService, "Customer Service" %><br>
-      <%= f.check_box :custService %>
-    </div>
-    <div class="ck-button">
-      <%= f.label :acctManagment, "Account Management" %><br>
-      <%= f.check_box :acctManagment %>
-    </div>
-    <div class="ck-button">
-      <%= f.label :negotiation %><br>
-      <%= f.check_box :negotiation %>
-    </div>
-    <div class="ck-button">
-      <%= f.label :presenting %><br>
-      <%= f.check_box :presenting %>
-    </div>
-    <div class="ck-button">
-      <%= f.label :leadership %><br>
-      <%= f.check_box :leadership %>
-    </div>
-    <div class="ck-button">
-      <%= f.label :closing %><br>
-      <%= f.check_box :closing %>
-    </div>
-    <div class="ck-button">
-      <%= f.label :hunterBased, "Hunter-based" %><br>
-      <%= f.check_box :hunterBased %>
-    </div>
-    <div class="ck-button">
-      <%= f.label :farmerBased, "Farmer Based" %><br>
-      <%= f.check_box :farmerBased %>
-    </div>
-    <div class="ck-button">
-      <%= f.label :commBased %><br>
-      <%= f.check_box :commBased %>
-    </div>
-    <hr>
-     <div class="ck-button">
-      <%= f.label :B2C, "B2C" %><br>
-      <%= f.check_box :B2C %>
-    </div>
-    <div class="ck-button">
-      <%= f.label :B2B, 'B2B' %><br>
-      <%= f.check_box :B2B %>
-    </div>
-    <h2> Sales Methodology</h2>
-     <div class="ck-button">
-      <%= f.label :consSales, "Consultive Sales" %><br>
-      <%= f.check_box :consSales %>
-    </div>
-    <div class="ck-button">
-      <%= f.label :directSales, "Direct Sales/Product Focused" %><br>
-      <%= f.check_box :directSales %>
-    </div>
-    <div class="ck-button">
-      <%= f.label :solutionSales, "Solution Sales" %><br>
-      <%= f.check_box :solutionSales %>
-    </div>
-   
-    <h2>Proficient Languages</h2>
-    <div>
-      <%= f.label :languages, "Hold CTRL to select multiple" %><br>
-      <%= f.select :languages, [ ["English", "English"], ["French", "French"], ["Korean", "Korean"], ["Mandarin", "Mandarin"], ["Punjabi", "Punjabi"], ["Spanish", "Spanish"], ["Arabic", "Arabic"], ["Cantonese", "Cantonese"]], {prompt: "Select Languages"},{:multiple => true, class: "input-lg"} %>
-    </div>
+          <div class="editor">
+            <h2>
+              <i class="glyphicon glyphicon-briefcase"></i>
+                Sales Experience
+            </h2>
+          </div>  
+          <div class="row">
+            <div>
+              <%= f.label :inSales %><br>
+              <div id="inSales_slider" class="slider">
+                <div id="inSales_handle" class="ui-slider-handle"></div>
+              </div>
+              <%= f.hidden_field :inSales %>
+            </div>
+            <div>
+              <%= f.label :outSales %><br>
+              <div id="outSales_slider" class="slider">
+                <div id="outSales_handle" class="ui-slider-handle"></div>
+              </div>
+              <%= f.hidden_field :outSales %>
+            </div>
+            ***These should be greyed-out on default
+            <div style="float: left">
+              <%= f.label :inboundSales %><br>
+              <%= f.check_box :inboundSales %>
+            </div>
+            <div style="float: left">
+              <%= f.label :outboundSales %><br>
+              <%= f.check_box :outboundSales %>
+            </div>
+          </div>
+            <div class="editor">
+              <h2>
+                <i class="glyphicon glyphicon-list-alt"></i>
+                Sales Skills
+              </h2>
+            </div>
+          <div class="row">
+            <div class="ck-button">
+              <%= f.label :coldCall, "Cold Calling" %><br>
+              <%= f.check_box :coldCall %>
+            </div>
+            <div class="ck-button">
+              <%= f.label :doorToDoor, "Door to Door" %><br>
+              <%= f.check_box :doorToDoor %>
+            </div>
+            <div class="ck-button">
+              <%= f.label :custService, "Customer Service" %><br>
+              <%= f.check_box :custService %>
+            </div>
+            <div class="ck-button">
+              <%= f.label :acctManagment, "Account Management" %><br>
+              <%= f.check_box :acctManagment %>
+            </div>
+            <div class="ck-button">
+              <%= f.label :negotiation %><br>
+              <%= f.check_box :negotiation %>
+            </div>
+            <div class="ck-button">
+              <%= f.label :presenting %><br>
+              <%= f.check_box :presenting %>
+            </div>
+            <div class="ck-button">
+              <%= f.label :leadership, "Managed a Team" %><br>
+              <%= f.check_box :leadership %>
+            </div>
+            <div class="ck-button">
+              <%= f.label :closing %><br>
+              <%= f.check_box :closing %>
+            </div>
+            <div class="ck-button">
+              <%= f.label :hunterBased, "Hunter-based" %><br>
+              <%= f.check_box :hunterBased %>
+            </div>
+            <div class="ck-button">
+              <%= f.label :farmerBased, "Farmer Based" %><br>
+              <%= f.check_box :farmerBased %>
+            </div>
+            <div class="ck-button">
+              <%= f.label :commBased, "Commission Based" %><br>
+              <%= f.check_box :commBased %>
+            </div>
+          </div>
+          <hr>
+          <div class="editor">
+            <h2>
+                <i class="glyphicon glyphicon-comment"></i> 
+                Fluent Languages</h2> 
+          </div>
+          <div>
+            <%= f.label :languages, "Hold CTRL to select multiple" %><br>
+            <%= f.select :languages, [ ["English", "English"], ["French", "French"], ["Korean", "Korean"], ["Mandarin", "Mandarin"], ["Punjabi", "Punjabi"], ["Spanish", "Spanish"], ["Arabic", "Arabic"], ["Cantonese", "Cantonese"]], {prompt: "Select Languages"},{:multiple => true, class: "input-lg"} %>
+          </div>
 
-     <br>
-    <div><%= f.submit "Submit" %></div>
-  <% end %>
+           <br>
+          <div><%= f.submit "Submit", class: "btn btn-primary btn-block" %></div>
+        <% end %>
+      </div> 
+   </div> 
 </div>
 
 
