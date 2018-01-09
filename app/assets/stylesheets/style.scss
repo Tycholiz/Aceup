@@ -2,6 +2,7 @@
  
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "Bootstrap/user.scss";
@@ -11,3 +12,4 @@
 @import "Bootstrap/Registration-Form-with-Photo.scss";
 @import "Bootstrap/Profile.scss";
 @import url(//fonts.googleapis.com/icon?family=Material+Icons);
+@import 'Bootstrap/Article-List.css';

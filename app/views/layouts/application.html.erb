@@ -21,7 +21,9 @@
             <%= content_tag(:div, value) %>
         <% end %>
         <%= yield %>
-        <%= render 'layouts/footer' %>
+        <% unless controller_name == "sessions" %>
+          <%= render 'layouts/footer' %>
+        <% end %>
     <% if controller_name == "sessions" %>
       </div>
     <% end %>
