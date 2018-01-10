@@ -1,33 +1,29 @@
 <%= form_for @employer do |f| %>
-  <% if @employer.errors.any? %>
-    <div>
-      <%= pluralize(@employer.errors.count, "error") %> prevented the account from being created:
-      <ul>
-        <% @employer.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+
   <div>
     <%= f.label :compName, "Company name" %><br>
     <%= f.text_field :compName %>
+    <p class='error'><%= show_errors(@employer, :compName) %></p>
   </div>
   <div>
     <%= f.label :compSize, "Company Size" %><br>
     <%= f.number_field :compSize %>
+    <p class='error'><%= show_errors(@employer, :compSize) %></p>
   </div>
   <div>
     <%= f.label :city %><br>
     <%= f.text_field :city %>
+    <p class='error'><%= show_errors(@employer, :city) %></p>
   </div>
   <div>
     <%= f.label :logo, "Upload a logo image" %><br>
     <%= f.file_field :logo %>
+    </br>
   </div>
   <div>
     <%= f.label :compDesc, "Company description" %><br>
     <%= f.text_field :compDesc %>
+    <p class='error'><%= show_errors(@employer, :compDesc) %></p>
   </div>
   <br>
 

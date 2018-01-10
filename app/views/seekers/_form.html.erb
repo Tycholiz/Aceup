@@ -2,16 +2,6 @@
     <div class="register-photo">
       <div class="form-container">
          <%= form_for @seeker do |f| %>
-          <% if @seeker.errors.any? %>
-            <div>
-              <%= pluralize(@seeker.errors.count, "error") %> prevented the account from being created:
-              <ul>
-                <% @seeker.errors.full_messages.each do |msg| %>
-                  <li><%= msg %></li>
-                <% end %>
-              </ul>
-            </div>
-          <% end %>
           <i class="material-icons">person_pin_circle</i>
           <div class="editor">
                <h1>Profile Editor</h1> <!--***Changed wording here -->
@@ -25,6 +15,7 @@
           <div>
             <%= f.label :postalCode, "Postal Code" %><br>
             <%= f.text_field :postalCode %>
+            <p class='error'><%= show_errors(@seeker, :postalCode) %></p>
           </div>
           <div class="editor">
             <h2>
@@ -64,6 +55,7 @@
               <div id="inSales_slider" class="slider">
                 <div id="inSales_handle" class="ui-slider-handle"></div>
               </div>
+              <p class='error'><%= show_errors(@seeker, :inSales) %></p>
               <%= f.hidden_field :inSales %>
             </div>
             <div>
@@ -71,6 +63,7 @@
               <div id="outSales_slider" class="slider">
                 <div id="outSales_handle" class="ui-slider-handle"></div>
               </div>
+              <p class='error'><%= show_errors(@seeker, :outSales) %></p>
               <%= f.hidden_field :outSales %>
             </div>
             ***These should be greyed-out on default
@@ -144,6 +137,7 @@
           <div>
             <%= f.label :languages, "Hold CTRL to select multiple" %><br>
             <%= f.select :languages, [ ["English", "English"], ["French", "French"], ["Korean", "Korean"], ["Mandarin", "Mandarin"], ["Punjabi", "Punjabi"], ["Spanish", "Spanish"], ["Arabic", "Arabic"], ["Cantonese", "Cantonese"]], {prompt: "Select Languages"},{:multiple => true, class: "input-lg"} %>
+              <p class='error'><%= show_errors(@seeker, :languages) %></p>
           </div>
 
            <br>
