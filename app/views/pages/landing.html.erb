@@ -1,0 +1,80 @@
+<div class="jumbotron hero_landing" style="margin-top:-40px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-pull-3 get-it landing_img" style="width:100%;height:auto;">
+                	<%= image_tag("aceupco_logo_TRANS.png") %>
+                    <p style="width:349px;font-size:32px;height:17px;"> </p>
+                    <p style="width:100%;font-size:32px;height:auto;font-weight:500;">optimizing the process of connecting sales</p>
+                    <p style="font-size:32px;width:100%;height:auto;font-weight:500;">focused job hunters with employers</p>
+                    <h1 style="margin-top:30px;"><strong>I am a...</strong></h1>
+                    <p style="height:75px;">
+                    <%= link_to "Job Hunter", '/pages/seeker_landing', :method => "get", :class => "btn btn-lg", :id => "hunter_button"  %>
+                    <%= link_to "Company", '/pages/employer_landing', :method => "get", :class => "btn btn-lg", :id => "company_button"  %>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <section class="testimonials"></section>
+    <div class="article-list" style="/*padding-bottom:10px;*//*border:groove;*/">
+        <div class="container" style="/*border-top-color:black;*//*border-top-width:1000px;*/background-color:#ffffff;margin-bottom:-80px;">
+            <div class="intro">
+                <h2 class="text-center" style="height:auto;width:100%;font-size:58px;padding-bottom:40px;">The Only Dedicated Job Board for Sales</h2>
+            </div>
+            <div class="row articles">
+                <div class="col-md-4 col-sm-6 item"><a href="#"></a><i class="glyphicon glyphicon-user" style="width:auto;font-size:110px;color:rgb(7,7,7);"></i>
+                    <h3 class="name"> </h3>
+                    <h3 class="name" style="font-size:40px;">Create a profile in 90 seconds</h3><a href="#" class="action"></a></div>
+                <div class="col-md-4 col-sm-6 item"><a href="#"></a><i class="glyphicon glyphicon-thumbs-up" style="width:auto;font-size:110px;color:rgb(0,0,0);"></i>
+                    <h3 class="name"> </h3>
+                    <h3 class="name" style="font-size:40px;">View jobs you already qualify for</h3><a href="#" class="action"></a></div>
+                <div class="col-md-4 col-sm-6 item"><a href="#"></a><i class="glyphicon glyphicon-briefcase" style="font-size:110px;width:auto;/*height:102px;*//*margin:-24px;*/color:rgb(0,0,0);"></i>
+                    <h3 class="name"> </h3>
+                    <h3 class="name" style="font-size:40px;margin:20px 0px 10px;height:88px;">Get hired quicker</h3><a href="#" class="action"></a></div>
+            </div>
+        </div>
+    </div>
+    <div style="border-color:rgb(0,0,0);border-width:10px;background-color:#fafafa;">
+        <div class="container" style="/*border:groove;*/">
+            <h2 class="text-center" style="margin-bottom:70px;font-size:53px;color:rgb(0,0,0);padding-top:30px;"><strong>Is there an ace up your sleeve?</strong></h2>
+          
+            
+             <%= button_tag "Job Hunter", onclick: "location.href='/pages/seeker_landing'",
+				  type: :button, class: "btn btn-default", id: "profile_button" do %>
+				  <%= t('Job Hunter')%>
+				<% end %>
+			<%= button_tag "Company", onclick: "location.href='/pages/employer_landing'",
+				  type: :button, class: "btn btn-default", id: "profile_button" do %>
+				  <%= t('Company')%>
+				<% end %>
+
+            </div>
+    </div>
+    <section class="features">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p> </p>
+                </div>
+                <div class="col-md-6">
+                    <div class="row icon-features">
+                        <div class="col-xs-4 icon-feature"></div>
+                        <div class="col-xs-4 icon-feature"></div>
+                        <div class="col-xs-4 icon-feature"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h5>aceup.co © 2016</h5>
+                </div>
+                <div class="col-sm-6 social-icons"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-instagram"></i></a></div>
+            </div>
+        </div>
+    </footer>

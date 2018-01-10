@@ -1,37 +1,32 @@
     <div class="container">
       <%= form_for @job do |f| %>
 
-        <% if @job.errors.any? %>
-          <div>
-            <%= pluralize(@job.errors.count, "error") %> prevented this job from being submitted:
-            <ul>
-              <% @job.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-              <% end %>
-            </ul>
-          </div>
-        <% end %>
 
         <h2>Job Type</h2>
         <div>
           <%= f.label :jobType %><br>
           <%= f.select :jobType, ['part-time', 'full-time']%>
+          <p class='error'><%= show_errors(@job, :jobType) %></p>
         </div>
         <div>
           <%= f.label :salary %><br>
           <%= f.select :salary, ['Salary', 'Hourly', 'Commission']%>
+          <p class='error'><%= show_errors(@job, :salary) %></p>
         </div>
         <div>
           <%= f.label :temp %><br>
           <%= f.check_box :temp %>
+          <p class='error'><%= show_errors(@job, :temp) %></p>
         </div>
         <h3>Average Pay</h3>
         <div style="float: left">
           $ <%= f.number_field :payLow %>
+          <p class='error'><%= show_errors(@job, :payLow) %></p>
           <span style="margin: 15px">  to  </span>
         </div>
         <div style="float: left">
           <%= f.number_field :payHigh %>
+          <p class='error'><%= show_errors(@job, :payHigh) %></p>
         </div>
         <div style="clear: both"></div>
         <h2>Experience</h2>
@@ -41,6 +36,7 @@
             <div id="inSales_job_handle" class="ui-slider-handle"></div>
             <div id="inSales_job_handle2" class="ui-slider-handle"></div>
           </div>
+          <p class='error'><%= show_errors(@job, :inSales) %></p>
           <%= f.hidden_field :inSalesSoft %>
           <%= f.hidden_field :inSalesHard %>
         </div>
@@ -50,25 +46,30 @@
             <div id="outSales_job_handle" class="ui-slider-handle"></div>
             <div id="outSales_job_handle2" class="ui-slider-handle"></div>
           </div>
+          <p class='error'><%= show_errors(@job, :outSales) %></p>
           <%= f.hidden_field :outSalesSoft %>
           <%= f.hidden_field :outSalesHard %>
         </div>
         <div>
           <%= f.label :certifications, "Certifications (Hold CTRL to select multiple)" %><br>
           <%= f.select :certifications, ['VSA', 'CFA (level 1)', 'CFA (level 2)', 'CFA (level 3)', 'CSC', 'CIP', 'LLQP', 'CAIB', 'Insurance Broker (level 1)', 'Insurance Broker (level 2)', 'Insurance Broker (level 3)'], {prompt: "Select Certifications"},{:multiple => true, class: "input-lg"}%>
+          <p class='error'><%= show_errors(@job, :certifications) %></p>
         </div>
         <div>
           <%= f.label :languages, "Proficient Languages (Hold CTRL to select multiple)" %><br>
           <%= f.select :languages, [ ["English", "English"], ["French", "French"], ["Korean", "Korean"], ["Mandarin", "Mandarin"], ["Punjabi", "Punjabi"], ["Spanish", "Spanish"], ["Arabic", "Arabic"], ["Cantonese", "Cantonese"]], {prompt: "Select Languages"},{:multiple => true, class: "input-lg"} %>
+          <p class='error'><%= show_errors(@job, :languages) %></p>
         </div>
 
         <div class="ck-button">
           <%= f.label :driversLicence, "Class 5 Drivers License?" %><br>
           <%= f.check_box :driversLicence %>
+          <p class='error'><%= show_errors(@job, :driversLicence) %></p>
         </div>
         <div class="ck-button">
           <%= f.label :hasVehicle?, "Access to own vehicle?" %><br>
           <%= f.check_box :hasVehicle? %>
+          <p class='error'><%= show_errors(@job, :hasVehicle?) %></p>
         </div>
         <h2>Sales Skills</h2>
         <div class="ck-button">
@@ -141,30 +142,37 @@
         <div>
           <%= f.label :title %><br>
           <%= f.text_field :title %>
+          <p class='error'><%= show_errors(@job, :title) %></p>
         </div>
         <div>
           <%= f.label :summary, "Summary" %><br>
           <%= f.text_area :summary %>
+          <p class='error'><%= show_errors(@job, :summary) %></p>
         </div>
         <div>
           <%= f.label :functions, "Essential Functions" %><br>
           <%= f.text_area :functions %>
+          <p class='error'><%= show_errors(@job, :functions) %></p>
         </div>
         <div>
           <%= f.label :skills ,"Skills"%><br>
           <%= f.text_area :skills %>
+          <p class='error'><%= show_errors(@job, :skills) %></p>
         </div>
         <div>
           <%= f.label :competencies, "Competencies" %><br>
           <%= f.text_area :competencies %>
+          <p class='error'><%= show_errors(@job, :competencies) %></p>
         </div>
          <div>
           <%= f.label :deptSize, "Size of Department" %><br>
           <%= f.number_field :deptSize %>
+          <p class='error'><%= show_errors(@job, :deptSize) %></p>
         </div>
          <div>
           <%= f.label :benefits, "Benefits" %><br>
           <%= f.text_area :benefits %>
+          <p class='error'><%= show_errors(@job, :benefits) %></p>
         </div>
         <div>
           <%= f.submit "Submit" %> 
