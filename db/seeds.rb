@@ -13,138 +13,138 @@ Faker::Config.locale = "en-CA"
 
 password = "testtest"
 
-User.create! [
-	email: "employer@test.com",
-	# password_digest: User.new(:password => password).password_digest,
-	password: password,
-	password_confirmation: password,
-	firstName: "Employer",
-	lastName:  "Name",
-	phoneNo:  Faker::PhoneNumber.cell_phone,
-	role:  "Employer"
-]
+# User.create! [
+# 	email: "employer@test.com",
+# 	# password_digest: User.new(:password => password).password_digest,
+# 	password: password,
+# 	password_confirmation: password,
+# 	firstName: "Employer",
+# 	lastName:  "Name",
+# 	phoneNo:  Faker::PhoneNumber.cell_phone,
+# 	role:  "Employer"
+# ]
 
-User.create! [
-	email: "employer2@test.com",
-	# password_digest: User.new(:password => password).password_digest,
-	password: password,
-	password_confirmation: password,
-	firstName: "Employer2",
-	lastName:  "Name2",
-	phoneNo:  Faker::PhoneNumber.cell_phone,
-	role:  "Employer"
-]
+# User.create! [
+# 	email: "employer2@test.com",
+# 	# password_digest: User.new(:password => password).password_digest,
+# 	password: password,
+# 	password_confirmation: password,
+# 	firstName: "Employer2",
+# 	lastName:  "Name2",
+# 	phoneNo:  Faker::PhoneNumber.cell_phone,
+# 	role:  "Employer"
+# ]
 
-User.create! [
-	email: "super@test.com",
-	password: password,
-	password_confirmation: password,
-	firstName: "Super",
-	lastName:  "Seeker",
-	phoneNo:  Faker::PhoneNumber.cell_phone,
-	role:  "Seeker"
-]
+# User.create! [
+# 	email: "super@test.com",
+# 	password: password,
+# 	password_confirmation: password,
+# 	firstName: "Super",
+# 	lastName:  "Seeker",
+# 	phoneNo:  Faker::PhoneNumber.cell_phone,
+# 	role:  "Seeker"
+# ]
 
-User.create! [
-	email: "normal@test.com",
-	password: password,
-	password_confirmation: password,
-	firstName: "Normal",
-	lastName:  "Seeker",
-	phoneNo:  Faker::PhoneNumber.cell_phone,
-	role:  "Seeker"
-]
+# User.create! [
+# 	email: "normal@test.com",
+# 	password: password,
+# 	password_confirmation: password,
+# 	firstName: "Normal",
+# 	lastName:  "Seeker",
+# 	phoneNo:  Faker::PhoneNumber.cell_phone,
+# 	role:  "Seeker"
+# ]
 
 
-p "Created #{User.count} users"
+# p "Created #{User.count} users"
 
-# Employer.destroy_all
+# # Employer.destroy_all
 
-Employer.create! [
-	user_id: 1,
-	compName: Faker::Company.name,
-	compSize: Faker::Number.between(1, 1000),
-	city: Faker::Address.city,
-	compDesc: Faker::RickAndMorty.quote,
-]
+# Employer.create! [
+# 	user_id: 1,
+# 	compName: Faker::Company.name,
+# 	compSize: Faker::Number.between(1, 1000),
+# 	city: Faker::Address.city,
+# 	compDesc: Faker::RickAndMorty.quote,
+# ]
 
-Employer.create! [
-	user_id: 2,
-	compName: Faker::Company.name,
-	compSize: Faker::Number.between(1, 1000),
-	city: Faker::Address.city,
-	compDesc: Faker::RickAndMorty.quote,
-]
+# Employer.create! [
+# 	user_id: 2,
+# 	compName: Faker::Company.name,
+# 	compSize: Faker::Number.between(1, 1000),
+# 	city: Faker::Address.city,
+# 	compDesc: Faker::RickAndMorty.quote,
+# ]
 
-p "Created #{Employer.count} employers"
+# p "Created #{Employer.count} employers"
 
-# Seeker.destroy_all
+# # Seeker.destroy_all
 
-Seeker.create! [
-	user_id: 3,
-	postalCode: Faker::Address.postcode,
-	educationLevel: Faker::Beer.style,
-	degree: Faker::Beer.style,
-	inSales: 10,
-	outSales: 10,
-	inboundSales: true,
-	outboundSales: true,
-	coldCall: true,
-	doorToDoor: true,
-	custService: true,
-	acctManagment: true,
-	negotiation: true,
-	presenting: true,
-	leadership: true,
-	closing: true,
-	hunterBased: true,
-	farmerBased: true,
-	commBased: true,
-	B2C: true,
-	B2B: true,
-	consSales: true,
-	directSales: true,
-	solutionSales: true,
-	languages: ['English', 'French', 'Mandarin'],
-	certifications: ['VSA', 'CFA (level 1)', 'CFA (level 2)', 'CFA (level 3)', 'CSC', 'CIP', 'LLQP', 'CAIB', 'Insurance Broker (level 1)', 'Insurance Broker (level 2)', 'Insurance Broker (level 3)']
-]
+# Seeker.create! [
+# 	user_id: 3,
+# 	postalCode: Faker::Address.postcode,
+# 	educationLevel: Faker::Beer.style,
+# 	degree: Faker::Beer.style,
+# 	inSales: 10,
+# 	outSales: 10,
+# 	inboundSales: true,
+# 	outboundSales: true,
+# 	coldCall: true,
+# 	doorToDoor: true,
+# 	custService: true,
+# 	acctManagment: true,
+# 	negotiation: true,
+# 	presenting: true,
+# 	leadership: true,
+# 	closing: true,
+# 	hunterBased: true,
+# 	farmerBased: true,
+# 	commBased: true,
+# 	B2C: true,
+# 	B2B: true,
+# 	consSales: true,
+# 	directSales: true,
+# 	solutionSales: true,
+# 	languages: ['English', 'French', 'Mandarin'],
+# 	certifications: ['VSA', 'CFA (level 1)', 'CFA (level 2)', 'CFA (level 3)', 'CSC', 'CIP', 'LLQP', 'CAIB', 'Insurance Broker (level 1)', 'Insurance Broker (level 2)', 'Insurance Broker (level 3)']
+# ]
 
-Seeker.create! [
-	user_id: 4,
-	postalCode: Faker::Address.postcode,
-	educationLevel: Faker::Beer.style,
-	degree: Faker::Beer.style,
-	inSales: Faker::Number.between(1, 5),
-	outSales: Faker::Number.between(1, 5),
-	inboundSales: Faker::Boolean.boolean,
-	outboundSales: Faker::Boolean.boolean,
-	coldCall: Faker::Boolean.boolean,
-	doorToDoor: Faker::Boolean.boolean,
-	custService: Faker::Boolean.boolean,
-	acctManagment: Faker::Boolean.boolean,
-	negotiation: Faker::Boolean.boolean,
-	presenting: Faker::Boolean.boolean,
-	leadership: Faker::Boolean.boolean,
-	closing: Faker::Boolean.boolean,
-	hunterBased: Faker::Boolean.boolean,
-	farmerBased: Faker::Boolean.boolean,
-	commBased: Faker::Boolean.boolean,
-	B2C: Faker::Boolean.boolean,
-	B2B: Faker::Boolean.boolean,
-	consSales: Faker::Boolean.boolean,
-	directSales: Faker::Boolean.boolean,
-	solutionSales: Faker::Boolean.boolean,
-	languages: ['English', 'French'],
-	certifications: ['VSA', 'CFA (level 1)', 'CFA (level 2)', 'CFA (level 3)', 'CSC', 'CIP', 'LLQP', 'CAIB', 'Insurance Broker (level 1)', 'Insurance Broker (level 2)', 'Insurance Broker (level 3)']
-]
-p "Created #{Seeker.count} seekers"
+# Seeker.create! [
+# 	user_id: 4,
+# 	postalCode: Faker::Address.postcode,
+# 	educationLevel: Faker::Beer.style,
+# 	degree: Faker::Beer.style,
+# 	inSales: Faker::Number.between(1, 5),
+# 	outSales: Faker::Number.between(1, 5),
+# 	inboundSales: Faker::Boolean.boolean,
+# 	outboundSales: Faker::Boolean.boolean,
+# 	coldCall: Faker::Boolean.boolean,
+# 	doorToDoor: Faker::Boolean.boolean,
+# 	custService: Faker::Boolean.boolean,
+# 	acctManagment: Faker::Boolean.boolean,
+# 	negotiation: Faker::Boolean.boolean,
+# 	presenting: Faker::Boolean.boolean,
+# 	leadership: Faker::Boolean.boolean,
+# 	closing: Faker::Boolean.boolean,
+# 	hunterBased: Faker::Boolean.boolean,
+# 	farmerBased: Faker::Boolean.boolean,
+# 	commBased: Faker::Boolean.boolean,
+# 	B2C: Faker::Boolean.boolean,
+# 	B2B: Faker::Boolean.boolean,
+# 	consSales: Faker::Boolean.boolean,
+# 	directSales: Faker::Boolean.boolean,
+# 	solutionSales: Faker::Boolean.boolean,
+# 	languages: ['English', 'French'],
+# 	certifications: ['VSA', 'CFA (level 1)', 'CFA (level 2)', 'CFA (level 3)', 'CSC', 'CIP', 'LLQP', 'CAIB', 'Insurance Broker (level 1)', 'Insurance Broker (level 2)', 'Insurance Broker (level 3)']
+# ]
+# p "Created #{Seeker.count} seekers"
 
 # Job.destroy_all
 
 100.times do
 	Job.create! [
 		title: Faker::Job.title,
-		employer_id: Faker::Number.between(1, 2),
+		employer_id: Faker::Number.between(18, 2),
 		jobType: ['part-time', 'full-time'].sample,
 		expiry: Time.now.advance(weeks: 2), 
 		temp: true,
