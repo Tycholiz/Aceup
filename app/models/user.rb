@@ -24,4 +24,6 @@ class User < ApplicationRecord
 
 	validates :password,
 	length: { in: 6..20 }, on: :create
+
+	validates_presence_of :password_confirmation, :if => :password_digest_changed?
 end
