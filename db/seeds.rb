@@ -9,7 +9,7 @@ require 'faker'
 
 Faker::Config.locale = "en-CA"
 
-User.destroy_all
+# User.destroy_all
 
 password = "testtest"
 
@@ -58,7 +58,7 @@ User.create! [
 
 p "Created #{User.count} users"
 
-Employer.destroy_all
+# Employer.destroy_all
 
 Employer.create! [
 	user_id: 1,
@@ -78,7 +78,7 @@ Employer.create! [
 
 p "Created #{Employer.count} employers"
 
-Seeker.destroy_all
+# Seeker.destroy_all
 
 Seeker.create! [
 	user_id: 3,
@@ -139,7 +139,7 @@ Seeker.create! [
 ]
 p "Created #{Seeker.count} seekers"
 
-Job.destroy_all
+# Job.destroy_all
 
 100.times do
 	Job.create! [
