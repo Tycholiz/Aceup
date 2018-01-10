@@ -38,7 +38,19 @@
     </div>
     <div style="border-color:rgb(0,0,0);border-width:10px;background-color:#fafafa;">
         <div class="container" style="/*border:groove;*/">
-            <h2 class="text-center" style="margin-bottom:70px;font-size:53px;color:rgb(0,0,0);padding-top:30px;"><strong>Is there an ace up your sleeve?</strong></h2><button class="btn btn-default" type="button" id="profile_button" style="/*align-content:center;*//*text-align:inherit;*//*float:initial;*/width:100%;height:auto;margin-bottom:80px;font-size:53px;">Create a Profile</button></div>
+            <h2 class="text-center" style="margin-bottom:70px;font-size:53px;color:rgb(0,0,0);padding-top:30px;"><strong>Is there an ace up your sleeve?</strong></h2>
+          
+            
+             <%= button_tag "Job Hunter", onclick: "location.href='/pages/seeker_landing'",
+				  type: :button, class: "btn btn-default", id: "profile_button" do %>
+				  <%= t('Job Hunter')%>
+				<% end %>
+			<%= button_tag "Company", onclick: "location.href='/pages/employer_landing'",
+				  type: :button, class: "btn btn-default", id: "profile_button" do %>
+				  <%= t('Company')%>
+				<% end %>
+
+            </div>
     </div>
     <section class="features">
         <div class="container">

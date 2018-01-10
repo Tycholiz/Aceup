@@ -12,6 +12,7 @@
 	min-width:700px;
 	max-width:80%;
 	height:auto;
+	margin-top: 30px;
 }
 
 .hero_landing {
@@ -20,6 +21,35 @@
   border:none;
 }
 
+@media only screen and (max-device-width: 480px) {
+	.landing_img img {
+		min-width:50px;
+		height:auto;
+	}
+
+	#hunter_button {
+		max-width: 90%;
+		float: left;
+	}
+
+	#company_button {
+		max-width: 90%;
+		float: left;
+	}
+
+	#profile_button {
+
+		font-size: 20px;
+	}
+	.container {
+		width: auto;
+		overflow: hidden;
+	}
+
+	.article-list .item {
+		min-height: 350px;
+	}
+}
 @media (min-width:992px) {
   .hero_landing .get-it {
     text-align:right;
@@ -87,7 +117,7 @@
   color: #ffffff;
   background-color:#5d6466;
   border-color:#939799;
-      padding: 9px 12px 7px;
+    padding: 9px 12px 7px;
     border-width: 0 1px 4px 1px;
     font-size: 12px;
     font-weight: bold;
@@ -105,7 +135,7 @@
   color:#ffffff;
   background-color:#060606;
   border-color:#939799;
-      padding: 9px 12px 7px;
+    padding: 9px 12px 7px;
     border-width: 0 1px 4px 1px;
     font-size: 12px;
     font-weight: bold;
@@ -126,10 +156,13 @@
     text-transform: uppercase;
         /* padding: 9px 12px 7px; */
     border-width: 0 1px 4px 1px;
-    font-size: 12px;
     font-weight: bold;
     line-height: 1.5;
     text-transform: uppercase;
+    width:100%;
+    height:auto;
+    margin-bottom:80px;
+    font-size: 3em;
 }
 #profile_button:hover {
 	background-color:#28b62c;
