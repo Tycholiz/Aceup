@@ -144,7 +144,7 @@ Job.destroy_all
 100.times do
 	Job.create! [
 		title: Faker::Job.title,
-		employer_id: Faker::Number.between(3, 2),
+		employer_id: Faker::Number.between(1, 2),
 		jobType: ['part-time', 'full-time'].sample,
 		expiry: Time.now.advance(weeks: 2), 
 		temp: true,
