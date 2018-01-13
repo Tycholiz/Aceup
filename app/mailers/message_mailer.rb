@@ -8,6 +8,8 @@ class MessageMailer < ApplicationMailer
   def contact_me(message)
 	@greeting = "Hi"
 	@body = message.body
-	mail to: "nicholasgust@gmail.com", from: message.email
+	@email = message.email
+	@name = message.name
+	mail to: "contact@aceup.co", from: message.email
   end
 end
