@@ -1,10 +1,5 @@
 Rails.application.routes.draw do
 
-
-  get 'resumes/create'
-
-  get 'resumes/new'
-
   resources :jobs do
   	resources :applications
   end
@@ -25,6 +20,8 @@ Rails.application.routes.draw do
   end
 
   resources :sessions, only: [:new, :create, :destroy]
+
+  resources :messages, only: [:new, :create]
 
   get "/pages/:page" => "pages#show"
 

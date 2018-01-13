@@ -24,4 +24,4 @@
 !.elasticbeanstalk/*.global.yml
 
 #dot-env config file
-#.env
+.env
