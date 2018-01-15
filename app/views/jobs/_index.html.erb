@@ -1,19 +1,27 @@
-    <div class="container-fluid">
+    <div>
         <% if current_user.role == "Seeker" %>
           <% @matchJobs.each do |job| %>
             <% employer = Employer.where(id: job.employer_id).first %>
-            <div class="col-lg-6 col-xs-12 job_show">
-                <h2><%= link_to job.title, job_path(job) %></h2>
-                <div class="job_show_img">
-                    <%= image_tag(employer.logo_url.to_s) %>
+            <div class="job_show">
+                 <hr size="6" noshade>
+                <div class="job_show_header">
+                    <div class="job_show_img">
+                        <%= image_tag(employer.logo_url.to_s) %>
+                    </div>
+                    <div class="job_show_title">
+                        <h1><%= link_to job.title, job_path(job) %></h1>
+                        <h2><%= employer.compName %></h2>
+                        <h4><%= job.summary.truncate(300) %></h4>
+                    </div>
                 </div>
                 <div class="job_show_text">
-                    <h2>Company: <%= employer.compName %></h2>
-                    <h2>Location: <%= employer.city %></h2>
-                    <h2>Job Type: <%= job.jobType %></h2>
-                    <h3>Salary: <%= job.payHigh %></h3>
-                    <h3>Summary: <%= job.summary.truncate_words(15) %></h3>
+                    
+                    <h2>Job Type:&nbsp;</h2><%= job.jobType %> </br>
+                    <h2>Salary:&nbsp;</h2><%= number_to_currency(job.payHigh)   %> to <%= number_to_currency(job.payLow)   %> </br>
+                    <h2>Location:&nbsp;</h2><%= employer.city %> </br>
+                    
                 </div>
+
             </div>
           <% end %>
             <div style="clear: both">
