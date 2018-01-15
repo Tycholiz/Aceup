@@ -1,8 +1,8 @@
 <%= render 'header' %>
 <div class="row">
-	<div class="col-md-4">
+	<div class="col-md-4 col-xs-12">
 
-	        <nav id="sidebar">
+	        <nav id="sidebar" class="jobs_sidebar">
 	            <!-- Sidebar Header -->
 	            <div class="sidebar-header">
 	                <h3>FILTER</h3>
@@ -48,7 +48,23 @@
 
 	</div>
 
-	<div class="col-md-6">
+	<div class="col-md-6 col-xm-8">
 		<%= render 'jobs/index' %>
 	</div>
 </div>
+
+
+ <script>
+  $( function() {
+      var sidebar = $( "#sidebar" );
+
+      // sidebar.on('tap',function(){
+      	// sidebar.on('click',function(){
+      		// sidebar.on("click touchstart", function() {
+      	$(document).on('click', sidebar, function() {
+          sidebar.toggleClass("jobs_sidebar_expand"); 
+          console.log("sidebar tapped");
+      });
+         
+    });
+ </script>

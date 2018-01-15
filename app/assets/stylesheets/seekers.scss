@@ -160,31 +160,47 @@
 }
 
 
-// .wrapper {
-//         display: flex;
-// }
-
 #sidebar {
-        // min-width: 250px;
+
+        }
+
+.jobs_sidebar {
         border-radius: 15px;
         margin-left: 100px;
         max-width: 250px;
         height: 80vh;
         background-color: black;
-        // text-align: center;
-        // text-indent: 25px;
         color: white;
+        overflow: hidden;
+}
+
+@media screen and (max-width: 800px) {
+    .jobs_sidebar {
+      height: 8vh;
+      max-width: 90%;
+      margin-left: 10px;
+    }
+    .sidebar-header {
+      padding-top: 0px;
+    }
+    .sidebar-header h3 {
+       margin-top: -12px;
+    }
+
+    .jobs_sidebar_expand {
+      height: auto;
+      padding-bottom: 50px;
+    }
+
 }
 #sidebar select { 
   width: 80%;
   margin-left: 25px;
+  cursor:pointer;
   // padding: 10px;
   // background: #f8f8f8;
 }
 
-// #sidebar select option:hover {
-//     background-color: yellow;
-// }
 
 #sidebar h3 {
   margin-left: 25px;
