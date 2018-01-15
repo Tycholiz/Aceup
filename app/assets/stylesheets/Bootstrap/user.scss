@@ -532,7 +532,7 @@ html {
   text-decoration: none; color: black;
 }
 
-.job_show h2 {
+.job_show h3 {
   font-weight: bolder;
 }
 .job_show hr {
@@ -569,7 +569,7 @@ html {
   clear: both;
 }
 
-.job_show_text h2 {
+.job_show_text h3 {
   display: inline-block;
 }
 
@@ -598,4 +598,62 @@ html {
 
 .error {
   color: #d80404;
+}
+
+#save_jobs_button{
+    color: white;
+    background-color: #686868;
+    border-color: #686868;
+    font-weight: bold;
+    // line-height: 1.5;
+    min-width: 90px;
+    margin-right: 65px;
+    float: right;
+    font-size: 1em;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    // padding-right: 25px;
+}
+
+#save_jobs_button:hover {
+  background-color:#28b62c;
+  color: white;
+}
+
+@media screen and (max-width: 1000px) {
+  .job_show_img img {
+    max-height: 90%;
+    max-width: 90%;
+    padding: 20px 20px 20px 5px;
+  }
+
+  .job_show_img {
+    width: 25vw;
+    height: 25vw;
+    float: left;
+  }
+  .job_show_header {
+    max-height: 25vw;
+    overflow: hidden;
+  }
+
+  .job_show_header h1 {
+    font-size: 6vw;
+  }
+
+  .job_show_header h2 {
+    font-size: 5vw;
+  }
+
+  .job_show_header h4 {
+    display: none;
+  }
+  .job_show {
+  font-size: 4vw;
+  min-height: 60vw;
+  }
+  .job_show_text h3 {
+  font-size: 4vw;
+ }
+
 }

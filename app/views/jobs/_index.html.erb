@@ -16,10 +16,16 @@
                 </div>
                 <div class="job_show_text">
                     
-                    <h2>Job Type:&nbsp;</h2><%= job.jobType %> </br>
-                    <h2>Salary:&nbsp;</h2><%= number_to_currency(job.payHigh)   %> to <%= number_to_currency(job.payLow)   %> </br>
-                    <h2>Location:&nbsp;</h2><%= employer.city %> </br>
-                    
+                    <h3>Job Type:&nbsp;</h2><%= job.jobType %> </br>
+                        <h3>Pay Range:&nbsp;</h2><%= number_to_currency(job.payHigh)   %> to <%= number_to_currency(job.payLow)   %>                    
+                    <div>
+                        
+                        <%= button_tag "Save", onclick: "location.href='/pages/seeker_landing'",
+                          type: :button, class: "btn btn-default", id: "save_jobs_button" do %>
+                          <%= t("Save")%>
+                        <% end %> 
+                        <h3>Location:&nbsp;</h2><%= employer.city %> </br>
+                    </div>
                 </div>
 
             </div>

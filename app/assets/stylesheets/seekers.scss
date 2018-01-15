@@ -263,7 +263,7 @@
 
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1000px) {
     .jobs_sidebar {
       height: 50px;
       max-width: 90%;
@@ -287,7 +287,7 @@
 
     .dash_breadcrumb li {
       // font-size: 0.7em;    
-      font-size: 2.8vw;
+      font-size: 2.5vw;
     }
 
     .dash_breadcrumb {
@@ -298,7 +298,7 @@
        margin-left: 5px;
        margin-right: 5px;
        margin-top: 10px;
-       margin-bottom: 10px;
+       margin-bottom: 20px;
        padding: 5px 5px;
        height: 50px;
        width: 95%;
