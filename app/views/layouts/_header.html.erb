@@ -8,6 +8,9 @@
               <ul class="nav navbar-nav navbar-right">
                   <li role="presentation" class="active"><a href="/">Home </a></li>
                   <li role="presentation" class="active"><a href="/pages/about">About Us</a></li>
+                  <li role="presentation" class="active">
+                  <%= link_to "Contact Us", new_message_path%>
+                  </li>
                   <% if current_user %>
                     <li role="presentation">
                     <%= link_to "Log out", session_path("current"), method: :delete %>
