@@ -2,10 +2,11 @@
 <div class="dash_header">
 	<%= image_tag "up_logotrans.png", class: "dash_header_logo" %>
 	<ol class="breadcrumb dash_breadcrumb" id="dash_breadcrumb">
-		<li><%= link_to "dashboard", seeker_path(@seeker) %></li>
-		<li><%= link_to "edit profile", edit_seeker_path(@seeker) %></li>
-		<li><%= link_to "applied jobs", applied_seeker_path(@seeker) %></li>
-		<li><%= link_to "resumes", seeker_resumes_path(@seeker) if @seeker.resumes.first%></li>
+		<li><%= link_to "Current Jobs", seeker_path(@seeker) %></li>
+		<li><%= link_to "Applied Jobs", applied_seeker_path(@seeker) %></li>
+		<li><%= link_to "My Resumes", seeker_resumes_path(@seeker) if @seeker.resumes.first%></li>
+		<li><%= link_to "Saved Jobs" %></li>
+		<li><%= link_to "Edit Profile", edit_seeker_path(@seeker) %></li>
 	</ol>
 </div>
 
@@ -13,28 +14,27 @@
   $( function() {
    
     var url = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
-    console.log("header url test => "+ url);
+
     switch (url) {
       case 'applied':
-        console.log('applied');
-        $('#dash_breadcrumb li:contains("applied")').addClass("dash_breadcrumb_active");
-        $('#dash_breadcrumb a:contains("applied")').contents().unwrap();
+        activate("Applied Jobs");
       break;
       case 'resumes':
-      	console.log('resumes');
-        $('#dash_breadcrumb li:contains("resumes")').addClass("dash_breadcrumb_active");
-        $('#dash_breadcrumb a:contains("resumes")').contents().unwrap();
+        activate("My Resumes");
       break;
       case 'edit':
-      	console.log('edit');
-        $('#dash_breadcrumb li:contains("edit")').addClass("dash_breadcrumb_active");
-        $('#dash_breadcrumb a:contains("edit")').contents().unwrap();
+        activate("Edit Profile");
       break;
       default:
-        console.log('main dash');
-        $('#dash_breadcrumb li:contains("dashboard")').addClass("dash_breadcrumb_active");
-        $('#dash_breadcrumb a:contains("dashboard")').contents().unwrap();
+    		var link = ""
+        activate("Current Jobs");
     }
+
+    	function activate(link) {
+    	$('#dash_breadcrumb li:contains('+link+')').addClass("dash_breadcrumb_active");
+        $('#dash_breadcrumb a:contains('+link+')').contents().unwrap();
+        console.log(link);
+    	}
 
   });
 </script>

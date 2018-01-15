@@ -174,25 +174,6 @@
         overflow: hidden;
 }
 
-@media screen and (max-width: 800px) {
-    .jobs_sidebar {
-      height: 8vh;
-      max-width: 90%;
-      margin-left: 10px;
-    }
-    .sidebar-header {
-      padding-top: 0px;
-    }
-    .sidebar-header h3 {
-       margin-top: -12px;
-    }
-
-    .jobs_sidebar_expand {
-      height: auto;
-      padding-bottom: 50px;
-    }
-
-}
 #sidebar select { 
   width: 80%;
   margin-left: 25px;
@@ -280,4 +261,51 @@
   margin-top: 60px;
   margin-bottom: 40px;
 
+}
+
+@media screen and (max-width: 800px) {
+    .jobs_sidebar {
+      height: 50px;
+      max-width: 90%;
+      margin-left: 10px;
+    }
+    .sidebar-header {
+      padding-top: 10px;
+    }
+    .sidebar-header h3 {
+       margin-top: 0px;
+    }
+
+    .jobs_sidebar_expand {
+      height: auto;
+      padding-bottom: 50px;
+    }
+
+    .dash_header_logo {
+      display: none
+    }
+
+    .dash_breadcrumb li {
+      // font-size: 0.7em;    
+      font-size: 2.8vw;
+    }
+
+    .dash_breadcrumb {
+      padding-left: 10px;
+    }
+
+    .dash_header {
+       margin-left: 5px;
+       margin-right: 5px;
+       margin-top: 10px;
+       margin-bottom: 10px;
+       padding: 5px 5px;
+       height: 50px;
+       width: 95%;
+
+    }
+
+    .job_show {
+      margin-left: 15px;
+    }
 }
