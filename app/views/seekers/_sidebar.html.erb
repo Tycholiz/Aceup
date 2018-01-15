@@ -1,0 +1,59 @@
+<nav id="sidebar" class="jobs_sidebar">
+    <!-- Sidebar Header -->
+    <div class="sidebar-header">
+        <h3>FILTER</h3>
+        <hr>
+    </div>
+
+   <div class="sidebar-main">
+        <h3>Minimum Years of Experience:</h3>
+        <form>
+        	<!-- <div class="styled-select slate"> -->
+                <select name="cars" class="form-control">
+				  <option value="volvo">Volvo</option>
+				  <option value="saab">Saab</option>
+				  <option value="fiat">Fiat</option>
+				  <option value="audi">Audi</option>
+				</select>
+			<!-- </div> -->
+		
+		</br>
+        <h3>Sales Skills:</h3>
+        
+            <select name="cars" class="form-control">
+			  <option value="volvo">Volvo</option>
+			  <option value="saab">Saab</option>
+			  <option value="fiat">Fiat</option>
+			  <option value="audi">Audi</option>
+			</select>
+		
+		</br>
+        <h3>Minimum Pay:</h3>
+        
+            <select name="cars" class="form-control">
+			  <option value="volvo">Volvo</option>
+			  <option value="saab">Saab</option>
+			  <option value="fiat">Fiat</option>
+			  <option value="audi">Audi</option>
+			</select>
+		<br><br>
+				<button type="submit" class="btn btn-default" id="filter_button">Filter Results</button>
+		</form>
+    </div>
+</nav>
+
+
+ <script>
+  $( function() {
+      var sidebar = $( "#sidebar" );
+
+      // sidebar.on('tap',function(){
+      	// sidebar.on('click',function(){
+      		// sidebar.on("click touchstart", function() {
+      	$(document).on('click', sidebar, function() {
+          sidebar.toggleClass("jobs_sidebar_expand"); 
+          console.log("sidebar tapped");
+      });
+         
+    });
+ </script>

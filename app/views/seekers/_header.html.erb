@@ -1,11 +1,40 @@
  <% user = User.where(id: @seeker.user_id).first %>
- <%= user.email %>
- <%= user.firstName %>
-<div class="container ">
-	<ol class="breadcrumb">
+<div class="dash_header">
+	<%= image_tag "up_logotrans.png", class: "dash_header_logo" %>
+	<ol class="breadcrumb dash_breadcrumb" id="dash_breadcrumb">
 		<li><%= link_to "dashboard", seeker_path(@seeker) %></li>
 		<li><%= link_to "edit profile", edit_seeker_path(@seeker) %></li>
-		<li class="active"><%= link_to "applied jobs", applied_seeker_path(@seeker) %></li>
+		<li><%= link_to "applied jobs", applied_seeker_path(@seeker) %></li>
 		<li><%= link_to "resumes", seeker_resumes_path(@seeker) if @seeker.resumes.first%></li>
 	</ol>
 </div>
+
+<script>
+  $( function() {
+   
+    var url = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
+    console.log("header url test => "+ url);
+    switch (url) {
+      case 'applied':
+        console.log('applied');
+        $('#dash_breadcrumb li:contains("applied")').addClass("dash_breadcrumb_active");
+        $('#dash_breadcrumb a:contains("applied")').contents().unwrap();
+      break;
+      case 'resumes':
+      	console.log('resumes');
+        $('#dash_breadcrumb li:contains("resumes")').addClass("dash_breadcrumb_active");
+        $('#dash_breadcrumb a:contains("resumes")').contents().unwrap();
+      break;
+      case 'edit':
+      	console.log('edit');
+        $('#dash_breadcrumb li:contains("edit")').addClass("dash_breadcrumb_active");
+        $('#dash_breadcrumb a:contains("edit")').contents().unwrap();
+      break;
+      default:
+        console.log('main dash');
+        $('#dash_breadcrumb li:contains("dashboard")').addClass("dash_breadcrumb_active");
+        $('#dash_breadcrumb a:contains("dashboard")').contents().unwrap();
+    }
+
+  });
+</script>
