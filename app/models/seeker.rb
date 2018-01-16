@@ -4,6 +4,7 @@ class Seeker < ApplicationRecord
 	has_one :skill
 	has_many :applications
 	has_many :resumes
+	has_many :saved_jobs
 
 	serialize :languages
 	serialize :certifications

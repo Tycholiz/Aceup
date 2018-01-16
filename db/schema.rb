@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180102000041) do
+ActiveRecord::Schema.define(version: 20180116001623) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -117,6 +117,24 @@ ActiveRecord::Schema.define(version: 20180102000041) do
     t.index ["seeker_id"], name: "index_resumes_on_seeker_id"
   end
 
+  create_table "saved_jobs", force: :cascade do |t|
+    t.bigint "seeker_id"
+    t.bigint "job_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["job_id"], name: "index_saved_jobs_on_job_id"
+    t.index ["seeker_id"], name: "index_saved_jobs_on_seeker_id"
+  end
+
+  create_table "saves", force: :cascade do |t|
+    t.bigint "seeker_id"
+    t.bigint "job_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["job_id"], name: "index_saves_on_job_id"
+    t.index ["seeker_id"], name: "index_saves_on_seeker_id"
+  end
+
   create_table "seekers", force: :cascade do |t|
     t.bigint "user_id"
     t.string "postalCode"
@@ -167,5 +185,9 @@ ActiveRecord::Schema.define(version: 20180102000041) do
   add_foreign_key "employers", "users"
   add_foreign_key "jobs", "employers"
   add_foreign_key "resumes", "seekers"
+  add_foreign_key "saved_jobs", "jobs"
+  add_foreign_key "saved_jobs", "seekers"
+  add_foreign_key "saves", "jobs"
+  add_foreign_key "saves", "seekers"
   add_foreign_key "seekers", "users"
 end

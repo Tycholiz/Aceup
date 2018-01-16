@@ -28,6 +28,6 @@
     <p>Updated: <%= @job.updated_at %><p>
     
    
-
+    <%= button_to "Save",new_job_saved_job_path(@job), :method => "get" %>
     <%= button_to "Apply",new_job_application_path(@job), :method => "get" %>
   

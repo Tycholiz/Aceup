@@ -1,7 +1,16 @@
 Rails.application.routes.draw do
 
+  get 'saved_jobs/new'
+
+  get 'saved_jobs/create'
+
+  get 'saved_jobs/delete'
+
+  get 'saved_jobs/update'
+
   resources :jobs do
   	resources :applications
+    resources :saved_jobs
   end
 
   resources :users, only: [:new, :create]
@@ -10,6 +19,7 @@ Rails.application.routes.draw do
     resources :resumes, only: [:index, :new, :create]
   	member do
   		get  :applied
+      get  :saved_jobs
   	end
   end
 
