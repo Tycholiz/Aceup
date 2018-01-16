@@ -23,6 +23,6 @@ class SessionsController < ApplicationController
 
     def destroy
       session[:user_id] = nil
-      redirect_to jobs_path, notice: "Adios, #{user.firstName}!"
+      redirect_to jobs_path, notice: "Adios!"
     end
 end
