@@ -6,7 +6,7 @@ class ResumesController < ApplicationController
   	@resume.seeker_id = @seeker.id
 
   	if @resume.save
-          redirect_to seeker_resumes_path, notice: "Resume created successfully"
+          redirect_to seeker_resumes_path, success: "Resume created successfully"
         else
           render :new
         end
@@ -25,7 +25,7 @@ class ResumesController < ApplicationController
   def destroy
     @resume = Resume.find(params[:id])
     @resume.destroy
-    redirect_to seekers_path, notice:  "The resume #{@resume.name} has been deleted."
+    redirect_to seekers_path, alert:  "The resume #{@resume.name} has been deleted."
   end
 
   def index

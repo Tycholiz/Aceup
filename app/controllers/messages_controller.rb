@@ -11,7 +11,7 @@ class MessagesController < ApplicationController
 	      flash[:success] = "Message received, thanks!"
 	      redirect_to root_path
 	    else
-	      flash[:notice] = "There was an error sending your message."
+	      flash[:error] = "There was an error sending your message."
 	      render :new
 	    end
 	  end

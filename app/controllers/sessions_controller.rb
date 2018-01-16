@@ -10,10 +10,10 @@ class SessionsController < ApplicationController
         session[:user_id] = user.id
         if user.role == "Employer"
           employer = Employer.where(user_id: current_user.id).first
-          redirect_to employer_path(employer), notice: "Welcome back, #{user.firstName}!"
+          redirect_to employer_path(employer), success: "Welcome back, #{user.firstName}!"
         else 
           seeker = Seeker.where(user_id: current_user.id).first
-          redirect_to seeker_path(seeker), notice: "Welcome back, #{user.firstName}!"
+          redirect_to seeker_path(seeker), success: "Welcome back, #{user.firstName}!"
         end
       else
         flash.now[:alert] = "Log in failed..."
@@ -23,6 +23,6 @@ class SessionsController < ApplicationController
 
     def destroy
       session[:user_id] = nil
-      redirect_to jobs_path, notice: "Adios!"
+      redirect_to jobs_path, notice: "Adios, #{user.firstName}!"
     end
 end

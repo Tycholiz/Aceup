@@ -21,7 +21,8 @@ class SavedJobsController < ApplicationController
   	@seeker = Seeker.where(user_id: current_user.id).first
   	@saved_job = SavedJob.find(params[:id])
     @saved_job.destroy
-    redirect_to saved_jobs_seeker_path(@seeker), notice: "Saved job deleted, #{current_user.firstName}!"
+    flash[:alert] = "Saved job deleted, #{current_user.firstName}!"
+    redirect_to saved_jobs_seeker_path(@seeker)
   end
 
   def update

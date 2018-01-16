@@ -8,7 +8,7 @@ class SeekersController < ApplicationController
     @seeker.user_id = current_user.id
 
     if @seeker.save
-      redirect_to seeker_resumes_path(@seeker), notice: "Welcome aboard, add a resume"
+      redirect_to seeker_resumes_path(@seeker), success: "Welcome aboard, add a resume"
     else
       render :new
     end

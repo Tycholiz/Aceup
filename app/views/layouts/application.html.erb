@@ -17,9 +17,16 @@
     <% else %>
       <div id="main_bg">
     <% end %>
-      	<% flash.each do |key, value| %>
-            <%= content_tag(:div, value) %>
+      	
+
+        <% flash.each do |type, message| %>
+          <div class="alert <%= bootstrap_class_for(type) %> fade in">
+            <%= message %>
+          </div>
         <% end %>
+
+
+
         <%= yield %>
         <% unless current_page?(root_path) %>
           <%= render 'layouts/footer' %>
