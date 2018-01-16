@@ -1,20 +1,31 @@
 .register-photo {
   background: #f1f7fc;
   padding: 80px 0;
+   // background-size: 90%;
+   
+
+  // height: 60vh;
   .image-holder {
     display: table-cell;
-    width: 322px;
+    max-width: 500px;
+    min-width: 350px;
     background: image-url("up_logotrans.png");
     background-repeat: no-repeat;
-    background-size: 400px;
-    height: 500px;
+    background-size: contain;
+    max-height: 500px;
+    min-height: 350px;
+    // float: left;
+    margin-right: 25px;
+
   }
   .form-container {
     display: table;
     max-width: 900px;
-    width: 90%;
+    min-width: 200px;
+    // float: left;
     margin: 0 auto;
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+    // margin-right: 25px;
   }
   form {
     display: table-cell;
@@ -22,6 +33,7 @@
     background-color: #ffffff;
     padding: 40px 60px;
     color: #505e6c;
+    float: left;
     h2 {
       font-size: 24px;
       line-height: 1.5;
@@ -70,8 +82,24 @@
   }
 }
 
-@media (max-width: 991px) {
+@media screen and (max-width: 800px) {
   .register-photo form {
     padding: 40px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 2px solid black;
+    width: 85vw;
+    max-width: 400px;
+  }
+  .register-photo {
+    background: image-url("up_logotrans.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center; 
+    // height: 100vw;
+
+  }
+  .image-holder {
+    display: none !important;
+    background-size: 0%;
   }
 }
