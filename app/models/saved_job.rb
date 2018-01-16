@@ -4,7 +4,7 @@ class SavedJob < ApplicationRecord
 
   	validates :job_id,
 	presence: true,
-	uniqueness: { message: "You can only apply once!" }
+	uniqueness: { message: "You can only save once!" }
 
 	validates :seeker_id,
 	presence: true

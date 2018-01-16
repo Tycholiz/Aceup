@@ -26,6 +26,6 @@ class ApplicationsController < ApplicationController
 
   def update
     @seeker = Seeker.where(user_id: current_user.id).first
-    redirect_to seeker_path(@seeker), notice: "Application Saved, #{current_user.firstName}!"
+    redirect_to seeker_path(@seeker), notice: "Application Updated, #{current_user.firstName}!"
   end
 end

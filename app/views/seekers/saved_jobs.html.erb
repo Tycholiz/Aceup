@@ -1,7 +1,11 @@
-    <div>
-        <% if current_user.role == "Seeker" %>
-          <% @matchJobs.each do |job| %>
-            <% employer = Employer.where(id: job.employer_id).first %>
+<%= render 'header' %>
+
+<% @savedJobsList.each do |job| %>
+        <% employer = Employer.where(id: job.employer_id).first %>
+        <% @seeker = Seeker.where(user_id: current_user.id).first %>
+         <% @saved_job_delete = SavedJob.where(seeker_id: @seeker.id, job_id: job.id).first %>
+       
+        
             <div class="job_show">
                  <hr size="6" noshade>
                 <div class="job_show_header">
@@ -12,6 +16,7 @@
                         <h1><%= link_to job.title, job_path(job) %></h1>
                         <h2><%= employer.compName %></h2>
                         <h4><%= job.summary.truncate(300) %></h4>
+ 
                     </div>
                 </div>
                 <div class="job_show_text">
@@ -20,20 +25,16 @@
                         <h3>Pay Range:&nbsp;</h3><%= number_to_currency(job.payHigh)   %> to <%= number_to_currency(job.payLow)   %>                    
                     <div>
 
-                    <%= button_to "Save",new_job_saved_job_path(job), :method => "get",  class: "btn btn-default", id: "save_jobs_button" %>
+
+                     	<%= button_to "delete", job_saved_job_path(:id => @saved_job_delete.id, :job_id => job.id), :method => :delete,  class: "btn btn-default", id: "save_jobs_button" %>
+
                         
                       <h3>Location:&nbsp;</h3><%= employer.city %> </br>
                     </div>
                 </div>
 
             </div>
-          <% end %>
-            <div style="clear: both">
-                <%= paginate @matchJobs %>
-                <%= page_entries_info @matchJobs %>
-            </div>
-            <hr>
-        <% else %>
-            <h2>You need to be a seeker</h2>
-        <% end %>
-    </div>
+
+
+
+      <% end %>

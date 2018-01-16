@@ -71,6 +71,16 @@ class SeekersController < ApplicationController
     end
   end
 
+  def saved_jobs
+    @seeker  = Seeker.find(params[:id])
+    @savedJobsSeeker = SavedJob.where(seeker_id: @seeker.id)
+    @savedJobsList = Array.new
+    @savedJobsSeeker.each do |saved|
+      job = Job.where(id: saved.job_id).first
+      @savedJobsList.push job
+    end
+  end
+
   protected
 
   def seeker_params
