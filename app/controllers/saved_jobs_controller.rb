@@ -5,6 +5,7 @@ class SavedJobsController < ApplicationController
     @saved_job = @job.saved_jobs.build
     @saved_job.seeker_id = @seeker.id
     @saved_job.save
+    redirect_to seeker_path(@seeker), notice: "Saved job created, #{current_user.firstName}!"
   end
 
   def create
@@ -20,7 +21,7 @@ class SavedJobsController < ApplicationController
   	@seeker = Seeker.where(user_id: current_user.id).first
   	@saved_job = SavedJob.find(params[:id])
     @saved_job.destroy
-    redirect_to saved_jobs_seeker_path, notice: "Saved job deleted, #{current_user.firstName}!"
+    redirect_to saved_jobs_seeker_path(@seeker), notice: "Saved job deleted, #{current_user.firstName}!"
   end
 
   def update
