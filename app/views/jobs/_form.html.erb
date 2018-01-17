@@ -225,21 +225,28 @@
           console.log(ui.values[1]);
         }
       });
-     var checkbox = $(".ck-button :checkbox")
+      var checkbox = $(".ck-button :checkbox");
+      var ckbutton = $(".ck-button");
+
       checkbox.each(function() {
           if ($(this).is(":checked")) {
             $(this).parent().addClass("ck-button_bg");
           }
       });
-      // var custom_event = $.support.touch ? "touchstart" : "click";
-      checkbox.on('tap', function(e){
-        $(this).parent().addClass("ck-button_bg");
-        if($(this).is(":checked")){
-          $(this).parent().addClass("ck-button_bg"); 
+      ckbutton.on('tap',function(){
+        console.log("tapped");
+        var childCheck = $(this).find("[type='checkbox']")
+        if (childCheck.is(":checked")) {
+          childCheck.prop('checked', false);
+          $(this).removeClass("ck-button_bg");  
+           
         }else{
-          $(this).parent().removeClass("ck-button_bg");  
+          childCheck.prop('checked', true);
+          $(this).addClass("ck-button_bg");
+          
         }
         });
+         
 
     } );
  </script>

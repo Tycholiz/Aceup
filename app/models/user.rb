@@ -6,7 +6,8 @@ class User < ApplicationRecord
 	has_one :employer
 
 	validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create },
-	presence: true
+	presence: true,
+	uniqueness: true
 
 	validates :firstName,
 	presence: true
@@ -14,7 +15,7 @@ class User < ApplicationRecord
 	validates :lastName,
 	presence: true
 
-	validates :phoneNo, format: { with: /\d{3}-\d{3}-\d{4}/, message: "Phone number invalid, must be xxx-xxx-xxxx"}
+	validates :phoneNo, format: { with: /\d{3}-\d{3}-\d{4}/, message: "Phone number invalid, must be xxx-xxx-xxxx"}, if: 'phoneNo.present?'
 	# validates :phoneNo,
 	# presence: true
 
