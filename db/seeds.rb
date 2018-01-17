@@ -20,7 +20,7 @@ User.create! [
 	password_confirmation: password,
 	firstName: "Employer",
 	lastName:  "Name",
-	phoneNo:  Faker::PhoneNumber.cell_phone,
+	# phoneNo:  Faker::PhoneNumber.cell_phone,
 	role:  "Employer"
 ]
 
@@ -31,7 +31,7 @@ User.create! [
 	password_confirmation: password,
 	firstName: "Employer2",
 	lastName:  "Name2",
-	phoneNo:  Faker::PhoneNumber.cell_phone,
+	# phoneNo:  Faker::PhoneNumber.cell_phone,
 	role:  "Employer"
 ]
 
@@ -41,7 +41,7 @@ User.create! [
 	password_confirmation: password,
 	firstName: "Super",
 	lastName:  "Seeker",
-	phoneNo:  Faker::PhoneNumber.cell_phone,
+	# phoneNo:  Faker::PhoneNumber.cell_phone,
 	role:  "Seeker"
 ]
 
@@ -51,7 +51,7 @@ User.create! [
 	password_confirmation: password,
 	firstName: "Normal",
 	lastName:  "Seeker",
-	phoneNo:  Faker::PhoneNumber.cell_phone,
+	# phoneNo:  Faker::PhoneNumber.cell_phone,
 	role:  "Seeker"
 ]
 
@@ -66,6 +66,7 @@ Employer.create! [
 	compSize: Faker::Number.between(1, 1000),
 	city: Faker::Address.city,
 	compDesc: Faker::RickAndMorty.quote,
+	logo: File.open(Dir['public/uploads/employer/logo/2/*.png'].sample)
 ]
 
 Employer.create! [
@@ -74,6 +75,7 @@ Employer.create! [
 	compSize: Faker::Number.between(1, 1000),
 	city: Faker::Address.city,
 	compDesc: Faker::RickAndMorty.quote,
+	logo: File.open(Dir['public/uploads/employer/logo/1/*.png'].sample)
 ]
 
 p "Created #{Employer.count} employers"
@@ -87,6 +89,7 @@ Seeker.create! [
 	degree: Faker::Beer.style,
 	inSales: 10,
 	outSales: 10,
+	hasVehicle: true,
 	inboundSales: true,
 	outboundSales: true,
 	coldCall: true,
@@ -116,6 +119,7 @@ Seeker.create! [
 	degree: Faker::Beer.style,
 	inSales: Faker::Number.between(1, 5),
 	outSales: Faker::Number.between(1, 5),
+	hasVehicle: Faker::Boolean.boolean,
 	inboundSales: Faker::Boolean.boolean,
 	outboundSales: Faker::Boolean.boolean,
 	coldCall: Faker::Boolean.boolean,
@@ -147,7 +151,9 @@ Job.destroy_all
 		employer_id: Faker::Number.between(1, 2),
 		jobType: ['part-time', 'full-time'].sample,
 		expiry: Time.now.advance(weeks: 2), 
-		temp: true,
+		temp: false,
+		status: "active",
+		hasVehicle: Faker::Boolean.boolean,
 		salary: ['Salary', 'Hourly', 'Commission'].sample,
 		payLow: Faker::Number.between(20000, 50000),
 		payHigh: Faker::Number.between(50000, 100000),

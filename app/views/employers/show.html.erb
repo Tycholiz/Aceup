@@ -29,3 +29,16 @@
     </table>
   </div>
 </div>
+
+<script>
+  $( function() {
+    $('td').each(function() {
+      test = $(this);
+      if (test.html() == "active"){
+        test.css("color","green");
+      } else if (test.html() == "inactive"){
+        test.css("color","red");
+      }
+    });
+  });
+</script>

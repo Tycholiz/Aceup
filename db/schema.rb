@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 20180116001623) do
     t.string "status"
     t.boolean "temp"
     t.boolean "driversLicence"
-    t.boolean "hasVehicle?"
+    t.boolean "hasVehicle"
     t.string "salary"
     t.integer "payLow"
     t.integer "payHigh"
@@ -126,15 +126,6 @@ ActiveRecord::Schema.define(version: 20180116001623) do
     t.index ["seeker_id"], name: "index_saved_jobs_on_seeker_id"
   end
 
-  create_table "saves", force: :cascade do |t|
-    t.bigint "seeker_id"
-    t.bigint "job_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["job_id"], name: "index_saves_on_job_id"
-    t.index ["seeker_id"], name: "index_saves_on_seeker_id"
-  end
-
   create_table "seekers", force: :cascade do |t|
     t.bigint "user_id"
     t.string "postalCode"
@@ -142,7 +133,7 @@ ActiveRecord::Schema.define(version: 20180116001623) do
     t.text "certifications"
     t.string "degree"
     t.boolean "driversLicence"
-    t.boolean "hasVehicle?"
+    t.boolean "hasVehicle"
     t.integer "inSales"
     t.integer "outSales"
     t.boolean "inboundSales"
@@ -187,7 +178,5 @@ ActiveRecord::Schema.define(version: 20180116001623) do
   add_foreign_key "resumes", "seekers"
   add_foreign_key "saved_jobs", "jobs"
   add_foreign_key "saved_jobs", "seekers"
-  add_foreign_key "saves", "jobs"
-  add_foreign_key "saves", "seekers"
   add_foreign_key "seekers", "users"
 end

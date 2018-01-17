@@ -8,7 +8,7 @@ class CreateJobs < ActiveRecord::Migration[5.1]
       t.string :status
       t.boolean :temp
       t.boolean :driversLicence
-      t.boolean :hasVehicle?
+      t.boolean :hasVehicle
       t.string :salary
       t.integer :payLow
       t.integer :payHigh

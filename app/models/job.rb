@@ -1,8 +1,8 @@
 class Job < ApplicationRecord
 
       belongs_to :employer
-      has_many :applications
-      has_many :saved_jobs
+      has_many :applications, dependent: :destroy
+      has_many :saved_jobs, dependent: :destroy
 
       serialize :languages
       serialize :certifications
@@ -23,8 +23,8 @@ class Job < ApplicationRecord
       validates :title,
         presence: true
 
-      validates :temp,
-        presence: true
+      # validates :temp,
+      #   presence: true
 
       validates :languages,
         presence: true
