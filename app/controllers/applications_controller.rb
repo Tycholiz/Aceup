@@ -25,7 +25,10 @@ class ApplicationsController < ApplicationController
   end
 
   def update
+    @application = Application.find(params[:id])
     @seeker = Seeker.where(user_id: current_user.id).first
+    # @application.resume = params[:resume]
+    @application.update_attributes(params.require(:application).permit(:resume))
     redirect_to seeker_path(@seeker), notice: "Application Updated, #{current_user.firstName}!"
   end
 end

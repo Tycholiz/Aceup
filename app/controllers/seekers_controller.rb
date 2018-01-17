@@ -54,6 +54,11 @@ class SeekersController < ApplicationController
   def public
     @seeker  = Seeker.find(params[:id])
     @user = User.where(id: @seeker.user_id).first
+    app_id = params[:application]
+    @application = Application.where(id: app_id).first
+    @resume = Resume.where(id: @application.resume).first
+    skillsParams = [:driversLicence, :hasVehicle, :coldCall, :doorToDoor, :custService, :acctManagment,:negotiation, :presenting, :leadership, :closing, :hunterBased, :farmerBased, :commBased, :B2C, :B2B]
+    @seekSkills = @seeker.slice(*skillsParams).select {|key, value| value == true }
   end
 
    def update

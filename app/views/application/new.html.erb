@@ -17,11 +17,13 @@
 
   <div>
     <p>Select Resume</p>
-    <% options = options_from_collection_for_select(@seeker.resumes, 'title', 'title') %>
+    <% options = options_from_collection_for_select(@seeker.resumes, 'id', 'title') %>
     <%= f.select :resume,  options %>
   </div>
   <div><%= f.submit "Submit" %></div>
 
 <% end %>
+
+<%= debug params %>
 
   <%= button_to "Return to jobs",seeker_path(@seeker), :method => "get" %>
