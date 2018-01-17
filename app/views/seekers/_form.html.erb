@@ -15,6 +15,7 @@
           <div>
             <%= f.label :postalCode, "Postal Code" %><br>
             <%= f.text_field :postalCode, class: "form-control" %>
+            <p>(this will be used only to aid the matching process)</p>
             <p class='error'><%= show_errors(@seeker, :postalCode) %></p>
           </div>
           <div class="editor">
@@ -157,11 +158,6 @@
       var outboundCheck = $('#seeker_outboundSales')
       inboundCheck.prop("disabled", true).parent().addClass("disabled-button_bg");
       outboundCheck.prop("disabled", true).parent().addClass("disabled-button_bg");
-
-      var driversLicence = $('#seeker_driversLicence').find("[type='checkbox']")
-      if (driversLicence.prop('checked', false)) {
-        $('#seeker_hasVehicle').prop("disabled", true).parent().addClass("disabled-button_bg");
-      }
       
       $("#seeker_inSales").val(0);
       $("#seeker_outSales").val(0);
@@ -211,6 +207,15 @@
             $(this).parent().addClass("ck-button_bg");
           }
       });
+
+      var driversLicence = $('#seeker_driversLicence').closest("div").find("[type='checkbox']")
+      if (driversLicence.is(":checked")) {
+        $('#seeker_hasVehicle').prop("disabled", false).parent().removeClass("disabled-button_bg"); 
+      } else if (driversLicence.not(":checked")) {
+        $('#seeker_hasVehicle').prop("disabled", true).parent().addClass("disabled-button_bg");
+      }
+
+
       ckbutton.on('tap',function(){
         console.log("tapped");
         var childCheck = $(this).find("[type='checkbox']")

@@ -14,7 +14,7 @@ class Seeker < ApplicationRecord
         model.certifications.reject!(&:blank?) if model.certifications
       end
 
-	validates :postalCode,
+	validates :postalCode, format: { with: /\A[ABCEGHJKLMNPRSTVXY]{1}\d{1}[A-Z]{1}[ -]?\d{1}[A-Z]{1}\d{1}\z/, message: "Postal code invalid, must be (X1X 1X1)", on: :create },
 	presence: true
 
 	validates :languages,
