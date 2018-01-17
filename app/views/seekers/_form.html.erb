@@ -14,7 +14,7 @@
           </div>
           <div>
             <%= f.label :postalCode, "Postal Code" %><br>
-            <%= f.text_field :postalCode, class: "form-control" %>
+            <%= f.text_field :postalCode, :value => f.object.postalCode.upcase, class: "form-control" %>
             <p>(this will be used only to aid the matching process)</p>
             <p class='error'><%= show_errors(@seeker, :postalCode) %></p>
           </div>

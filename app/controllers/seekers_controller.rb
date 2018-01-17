@@ -6,7 +6,7 @@ class SeekersController < ApplicationController
   def create
     @seeker = Seeker.new(seeker_params)
     @seeker.user_id = current_user.id
-
+    # @seeker.postalCode = params[:postalCode].upcase
     if @seeker.save
       redirect_to seeker_resumes_path(@seeker), success: "Welcome aboard, add a resume"
     else
