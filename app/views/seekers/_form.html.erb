@@ -1,7 +1,7 @@
 
     <div class="register-photo">
       <div class="form-container">
-         <%= form_for @seeker do |f| %>
+         <%= form_for @seeker, :html => {:class => 'profile_form'} do |f| %>
           <i class="material-icons">person_pin_circle</i>
           <div class="editor">
                <h1>Profile Editor</h1> <!--***Changed wording here -->
@@ -14,7 +14,7 @@
           </div>
           <div>
             <%= f.label :postalCode, "Postal Code" %><br>
-            <%= f.text_field :postalCode %>
+            <%= f.text_field :postalCode, class: "form-control" %>
             <p class='error'><%= show_errors(@seeker, :postalCode) %></p>
           </div>
           <div class="editor">
@@ -25,12 +25,12 @@
           </div>
           <div>
             <%= f.label :educationLevel, "Education Level" %><br>
-            <%= f.select :educationLevel, ['High School', 'Some Postsecondary Experience', 'Bachelors', 'Masters', 'PhD'] %>
+            <%= f.select :educationLevel, ['High School', 'Some Postsecondary Experience', 'Bachelors', 'Masters', 'PhD'], {}, { class: "form form-group form-control" } %>
           </div>
           <hr>
           <div>
             <%= f.label :certifications, "Certifications (Hold CTRL to select multiple)" %><br>
-            <%= f.select :certifications, ['VSA', 'CFA (level 1)', 'CFA (level 2)', 'CFA (level 3)', 'CSC', 'CIP', 'LLQP', 'CAIB', 'Insurance Broker (level 1)', 'Insurance Broker (level 2)', 'Insurance Broker (level 3)'], {prompt: "Select Certifications"},{:multiple => true, class: "input-lg"}%>
+            <%= f.select :certifications, ['VSA', 'CFA (level 1)', 'CFA (level 2)', 'CFA (level 3)', 'CSC', 'CIP', 'LLQP', 'CAIB', 'Insurance Broker (level 1)', 'Insurance Broker (level 2)', 'Insurance Broker (level 3)'], {prompt: "Select Certifications"},{:multiple => true, class: "form-control multi-select"}%>
           </div>
           <div class="row">
             <div class="ck-button">
@@ -138,7 +138,7 @@
           </div>
           <div>
             <%= f.label :languages, "Hold CTRL to select multiple" %><br>
-            <%= f.select :languages, [ ["English", "English"], ["French", "French"], ["Korean", "Korean"], ["Mandarin", "Mandarin"], ["Punjabi", "Punjabi"], ["Spanish", "Spanish"], ["Arabic", "Arabic"], ["Cantonese", "Cantonese"]], {prompt: "Select Languages"},{:multiple => true, class: "input-lg"} %>
+            <%= f.select :languages, [ ["English", "English"], ["French", "French"], ["Korean", "Korean"], ["Mandarin", "Mandarin"], ["Punjabi", "Punjabi"], ["Spanish", "Spanish"], ["Arabic", "Arabic"], ["Cantonese", "Cantonese"]], {prompt: "Select Languages"},{:multiple => true, class: "form-control multi-select"} %>
               <p class='error'><%= show_errors(@seeker, :languages) %></p>
           </div>
 
