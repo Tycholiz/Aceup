@@ -1,12 +1,48 @@
- <div class="employer_img">
-    <%= image_tag(@employer.logo_url.to_s) %>
-</div>
-<div class="container">
-	<ol class="breadcrumb">
-		<li><%= link_to "dashboard", employer_path(@employer) %></li>
-		<li><%= link_to "profile", edit_employer_path(@employer) %></li>
-		<li class="active"><%= link_to "new posting", new_job_path %></li>
-		<li><%= link_to "applications", applications_employer_path(@employer) %></li>
+
+ 
+<% if @employer %>
+	<% user = User.where(id: @employer.user_id).first %>
+<% else %>
+	<% user = User.where(id: current_user.id).first %> 
+	<% @employer = Employer.where(user_id: user.id).first %>
+<% end %>
+
+<div class="dash_header">
+	<%= image_tag @employer.logo_url.to_s, class: "dash_header_logo" %>
+	<ol class="breadcrumb dash_breadcrumb" id="dash_breadcrumb">
+		<li><%= link_to "Current Jobs", employer_path(@employer) %></li>
+		<li><%= link_to "Edit Profile", edit_employer_path(@employer) %></li>
+		<li class="active"><%= link_to "New Posting", new_job_path %></li>
+		<li><%= link_to "Applications", applications_employer_path(@employer) %></li>
 	</ol>
 	
 </div>
+
+<script>
+  $( function() {
+   
+    var url = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
+
+    switch (url) {
+      case 'applications':
+        activate("Applications");
+      break;
+      case 'new':
+        activate("New Posting");
+      break;
+      case 'edit':
+        activate("Edit Profile");
+      break;
+      default:
+    		var link = ""
+        activate("Current Jobs");
+    }
+
+    	function activate(link) {
+    	$('#dash_breadcrumb li:contains('+link+')').addClass("dash_breadcrumb_active");
+        $('#dash_breadcrumb a:contains('+link+')').contents().unwrap();
+        console.log(link);
+    	}
+
+  });
+</script>
