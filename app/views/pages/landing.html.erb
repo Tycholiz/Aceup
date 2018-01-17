@@ -45,10 +45,16 @@
 				  type: :button, class: "btn btn-default", id: "profile_button" do %>
 				  <%= t('Job Hunter')%>
 				<% end %>
-			<%= button_tag "Company", onclick: "location.href='/pages/employer_landing'",
-				  type: :button, class: "btn btn-default", id: "profile_button" do %>
-				  <%= t('Company')%>
-				<% end %>
+                <div style="align-content:center;display:flex;justify-content:center;margin-top:-70px;margin-bottom:50px;">
+                    Returning user?&nbsp;&nbsp;<%= link_to "Log In", new_session_path %>
+                </div>
+            <%= button_tag "Company", onclick: "location.href='/pages/employer_landing'",
+                  type: :button, class: "btn btn-default", id: "profile_button" do %>
+                  <%= t('Company')%>
+                <% end %>
+                <div style="align-content:center;display:flex;justify-content:center;margin-top:-70px;margin-bottom:50px;">
+                    Returning user?&nbsp;&nbsp;<%= link_to "Log In", new_session_path %>
+                </div>
 
             </div>
     </div>
