@@ -51,6 +51,11 @@ class SeekersController < ApplicationController
     @seeker  = Seeker.find(params[:id])
   end
 
+  def public
+    @seeker  = Seeker.find(params[:id])
+    @user = User.where(id: @seeker.user_id).first
+  end
+
    def update
     @seeker = Seeker.find(params[:id])
 

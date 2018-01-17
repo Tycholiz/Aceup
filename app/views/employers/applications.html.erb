@@ -17,7 +17,7 @@
         <tr>
           <td><%= link_to job.title, job_path(job) %></td>
           <td><%= user.firstName %></td>
-          <td><%= link_to "Applicant Profile", "/pages/construction" %></td>
+          <td><%= link_to "Applicant Profile", public_seeker_path(seeker) %></td>
           <td><%= app.created_at.to_formatted_s(:short)  %></td>
         </tr>
         <% end %>

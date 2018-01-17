@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   	member do
   		get  :applied
       get  :saved_jobs
+      get  :public
   	end
   end
 

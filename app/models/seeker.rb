@@ -27,12 +27,12 @@ class Seeker < ApplicationRecord
 	# presence: true
 
 	validates :inSales,
-	presence: true,
-	numericality: { only_integer: true }
+	presence: true
+	# numericality: { only_integer: true }
 
 	validates :outSales,
-	presence: true,
-	numericality: { only_integer: true }
+	presence: true
+	# numericality: { only_integer: true }
 
 
 

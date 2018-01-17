@@ -41,20 +41,20 @@ class Job < ApplicationRecord
         numericality: { only_integer: true }
 
       validates :inSalesSoft,
-        presence: true,
-        numericality: { only_integer: true }
+        presence: true
+        # numericality: { only_integer: true }
 
       validates :inSalesHard,
-        presence: true,
-        numericality: { only_integer: true }
+        presence: true
+        # numericality: { only_integer: true }
 
       validates :outSalesSoft,
-        presence: true,
-        numericality: { only_integer: true }
+        presence: true
+        # numericality: { only_integer: true }
 
       validates :outSalesHard,
-        presence: true,
-        numericality: { only_integer: true }
+        presence: true
+        # numericality: { only_integer: true }
 
       validates :functions,
         presence: true
