@@ -1,33 +1,35 @@
     <div>
         <% if current_user.role == "Seeker" %>
           <% @matchJobs.each do |job| %>
-            <% employer = Employer.where(id: job.employer_id).first %>
-            <div class="job_show">
-                 <hr size="6" noshade>
-                <div class="job_show_header">
-                    <div class="job_show_img">
-                        <%= image_tag(employer.logo_url.to_s) %>
-                    </div>
-                    <div class="job_show_title">
-                        <h1><%= link_to job.title, job_path(job) %></h1>
-                        <h2><%= employer.compName %></h2>
-                        <h4><%= job.summary.truncate(300) %></h4>
-                    </div>
-                </div>
-                <div class="job_show_text">
-                    
-                    <h3>Job Type:&nbsp;</h3><%= job.jobType %> </br>
-                        <h3>Pay Range:&nbsp;</h3><%= number_to_currency(job.payHigh)   %> to <%= number_to_currency(job.payLow)   %>                    
-                    <div>
+              <% unless job.status == "inactive" %>
+                    <% employer = Employer.where(id: job.employer_id).first %>
+                    <div class="job_show">
+                         <hr size="6" noshade>
+                        <div class="job_show_header">
+                            <div class="job_show_img">
+                                <%= image_tag(employer.logo_url.to_s) %>
+                            </div>
+                            <div class="job_show_title">
+                                <h1><%= link_to job.title, job_path(job) %></h1>
+                                <h2><%= employer.compName %></h2>
+                                <h4><%= job.summary.truncate(300) %></h4>
+                            </div>
+                        </div>
+                        <div class="job_show_text">
+                            
+                            <h3>Job Type:&nbsp;</h3><%= job.jobType %> </br>
+                                <h3>Pay Range:&nbsp;</h3><%= number_to_currency(job.payHigh)   %> to <%= number_to_currency(job.payLow)   %>                    
+                            <div>
 
-                    <%= button_to "Save",new_job_saved_job_path(job), :method => "get",  class: "btn btn-default", id: "save_jobs_button" %>
-                        
-                      <h3>Location:&nbsp;</h3><%= employer.city %> </br>
-                    </div>
-                </div>
+                            <%= button_to "Save",new_job_saved_job_path(job), :method => "get",  class: "btn btn-default", id: "save_jobs_button" %>
+                                
+                              <h3>Location:&nbsp;</h3><%= employer.city %> </br>
+                            </div>
+                        </div>
 
-            </div>
-          <% end %>
+                    </div>
+              <% end %>
+           <% end %> 
             <div style="clear: both">
                 <%= paginate @matchJobs %>
                 <%= page_entries_info @matchJobs %>
