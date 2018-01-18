@@ -16,7 +16,7 @@ class SeekersController < ApplicationController
 
   def show
     @seeker = Seeker.where(user_id: current_user.id).first
-    @jobs = Job.all
+    @jobs = Job.filter(params[:filter])
 
     @resume = @seeker.resumes.first.file_url if @seeker.resumes.first
 

@@ -74,4 +74,12 @@ class Job < ApplicationRecord
 
       validates :benefits,
         presence: true
+
+      def self.filter(filter)
+        if filter
+          where('"inSalesHard" > ?', "#{filter}")
+        else
+          all
+        end
+      end
 end

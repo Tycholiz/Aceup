@@ -4,19 +4,23 @@
         <h3>FILTER</h3>
         <hr>
     </div>
+    <%= form_tag seeker_path(@seeker), :method => 'get', :id => "seeker_filter" do %>
+  <p>
+
+    
+  </p>
+
 
    <div class="sidebar-main">
         <h3>Minimum Years of Experience:</h3>
         <form>
-        	<!-- <div class="styled-select slate"> -->
-                <select name="cars" class="form-control">
-				  <option value="volvo">Volvo</option>
-				  <option value="saab">Saab</option>
-				  <option value="fiat">Fiat</option>
-				  <option value="audi">Audi</option>
-				</select>
-			<!-- </div> -->
-		
+        <%= select_tag :filter, options_for_select(['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']), { class: "form form-group form-control" } %>
+
+      <div>
+        
+
+      </div>
+
 		</br>
         <h3>Sales Skills:</h3>
         
@@ -37,9 +41,10 @@
 			  <option value="audi">Audi</option>
 			</select>
 		<br><br>
-				<button type="submit" class="btn btn-default" id="filter_button">Filter Results</button>
+        <%= submit_tag "Filter Results", :name => nil, class: "btn btn-default", id: "filter_button"%>
 		</form>
     </div>
+    <% end %>
 </nav>
 
 
