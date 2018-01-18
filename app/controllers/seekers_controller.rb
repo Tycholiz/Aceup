@@ -16,15 +16,17 @@ class SeekersController < ApplicationController
 
   def show
     @seeker = Seeker.where(user_id: current_user.id).first
-    @jobs = Job.filter(params[:filter])
+    @jobs = Job.filter(params[:filter_years])
 
     @resume = @seeker.resumes.first.file_url if @seeker.resumes.first
 
+    
     skillsParams = [:driversLicence, :hasVehicle, :coldCall, :doorToDoor, :custService, :acctManagment,:negotiation, :presenting, :leadership, :closing, :hunterBased, :farmerBased, :commBased, :B2C, :B2B]
     seekSkills = @seeker.slice(*skillsParams).select {|key, value| value == true }
     seekLang = @seeker.languages
     @matchJobs = Array.new
     @jobs.each do |job|
+      
       jobSkills = job.slice(*skillsParams).select {|key, value| value == true }
       @seeker.inSales >= job.inSalesHard ? inSales = true : inSales = false
       @seeker.outSales >= job.outSalesHard ? outSales = true : outSales = false
@@ -33,15 +35,19 @@ class SeekersController < ApplicationController
       else
         langMatch = true
       end
+
       if job.certifications
         job.certifications.all? { |i| @seeker.certifications.include? i } ? certMatch = true : certMatch = false
       else 
         certMatch = true
       end
 
-      @matchJobs.push job if (jobSkills <= seekSkills && inSales && outSales && langMatch && certMatch)
-
-
+      if params[:filter_skills]
+        filter_skills_test = params[:filter_skills].all? {|s| jobSkills.key? s}
+        @matchJobs.push job if (jobSkills <= seekSkills && filter_skills_test && inSales && outSales && langMatch && certMatch)
+      else
+        @matchJobs.push job if (jobSkills <= seekSkills && inSales && outSales && langMatch && certMatch)
+      end    
     end
     @matchJobs = Kaminari.paginate_array(@matchJobs).page(params[:page]).per(10) 
 
