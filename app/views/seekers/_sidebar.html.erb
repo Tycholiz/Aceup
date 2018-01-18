@@ -13,20 +13,35 @@
 
                <div class="sidebar-main">
                     <h3>Minimum Years of Experience:</h3>
-                    <%= select_tag :filter_years, options_for_select(['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']), { class: "form form-group form-control" } %>
+                    <%= select_tag :filter_years, options_for_select((1..@seeker.inSales).map { |i| i.to_s}, selected: params[:filter_years]), { class: "form form-group form-control" }%>
 
-                  <div>
+                  <div style="color:white;">
                     
-
                   </div>
 
             		</br>
                     <h3>Sales Skills:</h3>
-                      <%= select_tag :filter_skills, options_for_select([["Has drivers license", :driversLicence ], ["Has vehicle", :hasVehicle], ["Cold calling", :coldCall], ["Door to door", :doorToDoor], ["Customer Service", :custService], ["Account Management", :acctManagment], ["Negotiation", :negotiation],["Presenting", :presenting], ["Leadership", :leadership], ["Closing", :closing]]),{:multiple => true, class: "form-control multi-select"} %>
+
+                    <% selectSkills = {
+                    driversLicence: "Has drivers license",
+                    hasVehicle:"Has vehicle",                   
+                    coldCall: "Cold calling",                  
+                    doorToDoor: "Door to door",
+                    custService: "Customer Service",                 
+                    acctManagment: "Account Management",                 
+                    negotiation: "Negotiation",   
+                    leadership: "Leadership",    
+                    closing: "Closing", 
+                    } 
+
+                    filter_skills_options = selectSkills.select{ |k ,v| @seekSkills.has_key? k}.map {|k, v| [v, k]} 
+                    %>
+
+                      <%= select_tag :filter_skills, options_for_select(filter_skills_options, selected: params[:filter_skills]),{:multiple => true, class: "form-control multi-select"} %>
              
                     <h3>Minimum Pay:</h3>
                     
-                       <%= select_tag :filter_salary, options_for_select([["$10,000", 10000], ["$30,000", 30000],["$35,000", 35000],["$40,000", 40000],["$45,000", 45000],["$50,000", 50000],["$55,000", 55000],["$60,000", 60000]              ]), { class: "form form-group form-control" } %>
+                       <%= select_tag :filter_salary, options_for_select((10000..100000).step(5000).map { |i| [number_to_currency(i), i]}, selected: params[:filter_salary]), { class: "form form-group form-control" } %>
             		<br><br>
                     <%= submit_tag "Filter Results", :name => nil, class: "btn btn-default", id: "filter_button"%>
                 </div>

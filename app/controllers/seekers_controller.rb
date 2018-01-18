@@ -22,7 +22,7 @@ class SeekersController < ApplicationController
 
     
     skillsParams = [:driversLicence, :hasVehicle, :coldCall, :doorToDoor, :custService, :acctManagment,:negotiation, :presenting, :leadership, :closing, :hunterBased, :farmerBased, :commBased, :B2C, :B2B]
-    seekSkills = @seeker.slice(*skillsParams).select {|key, value| value == true }
+    @seekSkills = @seeker.slice(*skillsParams).select {|key, value| value == true }
     seekLang = @seeker.languages
     @matchJobs = Array.new
     @jobs.each do |job|
@@ -44,9 +44,9 @@ class SeekersController < ApplicationController
 
       if params[:filter_skills]
         filter_skills_test = params[:filter_skills].all? {|s| jobSkills.key? s}
-        @matchJobs.push job if (jobSkills <= seekSkills && filter_skills_test && inSales && outSales && langMatch && certMatch)
+        @matchJobs.push job if (jobSkills <= @seekSkills && filter_skills_test && inSales && outSales && langMatch && certMatch)
       else
-        @matchJobs.push job if (jobSkills <= seekSkills && inSales && outSales && langMatch && certMatch)
+        @matchJobs.push job if (jobSkills <= @seekSkills && inSales && outSales && langMatch && certMatch)
       end    
     end
     @matchJobs = Kaminari.paginate_array(@matchJobs).page(params[:page]).per(10) 
@@ -64,7 +64,7 @@ class SeekersController < ApplicationController
     @application = Application.where(id: app_id).first
     @resume = Resume.where(id: @application.resume).first
     skillsParams = [:driversLicence, :hasVehicle, :coldCall, :doorToDoor, :custService, :acctManagment,:negotiation, :presenting, :leadership, :closing, :hunterBased, :farmerBased, :commBased, :B2C, :B2B]
-    @seekSkills = @seeker.slice(*skillsParams).select {|key, value| value == true }
+    @@seekSkills = @seeker.slice(*skillsParams).select {|key, value| value == true }
   end
 
    def update
@@ -102,4 +102,4 @@ class SeekersController < ApplicationController
   def seeker_params
     params.require(:seeker).permit(:postalCode, :educationLevel, :degree, :driversLicence, :hasVehicle, :inSales, :outSales, :inboundSales, :outboundSales, :coldCall, :doorToDoor, :custService, :acctManagment, :negotiation, :presenting, :leadership, :closing, :hunterBased, :farmerBased, :commBased, :B2C, :B2B, :consSales, :directSales, :solutionSales, :certifications => [], :languages => [])
   end
-end
+end         
