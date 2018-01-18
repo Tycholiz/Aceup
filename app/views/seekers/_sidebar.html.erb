@@ -13,7 +13,6 @@
 
                <div class="sidebar-main">
                     <h3>Minimum Years of Experience:</h3>
-                    <form>
                     <%= select_tag :filter_years, options_for_select(['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']), { class: "form form-group form-control" } %>
 
                   <div>
@@ -27,15 +26,9 @@
              
                     <h3>Minimum Pay:</h3>
                     
-                        <select name="cars" class="form-control">
-            			  <option value="volvo">Volvo</option>
-            			  <option value="saab">Saab</option>
-            			  <option value="fiat">Fiat</option>
-            			  <option value="audi">Audi</option>
-            			</select>
+                       <%= select_tag :filter_salary, options_for_select([["$10,000", 10000], ["$30,000", 30000],["$35,000", 35000],["$40,000", 40000],["$45,000", 45000],["$50,000", 50000],["$55,000", 55000],["$60,000", 60000]              ]), { class: "form form-group form-control" } %>
             		<br><br>
                     <%= submit_tag "Filter Results", :name => nil, class: "btn btn-default", id: "filter_button"%>
-            		</form>
                 </div>
     <% end %>
 </nav>
