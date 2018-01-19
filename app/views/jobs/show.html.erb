@@ -1,33 +1,130 @@
- <% if current_user.role == "Seeker" %>
- <%= link_to "Back to all jobs", seeker_path %><br/>
-<% end %>
+<%= render 'seekers/header' %>
+<div class="container">
 
-    <h2><%= @job.title %> 
-    <% if current_user.role == "Employer" %>
-    (<%= link_to "edit", edit_job_path(@job) %>, <%= link_to "delete", job_path(@job), method: :delete, data: {confirm: "You sure?"} %>)
-    <% end %>
-    </h2>
-    <h3>Job expires: <%= @job.expiry %></h3>
-    <p>Job Type: <%= @job.jobType %><p>
-    <p>Temp? <%= @job.temp %><p>
-    <p>Salary: <%= @job.salary %><p>
-    <p>Pay range low: <%= @job.payLow %><p>
-    <p>Pay range high: <%= @job.payHigh %><p>
-    <p>Required Sales soft: <%= @job.inSalesSoft %><p>
-    <p>Required Sales hard: <%= @job.inSalesHard %><p>
-    <p>Outside Sales experience (S): <%= @job.outSalesSoft %><p>
-    <p>Outside Sales experience (H): <%= @job.outSalesHard %><p>
-    <p>Job Summary: <%= @job.summary %></p>
-    <p>Functions: <%= @job.functions %><p>
-    <p>Skills: <%= @job.skills %><p>
-    <p>Competencies: <%= @job.competencies %><p>
-    <p>Department size: <%= @job.deptSize %><p>
-    <p>Benefits: <%= @job.benefits %><p>
+    <div class="job_show_display">
+     
+        <div class="job_show_header_display">
+            <div class="job_show_img_display">
+                <%= image_tag(@employer.logo_url.to_s) %>
+            </div>
+            <div class="job_show_title_display">
+                <h1><%= link_to @job.title, job_path(@job) %></h1>
+                <h2><%= @employer.compName %></h2></br>
+                <div class="job_show_header_text_display">
+                <%= button_to "Apply",new_job_application_path(@job), :method => "get",  class: "btn btn-default", id: "save_jobs_button_display" %>
+                    <h2>Location:&nbsp;</h2><%= @employer.city %> </br>
 
-    <p>Created: <%= @job.created_at %><p>
-    <p>Updated: <%= @job.updated_at %><p>
+                    <h2>Job Type:&nbsp;</h2><%= @job.jobType.capitalize %> </br>
+
+                    <%= button_to "Save",new_job_saved_job_path(@job), :method => "get",  class: "btn btn-default", id: "save_jobs_button_display" %>
+                    <h2>Pay Range:&nbsp;</h2><%= number_to_currency(@job.payLow)   %> to <%= number_to_currency(@job.payHigh)   %>
+                </div>
+            </div>
+        </div>       
+    </div>
+    <div class="job_display_desc col-md-12">  
+        <hr size="6" noshade style="margin-top: 0px"> 
+        <div class="row">
+            <div>
+                <h1>Job Description</h1>
+            </div>
+        </div>
+        <div class="row job_display_desc_row">
+            <div class="job_summary_title_display">
+                <h2>Summary:</h2>
+            </div>
+            <div class="job_summary_display">
+                <h3><%= @job.summary %></h3>
+            </div>  
+        </div>
+        <div class="row job_display_desc_row">
+            <div class="job_summary_title_display">
+                <h2>Responsibilities:</h2>
+            </div>
+            <div class="job_summary_display">
+                <h3><%= @job.competencies  %></h3>
+            </div>  
+        </div>
+        <hr size="6" noshade>  
+        <div class="row">
+            <h1>Pay Structure</h1>  
+        </div>
+        <div class="row">
+            <h2><%= @job.salary %></h2> 
+            <p style="background: red;">Commission (Work in Progress)</p>
+        </div>
+        <div class="job_display_bar">
+          <h1> MATCHED RESULTS </h1>
+        </div>
+        <div class="row">
+            <h1>Sales Experience</h1>  
+        </div>
+        <div class="row">
+            <div>
+                <h2>Inside Sales: ( <%= @job.inSalesHard %> - <%= @job.inSalesSoft %> ) years</h2>
+            </div>
+        </div>
+        <hr size="6" noshade>  
+        <div class="row">
+            <h1>Sales Skills</h1>  
+        </div>
+        <div>
+            <% selectSkills = {
+                    driversLicence: "Has drivers license",
+                    hasVehicle:"Has vehicle",                   
+                    coldCall: "Cold Calling",                  
+                    doorToDoor: "Door to door",
+                    custService: "Customer Service",                 
+                    acctManagment: "Account Management",                 
+                    negotiation: "Negotiation",   
+                    leadership: "Leadership",    
+                    closing: "Closing", 
+                    } 
+
+                    filter_skills = selectSkills.select{ |k ,v| @jobSkills.has_key? k}.map {|k, v| v} 
+                    %>
+            <% filter_skills.each do |skill| %>
+                <div class="job_display_skills"><h2><%=skill%></h2></div>
+            <% end %>
+
+        </div>
+        <hr size="6" noshade>  
+        <div class="row">
+            <h1>Certifications</h1>  
+        </div>
+        <div>
+        <% if @job.certifications
+            @job.certifications.each do |cert|%>
+                <div class="job_display_skills"><h2><%=cert%></h2></div>
+            <% end %>
+        <% end %>
+        </div>
+        <hr size="6" noshade> 
+        <div class="row">
+            <h1>Languages</h1>  
+        </div>
+        <div>
+        <% @job.languages.each do |lang| %>
+                <div class="job_display_skills"><h2><%=lang%></h2></div>
+            <% end %>
+        </div>
+        <hr size="6" noshade> 
+        <div class="row">
+            <h1>Driving Requirements</h1>  
+        </div>
+        <div>
+            <% if @job.hasVehicle %>
+                <h2>Access to a vehicle</h2> 
+            <% end %>
+            <% if @job.driversLicence %>
+                <h2>Class 5</h2> 
+            <% end %>
+        </div>
+        <hr size="6" noshade> 
+    </div>
+    <%= button_to "Apply",new_job_application_path(@job), :method => "get", class: "btn btn-default", id: "apply_button_display" %>
+</div>
     
    
-    <%= button_to "Save",new_job_saved_job_path(@job), :method => "get" %>
-    <%= button_to "Apply",new_job_application_path(@job), :method => "get" %>
-  
+
+    

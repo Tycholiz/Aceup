@@ -27,9 +27,13 @@ class JobsController < ApplicationController
 
   def show
     @job = Job.find(params[:id])
+    @employer = Employer.where(id: @job.employer_id).first
     if current_user.role == "Seeker"
         @seeker = Seeker.where(user_id: current_user.id).first
     end
+    skillsParams = [:driversLicence, :hasVehicle, :coldCall, :doorToDoor, :custService, :acctManagment,:negotiation, :presenting, :leadership, :closing, :hunterBased, :farmerBased, :commBased, :B2C, :B2B]
+    @jobSkills = @job.slice(*skillsParams).select {|key, value| value == true }
+
   end
 
   def new
