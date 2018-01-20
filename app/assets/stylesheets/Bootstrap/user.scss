@@ -522,6 +522,7 @@ html {
   max-width: 90%;
 }
 
+// Job index page seeker#show
 .job_show {
   min-height: 400px;
   width: 90%;
@@ -573,6 +574,8 @@ html {
 .job_show_text h3 {
   display: inline-block;
 }
+
+// Single Job page job#show
 .job_show_display {
   min-height: 280px;
   width: 99%;
@@ -581,13 +584,14 @@ html {
 }
 
 .job_show_header_display {
-  max-height: 260px;
+  max-height: 280px;
   // width:99%;
   overflow: hidden;
 }
 .job_show_header_text_display {
   line-height: 1.2px !important;
   width: 100%;
+  font-size: 30px;
 }
 .job_show_header_text_display h2 {
   display: inline-block;
@@ -599,12 +603,17 @@ html {
   height: 90%;
   float: left;
 }
+@media screen and (max-width: 1200px) {
+  .job_show_title_display {
+    min-width: 70%;
+  }
+}
 .job_show_title_display h1 {
   font-weight: bolder;
   }
 .job_show_img_display {
   // width: 400px;
-  height: 260px;
+  height: 280px;
   float: left;
 }
 .job_show_img_display img {
@@ -623,9 +632,9 @@ html {
   margin-top: 30px;
   margin-bottom: 20px;
   border-top: 8px solid black;
-  width: 109%;
-  margin-left: -4.5%;
-  // border: 0
+  width:calc(100% + 100px);
+  margin-left: -50px;
+  margin-right: -50px;
 }
 .job_display_desc h1 {
   font-weight: bolder;
@@ -635,10 +644,6 @@ html {
   width: 15vw;
   font-size: 2em;
 }
-// .job_summary_title_display h2 {
-//   // display: inline-block;
-//   // max-width: 100%;
-// }
 .job_summary_display {
   border-style: solid;
   padding: 15px;
@@ -769,6 +774,7 @@ html {
 }
 
 @media screen and (max-width: 1000px) {
+  // Job index page seeker#show
   .job_show_img img {
     max-height: 90%;
     max-width: 90%;
@@ -803,6 +809,34 @@ html {
   .job_show_text h3 {
   font-size: 4vw;
  }
+ // Single Job page job#show
+  .job_show_img_display img {
+    max-height: 100%;
+    max-width: 100%;
+    padding: 20px 20px 20px 5px;
+  }
+  .job_show_img_display {
+    width: 18vw;
+    height: 18vw;
+    float: left;
+  }
+  .job_show_header_display {
+    max-height: calc(50vw + 150px);
+    // overflow: hidden;
+  }
+  .job_show_title_display {
+    height: 18vw;
+    width: 60%;
+    min-width: 25vw;
+    // overflow: hidden;
+  }
+  .job_show_header_text_display {
+  // line-height: 1.2px !important;
+  width: 100%;
+  float: left;
+  margin: 10px;
+}
+
 }
 
 @media screen and (max-width: 800px) {
@@ -815,5 +849,30 @@ html {
 
 }
 
+@media screen and (max-width: 700px) {
 
+     .job_show_title_display h1 {
+      font-size: 6vw;
+    }
 
+    .job_show_title_display h2 {
+      font-size: 5vw;
+      margin-top: 5px;
+    }
+    .job_show_title_display {
+      height: 25vw;
+      width: 70%;
+
+      // min-width: 25vw;
+     }
+    .job_show_header_text_display {
+      font-size: 3.5vw;
+    }
+    .job_show_header_text_display h2{
+      font-size: 3.8vw;
+    }
+    .job_show_img_display {
+      width: 25vw;
+      height: 25vw;
+    }
+  }

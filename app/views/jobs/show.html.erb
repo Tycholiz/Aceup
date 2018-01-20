@@ -1,16 +1,18 @@
 <%= render 'seekers/header' %>
 <div class="container">
 
-    <div class="job_show_display">
+  
      
         <div class="job_show_header_display">
             <div class="job_show_img_display">
                 <%= image_tag(@employer.logo_url.to_s) %>
             </div>
             <div class="job_show_title_display">
-                <h1><%= link_to @job.title, job_path(@job) %></h1>
+                <h1><%= @job.title %></h1>
                 <h2><%= @employer.compName %></h2></br>
-                <div class="job_show_header_text_display">
+                
+            </div>
+            <div class="job_show_header_text_display">
                 <%= button_to "Apply",new_job_application_path(@job), :method => "get",  class: "btn btn-default", id: "save_jobs_button_display" %>
                     <h2>Location:&nbsp;</h2><%= @employer.city %> </br>
 
@@ -18,10 +20,9 @@
 
                     <%= button_to "Save",new_job_saved_job_path(@job), :method => "get",  class: "btn btn-default", id: "save_jobs_button_display" %>
                     <h2>Pay Range:&nbsp;</h2><%= number_to_currency(@job.payLow)   %> to <%= number_to_currency(@job.payHigh)   %>
-                </div>
             </div>
         </div>       
-    </div>
+   
     <div class="job_display_desc col-md-12">  
         <hr size="6" noshade style="margin-top: 0px"> 
         <div class="row">
@@ -42,7 +43,47 @@
                 <h2>Responsibilities:</h2>
             </div>
             <div class="job_summary_display">
+                <h3><%= @job.functions  %></h3>
+            </div>  
+        </div>
+         <div class="row job_display_desc_row">
+            <div class="job_summary_title_display">
+                <h2>Skills:</h2>
+            </div>
+            <div class="job_summary_display">
+                <h3><%= @job.skills  %></h3>
+            </div>  
+        </div>
+         <div class="row job_display_desc_row">
+            <div class="job_summary_title_display">
+                <h2>Competencies:</h2>
+            </div>
+            <div class="job_summary_display">
                 <h3><%= @job.competencies  %></h3>
+            </div>  
+        </div>
+        <div class="row job_display_desc_row">
+           <div class="job_summary_title_display">
+                <h2>Benefits:</h2>
+            </div>
+            <div class="job_summary_display">
+                <h3><%= @job.benefits  %></h3>
+            </div>  
+        </div>
+        <div class="row job_display_desc_row">
+           <div class="job_summary_title_display">
+                <h2>Company Description:</h2>
+            </div>
+            <div class="job_summary_display">
+                <h3><%= @employer.compDesc  %></h3>
+            </div>  
+        </div>
+        <div class="row job_display_desc_row">
+           <div class="job_summary_title_display">
+                <h2>Department Size:</h2>
+            </div>
+            <div class="job_summary_display">
+                <h3><%= @job.deptSize  %></h3>
             </div>  
         </div>
         <hr size="6" noshade>  
