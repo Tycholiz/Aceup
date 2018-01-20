@@ -14,7 +14,7 @@
   $( function() {
    
     var url = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
-
+    var seekerID = String(<%= @seeker.id %>);
     switch (url) {
       case 'applied':
         activate("Applied Jobs");
@@ -28,9 +28,12 @@
       case 'saved_jobs':
         activate("Saved Jobs");
       break;
+      case seekerID:
+        activate("Current Jobs");
+      break;
       default:
     		var link = ""
-        activate("Current Jobs");
+        console.log("breadcrumb deactivated");
     }
 
     	function activate(link) {

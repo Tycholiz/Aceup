@@ -678,8 +678,9 @@ html {
   padding-bottom:10px;
   background-color:black;
   // border-radius:10px;
-  width: 109%;
-  margin-left: -4.5%;
+  width:calc(100% + 100px);
+  margin-left: -50px;
+  margin-right: -50px;
 }
 /* forms */
 #error_explanation {
@@ -751,19 +752,19 @@ html {
 
 #apply_button_display {
   color: #000000;
-    background-color: #eeeeee;
-    border-color: #ffffff;
-    text-transform: uppercase;
-        /* padding: 9px 12px 7px; */
-    border-width: 0 1px 4px 1px;
-    font-weight: bold;
-    line-height: 1.5;
-    text-transform: uppercase;
-    width:100%;
-    height:auto;
-    margin-top: 25px;
-    margin-bottom:10px;
-    font-size: 3em;
+  background-color: #eeeeee;
+  border-color: #ffffff;
+  text-transform: uppercase;
+      /* padding: 9px 12px 7px; */
+  border-width: 0 1px 4px 1px;
+  font-weight: bold;
+  line-height: 1.5;
+  text-transform: uppercase;
+  width:100%;
+  height:auto;
+  margin-top: 25px;
+  margin-bottom:10px;
+  font-size: 3em;
 }
 #apply_button_display:hover {
   background-color:#28b62c;
@@ -831,11 +832,16 @@ html {
     // overflow: hidden;
   }
   .job_show_header_text_display {
-  // line-height: 1.2px !important;
-  width: 100%;
-  float: left;
-  margin: 10px;
-}
+    // line-height: 1.2px !important;
+    width: 100%;
+    float: left;
+    margin: 10px;
+  }
+  .job_summary_display {
+    // float: left;
+    margin-left:10%;
+    width: 80%;
+  }
 
 }
 
@@ -851,7 +857,7 @@ html {
 
 @media screen and (max-width: 700px) {
 
-     .job_show_title_display h1 {
+    .job_show_title_display h1 {
       font-size: 6vw;
     }
 
@@ -875,4 +881,21 @@ html {
       width: 25vw;
       height: 25vw;
     }
+    .job_display_desc h1 {
+      font-size: 6vw;
+      font-weight: bold;
+    }
+    .job_display_desc h2 {
+      font-size: 3.8vw;
+    }
+    .job_display_desc h3 {
+      font-size: 3vw;
+    }
+    .job_display_desc_row {
+      margin-top: 10px;
+    }
+    #apply_button_display {
+      font-size: 6vw;
+    }
+
   }
