@@ -857,6 +857,20 @@ html {
 
 @media screen and (max-width: 700px) {
 
+    .job_show_img img {
+      max-height: 100%;
+      max-width: 100%;
+      padding: 20px 20px 20px 5px;
+    }
+
+    .job_show_img {
+      width: 30vw;
+      height: 30vw;
+    }
+
+    .job_show_title h2 {
+      margin-top: 5px;
+    }
     .job_show_title_display h1 {
       font-size: 6vw;
     }

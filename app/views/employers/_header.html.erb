@@ -22,6 +22,7 @@
   $( function() {
    
     var url = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
+    var employerID = String(<%= @employer.id %>);
 
     switch (url) {
       case 'applications':
@@ -33,9 +34,12 @@
       case 'edit':
         activate("Edit Profile");
       break;
-      default:
-    		var link = ""
+      case employerID:
         activate("Current Jobs");
+      break;
+      default:
+        var link = ""
+        console.log("breadcrumb deactivated");
     }
 
     	function activate(link) {
