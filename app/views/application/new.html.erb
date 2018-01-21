@@ -1,29 +1,45 @@
-
-<h2>Thank you!</h2>
-<p>You application was submitted successfully.</p>
-<h3>Add a resume</h3>
+<% if current_user.role == "Seeker" && Seeker.where(user_id: current_user.id).first %>
+    <%= render 'seekers/header' %>
+<% elsif current_user.role == "Employer" %>
+    <%= render 'employers/header' %>
+<% end %>
+<div class="container">
 
  <%= form_for ([@job, @application]) do |f| %>
-  <% if @application.errors.any? %>
-    <div>
-      <%= pluralize(@application.errors.count, "error") %> prevented the application from being submitted:
-      <ul>
-        <% @application.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
+ <% if @application.errors.any? %>
+      <div class="job_display_desc col-md-12">  
+        <div class="checkmark">
+          <%= image_tag "error.png" %></a>
+          <h2>Sorry!</h2>
+          <h3>You can only apply once per job.</h3>
+        </div>
+      </div>
+
+<% else %>
+    <div class="job_display_desc col-md-12">  
+        <div class="checkmark">
+          <%= image_tag "check.png" %></a>
+          <h2>Thank you!</h2>
+          <h3>Your application was submitted successfully.</h3>
+        </div>
+      <div>
+      <hr noshade id="application_hr"> 
+      <div class="row job_display_desc_row">
+            <div class="job_summary_title_display">
+                <h2>Add a resume:</h2>
+            </div>
+            <div class="job_summary_display" id="resume_select">
+                <% options = options_from_collection_for_select(@seeker.resumes, 'id', 'title') %>
+        <%= f.select :resume,  options, {}, { class: "form form-group form-control" } %>
+        <div><%= f.submit "Submit", class: "form-control" %></div>
+            </div>  
+        </div>
+        
+      </div>
     </div>
   <% end %>
-
-  <div>
-    <p>Select Resume</p>
-    <% options = options_from_collection_for_select(@seeker.resumes, 'id', 'title') %>
-    <%= f.select :resume,  options %>
-  </div>
-  <div><%= f.submit "Submit" %></div>
-
 <% end %>
 
-<%= debug params %>
+  <%= button_to "Return to jobs",seeker_path(@seeker), :method => "get", class: "btn btn-default", id: "apply_button_apps_page" %>
 
-  <%= button_to "Return to jobs",seeker_path(@seeker), :method => "get" %>
+</div>

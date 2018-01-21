@@ -1,6 +1,6 @@
 <%= render 'header' %>
 <div class="col-md-4 col-xs-12"></div>
-<div class="col-md-6 col-xm-8">
+<div class="col-md-8 col-xm-8">
 	<% @appliedJobs.each do |job| %>
 	        <% employer = Employer.where(id: job.employer_id).first %>
 	        <% @seeker = Seeker.where(user_id: current_user.id).first %>

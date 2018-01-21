@@ -6,19 +6,31 @@ class ApplicationsController < ApplicationController
     @application = @job.applications.build
     @application.seeker_id = @seeker.id
     ## Add code for user to choose resume
+    # if @application.errors.any?
+    #   @application.errors.full_messages.each do |msg|
+    #     flash[:error] = msg
+    #   end
+    # end
     @application.save
 
     # @application = Application.new(job_id: @job.id)
   end
 
   def create
-  	# seeker = Seeker.where(user_id: current_user.id).first
-  	# @job = Job.find(params[:job_id])
-  	# @application = @job.applications.build
-  	# ## Add code for user to choose resume
-  	# @application.seeker_id = seeker.id
-    @seeker = Seeker.where(user_id: current_user.id).first
-    redirect_to seeker_path(@seeker), notice: "Application Saved, #{current_user.firstName}!"
+    @job = Job.find(params[:job_id])
+    @application = Application.where(job_id: @job.id).first
+    if @application.save
+      @seeker = Seeker.where(user_id: current_user.id).first
+      redirect_to seeker_path(@seeker), notice: "Application Saved, #{current_user.firstName}!"
+    else 
+      render :new
+      flash[:error] = @application.errors.full_messages.to_sentence
+    end
+    if @application.errors.any?
+      @application.errors.full_messages.each do |msg|
+        flash[:error] = msg
+      end
+    end
   end
 
   def delete
