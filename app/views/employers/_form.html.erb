@@ -1,31 +1,81 @@
-<%= form_for @employer do |f| %>
 
-  <div>
-    <%= f.label :compName, "Company name" %><br>
-    <%= f.text_field :compName %>
-    <p class='error'><%= show_errors(@employer, :compName) %></p>
-  </div>
-  <div>
-    <%= f.label :compSize, "Company Size" %><br>
-    <%= f.number_field :compSize %>
-    <p class='error'><%= show_errors(@employer, :compSize) %></p>
-  </div>
-  <div>
-    <%= f.label :city %><br>
-    <%= f.text_field :city %>
-    <p class='error'><%= show_errors(@employer, :city) %></p>
-  </div>
-  <div>
-    <%= f.label :logo, "Upload a logo image" %><br>
-    <%= f.file_field :logo %>
-    </br>
-  </div>
-  <div>
-    <%= f.label :compDesc, "Company description" %><br>
-    <%= f.text_field :compDesc %>
-    <p class='error'><%= show_errors(@employer, :compDesc) %></p>
-  </div>
-  <br>
-
-  <div><%= f.submit "Submit" %></div>
-<% end %>
+<div class="container">
+    <div class="intro"></div>
+</div>
+      <div class="register-photo">
+        <div class="form-container">
+            <div class="image-holder"></div>
+            <%= form_for @employer  ,   :html => { :class => "article-form" } do |f| %>
+                <h2 class="text-center"><strong>edit profile</strong></h2>
+                <div class="form-group">
+                company Name
+                  <%= f.text_field :compName , class: 'form-control' %>
+                  <p class='error'><%= show_errors(@employer, :compName) %></p>
+                </div>
+                <div class="form-group">
+                company Size
+                  <%= f.number_field :compSize, class: 'form-control' %>
+                  <p class='error'><%= show_errors(@employer, :compSize) %></p>
+                </div>
+                <div class="form-group">
+                city
+                <%= f.text_field :city, class: 'form-control' %>
+                <p class='error'><%= show_errors(@employer, :city) %></p>
+                </div>
+                <div class="form-group">
+                upload company logo
+                <%= f.file_field :logo , class: 'form-control' %>
+                </div>
+                <div class="form-group">
+                Company Description
+                <%= f.text_area :compDesc , style: "height:300px; resize: none;", class: 'form-control' %> 
+                <p class='error'><%= show_errors(@employer, :compDesc) %></p>
+                </div>
+                <div >
+                <%= f.submit 'save changes', class: 'btn btn-primary btn-block' %>
+                </div>  
+            <% end %>       
+        </div>
+    </div>
+    <div class="features-clean"></div>
+    <div></div>
+    <div class="simple-slider">
+        <div class="swiper-container">
+            <div class="swiper-wrapper"></div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+    </div>
+    <section class="testimonials"></section>
+    <section class="features" style="background-color:#010101;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+    <h2>Redefined Features</h2></div>
+                <div class="col-md-6">
+                    <div class="row icon-features">
+                        <div class="col-xs-4 icon-feature"><i class="glyphicon glyphicon-user"></i>
+                            <p>Easy to Make Profile</p>
+                        </div>
+                        <div class="col-xs-4 icon-feature"><i class="glyphicon glyphicon-piggy-bank"></i>
+                            <p>Save Time </p>
+                        </div>
+                        <div class="col-xs-4 icon-feature"><i class="glyphicon glyphicon-thumbs-up"></i>
+                            <p>Find the Right Job</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h5>aceup.co © 2016</h5>
+                </div>
+                <div class="col-sm-6 social-icons"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-instagram"></i></a></div>
+            </div>
+        </div>
+    </footer>
