@@ -23,7 +23,7 @@
       <tr>
         <td><%= resume.title %></td>
         <td><%= link_to "Download Resume", resume.file_url %></td>
-        <td><%= button_to "Delete",  seeker_resumes_path(@seeker, resume), method: :delete, class: "btn btn-danger", confirm: "Are you sure that you wish to delete #{resume.title}?" %></td>
+        <td><%= button_to "Delete",  seeker_resume_path(@seeker, resume.id), method: :delete, class: "btn btn-danger", confirm: "Are you sure that you wish to delete #{resume.title}?" %></td>
         <% seeker = Seeker.where(id: resume.seeker_id).first %>
         <% user = User.where(id: seeker.user_id).first %>
         <td><%= user.firstName %></td>

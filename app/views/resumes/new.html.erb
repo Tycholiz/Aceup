@@ -1,9 +1,16 @@
-<h1>Resumes#new</h1>
-<p>Find me in app/views/resumes/new.html.erb</p>
+<% if current_user.role == "Seeker" && Seeker.where(user_id: current_user.id).first %>
+    <%= render 'seekers/header' %>
+<% elsif current_user.role == "Employer" %>
+    <%= render 'employers/header' %>
+<% end %>
+<div class="container">
 
-  <%= form_for([@seeker, @resume]) do |f| %>
-      <% if @resume.errors.any? %>
-        <div>
+ <%= form_for([@seeker, @resume]) do |f| %>
+ <% if @resume.errors.any? %>
+      <div class="job_display_desc col-md-12">  
+        <div class="checkmark">
+          <%= image_tag "error.png" %></a>
+          <div>
           <%= pluralize(@resume.errors.count, "error") %> prevented the resume from being saved:
           <ul>
             <% @resume.errors.full_messages.each do |msg| %>
@@ -11,15 +18,34 @@
             <% end %>
           </ul>
         </div>
-      <% end %>
+        </div>
+      </div>
 
+<% else %>
+    <div class="job_display_desc col-md-12">  
       <div>
-        <%= f.label :title %><br>
-        <%= f.text_field "title" %>
+      <div class="row job_display_desc_row">
+            <div class="job_summary_title_display">
+                <h2>Upload your resume:</h2>
+            </div>
+            <div class="job_summary_display" id="resume_select">
+            <div>
+              <%= f.label :title %><br>
+              <%= f.text_field "title", class: "form-control" %>
+            </div>
+            <div>
+              <%= f.label :file, "Choose your file" %><br>
+              <%= f.file_field :file, class: "form-control" %>
+            </div>
+            <div><%= f.submit "Submit", class: "form-control" %></div>
+            </div>  
+        </div>
+        
       </div>
-      <div>
-        Upload a Resume....
-    	<%= f.file_field :file %>
-      </div>
-      <div><%= f.submit "Submit" %></div>
-    <% end %>
+    </div>
+  <% end %>
+<% end %>
+
+  <%= button_to "Return to resumes",seeker_resumes_path(@seeker), :method => "get", class: "btn btn-default", id: "apply_button_apps_page" %>
+
+</div>

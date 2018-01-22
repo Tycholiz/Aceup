@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create]
 
   resources :seekers do
-    resources :resumes, only: [:index, :new, :create]
+    resources :resumes, only: [:index, :new, :create, :destroy]
   	member do
   		get  :applied
       get  :saved_jobs

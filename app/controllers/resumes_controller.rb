@@ -23,9 +23,14 @@ class ResumesController < ApplicationController
   end
 
   def destroy
+    if Seeker.find(params[:seeker_id])
+      @seeker = Seeker.find(params[:seeker_id])
+    else 
+      @seeker = Seeker.where(user_id: current_user.id).first
+    end
     @resume = Resume.find(params[:id])
     @resume.destroy
-    redirect_to seekers_path, alert:  "The resume #{@resume.name} has been deleted."
+    redirect_to seeker_resumes_path(@seeker), alert:  "The resume #{@resume.title} has been deleted."
   end
 
   def index
