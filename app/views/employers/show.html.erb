@@ -21,7 +21,7 @@
         <td><%= job.impressionist_count %></td>
         <td><%= job.applications.size %></td>
         <td><%= job.created_at.to_formatted_s(:short)  %></td>
-        <td><%= job.expiry.to_formatted_s(:short) if job.expiry%></td>
+        <td><%= job.expiry.strftime("%b %d, %Y") if job.expiry%></td>
         <td><%= rand(1000...1999).to_s + (job.id+100).to_s %></td>
       </tr>
       <% end %>
