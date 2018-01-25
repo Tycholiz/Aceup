@@ -8,9 +8,10 @@ class ApplicationsController < ApplicationController
     if @job.CompUrl
       redirect_to @job.CompUrl, notice: "Adios!, #{current_user.firstName}!"
     elsif @seeker
-      @application.save
+      
       @application = @job.applications.build
       @application.seeker_id = @seeker.id
+      @application.save
     else
       flash[:alert] = "You need to be a Job Hunter to apply for jobs!"
       redirect_back(fallback_location: root_path)
