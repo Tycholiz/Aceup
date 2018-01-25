@@ -36,7 +36,7 @@
           </div>
           <hr>
           <div>
-            <%= f.label :certifications, "Certifications (Hold CTRL to select multiple)" %><br>
+            
             <%= f.select :certifications, ['VSA', 'CFA (level 1)', 'CFA (level 2)', 'CFA (level 3)', 'CSC', 'CIP', 'LLQP', 'CAIB', 'Insurance Broker (level 1)', 'Insurance Broker (level 2)', 'Insurance Broker (level 3)'], {prompt: "Select Certifications"},{:multiple => true, class: "form-control multi-select"}%>
           </div>
           <div class="row">
@@ -144,8 +144,8 @@
                 Fluent Languages</h2> 
           </div>
           <div>
-            <%= f.label :languages, "Hold CTRL to select multiple" %><br>
-            <%= f.select :languages, [ ["English", "English"], ["French", "French"], ["Korean", "Korean"], ["Mandarin", "Mandarin"], ["Punjabi", "Punjabi"], ["Spanish", "Spanish"], ["Arabic", "Arabic"], ["Cantonese", "Cantonese"]], {prompt: "Select Languages"},{:multiple => true, class: "form-control multi-select"} %>
+            
+            <%= f.select :languages, [ ["English", "English"], ["French", "French"], ["Korean", "Korean"], ["Mandarin", "Mandarin"], ["Punjabi", "Punjabi"], ["Spanish", "Spanish"], ["Arabic", "Arabic"], ["Cantonese", "Cantonese"]], {selected: "English"},{:multiple => true, class: "form-control multi-select"} %>
               <p class='error'><%= show_errors(@seeker, :languages) %></p>
           </div>
 
@@ -174,7 +174,7 @@
         },
             min: 0,
             max: 10,
-            value: 0,
+            value: <%= @seeker.inSales %>,
             step: 0.5,
         slide: function( event, ui ) {
           handle.text( ui.value );
@@ -197,7 +197,7 @@
         },
             min: 0,
             max: 10,
-            value: 0,
+            value: <%= @seeker.outSales %>,
             step: 0.5,
         slide: function( event, ui ) {
           handle2.text( ui.value );
@@ -222,8 +222,9 @@
       }
 
 
-      ckbutton.on('tap',function(){
-        console.log("tapped");
+      ckbutton.on('click',function(){
+        // var test = $(this).find("[type='checkbox']").prop('id');
+        // console.log("tapped " + test);
         var childCheck = $(this).find("[type='checkbox']")
         if (childCheck.is(":checked")) {
           childCheck.prop('checked', false);
@@ -241,6 +242,12 @@
           
         }
         });
+
+      $('option').mousedown(function(e) {
+        e.preventDefault();
+        $(this).prop('selected', $(this).prop('selected') ? false : true);
+        return false;
+      });
          
     } );
  </script>
