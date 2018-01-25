@@ -169,6 +169,8 @@
         margin-left: 100px;
         max-width: 250px;
         height: 80vh;
+        min-height: 730px;
+        max-height: 800px;
         background-color: black;
         color: white;
         overflow: hidden;
@@ -273,7 +275,8 @@
 
 @media screen and (max-width: 1000px) {
     .jobs_sidebar {
-      height: 50px;
+      min-height: 50px;
+      max-height: 50px;
       max-width: 90%;
       margin-left: 10px;
     }
@@ -286,6 +289,9 @@
 
     .jobs_sidebar_expand {
       height: auto;
+      min-height: auto;
+      max-height: 700px;
+      // min-height: 50px;
       padding-bottom: 50px;
     }
 
