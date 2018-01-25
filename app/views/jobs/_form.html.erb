@@ -216,6 +216,11 @@
           <p class='error'><%= show_errors(@job, :benefits) %></p>
         </div>
         <div>
+          <%= f.label :CompUrl, "Optional: Choose URL that will send job hunters to your site" %><br>
+          <%= f.text_field :CompUrl, class: "form-control"  %>
+          <p class='error'><%= show_errors(@job, :CompUrl) %></p>
+        </div>
+        <div>
           <div><%= f.submit "Submit", class: "btn btn-primary btn-block" %></div>
         </div>
 
