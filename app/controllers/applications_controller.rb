@@ -3,17 +3,19 @@ class ApplicationsController < ApplicationController
   def new
     @job = Job.find(params[:job_id])
     @seeker = Seeker.where(user_id: current_user.id).first
-    @application = @job.applications.build
-    @application.seeker_id = @seeker.id
-    ## Add code for user to choose resume
-    # if @application.errors.any?
-    #   @application.errors.full_messages.each do |msg|
-    #     flash[:error] = msg
-    #   end
-    # end
-    @application.save
+    
 
+    if @job.CompUrl
+      redirect_to @job.CompUrl, notice: "Adios!, #{current_user.firstName}!"
+    elsif @seeker
+      @application.save
+      @application = @job.applications.build
+      @application.seeker_id = @seeker.id
+    else
+      flash[:alert] = "You need to be a Job Hunter to apply for jobs!"
+      redirect_back(fallback_location: root_path)
     # @application = Application.new(job_id: @job.id)
+    end
   end
 
   def create
