@@ -308,6 +308,13 @@
         console.log("Status made white");
      } 
 
+     var driversLicence = $('#job_driversLicence').closest("div").find("[type='checkbox']")
+      if (driversLicence.is(":checked")) {
+        $('#job_hasVehicle').prop("disabled", false).parent().removeClass("disabled-button_bg"); 
+      } else if (driversLicence.not(":checked")) {
+        $('#job_hasVehicle').prop("disabled", true).parent().addClass("disabled-button_bg");
+      }
+
       ckbutton.on('tap',function(){
         console.log("tapped");
         var childCheck = $(this).find("[type='checkbox']")
@@ -324,6 +331,9 @@
             test = $('#hiddenStatus').val();
             // console.log("Status hidden value -> " test);
             } 
+          if (childCheck.prop('id') == "job_driversLicence") {
+            $('#job_hasVehicle').prop("disabled", true).parent().addClass("disabled-button_bg");
+          }
            
         }else{
           childCheck.prop('checked', true);
@@ -334,8 +344,10 @@
             // $('#hiddenStatus').attr('value',"active");
             test = $('#hiddenStatus').val();
             // console.log("Status hidden value -> " test);
-
-        }
+            }
+          if (childCheck.prop('id') == "job_driversLicence") {
+            $('#job_hasVehicle').prop("disabled", false).parent().removeClass("disabled-button_bg");
+          }
           
         }
         });

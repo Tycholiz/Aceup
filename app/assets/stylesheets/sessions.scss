@@ -3,7 +3,17 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+.landing_img {
+	width:100%;
+	height:auto;
+}
 
+.landing_img img {
+	min-width:700px;
+	max-width:80%;
+	height:auto;
+	margin-top: 30px;
+}
 
 .hero_landing {
   background-color: #fafafa;
