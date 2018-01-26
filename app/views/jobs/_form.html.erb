@@ -102,7 +102,7 @@
         </div>
         <div>
         
-          <%= f.select :languages, [ ["English", "English"], ["French", "French"], ["Korean", "Korean"], ["Mandarin", "Mandarin"], ["Punjabi", "Punjabi"], ["Spanish", "Spanish"], ["Arabic", "Arabic"], ["Cantonese", "Cantonese"]], {selected: "English"},{:multiple => true, class: "form-control multi-select"}  %>
+          <%= f.select :languages, [ ["English", "English"], ["French", "French"], ["Korean", "Korean"], ["Mandarin", "Mandarin"], ["Punjabi", "Punjabi"], ["Spanish", "Spanish"], ["Arabic", "Arabic"], ["Cantonese", "Cantonese"]], {},{:multiple => true, class: "form-control multi-select"}  %>
           <p class='error'><%= show_errors(@job, :languages) %></p>
         </div>
         <div class="row">
@@ -361,6 +361,7 @@
           
         }
         });
+      $('#job_languages').find("option[value='English']").prop('selected', true);
       $('option').mousedown(function(e) {
         e.preventDefault();
         $(this).prop('selected', $(this).prop('selected') ? false : true);
