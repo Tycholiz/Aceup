@@ -164,8 +164,25 @@
 
         }
 
+#sidebarCollapse {
+  float: right;
+  display: none;
+  margin-top: -4px;
+  margin-right: 80px;
+  background-color: #686868;
+  border-color: grey;
+}
+
+#sidebarCollapse:hover {
+  background-color:#28b62c;
+  color: white;
+}
+
 .jobs_sidebar {
         border-radius: 15px;
+        border-style: solid;
+        border-width: 4px;
+        border-color: grey;
         margin-left: 100px;
         max-width: 250px;
         height: 80vh;
@@ -180,6 +197,7 @@
   width: 80%;
   margin-left: 25px;
   cursor:pointer;
+  clear: both;
   // padding: 10px;
   // background: #f8f8f8;
 }
@@ -187,6 +205,7 @@
 
 #sidebar h3 {
   margin-left: 25px;
+  float: left;
 }
 
 #sidebar form {
@@ -202,6 +221,7 @@
   margin-bottom: 20px;
   width: 80%;
   border-top: 2px solid white;
+  clear: both;
 }
 
 .sidebar-header {
@@ -318,6 +338,9 @@
        width: 95%;
 
     }
+    #sidebarCollapse {
+       display: inline-block;
+     }
 
     .job_show {
       margin-left: 15px;

@@ -1,10 +1,34 @@
 <%= render 'header' %>
-<div class="row">
+<div class="add_row">
 	<div class="col-md-4 col-xs-12">
  		<%= render 'sidebar' %>
  	</div>
-
-	<div class="col-lg-7 col-md-8 col-xm-8">
+</div>
+<div class="add_row">
+	<div class="col-lg-7 col-md-8 col-xm-12">
 		<%= render 'jobs/index' %>
 	</div>
 </div>
+
+<script>
+
+$( function() {
+
+ 	var windowTest = $(window ).width();
+ 	var add_row = $('.add_row'); 
+	if (windowTest <= 1000) {
+	     console.log("inital load" + windowTest); 
+	     add_row.addClass("row");  
+	      }
+	 $( window ).resize(function() {
+	 	windowTest = $(window ).width();
+	 	if (windowTest <= 1000) {
+	     console.log("add row" + windowTest); 
+	     add_row.addClass("row");  
+	     } else {
+	     console.log("remove row" + windowTest); 
+	     add_row.removeClass("row"); 
+	     }
+	  });   
+});
+</script>s

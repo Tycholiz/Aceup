@@ -2,6 +2,9 @@
     <!-- Sidebar Header -->
     <div class="sidebar-header">
         <h3>FILTER</h3>
+        <div type="button" id="sidebarCollapse" class="btn btn-info">
+          <i class="glyphicon glyphicon-align-left"></i>
+        </div>
         <hr>
     </div>
     <%= form_tag seeker_path(@seeker), :method => 'get', :id => "seeker_filter" do %>
@@ -11,7 +14,7 @@
               </p>
 
 
-               <div class="sidebar-main">
+               <div class="sidebar-main" id="navcol-2">
                     <h3>Minimum Years of Experience:</h3>
                     <%= select_tag :filter_years, options_for_select((1..@seeker.inSales).map { |i| i.to_s}, selected: params[:filter_years]), { class: "form form-group form-control" }%>
 
@@ -56,7 +59,15 @@
       // sidebar.on('tap',function(){
       	// sidebar.on('click',function(){
       		// sidebar.on("click touchstart", function() {
-      	$(document).on('click', sidebar, function() {
+      	// $(document).on('click', sidebar, function() {
+        // $(document).on('click', '#sidebarCollapse', function() {
+
+      //   $('.sidebar-header').on('click',function(){
+      //     sidebar.toggleClass("jobs_sidebar_expand"); 
+      //     console.log("sidebar tapped");
+      // });
+
+        $(document).on('click', '#sidebarCollapse', function (event) {
           sidebar.toggleClass("jobs_sidebar_expand"); 
           console.log("sidebar tapped");
       });

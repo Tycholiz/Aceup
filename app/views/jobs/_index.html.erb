@@ -1,4 +1,4 @@
-    <div>
+
         <% if current_user.role == "Seeker" %>
           <% @matchJobs.each do |job| %>
               <% unless job.status == "inactive" %>
@@ -38,4 +38,3 @@
         <% else %>
             <h2>You need to be a seeker</h2>
         <% end %>
-    </div>
