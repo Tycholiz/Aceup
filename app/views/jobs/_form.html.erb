@@ -96,13 +96,13 @@
           <%= f.hidden_field :outSalesHard %>
         </div>
         <div>
-          <%= f.label :certifications, "Certifications (Hold CTRL to select multiple)" %><br>
+     
           <%= f.select :certifications, ['VSA', 'CFA (level 1)', 'CFA (level 2)', 'CFA (level 3)', 'CSC', 'CIP', 'LLQP', 'CAIB', 'Insurance Broker (level 1)', 'Insurance Broker (level 2)', 'Insurance Broker (level 3)'], {prompt: "Select Certifications"},{:multiple => true, class: "form-control multi-select"}%>
           <p class='error'><%= show_errors(@job, :certifications) %></p>
         </div>
         <div>
-          <%= f.label :languages, "Proficient Languages (Hold CTRL to select multiple)" %><br>
-          <%= f.select :languages, [ ["English", "English"], ["French", "French"], ["Korean", "Korean"], ["Mandarin", "Mandarin"], ["Punjabi", "Punjabi"], ["Spanish", "Spanish"], ["Arabic", "Arabic"], ["Cantonese", "Cantonese"]], {prompt: "Select Languages"},{:multiple => true, class: "form-control multi-select"}  %>
+        
+          <%= f.select :languages, [ ["English", "English"], ["French", "French"], ["Korean", "Korean"], ["Mandarin", "Mandarin"], ["Punjabi", "Punjabi"], ["Spanish", "Spanish"], ["Arabic", "Arabic"], ["Cantonese", "Cantonese"]], {selected: "English"},{:multiple => true, class: "form-control multi-select"}  %>
           <p class='error'><%= show_errors(@job, :languages) %></p>
         </div>
         <div class="row">
@@ -235,7 +235,17 @@
       var handle2 = $( "#inSales_job_handle2" );
       $("#seeker_inSales").val(0);
       $("#seeker_outSales").val(0);
+      var inSalesSoft = "<%= @job.inSalesSoft %>";
+      var inSalesHard =  "<%= @job.inSalesHard %>";
+      var outSalesSoft = "<%= @job.outSalesSoft %>";
+      var outSalesHard = "<%= @job.outSalesHard %>";
 
+
+      var inSalesSoft_start = (inSalesSoft ? inSalesSoft  : 3);
+      var inSalesHard_start = (inSalesHard ? inSalesHard : 5);
+      var outSalesSoft_start = (outSalesSoft ? outSalesSoft : 3);
+      var outSalesHard_start = (outSalesHard ? outSalesHard: 5);
+   
       $( "#inSales_job_slider" ).slider({
         create: function() {
           handle.text( $( this ).slider( "values", 0 ) );
@@ -245,7 +255,7 @@
             min: 0,
             max: 10,
             step: 0.5,
-            values: [3, 5],
+            values: [inSalesSoft_start, inSalesHard_start],
         slide: function( event, ui ) {
           if ( ( ui.values[ 0 ] +  0.5) >= ui.values[ 1 ] ) {
             return false;
@@ -270,7 +280,7 @@
             min: 0,
             max: 10,
             step: 0.5,
-            values: [3, 5],
+            values: [outSalesSoft_start, outSalesHard_start],
         slide: function( event, ui ) {
           if ( ( ui.values[ 0 ] +  0.5) >= ui.values[ 1 ] ) {
             return false;
@@ -315,7 +325,7 @@
         $('#job_hasVehicle').prop("disabled", true).parent().addClass("disabled-button_bg");
       }
 
-      ckbutton.on('tap',function(){
+      ckbutton.on('click',function(){
         console.log("tapped");
         var childCheck = $(this).find("[type='checkbox']")
         // console.log(childCheck.prop('id'));
@@ -351,6 +361,11 @@
           
         }
         });
+      $('option').mousedown(function(e) {
+        e.preventDefault();
+        $(this).prop('selected', $(this).prop('selected') ? false : true);
+        return false;
+      });
 
     } );
  </script>

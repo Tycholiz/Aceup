@@ -164,6 +164,12 @@
       var outboundCheck = $('#seeker_outboundSales')
       inboundCheck.prop("disabled", true).parent().addClass("disabled-button_bg");
       outboundCheck.prop("disabled", true).parent().addClass("disabled-button_bg");
+
+      var inSales = "<%= @seeker.inSales %>";
+      var outSales = "<%= @seeker.outSales %>";
+
+      var inSales_start = (inSales ? inSales : 0);
+      var outSales_start = (outSales ? outSales : 0);
       
       $("#seeker_inSales").val(0);
       $("#seeker_outSales").val(0);
@@ -174,7 +180,7 @@
         },
             min: 0,
             max: 10,
-            value: <%= @seeker.inSales %>,
+            value: inSales_start,
             step: 0.5,
         slide: function( event, ui ) {
           handle.text( ui.value );
@@ -197,7 +203,7 @@
         },
             min: 0,
             max: 10,
-            value: <%= @seeker.outSales %>,
+            value: outSales_start,
             step: 0.5,
         slide: function( event, ui ) {
           handle2.text( ui.value );
