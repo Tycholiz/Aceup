@@ -10,6 +10,7 @@ class SeekersController < ApplicationController
     if @seeker.save
       redirect_to seeker_resumes_path(@seeker), success: "Welcome aboard, add a resume"
     else
+      flash[:error] = @seeker.errors.full_messages.to_sentence
       render :new
     end
   end
@@ -73,6 +74,7 @@ class SeekersController < ApplicationController
     if @seeker.update_attributes(seeker_params)
       redirect_to seeker_resumes_path(@seeker), notice: "Update your resume?"
     else
+      flash[:error] = @seeker.errors.full_messages.to_sentence
       render :edit
     end
   end

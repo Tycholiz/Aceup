@@ -145,7 +145,7 @@
           </div>
           <div>
             
-            <%= f.select :languages, [ ["English", "English"], ["French", "French"], ["Korean", "Korean"], ["Mandarin", "Mandarin"], ["Punjabi", "Punjabi"], ["Spanish", "Spanish"], ["Arabic", "Arabic"], ["Cantonese", "Cantonese"]], {selected: "English"},{:multiple => true, class: "form-control multi-select"} %>
+            <%= f.select :languages, [ ["English", "English"], ["French", "French"], ["Korean", "Korean"], ["Mandarin", "Mandarin"], ["Punjabi", "Punjabi"], ["Spanish", "Spanish"], ["Arabic", "Arabic"], ["Cantonese", "Cantonese"]], {},{:multiple => true, class: "form-control multi-select"} %>
               <p class='error'><%= show_errors(@seeker, :languages) %></p>
           </div>
 
@@ -168,11 +168,30 @@
       var inSales = "<%= @seeker.inSales %>";
       var outSales = "<%= @seeker.outSales %>";
 
-      var inSales_start = (inSales ? inSales : 0);
-      var outSales_start = (outSales ? outSales : 0);
+      var inSales_start = (inSales ? inSales : 1);
+      var outSales_start = (outSales ? outSales : 1);
+      handle.value = inSales;
+      console.log("handle val " + handle.value);
+
+      console.log("insales "+ inSales);
+      console.log("outsales "+ outSales);
+
+      console.log("insales_start "+ inSales_start);
+      console.log("outSales_start "+ outSales_start);
+      function in_out_disable(value) {
+          if(value > 0){
+              inboundCheck.prop("disabled", false).parent().removeClass("disabled-button_bg");
+              outboundCheck.prop("disabled", false).parent().removeClass("disabled-button_bg");
+           } else {
+              inboundCheck.prop("disabled", true).parent().addClass("disabled-button_bg");
+              outboundCheck.prop("disabled", true).parent().addClass("disabled-button_bg");
+            }
+      };
       
-      $("#seeker_inSales").val(0);
-      $("#seeker_outSales").val(0);
+      in_out_disable(inSales);
+
+      // $("#seeker_inSales").val(0);
+      // $("#seeker_outSales").val(0);
 
       $( "#inSales_slider" ).slider({
         create: function() {
@@ -186,13 +205,14 @@
           handle.text( ui.value );
           $("#seeker_inSales").val(ui.value);
           console.log(ui.value);
-          if(ui.value > 0){
-            inboundCheck.prop("disabled", false).parent().removeClass("disabled-button_bg");
-            outboundCheck.prop("disabled", false).parent().removeClass("disabled-button_bg");
-         } else {
-            inboundCheck.prop("disabled", true).parent().addClass("disabled-button_bg");
-            outboundCheck.prop("disabled", true).parent().addClass("disabled-button_bg");
-          };
+         //  if(ui.value > 0){
+         //    inboundCheck.prop("disabled", false).parent().removeClass("disabled-button_bg");
+         //    outboundCheck.prop("disabled", false).parent().removeClass("disabled-button_bg");
+         // } else {
+         //    inboundCheck.prop("disabled", true).parent().addClass("disabled-button_bg");
+         //    outboundCheck.prop("disabled", true).parent().addClass("disabled-button_bg");
+         //  };
+         in_out_disable(ui.value);
         }
       });
 
@@ -248,10 +268,16 @@
           
         }
         });
-
+      $('#seeker_languages').find("option[value='English']").prop('selected', true);
       $('option').mousedown(function(e) {
         e.preventDefault();
         $(this).prop('selected', $(this).prop('selected') ? false : true);
+        var test = $(this).val();
+        var test2 = $(this).prop('selected');
+        console.log(test + test2);
+        var test3 = $(this).parent().find('select');
+        // test3.multiselect("refresh"); 
+        console.log(test3);
         return false;
       });
          
