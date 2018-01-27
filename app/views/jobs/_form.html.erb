@@ -1,4 +1,4 @@
-  
+
     <div class="register-photo">
       <div class="form-container">
 
@@ -13,10 +13,7 @@
           </ul>
         </div>
       <% end %>
-        <i class="material-icons">thumb_up</i>
-          <div class="editor">
-               <h1>Job Editor</h1>
-          </div>
+       
       
         <div class="editor">
           <h2>
@@ -27,7 +24,7 @@
         <div class="row">
           <div>
        
-            <%= f.select :jobType, ['part-time', 'full-time'], {}, { class: "form form-group form-control" }%>
+            <%= f.select :jobType, [['Part-time', 'part-time'], ['Full-time', 'full-time']], {}, { class: "form form-group form-control" }%>
             <p class='error'><%= show_errors(@job, :jobType) %></p>
           </div>
           <div >
@@ -75,6 +72,7 @@
               </div>
           </div>
           <div class="form-inline">
+            <h2 style="display: inline-block;">Pay Range:&nbsp;&nbsp;</h2>
             <div class="input-group">
               <span class="input-group-addon">$</span>
               <%= f.number_field :payLow, class: "form-control salary_form"  %>
@@ -106,7 +104,7 @@
           <%= f.hidden_field :inSalesHard %>
         </div>
         <div>
-          <%= f.label :outSales, "outside Sales" %><br>
+          <%= f.label :outSales, "Outside Sales" %><br>
           <div id="outSales_job_slider" class="slider">
             <div id="outSales_job_handle" class="ui-slider-handle"></div>
             <div id="outSales_job_handle2" class="ui-slider-handle"></div>
@@ -117,7 +115,7 @@
         </div>
         <div>
      
-          <%= f.select :certifications, ['VSA', 'CFA (level 1)', 'CFA (level 2)', 'CFA (level 3)', 'CSC', 'CIP', 'LLQP', 'CAIB', 'Insurance Broker (level 1)', 'Insurance Broker (level 2)', 'Insurance Broker (level 3)'], {prompt: "Select Certifications"},{:multiple => true, class: "form-control multi-select"}%>
+          <%= f.select :certifications, ['VSA', 'CFA (level 1)', 'CFA (level 2)', 'CFA (level 3)', 'CSC', 'CIP', 'LLQP', 'CAIB', 'Insurance Broker (level 1)', 'Insurance Broker (level 2)', 'Insurance Broker (level 3)'], {},{:multiple => true, class: "form-control multi-select"}%>
           <p class='error'><%= show_errors(@job, :certifications) %></p>
         </div>
         <div>
@@ -171,23 +169,16 @@
               <%= f.check_box :presenting %>
             </div>
             <div class="ck-button">
-              <%= f.label :leadership, "Managed a Team" %><br>
+              <%= f.label :leadership, "Leading a Team" %><br>
               <%= f.check_box :leadership %>
             </div>
             <div class="ck-button">
               <%= f.label :closing %><br>
               <%= f.check_box :closing %>
             </div>
+        
             <div class="ck-button">
-              <%= f.label :hunterBased, "Hunter-based" %><br>
-              <%= f.check_box :hunterBased %>
-            </div>
-            <div class="ck-button">
-              <%= f.label :farmerBased, "Farmer Based" %><br>
-              <%= f.check_box :farmerBased %>
-            </div>
-            <div class="ck-button">
-              <%= f.label :commBased, "Commission Based" %><br>
+              <%= f.label :commBased, "Commission-Based Sales" %><br>
               <%= f.check_box :commBased %>
             </div>
           </div>
@@ -226,7 +217,7 @@
           <p class='error'><%= show_errors(@job, :competencies) %></p>
         </div>
          <div>
-          <%= f.label :deptSize, "Size of Department" %><br>
+          <%= f.label :deptSize, "Size of Team" %><br>
           <%= f.number_field :deptSize, class: "form-control"  %>
           <p class='error'><%= show_errors(@job, :deptSize) %></p>
         </div>
@@ -242,7 +233,7 @@
           <p class='error'><%= show_errors(@job, :CompUrl) %></p>
         </div>
         <div>
-          <div><%= f.submit "Submit", class: "btn btn-primary btn-block" %></div>
+          <div><%= f.submit "Post Job", class: "btn btn-primary btn-block", id: "employer_job_submit_button" %></div>
         </div>
 
       <% end %>

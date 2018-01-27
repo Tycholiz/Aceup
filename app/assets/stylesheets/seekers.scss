@@ -305,6 +305,16 @@
   height: 120px !important;
 }
 
+#seeker_submit_button {
+  font-size: 30px;
+  font-weight: bolder;
+  padding: 5px 11px;
+  background-color: #686868;
+}
+#seeker_submit_button:hover {
+  background-color:#28b62c;
+  color: white;
+}
 @media screen and (max-width: 1000px) {
     .jobs_sidebar {
       min-height: 50px;
