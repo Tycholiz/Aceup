@@ -20,7 +20,7 @@
         <td>(<%= link_to "edit", edit_job_path(job) %>, <%= link_to "delete", job_path(job), method: :delete, data: {confirm: "Are you sure you want to delete #{job.title}?"} %>)</td>
         <td><%= job.impressionist_count %></td>
         <td><%= job.applications.size %></td>
-        <td><%= job.created_at.to_formatted_s(:short)  %></td>
+        <td><%= job.created_at.strftime("%b %d, %Y")  %></td>
         <td><%= job.expiry.strftime("%b %d, %Y") if job.expiry%></td>
         <td><%= rand(1000...1999).to_s + (job.id+100).to_s %></td>
       </tr>

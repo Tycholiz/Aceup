@@ -26,14 +26,14 @@
                     <h3>Sales Skills:</h3>
 
                     <% selectSkills = {
-                    driversLicence: "Has drivers license",
-                    hasVehicle:"Has vehicle",                   
-                    coldCall: "Cold calling",                  
-                    doorToDoor: "Door to door",
+                    # driversLicence: "Has drivers license",
+                    # hasVehicle:"Has vehicle",                   
+                    coldCall: "Cold Calling",                  
+                    doorToDoor: "Door to Door",
                     custService: "Customer Service",                 
                     acctManagment: "Account Management",                 
                     negotiation: "Negotiation",   
-                    leadership: "Leadership",    
+                    # leadership: "Leadership",    
                     closing: "Closing", 
                     } 
 
@@ -44,7 +44,7 @@
              
                     <h3>Minimum Pay:</h3>
                     
-                       <%= select_tag :filter_salary, options_for_select((10000..100000).step(5000).map { |i| [number_to_currency(i), i]}, selected: params[:filter_salary]), { class: "form form-group form-control" } %>
+                       <%= select_tag :filter_salary, options_for_select((0..100000).step(5000).map { |i| [number_to_currency(i), i]}, selected: params[:filter_salary]), { class: "form form-group form-control" } %>
             		<br><br>
                     <%= submit_tag "Filter Results", :name => nil, class: "btn btn-default", id: "filter_button"%>
                 </div>
