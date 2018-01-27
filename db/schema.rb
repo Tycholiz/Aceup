@@ -106,9 +106,9 @@ ActiveRecord::Schema.define(version: 20180127023557) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "CompUrl"
-    t.text "commDirect"
-    t.text "commResidual"
-    t.text "commLead"
+    t.boolean "commDirect"
+    t.boolean "commResidual"
+    t.boolean "commLead"
     t.index ["employer_id"], name: "index_jobs_on_employer_id"
   end
 
