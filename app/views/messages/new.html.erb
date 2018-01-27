@@ -5,7 +5,8 @@
         <div class="form-container">
             <div class="image-holder"></div>
             <%= form_for @message  ,   :html => { :class => "article-form" } do |f| %>
-                <h2 class="text-center"><strong>Send us a message!</strong></h2>
+                <h2 class="text-center"><strong>Questions? Comments?</strong></h2>
+                <h3 class="text-center">Send us a message, and we'll get back to you within 24 hours!</h3>
                 <div class="form-group">
                   <%= f.text_field :name, placeholder: "Name", class: 'form-control' %>
                 </div>
@@ -16,7 +17,7 @@
                 <%= f.text_area :body,  placeholder: "Message", style: "height:300px; resize: none;", class: 'form-control' %>
                 </div>
                 <div >
-                <%= f.submit 'Send', class: 'btn btn-primary btn-block' %>
+                <%= f.submit 'Send', class: 'btn btn-primary btn-block', style: "font-size: 30px; font-weight: bolder;" %>
                 </div>  
             <% end %>       
         </div>
