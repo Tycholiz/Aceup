@@ -95,10 +95,12 @@
             <h2>Base Salary:&nbsp;</h2> <span style="font-size: 28px;"><%= @job.salary %></span> </br>
             <div class="float-left"><h2>Commission:&nbsp;</h2></div>
             <% if @commissions
-                 @commissions.each do |comm|%>
-                <div class="job_display_skills"><h2><%=comm%></h2></div>
+                 @commissions.each do |comm| %>
+                    <div class="job_display_skills"><h2><%=comm%></h2></div>
+                <% end %>
+            <% else %>   
+                <div class="job_display_skills"><h2>None</h2></div> 
             <% end %>
-        <% end %>
         </div>
         <div class="job_display_bar">
           <h1> MATCHED RESULTS </h1>
