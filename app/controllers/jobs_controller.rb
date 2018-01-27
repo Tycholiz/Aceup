@@ -27,6 +27,10 @@ class JobsController < ApplicationController
 
   def show
     @job = Job.find(params[:id])
+    @commissions = []
+    @commissions.push "Direct" if @job.commDirect
+    @commissions.push "Residual" if @job.commResidual
+    @commissions.push "Lead" if @job.commLead
     @employer = Employer.where(id: @job.employer_id).first
     if current_user.role == "Seeker"
         @seeker = Seeker.where(user_id: current_user.id).first

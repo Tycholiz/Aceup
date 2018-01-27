@@ -91,9 +91,14 @@
         <div class="row">
             <h1>Pay Structure</h1>  
         </div>
-        <div class="row">
-            <h2><%= @job.salary %></h2> 
-            <p style="background: red;">Commission (Work in Progress)</p>
+        <div class="row payShow">
+            <h2>Base Salary:&nbsp;</h2> <span style="font-size: 28px;"><%= @job.salary %></span> </br>
+            <div class="float-left"><h2>Commission:&nbsp;</h2></div>
+            <% if @commissions
+                 @commissions.each do |comm|%>
+                <div class="job_display_skills"><h2><%=comm%></h2></div>
+            <% end %>
+        <% end %>
         </div>
         <div class="job_display_bar">
           <h1> MATCHED RESULTS </h1>
