@@ -26,34 +26,41 @@
         </div>
         <div class="row">
           <div>
-            <%= f.label :jobType %><br>
+       
             <%= f.select :jobType, ['part-time', 'full-time'], {}, { class: "form form-group form-control" }%>
             <p class='error'><%= show_errors(@job, :jobType) %></p>
           </div>
-          <div>
-            <%= f.label :salary %><br>
-            <%= f.select :salary, ['Salary', 'Hourly', 'Commission'], {}, { class: "form form-group form-control" }%>
-            <p class='error'><%= show_errors(@job, :salary) %></p>
+          <div >
+      
+            <%= f.select :temp, [['Temporary', true], ['Permanent', false]], {}, { class: "form form-group form-control" }%>
+            <p class='error'><%= show_errors(@job, :temp) %></p>
           </div>
 
           <div class="ck-button">
             <label for="job_status"></label><br>
             <input name="job[status]" type="hidden" value="0"><input type="checkbox" value="1" name="job[status]" id="job_status">
-            <%= f.hidden_field :status, value: @job.status, id: "hiddenStatus"  %>
+            <%= f.hidden_field :status, id: "hiddenStatus"  %>
           </div>
 
-            <div class="ck-button">
-                <%= f.label :temp, "Temporary" %><br>
-                <%= f.check_box :temp %>
-                <p class='error'><%= show_errors(@job, :temp) %></p>
-              </div>
+            
           </div>
           <div class="editor">
             <h2>
               <i class="glyphicon glyphicon-usd"></i>
-                Average Pay
+                Pay Structure
             </h2>
           </div> 
+ 
+          <div class="ck-button">
+            <label for="job_salary">Salary</label><br>
+            <input name="job[salary]" type="hidden" value="0"><input type="checkbox" value="1" name="job[salary]" id="job_salary">
+            <%= f.hidden_field :salary, value: @job.salary, id: "hiddenSalary"  %>
+          </div>
+          <div class="ck-button">
+            <label for="job_hourly">Hourly</label><br>
+            <input name="job[hourly]" type="hidden" value="0"><input type="checkbox" value="1" name="job[hourly]" id="job_hourly">
+          
+          </div>
           <div class="form-inline">
             <div class="input-group">
               <span class="input-group-addon">$</span>
@@ -319,6 +326,26 @@
         console.log("Status made white");
      } 
 
+      var testSal = "<%= @job.salary %>"
+      var SalaryButton = $('#job_salary').closest("div")
+      var HourlyButton = $('#job_hourly').closest("div")
+      console.log("Salary testSal -> " + testSal);
+
+      if (testSal == "Salary") {
+        // SalaryButton.children('label').html("Active");
+        SalaryButton.addClass("ck-button_bg");
+        SalaryButton.find("[type='checkbox']").prop('checked', true);
+        HourlyButton.find("[type='checkbox']").prop('checked', false);
+        console.log("Salary made green");
+     } else {
+        // SalaryButton.children('label').html("Inactive");
+        HourlyButton.addClass("ck-button_bg");
+        HourlyButton.find("[type='checkbox']").prop('checked', true);
+        SalaryButton.find("[type='checkbox']").prop('checked', false);
+        console.log("Salary made white");
+     } 
+
+
      var driversLicence = $('#job_driversLicence').closest("div").find("[type='checkbox']")
       if (driversLicence.is(":checked")) {
         $('#job_hasVehicle').prop("disabled", false).parent().removeClass("disabled-button_bg"); 
@@ -329,38 +356,75 @@
       ckbutton.on('click',function(){
         console.log("tapped");
         var childCheck = $(this).find("[type='checkbox']")
-        // console.log(childCheck.prop('id'));
+        console.log(childCheck.prop('id'));
+        console.log(childCheck.prop('checked'));
 
-        if (childCheck.is(":checked")) {
-          childCheck.prop('checked', false);
-          $(this).removeClass("ck-button_bg"); 
-          if (childCheck.prop('id') == "job_status") {
-            
-            $(this).children('label').text('Inactive');
-            $('#hiddenStatus').val("inactive");
-            // $('#hiddenStatus').attr('value',"inactive");
-            test = $('#hiddenStatus').val();
-            // console.log("Status hidden value -> " test);
-            } 
-          if (childCheck.prop('id') == "job_driversLicence") {
-            $('#job_hasVehicle').prop("disabled", true).parent().addClass("disabled-button_bg");
+          if (childCheck.is(":checked")) {
+            childCheck.prop('checked', false);
+            $(this).removeClass("ck-button_bg"); 
+              if (childCheck.prop('id') == "job_status") {
+                
+                $(this).children('label').text('Inactive');
+                $('#hiddenStatus').val("inactive");
+                // $('#hiddenStatus').attr('value',"inactive");
+                test = $('#hiddenStatus').val();
+                // console.log("Status hidden value -> " test);
+                } 
+              if (childCheck.prop('id') == "job_driversLicence") {
+                $('#job_hasVehicle').prop("disabled", true).parent().addClass("disabled-button_bg");
+              }
+              if (childCheck.prop('id') == "job_salary") {
+                
+                  $('#hiddenSalary').val("Salary");
+                  HourlyButton.find("[type='checkbox']").prop('checked', true);
+                  HourlyButton.addClass("ck-button_bg");
+                  console.log("Salary clicked, hourly made true");
+                  testSal = $('#hiddenSalary').val();
+                  console.log("salary variable "+ testSal);
+                } 
+                if (childCheck.prop('id') == "job_hourly") {
+                
+                  $('#hiddenSalary').val("Hourly");
+                  SalaryButton.find("[type='checkbox']").prop('checked', true);
+                  SalaryButton.addClass("ck-button_bg");
+                  console.log("Hourly clicked, salary made true");
+                  testSal = $('#hiddenSalary').val();
+                  console.log("salary variable "+ testSal);
+                } 
+               
+            }else{
+              childCheck.prop('checked', true);
+              $(this).addClass("ck-button_bg");
+              if (childCheck.prop('id') == "job_status") {
+                $(this).children('label').text('Active');
+                $('#hiddenStatus').val("active");
+                // $('#hiddenStatus').attr('value',"active");
+                test = $('#hiddenStatus').val();
+                // console.log("Status hidden value -> " test);
+                }
+              if (childCheck.prop('id') == "job_driversLicence") {
+                $('#job_hasVehicle').prop("disabled", false).parent().removeClass("disabled-button_bg");
+              }
+               if (childCheck.prop('id') == "job_salary") {
+                  $('#hiddenSalary').val("Salary");
+                  
+                  HourlyButton.find("[type='checkbox']").prop('checked', false);
+                  HourlyButton.removeClass("ck-button_bg");
+                  console.log("Salary clicked, hourly made false");
+                  testSal = $('#hiddenSalary').val();
+                  console.log("salary variable "+ testSal);
+                } 
+                if (childCheck.prop('id') == "job_hourly") {
+                  $('#hiddenSalary').val("Hourly");
+                  // $('#hiddenSalary').val("Salary");
+                  SalaryButton.find("[type='checkbox']").prop('checked', false);
+                  SalaryButton.removeClass("ck-button_bg");
+                  console.log("Hourly clicked, salary made false");
+                                    testSal = $('#hiddenSalary').val();
+                  console.log("salary variable "+ testSal);
+                } 
+              
           }
-           
-        }else{
-          childCheck.prop('checked', true);
-          $(this).addClass("ck-button_bg");
-          if (childCheck.prop('id') == "job_status") {
-            $(this).children('label').text('Active');
-            $('#hiddenStatus').val("active");
-            // $('#hiddenStatus').attr('value',"active");
-            test = $('#hiddenStatus').val();
-            // console.log("Status hidden value -> " test);
-            }
-          if (childCheck.prop('id') == "job_driversLicence") {
-            $('#job_hasVehicle').prop("disabled", false).parent().removeClass("disabled-button_bg");
-          }
-          
-        }
         });
       $('#job_languages').find("option[value='English']").prop('selected', true);
       $('option').mousedown(function(e) {
