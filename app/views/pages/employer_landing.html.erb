@@ -6,38 +6,34 @@
     <div class="features-clean">
         <div class="container">
             <div class="intro">
-                <h2 class="text-center">Employers </h2>
-                <p class="text-center" style="font-size:17.5px;">Get the salesperson you've been looking for.</p>
+                <h2 class="text-center" style="font-size: 33px;">Employers </h2>
+                <p class="text-center" style="font-size:24px;    margin: 10px 40px;">Get the salesperson you've been looking for.</p>
             </div>
             <div class="row features">
                 <div class="col-md-4 col-sm-6 item"><i class="glyphicon glyphicon-list-alt icon"></i>
-                    <h3 class="name">Create and manage multiple job postings</h3>
-                    <p class="description"><strong>Qualifications: </strong>Input the required education, experience and other skills necessary to match with ideal candidates for every job posting you create.</p>
+                    <h3 class="name">Define your ideal target based on their capabilities.</h3>
+                    <p class="description tighter">Focus your job posting only on those who qualify for the position.  The unique skill-set of the job hunter will match with the skills required for the role.</p>
                 </div>
                 <div class="col-md-4 col-sm-6 item"><i class="glyphicon glyphicon-file icon"></i>
-                    <h3 class="name">Receive pre-qualified applications</h3>
-                    <p class="description"><strong>Profile:</strong> Job hunters will create a profile that will contain their own unique experiences, education and skills that will match with your wants.</p>
-                    <p class="description"><strong>Screening:</strong> Job hunters will only be able to see and apply for jobs that they are qualified for, thereby screening any unqualified applicants.</p>
+                    <h3 class="name">Gather applications from a prequalified pool of candidates </h3>
+                    <p class="description tighter">Eliminate time spent filtering out unqualified applicants.</p>
+                  
                 </div>
                 <div class="col-md-4 col-sm-6 item"><i class="glyphicon glyphicon-map-marker icon"></i>
-                    <h3 class="name"> Find local Vancouver sales candidates</h3>
-                    <p class="description"><strong>Local: </strong>Receive only local applicants to minimize the amount of unqualified candidates.</p>
+                    <h3 class="name">Receive a more precise and personalized list of applications from job hunters.</h3>
+                    <p class="description tighter">Get seen by a wider, yet more refined group of salespeople.  Give your post a higher chance of attracting skilled talent.</p>
                 </div>
             </div>
         </div>
     </div>
-    <blockquote>
-        <p style="text-align:center;">Time to find a qualified sales applicant for your company</p>
-        <footer style="text-align:center;"> </footer>
-    </blockquote>
+
     <div style="align-content:center;display:flex;justify-content:center;">
         <div style="align-content:center;display:flex;justify-content:center;">
-            <%= link_to("Create Profile", new_user_path(role: 'Employer'), :class => "btn btn-default", :style => "background-color:rgb(59,56,56);color:#ffffff;margin:0px;width:292px;height:75px;padding:20px;font-size:25px;border-color:#ffffff;text-align:center;align-content:center;box-shadow:5px 5px 5px #888888;justify-content:center;" )%>
+            <%= link_to("Create Profile", new_user_path(role: 'Employer'), :class => "btn btn-default", :style => "background-color:rgb(59,56,56);color:#ffffff;margin:0px;width:292px;height:75px;padding:13px;font-size:33px;border-color:#ffffff;text-align:center;align-content:center;box-shadow:5px 5px 5px #888888;justify-content:center;font-weight: bolder;" )%>
         </div>
    
     </div>
-    <div style="align-content:center;display:flex;justify-content:center;margin-top: 20px">
-            <p>Returning user? <%= link_to "Log In", new_session_path %></p>
-    </div>
-
+    <div style="align-content:center;display:flex;justify-content:center;margin-top: 20px;margin-bottom:35px;">
+                    <h4>Returning user? <%= link_to "Log In", new_session_path %></h4>
+            </div>
   
