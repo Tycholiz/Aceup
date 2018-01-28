@@ -68,7 +68,12 @@
                 <h2>Benefits:</h2>
             </div>
             <div class="job_summary_display">
-                <h3><%= @job.benefits  %></h3>
+                <ul>
+                 <% benefits_array =   @job.benefits.split(',') %>
+                 <% benefits_array.each do |benefit|%>
+                    <li><%=benefit%></li>
+                 <% end %>
+                </ul>
             </div>  
         </div>
         <div class="row job_display_desc_row">
