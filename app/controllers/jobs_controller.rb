@@ -67,6 +67,7 @@ class JobsController < ApplicationController
     @job = Job.find(params[:id])
     user = User.where(id: current_user.id).first
     employer = Employer.where(user_id: user.id).first
+    # @job.benefits = params[:tags]
 
     if @job.update_attributes(job_params)
       redirect_to employer_path(employer), notice: "#{@job.title} was updated successfully!"

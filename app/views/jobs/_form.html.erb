@@ -33,12 +33,6 @@
             <p class='error'><%= show_errors(@job, :temp) %></p>
           </div>
 
-          <div class="ck-button">
-            <label for="job_status"></label><br>
-            <input name="job[status]" type="hidden" value="0"><input type="checkbox" value="1" name="job[status]" id="job_status">
-            <%= f.hidden_field :status, id: "hiddenStatus"  %>
-          </div>
-
             
           </div>
           <div class="editor">
@@ -211,7 +205,8 @@
           <%= f.text_area :skills, class: "form-control", style: "height: 60px"  %>
           <p class='error'><%= show_errors(@job, :skills) %></p>
         </div>
-        <div>
+        
+        <div style="clear:both;">
           <%= f.label :competencies, "Competencies" %><br>
           <%= f.text_area :competencies, class: "form-control", style: "height: 100px"  %>
           <p class='error'><%= show_errors(@job, :competencies) %></p>
@@ -221,11 +216,21 @@
           <%= f.number_field :deptSize, class: "form-control"  %>
           <p class='error'><%= show_errors(@job, :deptSize) %></p>
         </div>
-         <div>
+         <div class="row">
           <%= f.label :benefits, "Benefits" %><br>
-          <%= f.text_area :benefits, class: "form-control", style: "height: 100px"  %>
+          <%= f.hidden_field :benefits %>
+          <input type="text" name="tags" id="tags_build" value="Mouse" class="form-control">
           <p class='error'><%= show_errors(@job, :benefits) %></p>
+          <div class="ck-button" id="tags_button">
+            <label for="job_status">Add Benefits</label><br>
+            <input type="checkbox" value="1" name="tags_button">
+            
+          
+          </div>
         </div>
+        <div id="tags_result">
+            </div>
+        <%= hidden_field_tag "tags", params[:tags], id: "hiddenTags" %>
         <div>
           <%= f.label :CompUrl, "Optional: Choose URL that will send job hunters to your site" %><br>
           <%= f.label :CompUrl, "Note: Must include full URL ie: https://www.aceup.co/ instead of just www.aceup.co" %>
@@ -314,21 +319,7 @@
           }
       });
 
-      var test = $('#hiddenStatus').val()
-      var statusButton = $('#job_status').closest("div")
-      // console.log("Status test -> " + test);
 
-      if (test == "active") {
-        statusButton.children('label').html("Active");
-        statusButton.addClass("ck-button_bg");
-        statusButton.find("[type='checkbox']").prop('checked', true);
-        // console.log("Status made green");
-     } else {
-        statusButton.children('label').html("Inactive");
-        statusButton.removeClass("ck-button_bg");
-        statusButton.find("[type='checkbox']").prop('checked', false);
-        // console.log("Status made white");
-     } 
 
       var testSal = "<%= @job.salary %>"
       var SalaryButton = $('#job_salary').closest("div")
@@ -366,14 +357,7 @@
           if (childCheck.is(":checked")) {
             childCheck.prop('checked', false);
             $(this).removeClass("ck-button_bg"); 
-              if (childCheck.prop('id') == "job_status") {
-                
-                $(this).children('label').text('Inactive');
-                $('#hiddenStatus').val("inactive");
-                // $('#hiddenStatus').attr('value',"inactive");
-                test = $('#hiddenStatus').val();
-                // console.log("Status hidden value -> " test);
-                } 
+
               if (childCheck.prop('id') == "job_driversLicence") {
                 $('#job_hasVehicle').prop("disabled", true).parent().addClass("disabled-button_bg");
               }
@@ -399,13 +383,6 @@
             }else{
               childCheck.prop('checked', true);
               $(this).addClass("ck-button_bg");
-              if (childCheck.prop('id') == "job_status") {
-                $(this).children('label').text('Active');
-                $('#hiddenStatus').val("active");
-                // $('#hiddenStatus').attr('value',"active");
-                test = $('#hiddenStatus').val();
-                // console.log("Status hidden value -> " test);
-                }
               if (childCheck.prop('id') == "job_driversLicence") {
                 $('#job_hasVehicle').prop("disabled", false).parent().removeClass("disabled-button_bg");
               }
@@ -436,6 +413,23 @@
         $(this).prop('selected', $(this).prop('selected') ? false : true);
         return false;
       });
+      // var tagbutton = $(".ck-button").find("#tags_button");
+      var tagbutton = $("#tags_button");
+      var tags_array = []
+      $(tagbutton).on('click',function(){
+        console.log("tags clicked");
+        var tags_result = $('#tags_result');
+        var tags_build = $('#tags_build').val()
+        tags_array.push(tags_build);
+        $('#job_benefits').val(tags_array);
+        var test_hidden = $('#job_benefits').val();
+        console.log(test_hidden);
+        // $('<p>'+ tags_array + '</p>').appendTo(tags_result)
+        $('<div class="job_edit_skills"><h2>'+ tags_build +'</h2></div>').appendTo(tags_result)
+
+      
+      });
+
 
     } );
  </script>

@@ -622,6 +622,19 @@ html {
   }
 }
 
+.job_edit_skills {
+  background-color:black;
+  color:white;
+  float: left;
+  margin: 5px 5px;
+  padding: 5px 8px;
+  border-radius: 15px;
+}
+
+.job_edit_skills h2 {
+  margin: 0 !important;
+}
+
 .field_with_errors {
 
   input{
