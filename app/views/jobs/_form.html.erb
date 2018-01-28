@@ -231,6 +231,7 @@
         <div id="tags_result">
             </div>
         <%= hidden_field_tag "tags", params[:tags], id: "hiddenTags" %>
+        <div style="clear:both; margin-bottom: 25px;"></div>
         <div>
           <%= f.label :CompUrl, "Optional: Choose URL that will send job hunters to your site" %><br>
           <%= f.label :CompUrl, "Note: Must include full URL ie: https://www.aceup.co/ instead of just www.aceup.co" %>
@@ -425,7 +426,7 @@
         var test_hidden = $('#job_benefits').val();
         console.log(test_hidden);
         // $('<p>'+ tags_array + '</p>').appendTo(tags_result)
-        $('<div class="job_edit_skills"><h2>'+ tags_build +'</h2></div>').appendTo(tags_result)
+        $('<div class="job_edit_skills"><h>'+ tags_build +'</h3></div>').appendTo(tags_result)
 
       
       });
