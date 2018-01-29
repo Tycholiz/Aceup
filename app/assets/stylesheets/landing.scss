@@ -116,4 +116,18 @@
 		min-width:80%;
 		max-width:90%;
 	}
+  .landing_buttons_inner {
+    padding-right: 0px;
+    float: none;
+  }
+  .landing_buttons_inner a {
+    margin-left:auto !important;
+  margin-right: auto !important;
+  }
+  .landing_buttons {
+  margin-left:auto;
+  margin-right: auto;
+  float:none;
+
+}
 }
