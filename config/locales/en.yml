@@ -35,3 +35,7 @@ en:
   message_mailer:
     contact_me:
       subject: "Message from Aceup.co"
+  errors:
+    messages:
+      blank: "Cannot be blank"
+      not_a_number: "Must be a number"
