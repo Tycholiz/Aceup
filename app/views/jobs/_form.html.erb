@@ -3,17 +3,6 @@
       <div class="form-container">
 
         <%= form_for @job, :html => {:class => 'profile_form'} do |f| %>
-        <% if @job.errors.any? %>
-        <div>
-          <%= pluralize(@job.errors.count, "error") %> prevented this movie from being submitted:
-          <ul>
-            <% @job.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
-       
       
         <div class="editor">
           <h2>
@@ -76,14 +65,16 @@
             <div class="input-group">
               <span class="input-group-addon">$</span>
               <%= f.number_field :payLow, class: "form-control salary_form"  %>
-              <p class='error'><%= show_errors(@job, :payLow) %></p>
+          
               <span style="margin: 15px">  to  </span>
             </div>
             <div class="input-group">
               <span class="input-group-addon">$</span>
               <%= f.number_field :payHigh, class: "form-control salary_form"  %>
-              <p class='error'><%= show_errors(@job, :payHigh) %></p>
+              
             </div>
+            <p class='error'><%= show_errors(@job, :payHigh) %></p>
+                <p class='error'><%= show_errors(@job, :payLow) %></p>
           </div>
        
 

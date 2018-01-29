@@ -23,6 +23,6 @@ class SessionsController < ApplicationController
 
     def destroy
       session[:user_id] = nil
-      redirect_to "/pages/logout", notice: "Adios!"
+      redirect_to "/pages/logout"
     end
 end

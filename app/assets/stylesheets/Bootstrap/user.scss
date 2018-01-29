@@ -689,6 +689,13 @@ html {
 #employer_job_submit_button:hover {
   background-color:#28b62c;
   color: white;
+    background-color:#28b62c;
+  color: white;
+  // color: #28b62c;
+    text-shadow: 0 0 15px #28b62c;
+    transition: all 0.5s ease;
+    box-shadow: 0 0 20px  #28b62c;
+    // border: 5px solid  #28b62c;
 }
 
 #apply_button_display {

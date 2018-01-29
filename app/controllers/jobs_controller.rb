@@ -58,7 +58,7 @@ class JobsController < ApplicationController
     if @job.save
       redirect_to employer_path(employer), notice: "#{@job.title} was submitted successfully!"
     else
-      flash[:alert] = "#{@job.title} could not be created."
+      flash[:alert] = "Your job could not be created."
       render :new
     end
   end
