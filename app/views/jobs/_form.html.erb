@@ -216,10 +216,10 @@
           <%= f.number_field :deptSize, class: "form-control"  %>
           <p class='error'><%= show_errors(@job, :deptSize) %></p>
         </div>
-         <div class="row">
+         <div>
           <%= f.label :benefits, "Benefits" %><br>
           <%= f.hidden_field :benefits %>
-          <input type="text" name="tags" id="tags_build" value="Mouse" class="form-control">
+          <input type="text" name="tags" id="tags_build" value="" class="form-control">
           <p class='error'><%= show_errors(@job, :benefits) %></p>
           <div class="ck-button" id="tags_button">
             <label for="job_status">Add Benefits</label><br>
@@ -228,7 +228,7 @@
           
           </div>
         </div>
-        <div id="tags_result">
+        <div id="tags_result" style="clear:both;">
             </div>
         <%= hidden_field_tag "tags", params[:tags], id: "hiddenTags" %>
         <div style="clear:both; margin-bottom: 25px;"></div>
@@ -257,6 +257,16 @@
       var inSalesHard =  "<%= @job.inSalesHard %>";
       var outSalesSoft = "<%= @job.outSalesSoft %>";
       var outSalesHard = "<%= @job.outSalesHard %>";
+
+      // Benefits form pre-populate
+      var benefits = "<%= @job.benefits %>";
+      $('#tags_build').val(benefits);
+      console.log(benefits);
+      // $('<div class="job_edit_skills"><h3 data-tooltip="Delete tag?">'+ tags_build +'</h3></div>').appendTo(tags_result)
+      // [1,2,3,4].map( function(item) {
+      //      alert(item);
+      // })
+ 
 
 
       var inSalesSoft_start = (inSalesSoft ? inSalesSoft  : 3);
@@ -418,18 +428,35 @@
       var tagbutton = $("#tags_button");
       var tags_array = []
       $(tagbutton).on('click',function(){
-        console.log("tags clicked");
+        // console.log("tags clicked");
         var tags_result = $('#tags_result');
         var tags_build = $('#tags_build').val()
         tags_array.push(tags_build);
         $('#job_benefits').val(tags_array);
         var test_hidden = $('#job_benefits').val();
+        console.log(tags_array);
         console.log(test_hidden);
         // $('<p>'+ tags_array + '</p>').appendTo(tags_result)
-        $('<div class="job_edit_skills"><h>'+ tags_build +'</h3></div>').appendTo(tags_result)
+        $('<div class="job_edit_skills"><h3 data-tooltip="Delete tag?">'+ tags_build +'</h3></div>').appendTo(tags_result)
 
       
       });
+        $(document).delegate(".job_edit_skills", 'click', function() {
+        var h3 =  $(this).find("h3").text();
+        $(this).remove();
+        console.log("h3 text " + h3);
+        console.log("array before");
+        console.log(tags_array);
+        test = tags_array.indexOf(h3);
+        console.log(test);
+        // tags_array = tags_array.splice(test, 1);
+        tags_array = tags_array.filter(function(item) { 
+              return item !== h3
+          })
+        console.log("array after");
+        console.log(tags_array);
+        $('#job_benefits').val(tags_array);
+      });   
 
 
     } );

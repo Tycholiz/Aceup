@@ -6,6 +6,15 @@ class Job < ApplicationRecord
 
       serialize :languages
       serialize :certifications
+      # serialize :benefits
+      # require 'csv'
+      # CSV.parse_line('one,two,three,four')
+      # before_save do
+      #   self.benefits = CSV.parse_line(self.benefits)
+      # end
+      #  before_save do
+      #   self.benefits = self.benefits.split(",")
+      # end
 
       is_impressionable
 
