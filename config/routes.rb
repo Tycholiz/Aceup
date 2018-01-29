@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :jobs do
   	resources :applications
     resources :saved_jobs
+    get 'activate', :on => :member  
   end
 
   resources :users, only: [:new, :create]

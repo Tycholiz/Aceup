@@ -76,6 +76,23 @@ class JobsController < ApplicationController
     end
   end
 
+  def activate 
+    @job = Job.find(params[:id])
+    user = User.where(id: current_user.id).first
+    employer = Employer.where(user_id: user.id).first
+    if @job.status == "active"
+      @job.status = "inactive"
+    else
+      @job.status = "active"
+    end
+    if @job.save
+      redirect_to employer_path(employer),  notice: "#{@job.title} was updated successfully!"
+    else
+      flash[:error] = "#{@job.errors.count} errors prevented this job from being updated"
+      redirect_to employer_path(employer)
+    end
+  end  
+
   def destroy
     user = User.where(id: current_user.id).first
     employer = Employer.where(user_id: user.id).first
