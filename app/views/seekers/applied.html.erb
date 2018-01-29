@@ -1,7 +1,7 @@
 <%= render 'header' %>
-<% unless @appliedJobs.length > 1 %>
+<% unless @appliedJobs.length > 0 %>
 		<div class="job_display_desc col-md-12">  
-        <div class="checkmark">
+        <div class="checkmark" style="height:360px;">
           <%= image_tag "empty.png" %></a>
           <h3>You don't have any applied jobs yet.</h3>
         </div>

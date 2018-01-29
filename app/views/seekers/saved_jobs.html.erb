@@ -1,9 +1,9 @@
 <%= render 'header' %>
 
 
-	<% unless @savedJobsList.length > 1 %>
+	<% unless @savedJobsList.length > 0 %>
 		<div class="job_display_desc col-md-12">  
-        <div class="checkmark">
+        <div class="checkmark" style="height:360px;">
           <%= image_tag "empty.png" %></a>
           <h3>You don't have any saved jobs yet.</h3>
         </div>
