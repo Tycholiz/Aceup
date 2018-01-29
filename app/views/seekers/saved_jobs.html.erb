@@ -1,43 +1,56 @@
 <%= render 'header' %>
-<div class="col-md-4 col-xs-12"></div>
-<div class="col-md-8 col-xm-8">
-	<% @savedJobsList.each do |job| %>
-	        <% employer = Employer.where(id: job.employer_id).first %>
-	        <% @seeker = Seeker.where(user_id: current_user.id).first %>
-	         <% @saved_job_delete = SavedJob.where(seeker_id: @seeker.id, job_id: job.id).first %>
-	       
-	        
-	            <div class="job_show">
-	                 <hr size="6" noshade>
-	                <div class="job_show_header">
-	                    <div class="job_show_img">
-	                        <%= image_tag(employer.logo_url.to_s) %>
-	                    </div>
-	                    <div class="job_show_title">
-	          
-	                        <h1><%= link_to job.title, job_path(job) %></h1>
-	                        <h2><%= employer.compName %></h2>
-	                        <h4><%= job.summary.truncate(300) %></h4>
-	 
-	                    </div>
-	                </div>
-	                <div class="job_show_text">
-	                    <h3>Saved on:&nbsp;</h3><%= @saved_job_delete.created_at.to_formatted_s(:short) %>  </br>
-	                    <h3>Job Type:&nbsp;</h3><%= job.jobType %> </br>
-	                        <h3>Pay Range:&nbsp;</h3><%= number_to_currency(job.payHigh)   %> to <%= number_to_currency(job.payLow)   %>                    
-	                    <div>
 
 
-	                     	<%= button_to "delete", job_saved_job_path(:id => @saved_job_delete.id, :job_id => job.id), :method => :delete,  class: "btn btn-default", id: "save_jobs_button" %>
+	<% unless @savedJobsList.length > 1 %>
+		<div class="job_display_desc col-md-12">  
+        <div class="checkmark">
+          <%= image_tag "empty.png" %></a>
+          <h3>You don't have any saved jobs yet.</h3>
+        </div>
+    </div>
 
-	                        
-	                      <h3>Location:&nbsp;</h3><%= employer.city %> </br>
-	                    </div>
-	                </div>
+	<% else %>
+	<div class="col-md-4 col-xs-12"></div>
+	<div class="col-md-8 col-xm-8">
+		<% @savedJobsList.each do |job| %>
+		        <% employer = Employer.where(id: job.employer_id).first %>
+		        <% @seeker = Seeker.where(user_id: current_user.id).first %>
+		         <% @saved_job_delete = SavedJob.where(seeker_id: @seeker.id, job_id: job.id).first %>
+		       
+		        
+		            <div class="job_show">
+		                 <hr size="6" noshade>
+		                <div class="job_show_header">
+		                    <div class="job_show_img">
+		                        <%= image_tag(employer.logo_url.to_s) %>
+		                    </div>
+		                    <div class="job_show_title">
+		          
+		                        <h1><%= link_to job.title, job_path(job) %></h1>
+		                        <h2><%= employer.compName %></h2>
+		                        <h4><%= job.summary.truncate(300) %></h4>
+		 
+		                    </div>
+		                </div>
+		                <div class="job_show_text">
+		                    <h3>Saved on:&nbsp;</h3><%= @saved_job_delete.created_at.to_formatted_s(:short) %>  </br>
+		                    <h3>Job Type:&nbsp;</h3><%= job.jobType %> </br>
+		                        <h3>Pay Range:&nbsp;</h3><%= number_to_currency(job.payHigh)   %> to <%= number_to_currency(job.payLow)   %>                    
+		                    <div>
 
-	            </div>
+
+		                     	<%= button_to "delete", job_saved_job_path(:id => @saved_job_delete.id, :job_id => job.id), :method => :delete,  class: "btn btn-default", id: "save_jobs_button" %>
+
+		                        
+		                      <h3>Location:&nbsp;</h3><%= employer.city %> </br>
+		                    </div>
+		                </div>
+
+		            </div>
 
 
 
-	      <% end %>
-</div>	      
+		      <% end %>
+		      </div>
+	<% end %>
+	      
