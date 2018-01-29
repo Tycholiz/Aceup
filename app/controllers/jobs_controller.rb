@@ -86,7 +86,7 @@ class JobsController < ApplicationController
       @job.status = "active"
     end
     if @job.save
-      redirect_to employer_path(employer),  notice: "#{@job.title} was updated successfully!"
+      redirect_to employer_path(employer),  notice: "#{@job.title} status has been changed to #{@job.status.capitalize}"
     else
       flash[:error] = "#{@job.errors.count} errors prevented this job from being updated"
       redirect_to employer_path(employer)
