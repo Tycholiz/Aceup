@@ -21,13 +21,6 @@
             <%= f.select :temp, [['Temporary', true], ['Permanent', false]], {}, { class: "form form-group form-control" }%>
             <p class='error'><%= show_errors(@job, :temp) %></p>
           </div>
-
-          <div class="ck-button">
-            <label for="job_status"></label><br>
-            <input name="job[status]" type="hidden" value="0"><input type="checkbox" value="1" name="job[status]" id="job_status">
-            <%= f.hidden_field :status, id: "hiddenStatus"  %>
-          </div>
-
             
           </div>
           <div class="editor">
@@ -305,21 +298,21 @@
           }
       });
 
-      var test = $('#hiddenStatus').val()
-      var statusButton = $('#job_status').closest("div")
-      // console.log("Status test -> " + test);
+     //  var test = $('#hiddenStatus').val()
+     //  var statusButton = $('#job_status').closest("div")
+     //  // console.log("Status test -> " + test);
 
-      if (test == "active") {
-        statusButton.children('label').html("Active");
-        statusButton.addClass("ck-button_bg");
-        statusButton.find("[type='checkbox']").prop('checked', true);
-        // console.log("Status made green");
-     } else {
-        statusButton.children('label').html("Inactive");
-        statusButton.removeClass("ck-button_bg");
-        statusButton.find("[type='checkbox']").prop('checked', false);
-        // console.log("Status made white");
-     } 
+     //  if (test == "active") {
+     //    statusButton.children('label').html("Active");
+     //    statusButton.addClass("ck-button_bg");
+     //    statusButton.find("[type='checkbox']").prop('checked', true);
+     //    // console.log("Status made green");
+     // } else {
+     //    statusButton.children('label').html("Inactive");
+     //    statusButton.removeClass("ck-button_bg");
+     //    statusButton.find("[type='checkbox']").prop('checked', false);
+     //    // console.log("Status made white");
+     // } 
 
       var testSal = "<%= @job.salary %>"
       var SalaryButton = $('#job_salary').closest("div")
@@ -357,14 +350,14 @@
           if (childCheck.is(":checked")) {
             childCheck.prop('checked', false);
             $(this).removeClass("ck-button_bg"); 
-              if (childCheck.prop('id') == "job_status") {
+              // if (childCheck.prop('id') == "job_status") {
                 
-                $(this).children('label').text('Inactive');
-                $('#hiddenStatus').val("inactive");
-                // $('#hiddenStatus').attr('value',"inactive");
-                test = $('#hiddenStatus').val();
-                // console.log("Status hidden value -> " test);
-                } 
+              //   $(this).children('label').text('Inactive');
+                // $('#hiddenStatus').val("inactive");
+                // // $('#hiddenStatus').attr('value',"inactive");
+                // test = $('#hiddenStatus').val();
+                // // console.log("Status hidden value -> " test);
+                // } 
               if (childCheck.prop('id') == "job_driversLicence") {
                 $('#job_hasVehicle').prop("disabled", true).parent().addClass("disabled-button_bg");
               }
@@ -390,13 +383,13 @@
             }else{
               childCheck.prop('checked', true);
               $(this).addClass("ck-button_bg");
-              if (childCheck.prop('id') == "job_status") {
-                $(this).children('label').text('Active');
-                $('#hiddenStatus').val("active");
-                // $('#hiddenStatus').attr('value',"active");
-                test = $('#hiddenStatus').val();
-                // console.log("Status hidden value -> " test);
-                }
+              // if (childCheck.prop('id') == "job_status") {
+              //   $(this).children('label').text('Active');
+              //   $('#hiddenStatus').val("active");
+              //   // $('#hiddenStatus').attr('value',"active");
+              //   test = $('#hiddenStatus').val();
+              //   // console.log("Status hidden value -> " test);
+              //   }
               if (childCheck.prop('id') == "job_driversLicence") {
                 $('#job_hasVehicle').prop("disabled", false).parent().removeClass("disabled-button_bg");
               }
