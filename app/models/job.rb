@@ -29,8 +29,8 @@ class Job < ApplicationRecord
       validates :languages,
         presence: true
 
-      validates :salary,
-        presence: true
+      validates :salary, 
+        presence: {message: "Must choose either Salary or Hourly"}
 
       validates :payLow,
         presence: true,
