@@ -104,16 +104,23 @@
           <%= f.hidden_field :outSalesSoft %>
           <%= f.hidden_field :outSalesHard %>
         </div>
+        <div class="editor">
+            <h2>
+              <i class="glyphicon glyphicon-education"></i>
+              Education + Certifications
+            </h2>
+          </div>
+        <div>
+            <%= f.label :educationLevel, "Education Level" %><br>
+            <%= f.select :educationLevel, ['High School', 'Some Post-Secondary Experience', "Diploma", "Bachelor's", "Master's"], {}, { class: "form form-group form-control" } %>
+          </div>
+          <hr>
         <div>
      
           <%= f.select :certifications, ['VSA', 'CFA (level 1)', 'CFA (level 2)', 'CFA (level 3)', 'CSC', 'CIP', 'LLQP', 'CAIB', 'Insurance Broker (level 1)', 'Insurance Broker (level 2)', 'Insurance Broker (level 3)'], {},{:multiple => true, class: "form-control multi-select"}%>
           <p class='error'><%= show_errors(@job, :certifications) %></p>
         </div>
-        <div>
-        
-          <%= f.select :languages, [ ["English", "English"], ["French", "French"], ["Korean", "Korean"], ["Mandarin", "Mandarin"], ["Punjabi", "Punjabi"], ["Spanish", "Spanish"], ["Arabic", "Arabic"], ["Cantonese", "Cantonese"]], {},{:multiple => true, class: "form-control multi-select"}  %>
-          <p class='error'><%= show_errors(@job, :languages) %></p>
-        </div>
+
         <div class="row">
           <div class="ck-button">
             <%= f.label :driversLicence, "Class 5 Drivers License?" %><br>
@@ -125,6 +132,16 @@
               <%= f.check_box :hasVehicle %>
               <p class='error'><%= show_errors(@job, :hasVehicle) %></p>
             </div>
+        </div>
+        <div class="editor">
+            <h2>
+                <i class="glyphicon glyphicon-comment"></i> 
+                Proficient Languages</h2> 
+          </div>
+        <div>
+        
+          <%= f.select :languages, [ ["English", "English"], ["French", "French"], ["Korean", "Korean"], ["Mandarin", "Mandarin"], ["Punjabi", "Punjabi"], ["Spanish", "Spanish"], ["Arabic", "Arabic"], ["Cantonese", "Cantonese"]], {},{:multiple => true, class: "form-control multi-select"}  %>
+          <p class='error'><%= show_errors(@job, :languages) %></p>
         </div>
         
           <div class="editor">
