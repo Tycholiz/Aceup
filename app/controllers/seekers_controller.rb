@@ -38,6 +38,10 @@ class SeekersController < ApplicationController
         langMatch = true
       end
 
+      job.educationLevel <= @seeker.educationLevel ? educationMatch = true : educationMatch = false
+        
+
+
       if job.certifications
         job.certifications.all? { |i| @seeker.certifications.include? i } ? certMatch = true : certMatch = false
       else 
@@ -46,9 +50,9 @@ class SeekersController < ApplicationController
 
       if params[:filter_skills]
         filter_skills_test = params[:filter_skills].all? {|s| jobSkills.key? s}
-        @matchJobs.push job if (jobSkills <= @seekSkills && filter_skills_test && inSales && outSales && langMatch && certMatch)
+        @matchJobs.push job if (jobSkills <= @seekSkills && filter_skills_test && inSales && outSales && langMatch && certMatch && educationMatch)
       else
-        @matchJobs.push job if (jobSkills <= @seekSkills && inSales && outSales && langMatch && certMatch)
+        @matchJobs.push job if (jobSkills <= @seekSkills && inSales && outSales && langMatch && certMatch && educationMatch)
       end    
     end
     @matchJobs = Kaminari.paginate_array(@matchJobs).page(params[:page]).per(10) 

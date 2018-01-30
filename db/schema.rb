@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180130002029) do
+ActiveRecord::Schema.define(version: 20180127023557) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 20180130002029) do
     t.string "jobType"
     t.datetime "expiry"
     t.string "status"
+    t.integer "educationLevel"
     t.boolean "temp"
     t.boolean "driversLicence"
     t.boolean "hasVehicle"
@@ -109,7 +110,6 @@ ActiveRecord::Schema.define(version: 20180130002029) do
     t.boolean "commDirect"
     t.boolean "commResidual"
     t.boolean "commLead"
-    t.string "educationLevel"
     t.index ["employer_id"], name: "index_jobs_on_employer_id"
   end
 
@@ -134,7 +134,7 @@ ActiveRecord::Schema.define(version: 20180130002029) do
   create_table "seekers", force: :cascade do |t|
     t.bigint "user_id"
     t.string "postalCode"
-    t.string "educationLevel"
+    t.integer "educationLevel"
     t.text "certifications"
     t.string "degree"
     t.boolean "driversLicence"

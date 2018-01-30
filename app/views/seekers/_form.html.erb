@@ -24,15 +24,17 @@
             <p>(this will be used to aid the matching process)</p>
             <p class='error'><%= show_errors(@seeker, :postalCode) %></p>
           </div>
-          <div class="editor">
+   
+
+        <div class="editor">
             <h2>
               <i class="glyphicon glyphicon-education"></i>
               Education + Certifications
             </h2>
           </div>
-          <div>
+        <div>
             <%= f.label :educationLevel, "Education Level" %><br>
-            <%= f.select :educationLevel, ['High School', 'Some Post-Secondary Experience', "Diploma", "Bachelor's", "Master's"], {}, { class: "form form-group form-control" } %>
+            <%= f.select :educationLevel, [['High School', 1], ['Some Post-Secondary Experience', 2],[ "Diploma", 3], ["Bachelor's", 4], ["Master's", 5]], {}, { class: "form form-group form-control" } %>
           </div>
           <hr>
           <div>

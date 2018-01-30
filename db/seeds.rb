@@ -85,7 +85,7 @@ p "Created #{Employer.count} employers"
 Seeker.create! [
 	user_id: 3,
 	postalCode: Faker::Address.postcode,
-	educationLevel: Faker::Beer.style,
+	educationLevel: 5,
 	degree: Faker::Beer.style,
 	inSales: 10,
 	outSales: 10,
@@ -115,7 +115,7 @@ Seeker.create! [
 Seeker.create! [
 	user_id: 4,
 	postalCode: Faker::Address.postcode,
-	educationLevel: Faker::Beer.style,
+	educationLevel: Faker::Number.between(1, 5),
 	degree: Faker::Beer.style,
 	inSales: Faker::Number.between(1, 5),
 	outSales: Faker::Number.between(1, 5),
@@ -152,6 +152,7 @@ Job.destroy_all
 		jobType: ['part-time', 'full-time'].sample,
 		expiry: Time.now.advance(weeks: 2), 
 		temp: false,
+		educationLevel: Faker::Number.between(1, 5),
 		status: "active",
 		hasVehicle: Faker::Boolean.boolean,
 		salary: ['Salary', 'Hourly', 'Commission'].sample,

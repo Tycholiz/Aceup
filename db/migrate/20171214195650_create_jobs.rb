@@ -6,6 +6,7 @@ class CreateJobs < ActiveRecord::Migration[5.1]
       t.string :jobType
       t.datetime :expiry
       t.string :status
+      t.integer :educationLevel
       t.boolean :temp
       t.boolean :driversLicence
       t.boolean :hasVehicle

@@ -3,7 +3,7 @@ class CreateSeekers < ActiveRecord::Migration[5.1]
     create_table :seekers do |t|
       t.references :user, foreign_key: true
       t.string :postalCode
-      t.string :educationLevel
+      t.integer :educationLevel
       t.text :certifications
       t.string :degree
       t.boolean :driversLicence

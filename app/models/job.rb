@@ -75,6 +75,9 @@ class Job < ApplicationRecord
       validates :benefits,
         presence: true
 
+      validates :educationLevel,
+      presence: true
+
       def self.filter(filter_years, filter_salary)
         if filter_years && filter_salary
           where('"inSalesHard" >= ? AND "payLow" >= ?', "#{filter_years}", "#{filter_salary}")
