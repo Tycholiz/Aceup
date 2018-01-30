@@ -6,7 +6,7 @@ class ApplicationsController < ApplicationController
     
 
     if @job.CompUrl
-      redirect_to @job.CompUrl, notice: "Adios!, #{current_user.firstName}!"
+      redirect_to @job.CompUrl, notice: "Good luck!, #{current_user.firstName}!"
     elsif @seeker
       
       @application = @job.applications.build

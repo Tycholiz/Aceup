@@ -8,7 +8,7 @@ class SeekersController < ApplicationController
     @seeker.user_id = current_user.id
     # @seeker.postalCode = params[:postalCode].upcase
     if @seeker.save
-      redirect_to seeker_resumes_path(@seeker), success: "Welcome aboard, add a resume"
+      redirect_to seeker_path(@seeker), success: "Welcome aboard, add a resume"
     else
       # flash[:error] = @seeker.errors.full_messages.to_sentence
       flash[:error] = "#{@seeker.errors.count} errors prevented this profile from being created"
@@ -73,7 +73,7 @@ class SeekersController < ApplicationController
     @seeker = Seeker.find(params[:id])
 
     if @seeker.update_attributes(seeker_params)
-      redirect_to seeker_resumes_path(@seeker), notice: "Update your resume?"
+      redirect_to seeker_path(@seeker), notice: "Updated successfully!"
     else
       flash[:error] = @seeker.errors.full_messages.to_sentence
       render :edit

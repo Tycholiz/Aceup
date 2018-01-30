@@ -4,7 +4,7 @@
 	<ol class="breadcrumb dash_breadcrumb" id="dash_breadcrumb">
 		<li><%= link_to "Current Jobs", seeker_path(@seeker) %></li>
 		<li><%= link_to "Applied Jobs", applied_seeker_path(@seeker) %></li>
-		<li><%= link_to "My Resumes", seeker_resumes_path(@seeker) if @seeker.resumes.first%></li>
+		<li><%= link_to "My Resumes", seeker_resumes_path(@seeker) %></li>
 		<li><%= link_to "Saved Jobs", saved_jobs_seeker_path(@seeker) %></li>
 		<li><%= link_to "Edit Profile", edit_seeker_path(@seeker) %></li>
 	</ol>
