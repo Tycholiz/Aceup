@@ -1,4 +1,4 @@
-
+<% @user = User.where(id: @seeker.user_id).first %>
 <div class="dash_header">
 	<%= image_tag "up_logotrans.png", class: "dash_header_logo" %>
 	<ol class="breadcrumb dash_breadcrumb" id="dash_breadcrumb">
@@ -7,7 +7,7 @@
 		<li><%= link_to "My Resumes", seeker_resumes_path(@seeker) %></li>
 		<li><%= link_to "Saved Jobs", saved_jobs_seeker_path(@seeker) %></li>
 		<li><%= link_to "Edit Profile", edit_seeker_path(@seeker) %></li>
-    <li><%= link_to "Edit Details", edit_user_path(@seeker) %></li>
+    <li><%= link_to "Edit Details", edit_user_path(@user) %></li>
 	</ol>
 </div>
 

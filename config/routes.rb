@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     get 'activate', :on => :member  
   end
 
-  resources :users, only: [:new, :create, :edit]
+  resources :users, only: [:new, :create, :edit, :update]
 
   resources :seekers do
     resources :resumes, only: [:index, :new, :create, :destroy]

@@ -7,7 +7,7 @@
             <div class="image-holder"></div>
             <%= form_for @user, :html => { :class => "article-form" } do |f| %>
               
-                <h2 class="text-center"><strong>Create</strong> an account.</h2>
+                <h2 class="text-center"><strong>Edit</strong> account details.</h2>
                 <div class="form-group">
                   <%= f.text_field :email, placeholder: "Email", class: 'form-control' %>
                   <p class='error'><%= show_errors(@user, :email) %></p>
@@ -43,47 +43,3 @@
         </div>
     </div>
 
-<div class="container">
-    <div class="intro"></div>
-</div>
-      <div class="register-photo">
-        <div class="form-container">
-            <div class="image-holder"></div>
-            <%= form_for @user, :html => { :class => "article-form" } do |f| %>
-                hats
-                <%= hidden_field_tag :role, @current_user.role %>
-                <h2 class="text-center"><strong>Create</strong> an account.</h2>
-                <div class="form-group">
-                  <%= f.text_field :email, placeholder: "Email", class: 'form-control' %>
-                  <p class='error'><%= show_errors(@user, :email) %></p>
-                </div>
-                <div class="form-group">
-                <%= f.text_field :firstName, placeholder: "First Name", class: 'form-control' %>
-                <p class='error'><%= show_errors(@user, :firstName) %></p>
-                </div>
-                <div class="form-group">
-                <%= f.text_field :lastName, placeholder: "Last Name", class: 'form-control' %>
-                <p class='error'><%= show_errors(@user, :lastName) %></p>
-                </div>
-                <div class="form-group">
-                <%= f.password_field :password, placeholder: "Password", class: 'form-control' %>
-                <p class='error'><%= show_errors(@user, :password) %></p>
-                </div>
-                <div class="form-group">
-                <%= f.password_field :password_confirmation, placeholder: "Password Confirmation", class: 'form-control' %>
-                <p class='error'><%= show_errors(@user, :password_confirmation) %></p>
-                </div>
-                <div class="form-group">
-                <%= f.text_field :phoneNo, placeholder: "Phone Number (optional)", class: 'form-control' %>
-                <p class='error'><%= show_errors(@user, :phoneNo) %></p>
-                </div>
-                <%= f.hidden_field :role, value: @role  %>
-                <div class="form-group">
-                    <div class="checkbox"><label class="control-label"><input type="checkbox">I agree to the license terms.</label></div>
-                </div>
-                <div >
-                <%= f.submit "Get Started", class: 'btn btn-primary btn-block', style: "font-size: 30px; font-weight: bolder;" %>
-                </div>  
-            <% end %>       
-        </div>
-    </div>
