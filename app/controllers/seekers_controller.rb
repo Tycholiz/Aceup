@@ -38,7 +38,7 @@ class SeekersController < ApplicationController
         langMatch = true
       end
 
-      job.educationLevel <= @seeker.educationLevel ? educationMatch = true : educationMatch = false
+      job.educationLevel.to_int <= @seeker.educationLevel.to_int ? educationMatch = true : educationMatch = false
         
 
 
