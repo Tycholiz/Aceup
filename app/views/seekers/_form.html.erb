@@ -2,13 +2,15 @@
     <div class="register-photo">
       <div class="form-container">
          <%= form_for @seeker, :html => {:class => 'profile_form'} do |f| %>
-          <i class="material-icons">person_pin_circle</i>
+          <div class="job_header_img">
+          <%= image_tag "JH_form/ProfileEditor.png" %>
+        </div>
           <div class="editor">
                <h1>Profile Editor</h1> <!--***Changed wording here -->
           </div>
           <div class="editor">
             <h2>
-              <i class="glyphicon glyphicon-home"></i>
+              <%= image_tag "JH_form/Location.png" %>
               Location
             </h2>
           </div>
@@ -28,7 +30,7 @@
 
         <div class="editor">
             <h2>
-              <i class="glyphicon glyphicon-education"></i>
+              <%= image_tag "JH_form/EducationCertifications.png" %>
               Education + Certifications
             </h2>
           </div>
@@ -54,7 +56,7 @@
 
           <div class="editor">
             <h2>
-              <i class="glyphicon glyphicon-briefcase"></i>
+               <%= image_tag "JH_form/Experience.png" %>
                 Sales Experience
             </h2>
           </div>  
@@ -89,7 +91,7 @@
           </div>
             <div class="editor">
               <h2>
-                <i class="glyphicon glyphicon-list-alt"></i>
+                <%= image_tag "JH_form/Skills.png" %>
                 Sales Skills
               </h2>
             </div>
@@ -135,7 +137,7 @@
           <hr>
           <div class="editor">
             <h2>
-                <i class="glyphicon glyphicon-comment"></i> 
+                <%= image_tag "JH_form/Languages.png" %>
                 Proficient Languages</h2> 
           </div>
           <div>

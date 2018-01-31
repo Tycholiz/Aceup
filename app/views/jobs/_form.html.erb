@@ -4,10 +4,16 @@
        
 
         <%= form_for @job, :html => {:class => 'profile_form'} do |f| %>
+        <div class="job_header_img">
+          <%= image_tag "EmpForm/Employer.png" %>
+        </div>
+          <div class="editor">
+               <h1>Job Editor</h1> <!--***Changed wording here -->
+          </div>
 
         <div class="editor">
           <h2>
-            <i class="glyphicon glyphicon-road"></i>
+            <%= image_tag "EmpForm/Job Type.png"%>
               Job Type
           </h2>
         </div>
@@ -26,7 +32,7 @@
           </div>
           <div class="editor">
             <h2>
-              <i class="glyphicon glyphicon-usd"></i>
+              <%= image_tag "EmpForm/Pay Structure.png"%>
                 Pay Structure
             </h2>
           </div> 
@@ -77,7 +83,7 @@
 
         <div class="editor">
           <h2>
-            <i class="glyphicon glyphicon-briefcase"></i>
+            <%= image_tag "EmpForm/Experience.png"%>
               Sales Experience
           </h2>
         </div> 
@@ -106,7 +112,7 @@
         </div>
         <div class="editor">
             <h2>
-              <i class="glyphicon glyphicon-education"></i>
+              <%= image_tag "JH_form/EducationCertifications.png" %>
               Education + Certifications
             </h2>
           </div>
@@ -136,7 +142,7 @@
         </div>
         <div class="editor">
             <h2>
-                <i class="glyphicon glyphicon-comment"></i> 
+                <%= image_tag "JH_form/Languages.png" %>
                 Proficient Languages</h2> 
           </div>
         <div>
@@ -147,7 +153,7 @@
         
           <div class="editor">
             <h2>
-              <i class="glyphicon glyphicon-list-alt"></i>
+              <%= image_tag "EmpForm/Skills.png"%>
               Sales Skills
             </h2>
           </div>
@@ -195,7 +201,7 @@
         
         <div class="editor">
             <h2>
-              <i class="glyphicon glyphicon-folder-open"></i>
+              <%= image_tag "EmpForm/Job Description.png"%>
               Job Description
             </h2>
           </div>
