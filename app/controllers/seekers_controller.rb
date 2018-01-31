@@ -49,8 +49,8 @@ class SeekersController < ApplicationController
       end
 
       if params[:filter_skills]
-        filter_skills_test = params[:filter_skills].all? {|s| jobSkills.key? s}
-        @matchJobs.push job if (jobSkills <= @seekSkills && filter_skills_test && inSales && outSales && langMatch && certMatch && educationMatch)
+        filter_skills_test = params[:filter_skills].any? {|s| jobSkills.key? s}
+        @matchJobs.push job if (jobSkills <= @seekSkills &&! filter_skills_test && inSales && outSales && langMatch && certMatch && educationMatch)
       else
         @matchJobs.push job if (jobSkills <= @seekSkills && inSales && outSales && langMatch && certMatch && educationMatch)
       end    
