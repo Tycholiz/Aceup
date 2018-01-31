@@ -164,6 +164,7 @@
 
         }
 
+
 #sidebarCollapse {
   float: right;
   display: none;
@@ -206,6 +207,11 @@
   // background: #f8f8f8;
 }
 
+#sidebar option:checked  {
+  text-decoration: line-through;
+  color: #28b62c;
+  font-weight: bold;
+}
 
 #sidebar h3 {
   margin-left: 25px;

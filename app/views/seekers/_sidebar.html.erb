@@ -71,6 +71,17 @@
           sidebar.toggleClass("jobs_sidebar_expand"); 
           console.log("sidebar tapped");
       });
+        $('option').mousedown(function(e) {
+        e.preventDefault();
+        $(this).prop('selected', $(this).prop('selected') ? false : true);
+        var test = $(this).val();
+        var test2 = $(this).prop('selected');
+        console.log(test + test2);
+        var test3 = $(this).parent().find('select');
+        // test3.multiselect("refresh"); 
+        console.log(test3);
+        return false;
+      });
          
     });
  </script>
