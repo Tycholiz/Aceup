@@ -4,6 +4,11 @@ class UsersController < ApplicationController
     @role = params[:role]
   end
 
+  def edit
+    @user = User.where(id: current_user.id).first
+    @role = @user.role
+  end
+
   def create
     @user = User.new(user_params)
     @user.email = @user.email.downcase
