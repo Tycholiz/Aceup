@@ -16,7 +16,7 @@
 
                <div class="sidebar-main" id="navcol-2">
                     <h3>Minimum Years of Experience:</h3>
-                    <%= select_tag :filter_years, options_for_select((1..@seeker.inSales).map { |i| i.to_s}, selected: params[:filter_years]), { class: "form form-group form-control" }%>
+                    <%= select_tag :filter_years, options_for_select((0..@seeker.inSales).map { |i| i.to_s}, selected: params[:filter_years]), { class: "form form-group form-control" }%>
 
                   <div style="color:white;">
                     
