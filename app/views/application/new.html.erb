@@ -22,20 +22,22 @@
           <h2>Thank you!</h2>
           <h3>Your application was submitted successfully.</h3>
         </div>
-      <div>
-      <hr noshade id="application_hr"> 
-      <div class="row job_display_desc_row">
-            <div class="job_summary_title_display">
-                <h2>Select resume:</h2>
-            </div>
-            <div class="job_summary_display" id="resume_select">
-                <% options = options_from_collection_for_select(@seeker.resumes, 'id', 'title') %>
-        <%= f.select :resume,  options, {}, { class: "form form-group form-control" } %>
-        <div><%= f.submit "Submit", class: "form-control" %></div>
-            </div>  
+      <% unless @no_resume %>
+        <div>
+        <hr noshade id="application_hr"> 
+        <div class="row job_display_desc_row">
+              <div class="job_summary_title_display">
+                  <h2>Select resume:</h2>
+              </div>
+              <div class="job_summary_display" id="resume_select">
+                  <% options = options_from_collection_for_select(@seeker.resumes, 'id', 'title') %>
+          <%= f.select :resume,  options, {}, { class: "form form-group form-control" } %>
+          <div><%= f.submit "Submit", class: "form-control" %></div>
+              </div>  
+          </div>
+          
         </div>
-        
-      </div>
+      <% end %>
     </div>
   <% end %>
 <% end %>
