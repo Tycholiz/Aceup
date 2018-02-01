@@ -51,15 +51,15 @@
           </div>
           <div class="row">
             <div class="ck-button" id="ck-button-comm">
-                <%= f.label :commDirect, "Direct Commission" %><br>
+                <%= f.label :commDirect, "Direct Commission", data: {tooltip: "Commission is earned in direct proportion to the number of goods/services sold." } %><br>
                 <%= f.check_box :commDirect %>
               </div>
               <div class="ck-button" id="ck-button-comm">
-                <%= f.label :commResidual, "Residual Commission" %><br>
+                <%= f.label :commResidual, "Residual Commission", data: {tooltip: "Commission will be received periodically as long as the client still maintains an account with the company." } %><br>
                 <%= f.check_box :commResidual %>
               </div>
               <div class="ck-button" id="ck-button-comm">
-                <%= f.label :commLead, "Lead Commission" %><br>
+                <%= f.label :commLead, "Lead Commission", data: {tooltip: "Commission that is earned for referring a prospect to a different company or different sector of the business." }  %><br>
                 <%= f.check_box :commLead %>
               </div>
           </div>
