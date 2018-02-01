@@ -43,8 +43,8 @@
 .sub_title_text {
   font-size: 45px !important;
   font-weight: 900 !important;
-  margin-top: -40px;
-  margin-right: -80px;
+  // margin-top: -40px;
+  // margin-right: -80px;
 }
 
 #hunter_button {
@@ -119,12 +119,12 @@
 
 @media screen and (max-width: 1000px) {
 
-    .sub_title_text {
-      font-size: 4.5vw !important;
-      // font-weight: 900 !important;
-      margin-top: -2vw;
-      margin-right: -45vw;
-    }
+    // .sub_title_text {
+    //   font-size: 4.5vw !important;
+    //   // font-weight: 900 !important;
+    //   margin-top: -2vw;
+    //   margin-right: -45vw;
+    // }
 
   }
 @media screen and (max-width: 700px) {
