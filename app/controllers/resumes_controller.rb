@@ -4,15 +4,18 @@ class ResumesController < ApplicationController
 
   	@resume = @seeker.resumes.build(resume_params)
   	@resume.seeker_id = @seeker.id
-
-  	if @resume.save
+    @job = Job.find(params[:job_id])
+  	if @resume.save && @job
+          redirect_to new_job_application_path(@job), success: "Resume created successfully"
+    elsif @resume.save
           redirect_to seeker_resumes_path, success: "Resume created successfully"
-        else
-          render :new
-        end
+    else
+      render :new, alert:  "Resume not created, Errors"
+    end
   end
 
-  def new
+  def new   
+    @job = Job.find(params[:job_id])
   	if Seeker.find(params[:seeker_id])
   		@seeker = Seeker.find(params[:seeker_id])
   	else 
@@ -37,8 +40,9 @@ class ResumesController < ApplicationController
     @seeker = Seeker.find(params[:seeker_id])
         @resume = @seeker.resumes
   end
+   
 end
 
 def resume_params
-    params.require(:resume).permit(:title, :file)
+    params.require(:resume).permit(:title, :file, :job_id)
 end

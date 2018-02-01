@@ -107,6 +107,11 @@ class SeekersController < ApplicationController
     end
   end
 
+   def no_resume
+    @seeker  = Seeker.find(params[:id])
+    @job = Job.find(params[:job_id])
+  end
+
   protected
 
   def seeker_params

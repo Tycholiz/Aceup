@@ -105,7 +105,7 @@ class JobsController < ApplicationController
 
   def job_params
     params.require(:job).permit(
-      :title, :jobType, :expiry, :driversLicence, :hasVehicle, :status, :temp, :salary, :commDirect, :commResidual, :commLead, :payLow, :payHigh, :inSalesSoft, :inSalesHard, :outSalesSoft, :outSalesHard, :functions, :skills, :summary, :competencies, :deptSize, :benefits, :coldCall, :doorToDoor, :custService, :acctManagment, :negotiation, :presenting, :leadership, :closing, :hunterBased, :farmerBased, :commBased, :B2C, :B2B, :consSales, :directSales, :solutionSales, :CompUrl, :languages => [], :certifications => []
+      :title, :jobType, :expiry, :driversLicence, :hasVehicle, :status, :temp, :salary, :commDirect, :commResidual, :commLead, :payLow, :payHigh, :inSalesSoft, :inSalesHard, :outSalesSoft, :outSalesHard, :functions, :skills, :summary, :competencies, :deptSize, :benefits, :coldCall, :doorToDoor, :custService, :acctManagment, :negotiation, :presenting, :leadership, :closing, :hunterBased, :farmerBased, :commBased, :B2C, :B2B, :consSales, :directSales, :solutionSales, :CompUrl, :educationLevel, :languages => [], :certifications => []
     )                             
   end
 
