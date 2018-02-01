@@ -10,8 +10,8 @@
                                 <%= image_tag(employer.logo_url.to_s) %>
                             </div>
                             <div class="job_show_title">
-                                <h1><%= link_to job.title, job_path(job) %></h1>
-                                <h2><%= employer.compName %></h2>
+                                <h1><%= link_to job.title, job_path(job), class: "job_title_text" %></h1>
+                                <h2 clas="job_title_comp_text"><%= employer.compName %></h2>
                                 <h4><%= job.summary.truncate(300) %></h4>
                             </div>
                         </div>
@@ -38,3 +38,38 @@
         <% else %>
             <h2>You need to be a seeker</h2>
         <% end %>
+
+<script>
+    $( function() {
+
+    // var title_text = $('.job_title_text')
+    // var job_title_comp_text = $('.job_title_comp_text')
+    //   // shrink_title(title_text);                    
+    //  $( window ).resize(function() {
+    //     // shrink_title(title_text)
+    //     windowTest = $(window ).width();
+    //     console.log(windowTest);
+    //   });   
+    //  function shrink_title(title) {
+    //     windowTest = $(window ).width();
+    //     title.each(function() {
+    //         var height = $(this).height()
+    //         if (height > 40 && windowTest < 600) {
+    //             $(this).addClass("greenBG");
+    //             $(this).addClass("job_show_title_height_fix");
+    //             $(this).closest('div').find('h2').addClass("job_show_comp_height_fix");
+    //             $(this).closest('job_show_header').addClass("overflow_visible");
+    //         } else {
+    //             $(this).removeClass("greenBG");
+    //             $(this).removeClass("job_show_title_height_fix");
+    //             $(this).closest('div').find('h2').removeClass("job_show_comp_height_fix");
+
+    //         }
+    //     }); 
+
+    //  };
+
+});
+
+
+</script>

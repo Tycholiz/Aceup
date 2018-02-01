@@ -771,7 +771,8 @@ html {
   }
   .job_show_header {
     max-height: 25vw;
-    overflow: hidden;
+    // overflow: hidden;
+    overflow: visible !important;
   }
 
   .job_show_header h1 {

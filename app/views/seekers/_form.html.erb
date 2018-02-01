@@ -87,6 +87,14 @@
               <p class='error'><%= show_errors(@seeker, :outSales) %></p>
               <%= f.hidden_field :outSales %>
             </div>
+            <div class="ck-button">
+              <%= f.label :B2B, "B2B" %><br>
+              <%= f.check_box :B2B %>
+            </div>
+        <div class="ck-button">
+          <%= f.label :B2C, "B2C" %><br>
+          <%= f.check_box :B2C %>
+        </div>
            
           </div>
             <div class="editor">

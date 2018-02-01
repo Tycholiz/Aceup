@@ -40,7 +40,10 @@ class SeekersController < ApplicationController
 
       job.educationLevel.to_int <= @seeker.educationLevel.to_int ? educationMatch = true : educationMatch = false
         
-
+      # logger.info "Seeker Skills"
+      # logger.info @seekSkills
+      # logger.info "Job Skills"
+      # logger.info jobSkills
 
       if job.certifications
         job.certifications.all? { |i| @seeker.certifications.include? i } ? certMatch = true : certMatch = false

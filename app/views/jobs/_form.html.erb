@@ -110,7 +110,15 @@
           <%= f.hidden_field :outSalesSoft %>
           <%= f.hidden_field :outSalesHard %>
         </div>
-        <div class="editor">
+        <div class="ck-button">
+              <%= f.label :B2B, "B2B" %><br>
+              <%= f.check_box :B2B %>
+            </div>
+        <div class="ck-button">
+          <%= f.label :B2C, "B2C" %><br>
+          <%= f.check_box :B2C %>
+        </div>
+        <div class="editor" style="clear:both;">
             <h2>
               <%= image_tag "JH_form/EducationCertifications.png" %>
               Education + Certifications

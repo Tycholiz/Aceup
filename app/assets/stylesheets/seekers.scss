@@ -198,6 +198,22 @@
         overflow: hidden;
 }
 
+.greenBG {
+  background-color: green;
+  color: blue;
+  }
+
+.job_show_title_height_fix {
+  font-size: 4.5vw !important;
+}
+.job_show_comp_height_fix {
+  font-size: 3.5vw !important;
+  }
+.overflow_visible {
+  overflow: visible !important;
+  background-color: blue;
+}
+
 #sidebar select { 
   width: 80%;
   margin-left: 25px;
