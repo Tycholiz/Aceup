@@ -7,7 +7,7 @@
 
   <div class="job_display_desc col-md-12" style="padding: 0;">  
         <div class="checkmark">
-          <%= image_tag "check.png" %></a>
+          <%= image_tag "caution.png" %></a>
           <h2>You don't have a resume.</h2>
           <h3>Would you like to add one?</h3>
         </div>
@@ -16,7 +16,7 @@
       <div class="row job_display_desc_row">
             <div class="job_summary_display">
               <%= button_to "Add Resume",new_seeker_resume_path(@seeker), :method => "get", params: { job_id: @job.id }, class: "btn btn-default", id: "apply_button_apps_page" %>
-              <%= button_to "Apply Without One", "/pages/construction", :method => "get", class: "btn btn-default", id: "apply_button_apps_page" %>
+              <%= button_to "Apply Without One", new_job_application_path(@job), :method => "get", params: { no_resume: true}, class: "btn btn-default", id: "apply_button_apps_page" %>
               
             </div>
         </div>

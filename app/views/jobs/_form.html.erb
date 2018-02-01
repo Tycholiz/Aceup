@@ -297,10 +297,10 @@
           }
           handle.text( ui.values[0] );
           handle2.text( ui.values[1] );
-          $("#job_inSalesSoft").val(ui.values[0]);
-          $("#job_inSalesHard").val(ui.values[1]);
-          console.log(ui.values[0]);
-          console.log(ui.values[1]);
+          $("#job_inSalesSoft").val(ui.values[1]);
+          $("#job_inSalesHard").val(ui.values[0]);
+          console.log("hard " + ui.values[0]);
+          console.log("soft" + ui.values[1]);
         }
       });
 
@@ -322,10 +322,10 @@
           }
           handle3.text( ui.values[0] );
           handle4.text( ui.values[1] );
-          $("#job_outSalesSoft").val(ui.values[0]);
-          $("#job_outSalesHard").val(ui.values[1]);
-          console.log(ui.values[0]);
-          console.log(ui.values[1]);
+          $("#job_outSalesSoft").val(ui.values[1]);
+          $("#job_outSalesHard").val(ui.values[0]);
+          console.log("hard " + ui.values[0]);
+          console.log("soft" + ui.values[1]);
         }
       });
       var checkbox = $(".ck-button :checkbox");

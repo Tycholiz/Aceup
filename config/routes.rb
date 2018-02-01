@@ -2,7 +2,6 @@ Rails.application.routes.draw do
 
   resources :jobs do
   	resources :applications do
-      get 'no_resume', :on => :member 
     end
     resources :saved_jobs
     get 'activate', :on => :member  
@@ -13,10 +12,10 @@ Rails.application.routes.draw do
   resources :seekers do
     resources :resumes, only: [:index, :new, :create, :destroy]
   	member do
-  		get  :applied
-      get  :saved_jobs
-      get  :public
-      get :no_resume
+  		get   :applied
+      get   :saved_jobs
+      get   :public
+      get   :no_resume
   	end
   end
 

@@ -5,12 +5,13 @@ class ApplicationsController < ApplicationController
     @seeker = Seeker.where(user_id: current_user.id).first
     @resumes = Resume.where(seeker_id: 1)
     @resumeTest = @resumes.count
+    @no_resume = params[:no_resume]
 
     
 
     if @job.CompUrl
       redirect_to @job.CompUrl, notice: "Good luck!, #{current_user.firstName}!"
-    elsif @seeker && @resumeTest > 0
+    elsif @seeker && @resumeTest > 0 || @no_resume
       @application = @job.applications.build
       @application.seeker_id = @seeker.id
       @application.save
