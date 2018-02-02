@@ -14,17 +14,22 @@ class UsersController < ApplicationController
       @user.email = @user.email.downcase
 
       if @user.save
-        session[:user_id] = @user.id # auto log in
-        if @user.role == "Seeker"
+        session[:user_id] = @user.id  unless current_user.role == "Admin" # auto log in 
+        if current_user.role == "Seeker"
         	redirect_to new_seeker_path, notice: "Welcome aboard, #{@user.firstName}!"
-        elsif @user.role == "Employer"
+        elsif current_user.role == "Employer"
         	redirect_to new_employer_path, notice: "Welcome aboard, #{@user.firstName}!"
+        elsif current_user.role == "Admin"
+          
+          redirect_to admin_users_path, notice: "User #{@user.firstName} successfully!"
         else
-        	redirect_to jobs_path, notice: "Welcome aboard, #{@user.firstName}!"
+          flash[:error] = @user.errors.full_messages.to_sentence
+          render :new, notice: "User could not be created!"
         end
       else
         @role = params[:role]
-        render :new
+        flash[:error] = @user.errors.full_messages.to_sentence
+        render :new, notice: "User could not be created!"
       end
     end
     def update
@@ -48,6 +53,6 @@ class UsersController < ApplicationController
   protected
 
   def user_params
-    params.require(:user).permit(:email, :firstName, :lastName, :password, :password_confirmation, :role)
+    params.require(:user).permit(:email, :firstName, :lastName, :password, :password_confirmation, :role, :phoneNo)
   end
 end

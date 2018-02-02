@@ -6,16 +6,15 @@
         <div class="form-container">
             <div class="image-holder"></div>
             <%= form_for @user, :html => { :class => "article-form" } do |f| %>
-              
-                <h2 class="text-center"><strong>Edit</strong> account details.</h2>
+                <h2 class="text-center"><strong>Create</strong> an account.</h2>
                 <div class="form-group">
                   <%= f.text_field :email, placeholder: "Email", class: 'form-control' %>
                   <p class='error'><%= show_errors(@user, :email) %></p>
                 </div>
                 <div>
-                    <%= f.select :role, ['Seeker','Employer', 'Admin'], {}, { class: "form form-group form-control" }%>
-                    <p class='error'><%= show_errors(@job, :role) %></p>
-                  </div>
+                    <%= f.select :role, [['Seeker', 'Seeker'],['Employer', 'Employer'], ['Admin', 'Admin']], {}, { class: "form form-group form-control" }%>
+                    <p class='error'><%= show_errors(@user, :role) %></p>
+                </div>
                 <div class="form-group">
                 <%= f.text_field :firstName, placeholder: "First Name", class: 'form-control' %>
                 <p class='error'><%= show_errors(@user, :firstName) %></p>
@@ -36,14 +35,12 @@
                 <%= f.text_field :phoneNo, placeholder: "Phone Number (optional)", class: 'form-control' %>
                 <p class='error'><%= show_errors(@user, :phoneNo) %></p>
                 </div>
-                <%= f.hidden_field :role, value: @role  %>
                 <div class="form-group">
                     <div class="checkbox"><label class="control-label"><input type="checkbox">I agree to the license terms.</label></div>
                 </div>
                 <div >
-                <%= f.submit "Submit Changes", class: 'btn btn-primary btn-block', style: "font-size: 30px; font-weight: bolder;" %>
+                <%= f.submit "Get Started", class: 'btn btn-primary btn-block', style: "font-size: 30px; font-weight: bolder;" %>
                 </div>  
             <% end %>       
         </div>
     </div>
-

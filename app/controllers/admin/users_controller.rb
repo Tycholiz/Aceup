@@ -4,6 +4,23 @@ class Admin::UsersController < Admin::BaseAdminController
     	@users = @users.order(:updated_at).reverse_order.page(params[:page]).per(15) 
   	end
 
+  	def new
+      @user = User.new
+      # @role = params[:role]
+    end
+
+    def create
+      @user = User.new(user_params)
+      @user.email = @user.email.downcase
+
+      if @user.save
+        redirect_to admin_users_path, notice: "New user, #{@user.firstName} created!"
+      else
+        # @role = params[:role]
+        render :new, notice: "User could not be created!"
+      end
+    end
+
   	def edit
       @user  = User.find(params[:id])
       @role = @user.role
@@ -26,4 +43,10 @@ class Admin::UsersController < Admin::BaseAdminController
 	    @user.destroy
 	    redirect_to admin_users_path, notice: "#{@user.firstName} was deleted successfully!"
 	end
+
+	protected
+
+  def user_params
+    params.require(:user).permit(:email, :firstName, :lastName, :password, :password_confirmation, :role, :phoneNo)
+  end
 end
