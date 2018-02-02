@@ -25,6 +25,11 @@ Rails.application.routes.draw do
         get  :applications
       end
     end
+
+    resources :dashboard, only: [:landing]
+    root to: "/admin/dashboard#landing"
+
+
   end
 
   resources :jobs do
