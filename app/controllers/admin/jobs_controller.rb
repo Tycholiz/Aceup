@@ -20,36 +20,15 @@ class Admin::JobsController < Admin::BaseAdminController
 	    end
   	end
 
-	  # def edit
-	  #   @job = Job.find(params[:id])
-	  # end
-
-	  # def create
-	  #   @job = Job.new(job_params)
-	  #   employer = Employer.where(user_id: current_user.id).first
-	  #   @job.employer_id = employer.id
-	  #   @job.status = "active"
-	  #   @job.expiry = Time.now.advance(weeks: 4)
-
-	  #   if @job.save
-	  #     redirect_to employer_path(employer), notice: "#{@job.title} was submitted successfully!"
-	  #   else
-	  #     flash[:error] = "#{@job.errors.count} errors prevented this job from being created"
-	  #     render :new
-	  #   end
-	  # end
-
-	  # def update
-	  #   @job = Job.find(params[:id])
-	  #   user = User.where(id: current_user.id).first
-
-	  #   if @job.update_attributes(job_params)
-	  #     redirect_to admin_jobs_path, notice: "#{@job.title} was updated successfully!"
-	  #   else
-	  #     flash[:error] = "#{@job.errors.count} errors prevented #{@job.title} from being updated."
-	  #     render :edit
-	  #   end
-	  # end
+	  def new
+	    @job = Job.new
+	    @employers = Employer.all
+	    @emp_list = Array.new
+	    @employers.each do |emp|
+	    	@emp_list.push([emp.compName, emp.id])
+	    end
+	    logger.info @emp_list
+	  end
 
   	def destroy
 	    user = User.where(id: current_user.id).first

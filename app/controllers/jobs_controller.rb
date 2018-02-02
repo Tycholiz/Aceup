@@ -51,14 +51,31 @@ class JobsController < ApplicationController
   def create
     @job = Job.new(job_params)
     employer = Employer.where(user_id: current_user.id).first
-    @job.employer_id = employer.id
+    if current_user.role == "Admin"
+      @job.employer_id = 1
+    else
+      @job.employer_id = employer.id  
+    end
     @job.status = "active"
     @job.expiry = Time.now.advance(weeks: 4)
 
-    if @job.save
+    @employers = Employer.all
+      @emp_list = Array.new
+      @employers.each do |emp|
+        @emp_list.push([emp.compName, emp.id])
+      end
+
+    if @job.save && current_user.role == "Employer" 
       redirect_to employer_path(employer), notice: "#{@job.title} was submitted successfully!"
+    elsif @job.save && current_user.role == "Admin" 
+      redirect_to admin_jobs_path, notice: "#{@job.title} was submitted successfully!"
+    elsif  current_user.role == "Admin" 
+      flash[:error] = "#{@job.errors.count} errors prevented this job from being created"
+      logger.info @job.errors.full_messages.to_sentence
+      render  'admin/jobs/new'
     else
       flash[:error] = "#{@job.errors.count} errors prevented this job from being created"
+      logger.info @job.errors.full_messages.to_sentence
       render :new
     end
   end

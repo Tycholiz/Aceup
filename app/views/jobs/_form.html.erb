@@ -18,6 +18,13 @@
           </h2>
         </div>
         <div class="row">
+          <% if current_user.role == "Admin"%>
+            <div>
+              <%= f.label :employer_id, "Employer" %>
+              <%= select_tag :employer_id, options_for_select(@emp_list),{class: "form form-group form-control"} %>
+              <p class='error'><%= show_errors(@job, :employer_id) %></p>
+            </div>
+          <% end %>
           <div>
        
             <%= f.select :jobType, [['Part-time', 'part-time'], ['Full-time', 'full-time']], {}, { class: "form form-group form-control" }%>
@@ -46,8 +53,8 @@
             </div>
           </div>
           <div class="ck-button">
-            <label for="job_hourly">Hourly</label><br>
-            <input name="job[hourly]" type="hidden" value="0"><input type="checkbox" value="1" name="job[hourly]" id="job_hourly">
+            <label >Hourly</label><br>
+            <input  type="hidden" value="0"><input type="checkbox" value="1"  id="job_hourly">
           </div>
           <div class="row">
             <div class="ck-button" id="ck-button-comm">

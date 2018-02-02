@@ -6,19 +6,6 @@ class Admin::UsersController < Admin::BaseAdminController
 
   	def new
       @user = User.new
-      # @role = params[:role]
-    end
-
-    def create
-      @user = User.new(user_params)
-      @user.email = @user.email.downcase
-
-      if @user.save
-        redirect_to admin_users_path, notice: "New user, #{@user.firstName} created!"
-      else
-        # @role = params[:role]
-        render :new, notice: "User could not be created!"
-      end
     end
 
   	def edit

@@ -1,4 +1,8 @@
 <div class="container-fluid">
+  <br />
+  <%= link_to "Add Job", new_admin_job_path, class: "btn btn-primary" %>
+  <br />
+  <br />
   <div class="table-responsive">
     <table class="table table-hover">
       <tr>
@@ -27,13 +31,13 @@
         <td><%= job.id %></td>
       </tr>
       <% end %>
-      <div style="clear: both">
+    </table>
+  </div>
+  <div style="clear: both">
                 <%= paginate @jobs %>
                 <%= page_entries_info @jobs %>
             </div>
             <hr>
-    </table>
-  </div>
 </div>
 
 <script>
