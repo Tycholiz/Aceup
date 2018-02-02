@@ -1,9 +1,9 @@
 class User < ApplicationRecord
 	has_secure_password
 
-	has_one :seeker
+	has_one :seeker, dependent: :destroy
 
-	has_one :employer
+	has_one :employer, dependent: :destroy
 
 	validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create },
 	presence: true,

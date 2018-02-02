@@ -11,6 +11,6 @@ class Admin::BaseAdminController < ActionController::Base
   helper_method :current_user
 
   def require_admin
-    redirect_to root_path, status: 401 unless current_user.role == "Admin" 
+    redirect_to root_path, notice: "You need to be an admin to access that page!" unless current_user && current_user.role == "Admin" 
   end
 end

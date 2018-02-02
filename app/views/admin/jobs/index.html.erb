@@ -18,8 +18,8 @@
       <tr>
         <td><%= link_to job.title, job_path(job) %></td>
         <td><%= @employer.compName %></td>
-        <td class="active_link"><%= link_to job.status.capitalize,   activate_job_path(job), data: {confirm: "Are you sure you want to change the status for  #{job.title}?"} %> </td>
-        <td>(<%= link_to "edit", edit_job_path(job) %>, <%= link_to "delete", job_path(job), method: :delete, data: {confirm: "Are you sure you want to delete #{job.title}?"} %>)</td>
+        <td class="active_link"><%= link_to job.status.capitalize,   activate_admin_job_path(job), data: {confirm: "Are you sure you want to change the status for  #{job.title}?"} %> </td>
+        <td>(<%= link_to "edit", edit_job_path(job) %>, <%= link_to "delete", admin_job_path(job), method: :delete, data: {confirm: "Are you sure you want to delete #{job.title}?"} %>)</td>
         <td><%= job.impressionist_count %></td>
         <td><%= job.applications.size %></td>
         <td><%= job.created_at.strftime("%b %d, %Y")  %></td>

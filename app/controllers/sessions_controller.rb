@@ -11,9 +11,11 @@ class SessionsController < ApplicationController
         if user.role == "Employer"
           employer = Employer.where(user_id: current_user.id).first
           redirect_to employer_path(employer), success: "Welcome back, #{user.firstName}!"
-        else 
+        elsif user.role == "Seeker"
           seeker = Seeker.where(user_id: current_user.id).first
           redirect_to seeker_path(seeker), success: "Welcome back, #{user.firstName}!"
+        elsif user.role == "Admin"
+          redirect_to admin_root_path, success: "Welcome back, #{user.firstName}!"
         end
       else
         flash.now[:alert] = "Log in failed..."

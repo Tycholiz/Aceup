@@ -30,12 +30,14 @@ class UsersController < ApplicationController
     def update
       @user  = User.find(params[:id])
 
-      if @user.update_attributes(user_params) && @user.role == "Seeker"
+      if @user.update_attributes(user_params) && current_user.role == "Seeker"
         @seeker = Seeker.where(user_id: @user.id).first
         redirect_to seeker_path(@seeker), notice: "Updated successfully!"
-      elsif @user.update_attributes(user_params) && @user.role == "Employer"
+      elsif @user.update_attributes(user_params) && current_user.role == "Employer"
         @employer = Employer.where(user_id: @user.id).first
         redirect_to employer_path(@employer), notice: "Updated successfully!"
+      elsif @user.update_attributes(user_params) && current_user.role == "Admin"
+        redirect_to admin_users_path, notice: "Updated successfully!"
       else
         flash[:error] = @user.errors.full_messages.to_sentence
         redirect_to seeker_path(@seeker)

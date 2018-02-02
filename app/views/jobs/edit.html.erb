@@ -1,2 +1,2 @@
- <%= render 'employers/header' %>
+ <%= render 'employers/header' if current_user.role == "Employer"  %>
     <%= render 'form' %>
