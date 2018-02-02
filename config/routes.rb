@@ -1,29 +1,56 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    
+    resources :jobs do
+    	resources :applications do
+      end
+      resources :saved_jobs
+      get 'activate', :on => :member  
+    end
+
+    resources :users, only: [:new, :create, :edit, :update, :index]
+
+    resources :seekers do
+      resources :resumes, only: [:index, :new, :create, :destroy]
+    	member do
+    		get   :applied
+        get   :saved_jobs
+        get   :public
+        get   :no_resume
+    	end
+    end
+
+    resources :employers do #, only: [:new, :create, :show, :edit]
+      member do
+        get  :applications
+      end
+    end
+  end
 
   resources :jobs do
-  	resources :applications do
+      resources :applications do
+      end
+      resources :saved_jobs
+      get 'activate', :on => :member  
     end
-    resources :saved_jobs
-    get 'activate', :on => :member  
-  end
 
-  resources :users, only: [:new, :create, :edit, :update]
+    resources :users, only: [:new, :create, :edit, :update]
 
-  resources :seekers do
-    resources :resumes, only: [:index, :new, :create, :destroy]
-  	member do
-  		get   :applied
-      get   :saved_jobs
-      get   :public
-      get   :no_resume
-  	end
-  end
-
-  resources :employers do #, only: [:new, :create, :show, :edit]
-    member do
-      get  :applications
+    resources :seekers do
+      resources :resumes, only: [:index, :new, :create, :destroy]
+      member do
+        get   :applied
+        get   :saved_jobs
+        get   :public
+        get   :no_resume
+      end
     end
-  end
+
+    resources :employers do #, only: [:new, :create, :show, :edit]
+      member do
+        get  :applications
+      end
+    end
 
   resources :sessions, only: [:new, :create, :destroy]
 

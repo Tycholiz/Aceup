@@ -1,0 +1,30 @@
+ <div class="container-fluid">
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Manage</th>
+        <th>Role</th>
+        <th>Applications</th>
+        <th>Sign Up Date</th>
+        <th>Expiry</th>
+        <th>ID #</th>
+      </tr>
+
+       <% @users.each do |user|  %>
+      <tr>
+        <td><%= user.firstName %></td>
+        <td><%= user.lastName %></td>
+        <td>edit</td>
+        <td><%= user.role %></td>
+        <td>app</td>
+        <td><%= user.created_at.strftime("%b %d, %Y")  %></td>
+        <td>something</td>
+        <td><%= user.id%></td>
+      </tr>
+      <% end %>
+
+    </table>
+  </div>
+</div>
