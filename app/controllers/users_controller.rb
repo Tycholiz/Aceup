@@ -14,7 +14,7 @@ class UsersController < ApplicationController
       @user.email = @user.email.downcase
 
       if @user.save
-        session[:user_id] = @user.id  unless current_user.role == "Admin" # auto log in 
+        session[:user_id] = @user.id  unless current_user && current_user.role == "Admin" # auto log in 
         if current_user.role == "Seeker"
         	redirect_to new_seeker_path, notice: "Welcome aboard, #{@user.firstName}!"
         elsif current_user.role == "Employer"
