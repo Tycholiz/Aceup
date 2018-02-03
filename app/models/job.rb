@@ -62,18 +62,18 @@ class Job < ApplicationRecord
       validates :skills,
         presence: true
 
-      validates :summary,
-        presence: true
+      # validates :summary,
+      #   presence: true
 
-      validates :competencies,
-        presence: true
+      # validates :competencies,
+      #   presence: true
 
       validates :deptSize,
         presence: true,
         numericality: { only_integer: true }
 
-      validates :benefits,
-        presence: true
+      # validates :benefits,
+      #   presence: true
 
       validates :educationLevel,
       presence: true

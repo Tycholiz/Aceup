@@ -371,13 +371,16 @@
         SalaryButton.find("[type='checkbox']").prop('checked', true);
         HourlyButton.find("[type='checkbox']").prop('checked', false);
         // console.log("Salary made green");
-     } else {
+     } else if (testSal == "Hourly"){
         // SalaryButton.children('label').html("Inactive");
         HourlyButton.addClass("ck-button_bg");
         HourlyButton.find("[type='checkbox']").prop('checked', true);
         SalaryButton.find("[type='checkbox']").prop('checked', false);
         // console.log("Salary made white");
-     } 
+     } else {
+      HourlyButton.find("[type='checkbox']").prop('checked', false);
+      SalaryButton.find("[type='checkbox']").prop('checked', false);
+     }
 
 
      var driversLicence = $('#job_driversLicence').closest("div").find("[type='checkbox']")
