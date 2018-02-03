@@ -28,6 +28,8 @@ gem 'impressionist'
 gem 'carrierwave'
 gem 'fog-aws'
 gem 'dotenv-rails'
+gem "chartkick"
+gem 'groupdate'
 
 gem 'faker'
 # gem "fog", '1.24.0'

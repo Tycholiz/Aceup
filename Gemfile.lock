@@ -62,6 +62,7 @@ GEM
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
+    chartkick (2.2.5)
     childprocess (0.8.0)
       ffi (~> 1.0, >= 1.0.11)
     coffee-rails (4.2.2)
@@ -104,6 +105,8 @@ GEM
     formatador (0.2.5)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    groupdate (3.2.0)
+      activesupport (>= 3)
     i18n (0.9.1)
       concurrent-ruby (~> 1.0)
     impressionist (1.6.0)
@@ -245,11 +248,13 @@ DEPENDENCIES
   byebug
   capybara (~> 2.13)
   carrierwave
+  chartkick
   coffee-rails (~> 4.2)
   dotenv-rails
   faker
   fog-aws
   font-awesome-sass-rails
+  groupdate
   impressionist
   jbuilder (~> 2.5)
   jquery-rails

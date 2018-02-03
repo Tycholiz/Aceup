@@ -1,4 +1,27 @@
-<h1>Admin Dashboard</h1>
+<div class="container">
+	<h1>Admin Dashboard</h1>
 
-<%= link_to "users", admin_users_path %>
-<%= link_to "jobs", admin_jobs_path %>
+	<%= link_to "users", admin_users_path %>
+	<%= link_to "jobs", admin_jobs_path %>
+	<div class="row">
+
+	</div>
+	<div class="row">
+		<div class="chart">
+			<h2> Users Signups </h2>
+		<%= line_chart User.group_by_day(:created_at).count %>
+		</div>
+		<div class="chart">
+			<h2> Users Types </h2>
+		<%= pie_chart User.group(:role).count %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="chart chart-wide">
+			<h2> Applications by Weekday </h2>
+			<%= column_chart Application.group_by_day_of_week(:created_at, format: "%a").count %>
+		</div>
+	</div>
+
+	
+</div>

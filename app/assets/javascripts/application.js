@@ -11,6 +11,8 @@
 // about supported directives.
 //
 //= require jquery
+//= require Chart.bundle
+//= require chartkick
 //= jquery.mobile
 //= require jquery-ui/widgets/slider
 //= require rails-ujs
