@@ -1,0 +1,47 @@
+<div class="container-fluid">
+  <br />
+  <%= link_to "Add Employer", new_admin_employer_path, class: "btn btn-primary" %>
+  <br />
+  <br />
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <tr>
+        <th>Company</th>
+        <th>City</th>
+        <th>Status</th>
+        <th>Manage</th>
+        <th>No. Jobs</th>
+        <th>Total Applications</th>
+        <th>Sign Up</th>
+        <th>Updated</th>
+        <th>Emp ID #</th>
+        <th>User ID #</th>
+      </tr>
+
+       <% @employers.each do |emp|  %>
+      <tr>
+        <td><%= emp.compName %></td>
+        <td><%= emp.city %></td>
+        <td class="active_link">Suspend?</td>
+        <td>(<%= link_to "edit", edit_admin_employer_path(emp) %>, <%= link_to "delete", admin_employer_path(emp), method: :delete, data: {confirm: "Are you sure you want to delete #{emp.compName}?"} %>)</td>
+        <td><%= emp.jobs.count %></td>
+        <% applications = 0
+        emp.jobs.each do |job|
+          apps = job.applications.count
+          applications = applications + apps
+        end %>
+        <td><%= applications %></td>
+        <td><%= emp.created_at.strftime("%b %d, %Y")  %></td>
+        <td><%= emp.updated_at.strftime("%b %d, %Y")  %></td>
+        <td><%= emp.id%></td>
+        <td><%= emp.user_id%></td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+  <div style="clear: both">
+                <%= paginate @employers %>
+                <%= page_entries_info @employers %>
+            </div>
+            <hr>
+</div>

@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     	end
     end
 
-    resources :employers do #, only: [:new, :create, :show, :edit]
+    resources :employers, only: [:new, :create, :index, :edit, :update, :destroy]  do
       member do
         get  :applications
       end

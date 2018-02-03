@@ -7,10 +7,12 @@ class EmployersController < ApplicationController
     @employer = Employer.new(employer_params)
     @employer.user_id = current_user.id
 
-    if @employer.save
+    if current_user.role == "Admin"  && @employer.save       
+          redirect_to admin_employers_path, notice: "#{@employer.compName} successfully!"
+    elsif @employer.save
       redirect_to employer_path(@employer), notice: "Welcome aboard"
     else
-      render :new
+      render :new,  notice: "Could not be created."
     end
   end
 
@@ -26,8 +28,10 @@ class EmployersController < ApplicationController
    def update
     @employer = Employer.find(params[:id])
 
-    if @employer.update_attributes(employer_params)
+    if @employer.update_attributes(employer_params) && current_user.role == "Employer" 
       redirect_to employer_path(@employer)
+    elsif @employer.update_attributes(employer_params) && current_user.role == "Admin" 
+      redirect_to admin_employers_path, notice: "Updated successfully!"
     else
       render :edit
     end

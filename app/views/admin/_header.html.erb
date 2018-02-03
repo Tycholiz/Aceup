@@ -5,7 +5,7 @@
 		<li><%= link_to "User Management", admin_users_path %></li>
 		<li><%= link_to "Job Management", admin_jobs_path %></li>
 		<li><%= link_to "Seeker Management", "/pages/construction" %></li>
-		<li><%= link_to "Employer Management", "/pages/construction" %></li>
+		<li><%= link_to "Employer Management", admin_employers_path %></li>
     <li><%= link_to "Applications", "/pages/construction" %></li>
 	</ol>
 </div>
@@ -22,9 +22,9 @@
       case 'jobs':
         activate("Job Management");
       break;
-      // case 'edit':
-      //   activate("Edit Profile");
-      // break;
+      case 'employers':
+        activate("Employer Management");
+      break;
       // case 'saved_jobs':
       //   activate("Saved Jobs");
       // break;
