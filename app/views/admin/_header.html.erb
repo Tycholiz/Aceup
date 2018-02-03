@@ -1,0 +1,46 @@
+<div class="dash_header">
+	<%= image_tag "up_logotrans.png", class: "dash_header_logo" %>
+	<ol class="breadcrumb dash_breadcrumb" id="dash_breadcrumb">
+    <li><%= link_to "Dashboard", admin_root_path %></li>
+		<li><%= link_to "User Management", admin_users_path %></li>
+		<li><%= link_to "Job Management", admin_jobs_path %></li>
+		<li><%= link_to "Seeker Management", "/pages/construction" %></li>
+		<li><%= link_to "Employer Management", "/pages/construction" %></li>
+    <li><%= link_to "Applications", "/pages/construction" %></li>
+	</ol>
+</div>
+
+<script>
+  $( function() {
+   
+    var url = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
+    // var seekerID = String(admin);
+    switch (url) {
+      case 'users':
+        activate("User Management");
+      break;
+      case 'jobs':
+        activate("Job Management");
+      break;
+      // case 'edit':
+      //   activate("Edit Profile");
+      // break;
+      // case 'saved_jobs':
+      //   activate("Saved Jobs");
+      // break;
+      case 'admin':
+        activate("Dashboard");
+      break;
+      default:
+    		var link = ""
+        console.log("breadcrumb deactivated");
+    }
+
+    	function activate(link) {
+    	$('#dash_breadcrumb li:contains('+link+')').addClass("dash_breadcrumb_active");
+        $('#dash_breadcrumb a:contains('+link+')').contents().unwrap();
+        console.log(link);
+    	}
+
+  });
+</script>
