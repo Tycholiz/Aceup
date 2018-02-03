@@ -62,7 +62,7 @@
           </div>  
           <div class="row">
             <div >
-              <%= f.label :inSales, "Inside Sales", class: "seekerSliders"  %><br>
+              <%= f.label :inSales, "Inside Sales (years)", class: "seekerSliders"  %><br>
               <div id="inSales_slider" class="slider">
                 <div id="inSales_handle" class="ui-slider-handle"></div>
               </div>
@@ -70,17 +70,17 @@
               <%= f.hidden_field :inSales %>
               <div class="row"> 
                 <div class="ck-button">
-                  <%= f.label :inboundSales, "Inbound Sales (years)" %><br>
+                  <%= f.label :inboundSales, "Inbound Sales" %><br>
                   <%= f.check_box :inboundSales %>
                 </div>
                 <div class="ck-button">
-                  <%= f.label :outboundSales, "Outbound Sales (years)" %><br>
+                  <%= f.label :outboundSales, "Outbound Sales" %><br>
                   <%= f.check_box :outboundSales %>
                 </div>
               </div>
             </div>
             <div>
-              <%= f.label :outSales, "Outside Sales", class: "seekerSliders" %><br>
+              <%= f.label :outSales, "Outside Sales (years)", class: "seekerSliders" %><br>
               <div id="outSales_slider" class="slider">
                 <div id="outSales_handle" class="ui-slider-handle"></div>
               </div>
