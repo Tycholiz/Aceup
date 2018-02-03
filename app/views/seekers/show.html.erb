@@ -1,5 +1,5 @@
 <%= render 'header' %>
-<div class="add_row">
+<div class="add_row" id="add_row_top">
 	<div class="col-md-4 col-xs-12">
  		<%= render 'sidebar' %>
  	</div>
@@ -25,9 +25,11 @@ $( function() {
 	 	if (windowTest <= 1000) {
 	     console.log("add row" + windowTest); 
 	     add_row.addClass("row");  
+	     $('#add_row_top').addClass("margin_sidebar");
 	     } else {
 	     console.log("remove row" + windowTest); 
 	     add_row.removeClass("row"); 
+	     $('#add_row_top').removeClass("margin_sidebar");
 	     }
 	  });   
 });

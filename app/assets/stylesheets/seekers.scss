@@ -287,6 +287,10 @@
   color: white;
 }
 
+.margin_sidebar{
+  margin-top: 50px;
+}
+
 .dash_breadcrumb {
   border-radius: 15px;
   // margin-left: 100px;
@@ -296,6 +300,7 @@
   color: white;
   overflow: hidden;
   padding-left: 50px;
+
 }
 
 .dash_breadcrumb a:link, .dash_breadcrumb a:visited, .dash_breadcrumb  a:hover {
