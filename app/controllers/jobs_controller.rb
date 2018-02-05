@@ -46,6 +46,11 @@ class JobsController < ApplicationController
 
   def edit
     @job = Job.find(params[:id])
+    @employers = Employer.all
+      @emp_list = Array.new
+      @employers.each do |emp|
+        @emp_list.push([emp.compName, emp.id])
+      end
   end
 
   def create
