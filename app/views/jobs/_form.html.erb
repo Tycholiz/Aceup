@@ -2,7 +2,7 @@
     <div class="register-photo">
       <div class="form-container">
        
-
+        <%= tinymce_assets %>
         <%= form_for @job, :html => {:class => 'profile_form'} do |f| %>
         <div class="job_header_img">
           <%= image_tag "EmpForm/Employer.png" %>
@@ -243,7 +243,8 @@
         </div>
         <div>
           <%= f.label :competencies, "Competencies" %><br>
-          <%= f.text_area :competencies, class: "form-control", style: "height: 100px"  %>
+          <%= f.text_area :competencies, class: "form-control tinymce", style: "height: 100px"  %>
+          <%= tinymce :content_css => asset_path('application.css')%>
           <p class='error'><%= show_errors(@job, :competencies) %></p>
         </div>
          <div>
@@ -276,7 +277,7 @@
   </div>
  </div>
 
-
+<%= tinymce %>
 <script>
   $( function() {
       var handle = $( "#inSales_job_handle" );
@@ -512,7 +513,6 @@
         // $('#hiddenTags').val(test);
         var test_hidden = $('#job_benefits').val();
         console.log(tags_array);
-        console.log(test_hidden);
         // $('<p>'+ tags_array + '</p>').appendTo(tags_result)
         $('<div class="job_edit_skills"><h3 data-tooltip="Delete tag?">'+ tags_build +'</h3></div>').appendTo(tags_result)
       });
@@ -535,7 +535,21 @@
         $('#job_benefits').val(tags_array);
       });  
 
-        $('#employer_job_submit_button').on('click',function(){
+        $('#employer_job_submit_button').on('click',function(e){
+          // e.preventDefault();
+          // var form_data = $('form').serialize()
+          // $.ajax({
+          //   url:"/jobs",
+          //   type:'POST',
+          //   dataType:'json',
+          //   data:{
+          //     job: {
+          //       benefits: tags_array
+          //           }
+          //         }
+          //     });
+          //   });
+
           $.ajax({
             url:"/jobs/<%= @job.id %>",
             type:'PATCH',

@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require Chart.bundle
+//= require tinymce
 //= require chartkick
 //= jquery.mobile
 //= require jquery-ui/widgets/slider

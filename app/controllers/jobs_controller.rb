@@ -54,6 +54,7 @@ class JobsController < ApplicationController
   end
 
   def create
+    logger.info params
     @job = Job.new(job_params)
     employer = Employer.where(user_id: current_user.id).first
     if current_user.role == "Admin"

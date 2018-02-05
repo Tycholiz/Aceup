@@ -83,8 +83,8 @@ class Job < ApplicationRecord
         presence: true,
         numericality: { only_integer: true }
 
-      validates :benefits,
-        presence: true
+      # validates :benefits,
+      #   presence: true
 
       validates :educationLevel,
       presence: true

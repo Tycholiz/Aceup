@@ -1,0 +1,8 @@
+menubar: false
+branding: false
+toolbar:
+  - bold italic underline bullist numlist
+plugins:
+  - link
+  - textcolor
+  - lists

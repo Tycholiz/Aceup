@@ -30,6 +30,7 @@ gem 'fog-aws'
 gem 'dotenv-rails'
 gem "chartkick"
 gem 'groupdate'
+gem 'tinymce-rails'
 
 gem 'faker'
 # gem "fog", '1.24.0'

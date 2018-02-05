@@ -60,7 +60,7 @@
                 <h2>Competencies:</h2>
             </div>
             <div class="job_summary_display">
-                <h3><%= @job.competencies  %></h3>
+                <%= @job.competencies.html_safe  %>
             </div>  
         </div>
         <div class="row job_display_desc_row">
