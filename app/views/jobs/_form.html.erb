@@ -94,6 +94,11 @@
               Sales Experience
           </h2>
         </div> 
+        <div style="float:left; width:100%" >
+              <%= f.check_box :general, class: "form-control", style: "height:24px;width:24px;float:left;margin-right:40px;margin-bottom:15px" %>
+              <p >Select if specifically having inside or outside sales experience is <strong>not</strong> necessary.
+            </div>
+        <div style="clear:both;"></div>
          <div>
           <%= f.label :inSales, "Inside Sales (years)" %><br>
           <div id="inSales_job_slider" class="slider">
@@ -469,6 +474,18 @@
         e.preventDefault();
         $(this).prop('selected', $(this).prop('selected') ? false : true);
         return false;
+      });
+
+      $('#job_general').change(function() {
+        // var childCheck = $(this).find("[type='checkbox']")
+        if ($(this).is(":checked")) {
+          console.log("checekd")
+          $( "#outSales_job_slider" ).slider( "disable" )
+          $('label[for=job_inSales]').text("General Sales (years")
+        } else {
+          $( "#outSales_job_slider" ).slider( "enable" )
+          $('label[for=job_inSales]').text("Inside Sales (years")
+        }
       });
 
       // var tagbutton = $("#tags_button");
