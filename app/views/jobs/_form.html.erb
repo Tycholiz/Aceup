@@ -253,7 +253,7 @@
         </div>
         <%= f.label :benefits, "Benefits" %><br>
         <div>
-          <input type="text" name="tags" id="tags_build" value="" class="form-control tags_form"; float:left;">
+          <input type="text" name="tags" id="tags_build" value="" class="form-control tags_form"; placeholder="Add benefits here..." ">
            <div type="button" id="tags_button" class="btn btn-info tag_add">
             <i class="glyphicon glyphicon-plus" ></i>
           </div>
@@ -283,6 +283,19 @@
       var handle2 = $( "#inSales_job_handle2" );
       $("#seeker_inSales").val(0);
       $("#seeker_outSales").val(0);
+
+      var tags_array = []
+      var benefits_array_db = <%=@job.benefits.to_json.html_safe%>
+      console.log("Benefits from Rails");
+      console.log(benefits_array_db);
+      $.each(benefits_array_db, function (index, value) {
+        tags_array.push(value);
+        $('<div class="job_edit_skills"><h3 data-tooltip="Delete tag?">'+ value +'</h3></div>').appendTo(tags_result)
+      });
+
+      
+
+
       var inSalesSoft = "<%= @job.inSalesSoft %>";
       var inSalesHard =  "<%= @job.inSalesHard %>";
       var outSalesSoft = "<%= @job.outSalesSoft %>";
@@ -478,7 +491,6 @@
 
       // var tagbutton = $(".ck-button").find("#tags_button");
       var tagbutton = $("#tags_button");
-      var tags_array = []
       $(tagbutton).on('click',function(){
         // console.log("tags clicked");
         var tags_result = $('#tags_result');
@@ -492,9 +504,9 @@
         console.log(test_hidden);
         // $('<p>'+ tags_array + '</p>').appendTo(tags_result)
         $('<div class="job_edit_skills"><h3 data-tooltip="Delete tag?">'+ tags_build +'</h3></div>').appendTo(tags_result)
-
-      
       });
+      
+
         $(document).delegate(".job_edit_skills", 'click', function() {
         var h3 =  $(this).find("h3").text();
         $(this).remove();
