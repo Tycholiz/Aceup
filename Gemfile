@@ -30,8 +30,8 @@ gem 'fog-aws'
 gem 'dotenv-rails'
 gem "chartkick"
 gem 'groupdate'
-# gem 'tinymce-rails'
-gem 'tinymce-rails', :git => 'git://github.com/spohlenz/tinymce-rails.git'
+gem 'tinymce-rails'
+# gem 'tinymce-rails', :git => 'git://github.com/spohlenz/tinymce-rails.git'
 
 gem 'faker'
 # gem "fog", '1.24.0'
