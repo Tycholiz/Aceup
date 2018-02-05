@@ -167,7 +167,7 @@ Job.destroy_all
 		skills: Faker::Job.key_skill,
 		competencies: Faker::RickAndMorty.quote,
 		deptSize: Faker::Number.between(1, 1000),
-		benefits: Faker::Seinfeld.quote,
+		benefits: ['English', 'French'],
 		coldCall: Faker::Boolean.boolean,
 		doorToDoor: Faker::Boolean.boolean,
 		custService: Faker::Boolean.boolean,
