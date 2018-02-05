@@ -252,21 +252,12 @@
           <p class='error'><%= show_errors(@job, :deptSize) %></p>
         </div>
         <%= f.label :benefits, "Benefits" %><br>
-         
-          <input type="text" name="tags" id="tags_build" value="" class="form-control">
-          <p class='error'><%= show_errors(@job, :benefits) %></p>
-          <div class="ck-button" id="tags_button">
-            <label for="job_status">Add Benefits</label><br>
-            <input type="checkbox" value="1" name="tags_button">
-            
-          
+        <div>
+          <input type="text" name="tags" id="tags_build" value="" class="form-control tags_form"; float:left;">
+           <div type="button" id="tags_button" class="btn btn-info tag_add">
+            <i class="glyphicon glyphicon-plus" ></i>
           </div>
-           <div class="ck-button" id="sub_button">
-            <label for="job_status">Sub</label><br>
-            <input type="checkbox" value="1" name="tags_button">
-            
-          
-          </div>
+
 
         <div id="tags_result" style="clear:both;"> </div>
         <%= hidden_field_tag "tags", params[:tags], id: "hiddenTags" %>

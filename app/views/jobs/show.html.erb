@@ -69,8 +69,8 @@
             </div>
            <div class="job_summary_display">
                 <ul>
-                 <% benefits_array =   @job.benefits.split(',') %>
-                 <% benefits_array.each do |benefit|%>
+  
+                 <% @job.benefits.each do |benefit|%>
                     <li><%=benefit%></li>
                  <% end %>
                 </ul>
