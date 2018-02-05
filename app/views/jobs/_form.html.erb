@@ -233,12 +233,14 @@
         </div>
         <div>
           <%= f.label :functions, "Essential Functions" %><br>
-          <%= f.text_area :functions, class: "form-control", style: "height: 90px"  %>
+          <%= f.text_area :functions, class: "form-control tinymce", style: "height: 100px"  %>
+          <%= tinymce :content_css => asset_path('application.css')%>
           <p class='error'><%= show_errors(@job, :functions) %></p>
         </div>
         <div>
           <%= f.label :skills ,"Skills"%><br>
-          <%= f.text_area :skills, class: "form-control", style: "height: 60px"  %>
+          <%= f.text_area :skills, class: "form-control tinymce", style: "height: 100px"  %>
+          <%= tinymce :content_css => asset_path('application.css')%>
           <p class='error'><%= show_errors(@job, :skills) %></p>
         </div>
         <div>

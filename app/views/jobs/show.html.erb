@@ -44,7 +44,7 @@
                 <h2>Responsibilities:</h2>
             </div>
             <div class="job_summary_display">
-                <h3><%= @job.functions  %></h3>
+                <h3><%= @job.functions.html_safe  %></h3>
             </div>  
         </div>
          <div class="row job_display_desc_row">
@@ -52,7 +52,7 @@
                 <h2>Skills:</h2>
             </div>
             <div class="job_summary_display">
-                <h3><%= @job.skills  %></h3>
+                <h3><%= @job.skills.html_safe  %></h3>
             </div>  
         </div>
          <div class="row job_display_desc_row">
