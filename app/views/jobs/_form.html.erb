@@ -489,8 +489,19 @@
         return false;
       });
 
-      // var tagbutton = $(".ck-button").find("#tags_button");
       var tagbutton = $("#tags_button");
+
+       $('#tags_build').keypress(function (e) {
+         var key = e.which;
+         if(key == 13)  // the enter key code
+          {
+            console.log("ENTER")
+            tagbutton.trigger("click")
+            return false;  
+          }
+        });
+
+
       $(tagbutton).on('click',function(){
         // console.log("tags clicked");
         var tags_result = $('#tags_result');
@@ -525,9 +536,6 @@
       });  
 
         $('#employer_job_submit_button').on('click',function(){
-          // $('#sub_button').on('click',function(){
-
-          // $.put("/jobs/<%= @job.id %>", {myarray: tags_array})
           $.ajax({
             url:"/jobs/<%= @job.id %>",
             type:'PATCH',
@@ -539,5 +547,34 @@
             }
         });
       });
+        $('#employer_job_submit_button').submit(function(e){
+          // If a submit is requested, and it's done via keyboard enter, stop it.
+          if ((e.keyCode || e.which) == 13) { // Try to use normalized enter key code
+              e.preventDefault(); // Prevent the submit.
+          }
+          // All other mouse actions just go through.
+      });
+
+
+      //   $(function(){
+      //        var keyStop = {
+      //          8: ":not(input:text, textarea, input:file, input:password)", // stop backspace = back
+      //          13: "input:text, input:password", // stop enter = submit 
+
+      //          end: null
+      //        };
+      //        $(document).bind("keydown", function(event){
+      //         var selector = keyStop[event.which];
+
+      //         if(selector !== undefined && $(event.target).is(selector)) {
+      //             event.preventDefault(); //stop event
+      //         }
+      //         return true;
+      //        });
+      // });
+
+
+
+
     } );
  </script>
