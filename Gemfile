@@ -30,14 +30,15 @@ gem 'fog-aws'
 gem 'dotenv-rails'
 gem "chartkick"
 gem 'groupdate'
-gem 'tinymce-rails'
+# gem 'tinymce-rails'
+gem 'tinymce-rails', :git => 'git://github.com/spohlenz/tinymce-rails.git'
 
 gem 'faker'
 # gem "fog", '1.24.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'turbolinks', '~> 5'
+# gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
