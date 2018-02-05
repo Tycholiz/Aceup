@@ -54,7 +54,6 @@ class JobsController < ApplicationController
   end
 
   def create
-    logger.info params
     @job = Job.new(job_params)
     employer = Employer.where(user_id: current_user.id).first
     if current_user.role == "Admin"
@@ -90,8 +89,6 @@ class JobsController < ApplicationController
     @job = Job.find(params[:id])
     user = User.where(id: current_user.id).first
     employer = Employer.where(user_id: user.id).first
-    # params[:benefits] = params[:benefits].split(',') if params[:benefits].is_a?(String)
-
 
     if @job.update_attributes(job_params) && employer
       redirect_to employer_path(employer), notice: "#{@job.title} was updated successfully!"
@@ -132,7 +129,7 @@ class JobsController < ApplicationController
 
   def job_params
     params.require(:job).permit(
-      :title, :jobType, :expiry, :driversLicence, :hasVehicle, :status, :temp, :salary, :commDirect, :commResidual, :commLead, :payLow, :payHigh, :inSalesSoft, :inSalesHard, :outSalesSoft, :outSalesHard, :functions, :skills, :summary, :competencies, :deptSize, :coldCall, :doorToDoor, :custService, :acctManagment, :negotiation, :presenting, :leadership, :closing, :hunterBased, :farmerBased, :commBased, :B2C, :B2B, :consSales, :directSales, :solutionSales, :CompUrl, :educationLevel, benefits: [], :languages => [], :certifications => []
+      :title, :jobType, :expiry, :driversLicence, :hasVehicle, :status, :temp, :salary, :commDirect, :commResidual, :commLead, :payLow, :payHigh, :inSalesSoft, :inSalesHard, :outSalesSoft, :outSalesHard, :functions, :skills, :summary, :competencies, :deptSize, :coldCall, :doorToDoor, :custService, :acctManagment, :negotiation, :presenting, :leadership, :closing, :hunterBased, :farmerBased, :commBased, :B2C, :B2B, :consSales, :directSales, :solutionSales, :CompUrl, :educationLevel, :benefits, :languages => [], :certifications => []
     )                             
   end
 

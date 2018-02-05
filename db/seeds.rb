@@ -55,6 +55,16 @@ User.create! [
 	role:  "Seeker"
 ]
 
+User.create! [
+	email: "admin@test.com",
+	# password_digest: User.new(:password => password).password_digest,
+	password: password,
+	password_confirmation: password,
+	firstName: "Admin",
+	lastName:  "Name",
+	# phoneNo:  Faker::PhoneNumber.cell_phone,
+	role:  "Admin"
+]
 
 p "Created #{User.count} users"
 
@@ -167,7 +177,7 @@ Job.destroy_all
 		skills: Faker::Job.key_skill,
 		competencies: Faker::RickAndMorty.quote,
 		deptSize: Faker::Number.between(1, 1000),
-		benefits: ['English', 'French'],
+		benefits: Faker::RickAndMorty.quote,
 		coldCall: Faker::Boolean.boolean,
 		doorToDoor: Faker::Boolean.boolean,
 		custService: Faker::Boolean.boolean,

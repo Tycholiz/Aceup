@@ -68,15 +68,7 @@
                 <h2>Benefits:</h2>
             </div>
            <div class="job_summary_display">
-                <ul>
-                 <% if @job.benefits.is_a?(Array) %>
-                     <% @job.benefits.each do |benefit|%>
-                        <li><%=benefit%></li>
-                     <% end %>
-                <% else %>
-                    <h3><%= @job.benefits  %></h3>
-                <% end %>
-                </ul>
+                <%= @job.benefits.html_safe  %>
             </div>   
         </div>
         <div class="row job_display_desc_row">

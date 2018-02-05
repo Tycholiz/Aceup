@@ -5,7 +5,6 @@ class Job < ApplicationRecord
       has_many :saved_jobs, dependent: :destroy
 
       serialize :languages
-      serialize :benefits, Array
       serialize :certifications
 
       is_impressionable
@@ -14,16 +13,6 @@ class Job < ApplicationRecord
         model.languages.reject!(&:blank?) if model.languages
         model.certifications.reject!(&:blank?) if model.certifications
       end
-
-      # before_save :fix_benefits
-
-      # def fix_benefits
-      #   if self.benefits.is_a?(String)
-      #           logger.info self.benefits
-      #           self.benefits = self.benefits.split(',')
-      #           logger.info self.benefits
-      #   end
-      # end
 
       validates :employer_id,
         presence: true

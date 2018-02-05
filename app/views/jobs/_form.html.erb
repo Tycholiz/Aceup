@@ -252,17 +252,12 @@
           <%= f.number_field :deptSize, class: "form-control"  %>
           <p class='error'><%= show_errors(@job, :deptSize) %></p>
         </div>
-        <%= f.label :benefits, "Benefits" %><br>
         <div>
-          <input type="text" name="tags" id="tags_build" value="" class="form-control tags_form"; placeholder="Add benefits here..." ">
-           <div type="button" id="tags_button" class="btn btn-info tag_add">
-            <i class="glyphicon glyphicon-plus" ></i>
-          </div>
-
-
-        <div id="tags_result" style="clear:both;"> </div>
-        <%= hidden_field_tag "tags", params[:tags], id: "hiddenTags" %>
-        <div style="clear:both; margin-bottom: 25px;"></div>
+        <%= f.label :benefits, "Benefits" %><br>
+        <%= f.text_area :benefits, class: "form-control tinymce"  %>
+          <%= tinymce :content_css => asset_path('application.css')%>
+          <p class='error'><%= show_errors(@job, :benefits) %></p>
+        </div>
         <div>
           <%= f.label :CompUrl, "Optional: Choose URL that will send job hunters to your site" %><br>
           <%= f.label :CompUrl, "Note: Must include full URL ie: https://www.aceup.co/ instead of just www.aceup.co" %>
@@ -285,14 +280,14 @@
       $("#seeker_inSales").val(0);
       $("#seeker_outSales").val(0);
 
-      var tags_array = []
-      var benefits_array_db = <%=@job.benefits.to_json.html_safe%>
-      console.log("Benefits from Rails");
-      console.log(benefits_array_db);
-      $.each(benefits_array_db, function (index, value) {
-        tags_array.push(value);
-        $('<div class="job_edit_skills"><h3 data-tooltip="Delete tag?">'+ value +'</h3></div>').appendTo(tags_result)
-      });
+      // var tags_array = []
+      // var benefits_array_db = <%=@job.benefits.to_json.html_safe%>
+      // console.log("Benefits from Rails");
+      // console.log(benefits_array_db);
+      // $.each(benefits_array_db, function (index, value) {
+      //   tags_array.push(value);
+      //   $('<div class="job_edit_skills"><h3 data-tooltip="Delete tag?">'+ value +'</h3></div>').appendTo(tags_result)
+      // });
 
       
 
@@ -363,22 +358,6 @@
             $(this).parent().addClass("ck-button_bg");
           }
       });
-
-     //  var test = $('#hiddenStatus').val()
-     //  var statusButton = $('#job_status').closest("div")
-     //  // console.log("Status test -> " + test);
-
-     //  if (test == "active") {
-     //    statusButton.children('label').html("Active");
-     //    statusButton.addClass("ck-button_bg");
-     //    statusButton.find("[type='checkbox']").prop('checked', true);
-     //    // console.log("Status made green");
-     // } else {
-     //    statusButton.children('label').html("Inactive");
-     //    statusButton.removeClass("ck-button_bg");
-     //    statusButton.find("[type='checkbox']").prop('checked', false);
-     //    // console.log("Status made white");
-     // } 
 
       var testSal = "<%= @job.salary %>"
       var SalaryButton = $('#job_salary').closest("div")
@@ -490,52 +469,52 @@
         return false;
       });
 
-      var tagbutton = $("#tags_button");
+      // var tagbutton = $("#tags_button");
 
-       $('#tags_build').keypress(function (e) {
-         var key = e.which;
-         if(key == 13)  // the enter key code
-          {
-            console.log("ENTER")
-            tagbutton.trigger("click")
-            return false;  
-          }
-        });
+      //  $('#tags_build').keypress(function (e) {
+      //    var key = e.which;
+      //    if(key == 13)  // the enter key code
+      //     {
+      //       console.log("ENTER")
+      //       tagbutton.trigger("click")
+      //       return false;  
+      //     }
+      //   });
 
 
-      $(tagbutton).on('click',function(){
-        // console.log("tags clicked");
-        var tags_result = $('#tags_result');
-        var tags_build = $('#tags_build').val()
-        tags_array.push(tags_build);
-        // test = JSON.stringify(tags_array)
-        // $('#job_benefits').val(test);
-        // $('#hiddenTags').val(test);
-        var test_hidden = $('#job_benefits').val();
-        console.log(tags_array);
-        // $('<p>'+ tags_array + '</p>').appendTo(tags_result)
-        $('<div class="job_edit_skills"><h3 data-tooltip="Delete tag?">'+ tags_build +'</h3></div>').appendTo(tags_result)
-      });
+      // $(tagbutton).on('click',function(){
+      //   // console.log("tags clicked");
+      //   var tags_result = $('#tags_result');
+      //   var tags_build = $('#tags_build').val()
+      //   tags_array.push(tags_build);
+      //   // test = JSON.stringify(tags_array)
+      //   // $('#job_benefits').val(test);
+      //   // $('#hiddenTags').val(test);
+      //   var test_hidden = $('#job_benefits').val();
+      //   console.log(tags_array);
+      //   // $('<p>'+ tags_array + '</p>').appendTo(tags_result)
+      //   $('<div class="job_edit_skills"><h3 data-tooltip="Delete tag?">'+ tags_build +'</h3></div>').appendTo(tags_result)
+      // });
       
 
-        $(document).delegate(".job_edit_skills", 'click', function() {
-        var h3 =  $(this).find("h3").text();
-        $(this).remove();
-        console.log("h3 text " + h3);
-        console.log("array before");
-        console.log(tags_array);
-        test = tags_array.indexOf(h3);
-        console.log(test);
-        // tags_array = tags_array.splice(test, 1);
-        tags_array = tags_array.filter(function(item) { 
-              return item !== h3
-          })
-        console.log("array after");
-        console.log(tags_array);
-        $('#job_benefits').val(tags_array);
-      });  
+      //   $(document).delegate(".job_edit_skills", 'click', function() {
+      //   var h3 =  $(this).find("h3").text();
+      //   $(this).remove();
+      //   console.log("h3 text " + h3);
+      //   console.log("array before");
+      //   console.log(tags_array);
+      //   test = tags_array.indexOf(h3);
+      //   console.log(test);
+      //   // tags_array = tags_array.splice(test, 1);
+      //   tags_array = tags_array.filter(function(item) { 
+      //         return item !== h3
+      //     })
+      //   console.log("array after");
+      //   console.log(tags_array);
+      //   $('#job_benefits').val(tags_array);
+      // });  
 
-        $('#employer_job_submit_button').on('click',function(e){
+        // $('#employer_job_submit_button').on('click',function(e){
           // e.preventDefault();
           // var form_data = $('form').serialize()
           // $.ajax({
@@ -550,17 +529,17 @@
           //     });
           //   });
 
-          $.ajax({
-            url:"/jobs/<%= @job.id %>",
-            type:'PATCH',
-            dataType:'json',
-            data:{
-              job: {
-                benefits: tags_array
-              }
-            }
-        });
-      });
+      //     $.ajax({
+      //       url:"/jobs/<%= @job.id %>",
+      //       type:'PATCH',
+      //       dataType:'json',
+      //       data:{
+      //         job: {
+      //           benefits: tags_array
+      //         }
+      //       }
+      //   });
+      // });
         $('#employer_job_submit_button').submit(function(e){
           // If a submit is requested, and it's done via keyboard enter, stop it.
           if ((e.keyCode || e.which) == 13) { // Try to use normalized enter key code
@@ -568,27 +547,6 @@
           }
           // All other mouse actions just go through.
       });
-
-
-      //   $(function(){
-      //        var keyStop = {
-      //          8: ":not(input:text, textarea, input:file, input:password)", // stop backspace = back
-      //          13: "input:text, input:password", // stop enter = submit 
-
-      //          end: null
-      //        };
-      //        $(document).bind("keydown", function(event){
-      //         var selector = keyStop[event.which];
-
-      //         if(selector !== undefined && $(event.target).is(selector)) {
-      //             event.preventDefault(); //stop event
-      //         }
-      //         return true;
-      //        });
-      // });
-
-
-
 
     } );
  </script>
