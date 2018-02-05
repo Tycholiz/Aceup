@@ -30,8 +30,14 @@ class SeekersController < ApplicationController
     @jobs.each do |job|
       
       jobSkills = job.slice(*skillsParams).select {|key, value| value == true }
-      @seeker.inSales >= job.inSalesHard ? inSales = true : inSales = false
-      @seeker.outSales >= job.outSalesHard ? outSales = true : outSales = false
+      if job.general
+        seekerSalesYears = @seeker.inSales > @seeker.outSales ? @seeker.inSales : @seeker.outSales
+        seekerSalesYears >= job.inSalesHard ? inSales = true : inSales = false
+        seekerSalesYears >= job.outSalesHard ? outSales = true : outSales = false
+      else 
+        @seeker.inSales >= job.inSalesHard ? inSales = true : inSales = false
+        @seeker.outSales >= job.outSalesHard ? outSales = true : outSales = false
+      end
       if job.languages
         job.languages.all? { |i| @seeker.languages.include? i } ? langMatch = true : langMatch = false
       else
@@ -44,6 +50,17 @@ class SeekersController < ApplicationController
       # logger.info @seekSkills
       # logger.info "Job Skills"
       # logger.info jobSkills
+      # if job.general
+      #  logger.info "Job Years XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+      # logger.info job.inSalesHard
+      # logger.info job.inSalesHard
+      # logger.info "in sales" 
+      # logger.info inSales
+      # logger.info "out sales" 
+      # logger.info outSales
+      # logger.info "General?"
+      # logger.info job.general
+      # end
 
       if job.certifications
         job.certifications.all? { |i| @seeker.certifications.include? i } ? certMatch = true : certMatch = false
