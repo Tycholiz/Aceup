@@ -165,8 +165,10 @@
  <script>
   $( function() {
       var handle = $( "#inSales_handle" );
+      var handle2 = $( "#outSales_handle" );
       var inboundCheck = $('#seeker_inboundSales')
       var outboundCheck = $('#seeker_outboundSales')
+      var custService = $('#seeker_custService')
       inboundCheck.prop("disabled", true).parent().addClass("disabled-button_bg");
       outboundCheck.prop("disabled", true).parent().addClass("disabled-button_bg");
 
@@ -176,13 +178,8 @@
       var inSales_start = (inSales ? inSales : 1);
       var outSales_start = (outSales ? outSales : 1);
       handle.value = inSales;
-      console.log("handle val " + handle.value);
+      handle2.value = outSales;
 
-      console.log("insales "+ inSales);
-      console.log("outsales "+ outSales);
-
-      console.log("insales_start "+ inSales_start);
-      console.log("outSales_start "+ outSales_start);
       function in_out_disable(value) {
           if(value > 0){
               inboundCheck.prop("disabled", false).parent().removeClass("disabled-button_bg");
@@ -192,9 +189,22 @@
               outboundCheck.prop("disabled", true).parent().addClass("disabled-button_bg");
             }
       };
+      function custServiceCheck() {
+          if( inSales > 0 || outSales > 0){
+              custService.find("[type='checkbox']").prop('checked', true);
+              custService.parent().addClass("ck-button_bg");
+              custService.prop("disabled", true)
+              console.log("custService checked")
+           } else {
+              custService.find("[type='checkbox']").prop('checked', false);
+              custService.parent().removeClass("ck-button_bg");
+              custService.prop("disabled", false);
+              console.log("custService un-checked")
+            }
+      };
       
       in_out_disable(inSales);
-
+      custServiceCheck();
       // $("#seeker_inSales").val(0);
       // $("#seeker_outSales").val(0);
 
@@ -210,6 +220,7 @@
           handle.text( ui.value );
           $("#seeker_inSales").val(ui.value);
           console.log(ui.value);
+          inSales = ui.value
          //  if(ui.value > 0){
          //    inboundCheck.prop("disabled", false).parent().removeClass("disabled-button_bg");
          //    outboundCheck.prop("disabled", false).parent().removeClass("disabled-button_bg");
@@ -218,10 +229,11 @@
          //    outboundCheck.prop("disabled", true).parent().addClass("disabled-button_bg");
          //  };
          in_out_disable(ui.value);
+         custServiceCheck();
         }
       });
 
-      var handle2 = $( "#outSales_handle" );
+      
       $( "#outSales_slider" ).slider({
         create: function() {
           handle2.text( $( this ).slider( "value" ) );
@@ -234,6 +246,8 @@
           handle2.text( ui.value );
           $("#seeker_outSales").val(ui.value);
           console.log(ui.value);
+          outSales = ui.value
+          custServiceCheck();
         }
       });
       var checkbox = $(".ck-button :checkbox");
@@ -254,23 +268,26 @@
 
 
       ckbutton.on('click',function(){
-        // var test = $(this).find("[type='checkbox']").prop('id');
-        // console.log("tapped " + test);
+        var test = $(this).find("[type='checkbox']").prop('checked');
+        var test2 = $(this).find("[type='checkbox']").prop('disabled');
+        console.log("tapped " + test + "status "+ test2);
         var childCheck = $(this).find("[type='checkbox']")
-        if (childCheck.is(":checked")) {
-          childCheck.prop('checked', false);
-          $(this).removeClass("ck-button_bg");  
-          if (childCheck.prop('id') == "seeker_driversLicence") {
-            $('#seeker_hasVehicle').prop("disabled", true).parent().addClass("disabled-button_bg");
-          }
-           
-        }else{
-          childCheck.prop('checked', true);
-          $(this).addClass("ck-button_bg");
-          if (childCheck.prop('id') == "seeker_driversLicence") {
-            $('#seeker_hasVehicle').prop("disabled", false).parent().removeClass("disabled-button_bg");
-          }
-          
+        if (test2 == false) {
+              if (childCheck.is(":checked")) {
+                childCheck.prop('checked', false);
+                $(this).removeClass("ck-button_bg");  
+                if (childCheck.prop('id') == "seeker_driversLicence") {
+                  $('#seeker_hasVehicle').prop("disabled", true).parent().addClass("disabled-button_bg");
+                }
+                 
+              }else{
+                childCheck.prop('checked', true);
+                $(this).addClass("ck-button_bg");
+                if (childCheck.prop('id') == "seeker_driversLicence") {
+                  $('#seeker_hasVehicle').prop("disabled", false).parent().removeClass("disabled-button_bg");
+                }
+                
+              }
         }
         });
       $('#seeker_languages').find("option[value='English']").prop('selected', true);
