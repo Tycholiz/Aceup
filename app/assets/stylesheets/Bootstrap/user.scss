@@ -557,6 +557,19 @@ html {
   height: 90%;
   float: left;
 }
+
+.custom_title_dropdown {
+  // width: 25%;
+  height: 24px;
+  float: right;
+  margin-right: 60%;
+}
+.custom_title_dropdown select{
+  width: 120px;
+  height: 20px !important;
+  margin: 0px;
+  padding: 2px 4px;
+}
 @media screen and (max-width: 1200px) {
   .job_show_title_display {
     min-width: 70%;
@@ -1089,7 +1102,9 @@ html {
     #save_jobs_button{
 
     margin-right: 15px;
-  
-}
+    }
+    .custom_title_dropdown {
+      margin-right: 25px;
+    }
 
   }
