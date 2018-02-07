@@ -643,6 +643,7 @@ html {
 
 .job_summary_display li {
   font-weight: normal;
+  font-size: inherit;
 }
 
 .job_display_skills {
@@ -970,6 +971,11 @@ html {
   width: calc(100% - 40px);
   margin: 0 ;
   float: left;
+}
+
+#tinymce li {
+  font-weight: normal;
+  font-size: inherit;
 }
 
 @media screen and (max-width: 1000px) {
