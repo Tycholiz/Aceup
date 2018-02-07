@@ -1,51 +1,53 @@
 <%= render 'header' %>
-<% unless @appliedJobs.length > 0 %>
-		<div class="job_display_desc col-md-12">  
-        <div class="checkmark" style="height:360px;">
-          <%= image_tag "empty.png" %></a>
-          <h3>You don't have any applied jobs yet.</h3>
-        </div>
-    </div>
+ <div class="container-fluid content_dashboard" "> 
+	<% unless @appliedJobs.length > 0 %>
+			<div class="job_display_desc col-md-12">  
+	        <div class="checkmark">
+	          <%= image_tag "empty.png" %></a>
+	          <h3>You don't have any applied jobs yet.</h3>
+	        </div>
+	    </div>
 
-	<% else %>
+		<% else %>
 
-	<div class="col-md-4 col-xs-12"></div>
-	<div class="col-md-8 col-xm-8">
-		<% @appliedJobs.each do |job| %>
-		        <% employer = Employer.where(id: job.employer_id).first %>
-		        <% @seeker = Seeker.where(user_id: current_user.id).first %>
-		         <% app = Application.where(seeker_id: @seeker.id, job_id: job.id).first %>
-		       
-		        
-		            <div class="job_show">
-		                 <hr size="6" noshade>
-		                <div class="job_show_header">
-		                    <div class="job_show_img">
-		                        <%= image_tag(employer.logo_url.to_s) %>
-		                    </div>
-		                    <div class="job_show_title">
-		                        <h1><%= link_to job.title, job_path(job) %></h1>
-		                        <h2><%= employer.compName %></h2>
-		                        <h4><%= job.summary.truncate(300) %></h4>
-		 
-		                    </div>
-		                </div>
-		                <div class="job_show_text">
-		                    <h3>Applied on:&nbsp;</h3><%= app.created_at.to_formatted_s(:short) %>  </br>
-		                    <h3>Job Type:&nbsp;</h3><%= job.jobType %> </br>
-		                        <h3>Pay Range:&nbsp;</h3><%= number_to_currency(job.payHigh)   %> to <%= number_to_currency(job.payLow)   %>                    
-		                    <div>
-
-
-		                        
-		                      <h3>Location:&nbsp;</h3><%= employer.city %> </br>
-		                    </div>
-		                </div>
-
-		            </div>
+		<div class="col-md-4 col-xs-12"></div>
+		<div class="col-md-8 col-xm-8">
+			<% @appliedJobs.each do |job| %>
+			        <% employer = Employer.where(id: job.employer_id).first %>
+			        <% @seeker = Seeker.where(user_id: current_user.id).first %>
+			         <% app = Application.where(seeker_id: @seeker.id, job_id: job.id).first %>
+			       
+			        
+			            <div class="job_show">
+			                 <hr size="6" noshade>
+			                <div class="job_show_header">
+			                    <div class="job_show_img">
+			                        <%= print_image(employer.logo_url.to_s) %>
+			                    </div>
+			                    <div class="job_show_title">
+			                        <h1><%= link_to job.title, job_path(job) %></h1>
+			                        <h2><%= employer.compName %></h2>
+			                        <h4><%= job.summary.truncate(300) %></h4>
+			 
+			                    </div>
+			                </div>
+			                <div class="job_show_text">
+			                    <h3>Applied on:&nbsp;</h3><%= app.created_at.to_formatted_s(:short) %>  </br>
+			                    <h3>Job Type:&nbsp;</h3><%= job.jobType %> </br>
+			                        <h3>Pay Range:&nbsp;</h3><%= number_to_currency(job.payHigh)   %> to <%= number_to_currency(job.payLow)   %>                    
+			                    <div>
 
 
+			                        
+			                      <h3>Location:&nbsp;</h3><%= employer.city %> </br>
+			                    </div>
+			                </div>
 
-		      <% end %>
-	</div>	      
-<% end %>
+			            </div>
+
+
+
+			      <% end %>
+		</div>	      
+	<% end %>
+</div>

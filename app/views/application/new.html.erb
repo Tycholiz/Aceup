@@ -3,7 +3,7 @@
 <% elsif current_user.role == "Employer" %>
     <%= render 'employers/header' %>
 <% end %>
-<div class="container">
+<div class="container content_dashboard">
 
  <%= form_for ([@job, @application]) do |f| %>
  <% if @application.errors.any? %>

@@ -1,6 +1,5 @@
 <%= render 'seekers/header' %>
-<% margin_px = 400 - (@resume.count * 50) %>
-<div class="container" style="margin-bottom: <%= margin_px %>px">
+<div class="container" style="min-height: calc(100vh - 400px);">
   <% if !flash[:notice].blank? %>
     <div class="alert alert-info">
     <%= flash[:notice] %>
