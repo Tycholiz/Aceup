@@ -11,8 +11,8 @@ class SeekersController < ApplicationController
       redirect_to seeker_path(@seeker), success: "Welcome aboard, add a resume"
     else
       # flash[:error] = @seeker.errors.full_messages.to_sentence
-      flash[:error] = "#{@seeker.errors.count} errors prevented this profile from being created"
-      render :new
+      
+      render :new, error: "#{@seeker.errors.count} errors prevented this profile from being created"
     end
   end
 
