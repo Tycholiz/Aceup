@@ -56,11 +56,11 @@ class Job < ApplicationRecord
         presence: true
         # numericality: { only_integer: true }
 
-      validates :functions,
-        presence: true
+      # validates :functions,
+      #   presence: true
 
-      validates :skills,
-        presence: true
+      # validates :skills,
+      #   presence: true
 
       # validates :summary,
       #   presence: true

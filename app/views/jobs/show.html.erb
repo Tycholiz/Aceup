@@ -31,46 +31,56 @@
                 <h1>Job Description</h1>
             </div>
         </div>
-        <div class="row job_display_desc_row">
-            <div class="job_summary_title_display">
-                <h2>Summary:</h2>
+        <% if @job.summary.length > 0 %>
+            <div class="row job_display_desc_row">
+                <div class="job_summary_title_display">
+                    <h2>Summary:</h2>
+                </div>
+                <div class="job_summary_display">
+                    <h3><%= @job.summary %></h3>
+                </div>  
             </div>
-            <div class="job_summary_display">
-                <h3><%= @job.summary %></h3>
-            </div>  
-        </div>
-        <div class="row job_display_desc_row">
-            <div class="job_summary_title_display">
-                <h2><%=@job.title_functions.length > 0 ? @job.title_functions : "Responsibilities" %>: </h2>
+         <% end %>
+        <% if @job.functions.length > 0 %>
+            <div class="row job_display_desc_row">
+                <div class="job_summary_title_display">
+                    <h2><%=@job.title_functions.length > 0 ? @job.title_functions : "Responsibilities" %>: </h2>
+                </div>
+                <div class="job_summary_display">
+                    <h3><%= @job.functions.html_safe  %></h3>
+                </div>  
             </div>
-            <div class="job_summary_display">
-                <h3><%= @job.functions.html_safe  %></h3>
-            </div>  
-        </div>
-         <div class="row job_display_desc_row">
-            <div class="job_summary_title_display">
-                <h2><%=@job.title_skills.length > 0  ? @job.title_skills : "Skills" %>: </h2>
+        <% end %>
+        <% if @job.skills.length > 0 %>
+             <div class="row job_display_desc_row">
+                <div class="job_summary_title_display">
+                    <h2><%=@job.title_skills.length > 0  ? @job.title_skills : "Skills" %>: </h2>
+                </div>
+                <div class="job_summary_display">
+                    <h3><%= @job.skills.html_safe  %></h3>
+                </div>  
             </div>
-            <div class="job_summary_display">
-                <h3><%= @job.skills.html_safe  %></h3>
-            </div>  
-        </div>
-         <div class="row job_display_desc_row">
-            <div class="job_summary_title_display">
-                <h2><%=@job.title_comp.length > 0  ? @job.title_comp : "Competencies" %>: </h2>
+        <% end %>
+        <% if @job.competencies.length > 0 %>
+             <div class="row job_display_desc_row">
+                <div class="job_summary_title_display">
+                    <h2><%=@job.title_comp.length > 0  ? @job.title_comp : "Competencies" %>: </h2>
+                </div>
+                <div class="job_summary_display">
+                    <%= @job.competencies.html_safe  %>
+                </div>  
             </div>
-            <div class="job_summary_display">
-                <%= @job.competencies.html_safe  %>
-            </div>  
-        </div>
-        <div class="row job_display_desc_row">
-           <div class="job_summary_title_display">
-                <h2><%=@job.title_benefits.length > 0  ? @job.title_benefits : "Benefits" %>: </h2>
+        <% end %>
+        <% if @job.benefits.length > 0 %>
+            <div class="row job_display_desc_row">
+               <div class="job_summary_title_display">
+                    <h2><%=@job.title_benefits.length > 0  ? @job.title_benefits : "Benefits" %>: </h2>
+                </div>
+               <div class="job_summary_display">
+                    <%= @job.benefits.html_safe  %>
+                </div>   
             </div>
-           <div class="job_summary_display">
-                <%= @job.benefits.html_safe  %>
-            </div>   
-        </div>
+        <% end %>
         <div class="row job_display_desc_row">
            <div class="job_summary_title_display">
                 <h2>Company Description:</h2>
