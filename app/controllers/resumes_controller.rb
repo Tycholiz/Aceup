@@ -4,7 +4,7 @@ class ResumesController < ApplicationController
 
   	@resume = @seeker.resumes.build(resume_params)
   	@resume.seeker_id = @seeker.id
-    @job = Job.friendly.find(params[:job_id])
+    @job = Job.friendly.find(params[:job_id]) if params[:job_id]
   	if @resume.save && @job
           redirect_to new_job_application_path(@job), success: "Resume created successfully"
     elsif @resume.save
@@ -15,7 +15,7 @@ class ResumesController < ApplicationController
   end
 
   def new   
-    @job = Job.friendly.find(params[:job_id])
+    @job = Job.friendly.find(params[:job_id])  if params[:job_id]
   	if Seeker.find(params[:seeker_id])
   		@seeker = Seeker.find(params[:seeker_id])
   	else 

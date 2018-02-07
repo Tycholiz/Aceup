@@ -36,7 +36,9 @@
             <div>
               <%= f.label :file, "Choose your file" %><br>
               <%= f.file_field :file, class: "form-control" %>
-              <%= hidden_field_tag :job_id, @job.id %>
+              <% if @job %>
+                <%= hidden_field_tag :job_id, @job.id %>
+              <% end %>
             </div>
             <div><%= f.submit "Submit", class: "form-control" %></div>
             </div>  
