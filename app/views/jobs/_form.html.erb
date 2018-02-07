@@ -326,6 +326,11 @@
       var inSalesHard_start = (inSalesHard ? inSalesHard : 5);
       var outSalesSoft_start = (outSalesSoft ? outSalesSoft : 3);
       var outSalesHard_start = (outSalesHard ? outSalesHard: 5);
+
+      $("#job_inSalesSoft").val(inSalesSoft_start);
+      $("#job_inSalesHard").val(inSalesHard_start);
+      $("#job_outSalesSoft").val(outSalesSoft_start);
+      $("#job_outSalesHard").val(outSalesHard_start);
    
       $( "#inSales_job_slider" ).slider({
         create: function() {

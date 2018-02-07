@@ -179,6 +179,8 @@
       var outSales_start = (outSales ? outSales : 1);
       handle.value = inSales;
       handle2.value = outSales;
+      $("#seeker_inSales").val(inSales_start);
+      $("#seeker_outSales").val(outSales_start);
 
       function in_out_disable(value) {
           if(value > 0){
