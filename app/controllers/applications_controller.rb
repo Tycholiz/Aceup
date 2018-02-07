@@ -1,7 +1,7 @@
 class ApplicationsController < ApplicationController
 
   def new
-    @job = Job.find(params[:job_id])
+    @job = Job.friendly.find(params[:job_id])
     @seeker = Seeker.where(user_id: current_user.id).first
     @resumes = Resume.where(seeker_id: 1)
     @resumeTest = @resumes.count
@@ -26,7 +26,7 @@ class ApplicationsController < ApplicationController
   end
 
   def create
-    @job = Job.find(params[:job_id])
+    @job = Job.friendly.find(params[:job_id])
     @application = Application.where(job_id: @job.id).first
     if @application.save
       @seeker = Seeker.where(user_id: current_user.id).first

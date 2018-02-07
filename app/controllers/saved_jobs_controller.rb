@@ -1,6 +1,6 @@
 class SavedJobsController < ApplicationController
   def new
-  	@job = Job.find(params[:job_id])
+  	@job = Job.friendly.find(params[:job_id])
     @seeker = Seeker.where(user_id: current_user.id).first
     @saved_job = @job.saved_jobs.build
     @saved_job.seeker_id = @seeker.id
