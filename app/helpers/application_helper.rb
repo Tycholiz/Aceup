@@ -24,7 +24,10 @@ module ApplicationHelper
 	  end
 	end
 
-
+	def print_image(url)
+	  url = Rails.application.assets.find_asset(url).nil? ? nil : url
+	  image_tag url || 'up_logotrans.png'
+	end
 
 	
 end

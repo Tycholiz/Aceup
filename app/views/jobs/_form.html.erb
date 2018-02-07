@@ -232,10 +232,10 @@
           <p class='error'><%= show_errors(@job, :summary) %></p>
         </div>
         <div>
-          <%= f.label :functions, "Essential Functions", style: "float:left;" %> 
+          <%= f.label :functions, "Section Title:", style: "float:left;" %> 
 
             <div class="custom_title_dropdown">
-               <%= f.select :title_functions, ["Essential Functions", "Option 2", "Option 3"], {include_blank: "change title"}, { class: "form form-group form-control"}  %>
+               <%= f.select :title_functions, ["Essential Functions", "Option 2", "Option 3"], {}, { class: "form form-group form-control"}  %>
             </div><br>
             <div style="clear:both"></div>
           <%= f.text_area :functions, class: "form-control tinymce", style: "height: 170px; clear:both;"  %>
@@ -243,9 +243,9 @@
           <p class='error'><%= show_errors(@job, :functions) %></p>
         </div>
         <div class=job_skills_form>
-          <%= f.label :skills ,"Skills", style: "float:left;" %>
+          <%= f.label :skills ,"Section Title:", style: "float:left;" %>
           <div class="custom_title_dropdown" style="margin-right: 25px;">
-               <%= f.select :title_skills, ["Skills", "Option 2", "Option 3"], {include_blank: "change title"}, { class: "form form-group form-control"}  %>
+               <%= f.select :title_skills, ["Skills", "Option 2", "Option 3"], {}, { class: "form form-group form-control"}  %>
             </div><br>
             <div style="clear:both"></div>
           <%= f.text_area :skills, class: "form-control tinymce", style: "height: 100px"  %>
@@ -253,9 +253,9 @@
           <p class='error'><%= show_errors(@job, :skills) %></p>
         </div>
         <div style="float:left; width: 330px">
-          <%= f.label :competencies, "Competencies", style: "float:left;" %> 
+          <%= f.label :competencies, "Section Title:", style: "float:left;" %> 
           <div class="custom_title_dropdown" style="margin-right: 25px;">
-               <%= f.select :title_comp, ["Competencies", "Option 2", "Option 3"], {include_blank: "change title"}, { class: "form form-group form-control"}  %>
+               <%= f.select :title_comp, ["Competencies", "Option 2", "Option 3"], {}, { class: "form form-group form-control"}  %>
             </div><br>
             <div style="clear:both"></div>
           <%= f.text_area :competencies, class: "form-control tinymce", style: "height: 100px"  %>
@@ -268,9 +268,9 @@
           <p class='error'><%= show_errors(@job, :deptSize) %></p>
         </div>
         <div>
-        <%= f.label :benefits, "Benefits", style: "float:left;" %> 
+        <%= f.label :benefits, "Section Title:", style: "float:left;" %> 
         <div class="custom_title_dropdown">
-               <%= f.select :title_benefits, ["Benefits", "Option 2", "Option 3"], {prompt: "change title"}, { class: "form form-group form-control"}  %>
+               <%= f.select :title_benefits, ["Benefits", "Option 2", "Option 3"], {}, { class: "form form-group form-control"}  %>
             </div><br>
             <div style="clear:both"></div>
         <%= f.text_area :benefits, class: "form-control tinymce"  %>

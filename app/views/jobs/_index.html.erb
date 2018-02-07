@@ -7,7 +7,8 @@
                          <hr size="6" noshade>
                         <div class="job_show_header">
                             <div class="job_show_img">
-                                <%= image_tag(employer.logo_url.to_s) %>
+                              
+                                <%= print_image(employer.logo_url.to_s) %>
                             </div>
                             <div class="job_show_title">
                                 <h1><%= link_to job.title, job_path(job), class: "job_title_text" %></h1>

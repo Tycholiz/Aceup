@@ -8,7 +8,8 @@
 <% end %>
 
 <div class="dash_header">
-	<%= image_tag @employer.logo_url.to_s, class: "dash_header_logo" %>
+	<%= print_image (@employer.logo_url.to_s) %>
+
 	<ol class="breadcrumb dash_breadcrumb" id="dash_breadcrumb">
 		<li><%= link_to "Current Jobs", employer_path(@employer) %></li>
 		<li><%= link_to "Edit Profile", edit_employer_path(@employer) %></li>
