@@ -243,13 +243,13 @@
                <%= f.select :title_functions, ["Essential Functions", "Option 2", "Option 3"], {include_blank: "change title"}, { class: "form form-group form-control"}  %>
             </div><br>
             <div style="clear:both"></div>
-          <%= f.text_area :functions, class: "form-control tinymce", style: "height: 100px; clear:both;"  %>
+          <%= f.text_area :functions, class: "form-control tinymce", style: "height: 170px; clear:both;"  %>
           <%= tinymce :content_css => asset_path('application.css')%>
           <p class='error'><%= show_errors(@job, :functions) %></p>
         </div>
-        <div>
+        <div class=job_skills_form>
           <%= f.label :skills ,"Skills", style: "float:left;" %>
-          <div class="custom_title_dropdown">
+          <div class="custom_title_dropdown" style="margin-right: 25px;">
                <%= f.select :title_skills, ["Skills", "Option 2", "Option 3"], {include_blank: "change title"}, { class: "form form-group form-control"}  %>
             </div><br>
             <div style="clear:both"></div>
@@ -257,9 +257,9 @@
           <%= tinymce :content_css => asset_path('application.css')%>
           <p class='error'><%= show_errors(@job, :skills) %></p>
         </div>
-        <div>
+        <div style="float:left; width: 330px">
           <%= f.label :competencies, "Competencies", style: "float:left;" %> 
-          <div class="custom_title_dropdown">
+          <div class="custom_title_dropdown" style="margin-right: 25px;">
                <%= f.select :title_comp, ["Competencies", "Option 2", "Option 3"], {include_blank: "change title"}, { class: "form form-group form-control"}  %>
             </div><br>
             <div style="clear:both"></div>
@@ -267,7 +267,7 @@
           <%= tinymce :content_css => asset_path('application.css')%>
           <p class='error'><%= show_errors(@job, :competencies) %></p>
         </div>
-         <div>
+         <div style="width: 150px">
           <%= f.label :deptSize, "Size of Team" %><br>
           <%= f.number_field :deptSize, class: "form-control"  %>
           <p class='error'><%= show_errors(@job, :deptSize) %></p>

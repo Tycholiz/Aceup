@@ -570,6 +570,12 @@ html {
   margin: 0px;
   padding: 2px 4px;
 }
+
+.job_skills_form {
+  float:left; 
+  width: 330px;
+  margin-right: 20px;
+}
 @media screen and (max-width: 1200px) {
   .job_show_title_display {
     min-width: 70%;
@@ -1106,5 +1112,7 @@ html {
     .custom_title_dropdown {
       margin-right: 25px;
     }
-
+    .job_skills_form {
+      margin-right: 0px;
+    }
   }
