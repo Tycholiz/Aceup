@@ -103,6 +103,8 @@ GEM
       railties (>= 3.1.1)
       sass-rails (>= 3.1.1)
     formatador (0.2.5)
+    friendly_id (5.2.3)
+      activerecord (>= 4.0.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     groupdate (3.2.0)
@@ -253,6 +255,7 @@ DEPENDENCIES
   faker
   fog-aws
   font-awesome-sass-rails
+  friendly_id
   groupdate
   impressionist
   jbuilder (~> 2.5)

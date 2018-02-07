@@ -14,6 +14,9 @@ class Job < ApplicationRecord
         model.certifications.reject!(&:blank?) if model.certifications
       end
 
+      extend FriendlyId
+      friendly_id :title, use: [:slugged, :history]
+
       validates :employer_id,
         presence: true
 

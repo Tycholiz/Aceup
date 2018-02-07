@@ -5,7 +5,7 @@ class Admin::JobsController < Admin::BaseAdminController
   	end
 
   	def activate 
-	    @job = Job.find(params[:id])
+	    @job = Job.friendly.find(params[:id])
 	    user = User.where(id: current_user.id).first
 	    if @job.status == "active"
 	      @job.status = "inactive"
@@ -32,7 +32,7 @@ class Admin::JobsController < Admin::BaseAdminController
 
   	def destroy
 	    user = User.where(id: current_user.id).first
-	    @job = Job.find(params[:id])
+	    @job = Job.friendly.find(params[:id])
 	    @job.destroy
 	    redirect_to admin_jobs_path, notice: "#{@job.title} was deleted successfully!"
 	  end

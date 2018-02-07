@@ -26,7 +26,7 @@ class JobsController < ApplicationController
   end
 
   def show
-    @job = Job.find(params[:id])
+    @job = Job.friendly.find(params[:id])
     @commissions = []
     @commissions.push "Direct" if @job.commDirect
     @commissions.push "Residual" if @job.commResidual
@@ -45,7 +45,7 @@ class JobsController < ApplicationController
   end
 
   def edit
-    @job = Job.find(params[:id])
+    @job = Job.friendly.find(params[:id])
     @employers = Employer.all
       @emp_list = Array.new
       @employers.each do |emp|
@@ -86,7 +86,7 @@ class JobsController < ApplicationController
   end
 
   def update
-    @job = Job.find(params[:id])
+    @job = Job.friendly.find(params[:id])
     user = User.where(id: current_user.id).first
     employer = Employer.where(user_id: user.id).first
 
@@ -101,7 +101,7 @@ class JobsController < ApplicationController
   end
 
   def activate 
-    @job = Job.find(params[:id])
+    @job = Job.friendly.find(params[:id])
     user = User.where(id: current_user.id).first
     employer = Employer.where(user_id: user.id).first
     if @job.status == "active"
@@ -120,7 +120,7 @@ class JobsController < ApplicationController
   def destroy
     user = User.where(id: current_user.id).first
     employer = Employer.where(user_id: user.id).first
-    @job = Job.find(params[:id])
+    @job = Job.friendly.find(params[:id])
     @job.destroy
     redirect_to employer_path(employer), notice: "#{@job.title} was deleted successfully!"
   end
