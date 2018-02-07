@@ -22,12 +22,12 @@
           <% end %>
           <div>
        
-            <%= f.select :jobType, [['Part-time', 'part-time'], ['Full-time', 'full-time']], {}, { class: "form form-group form-control" }%>
+            <%= f.select :jobType, [['Part-time', 'part-time'], ['Full-time', 'full-time']], {selected: ['Full-time', 'full-time']}, { class: "form form-group form-control" }%>
             <p class='error'><%= show_errors(@job, :jobType) %></p>
           </div>
           <div >
       
-            <%= f.select :temp, [['Temporary', true], ['Permanent', false]], {}, { class: "form form-group form-control" }%>
+            <%= f.select :temp, [['Temporary', true], ['Permanent', false]], {selected: ['Permanent', false]}, { class: "form form-group form-control" }%>
             <p class='error'><%= show_errors(@job, :temp) %></p>
           </div>
             
