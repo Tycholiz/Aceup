@@ -6,7 +6,7 @@ class SeekersController < ApplicationController
   def create
     @seeker = Seeker.new(seeker_params)
     @seeker.user_id = current_user.id
-    # @seeker.postalCode = params[:postalCode].upcase
+    @seeker.postalCode = @seeker.postalCode.upcase
     if @seeker.save
       redirect_to seeker_path(@seeker), success: "Welcome aboard, add a resume"
     else
@@ -18,6 +18,11 @@ class SeekersController < ApplicationController
 
   def show
     @seeker = Seeker.where(user_id: current_user.id).first
+    unless @seeker.postalCode.first == "V"
+      redirect_to "/pages/new_area"
+    end
+
+    
     @jobs = Job.filter(params[:filter_years], params[:filter_salary])
 
     @resume = @seeker.resumes.first.file_url if @seeker.resumes.first
