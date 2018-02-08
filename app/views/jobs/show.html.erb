@@ -30,9 +30,6 @@
     <div class="job_display_desc col-md-12">  
         <hr size="6" noshade style="margin-top: 0px"> 
         <div class="row">
-            <div>
-                <h1>Job Description</h1>
-            </div>
         </div>
         <% if @job.summary.length > 0 %>
             <div class="row job_display_desc_row">
@@ -93,14 +90,16 @@
                 <h3><%= @employer.compDesc  %></h3>
             </div>  
         </div>
-        <div class="row job_display_desc_row">
-           <div class="job_summary_title_display">
-                <h2>Department Size:</h2>
+        <% if @job.deptSize && @job.deptSize > 0 %>
+            <div class="row job_display_desc_row">
+               <div class="job_summary_title_display">
+                    <h2>Department Size:</h2>
+                </div>
+                <div class="job_summary_display">
+                    <h3><%= @job.deptSize  %></h3>
+                </div>  
             </div>
-            <div class="job_summary_display">
-                <h3><%= @job.deptSize  %></h3>
-            </div>  
-        </div>
+        <% end %>
         <hr size="6" noshade>  
         <div class="row">
             <h1>Pay Structure</h1>  
