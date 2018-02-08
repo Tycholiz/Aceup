@@ -108,6 +108,7 @@ class SeekersController < ApplicationController
 
    def update
     @seeker = Seeker.find(params[:id])
+    @seeker.postalCode = @seeker.postalCode.upcase
 
     if @seeker.update_attributes(seeker_params)
       redirect_to seeker_path(@seeker), notice: "Updated successfully!"
