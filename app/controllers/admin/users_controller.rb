@@ -13,6 +13,21 @@ class Admin::UsersController < Admin::BaseAdminController
       @role = @user.role
     end
 
+    def out_area
+      @users = User.all
+      out_area_users = Array.new
+      @users.each do |user|
+        if user.role == "Seeker" 
+          seeker = Seeker.where(user_id: user.id).first
+          if seeker && seeker.postalCode.first != "V"
+            out_area_users.push user
+          end
+        end
+      end
+
+      @users  = out_area_users
+    end
+
     def update
       @user  = User.find(params[:id])
 

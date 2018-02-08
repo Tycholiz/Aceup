@@ -8,7 +8,9 @@ Rails.application.routes.draw do
       get 'activate', :on => :member  
     end
 
-    resources :users, only: [:new, :create, :edit, :update, :index, :destroy]
+    resources :users, only: [:new, :create, :edit, :update, :index, :destroy] do
+      get 'out_area', :on => :collection
+    end
 
     resources :seekers do
       resources :resumes, only: [:index, :new, :create, :destroy]

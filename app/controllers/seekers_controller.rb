@@ -7,6 +7,11 @@ class SeekersController < ApplicationController
     @seeker = Seeker.new(seeker_params)
     @seeker.user_id = current_user.id
     @seeker.postalCode = @seeker.postalCode.upcase
+    unless @seeker.postalCode.first == "V"
+      @user = User.where(id: @seeker.user_id).first
+      @user.out_area = true
+      @user.save
+    end
     if @seeker.save
       redirect_to seeker_path(@seeker), success: "Welcome aboard, add a resume"
     else
@@ -19,6 +24,8 @@ class SeekersController < ApplicationController
   def show
     @seeker = Seeker.where(user_id: current_user.id).first
     unless @seeker.postalCode.first == "V"
+      # @user = User.where(id: @seeker.user_id).first
+      # @user.out_area = true
       redirect_to "/pages/new_area"
     end
 
