@@ -14,6 +14,6 @@ class Employer < ApplicationRecord
 	validates :city,
 	presence: true
 
-	validates :compDesc,
-	presence: true
+	# validates :compDesc,
+	# presence: true
 end

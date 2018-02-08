@@ -29,7 +29,7 @@
                 <div class="form-group">
                 Company Description </br>
                 (This will be displayed on job postings)
-                <%= f.text_area :compDesc , style: "height:150px; resize: none;", class: 'form-control' %> 
+                <%= f.text_area :compDesc , style: "height:150px; resize: none;", class: 'form-control', placeholder: "(optional)" %> 
                 <p class='error'><%= show_errors(@employer, :compDesc) %></p>
                 </div>
                 <div >
