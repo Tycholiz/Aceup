@@ -1,0 +1,29 @@
+<div class="container-fluid content_dashboard">
+ 	<br />
+  <%= link_to "Add User", new_admin_user_path, class: "btn btn-primary" %>
+  <br />
+  <br />
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <tr>
+          <th>Job Title</th>
+          <th>Applicant</th>
+          <th>View Profile</th>
+          <th>Application Date</th>
+        </tr>
+
+       <% @applications.each do |app|  %>
+         <% job = Job.where(id: app.job_id).first %>
+         <% seeker = Seeker.where(id: app.seeker_id).first %>
+         <% user = User.where(id: seeker.user_id).first %>
+        <tr>
+          <td><%= link_to job.title, job_path(job) %></td>
+          <td><%= user.firstName %></td>
+          <td><%= link_to "Applicant Profile", public_seeker_path(seeker, :application => app.id) %></td>
+          <td><%= app.created_at.to_formatted_s(:short)  %></td>
+        </tr>
+        <% end %>
+
+    </table>
+  </div>
+</div>

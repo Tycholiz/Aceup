@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
   namespace :admin do
+
+    resources :applications, only: [:new, :index, :create, :edit, :update, :destroy]
     
     resources :jobs do
-    	resources :applications do
-      end
+    	resources :applications
       resources :saved_jobs
       get 'activate', :on => :member  
     end
