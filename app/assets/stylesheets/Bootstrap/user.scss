@@ -610,7 +610,8 @@ html {
   margin-top: 40px;
 }
 .job_display_desc {
-  background: #f1f7fc;
+  // background: #f1f7fc;
+  background: #e7e7e7;
   padding: 0px 50px;
 }
 .job_display_desc hr {
@@ -633,12 +634,15 @@ html {
   font-size: 2em;
 }
 .job_summary_display {
-  border-style: solid;
+  // border-style: solid;
   padding: 15px;
   float: left;
-  margin-left:100px;
-  width: 60%;
+  // margin-left:100px;
+  width: 95%;
   overflow: hidden;
+}
+.job_summary_display p {
+  font-size: 24px;
 }
 
 .job_summary_display li {
