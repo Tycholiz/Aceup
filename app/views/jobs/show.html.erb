@@ -82,14 +82,30 @@
                 </div>   
             </div>
         <% end %>
-        <div class="row job_display_desc_row">
-           <div class="job_summary_title_display">
-                <h2>Company Description:</h2>
+
+        :
+
+        <% if @job.additionalInfo && @job.additionalInfo.length > 0 %>
+            <div class="row job_display_desc_row">
+               <div class="job_summary_title_display">
+                    <h2><%=@job.title_additionalInfo && @job.title_additionalInfo.length > 0  ? @job.title_additionalInfo : "Additional Info" %>: </h2>
+                </div>
+               <div class="job_summary_display">
+                    <%= @job.additionalInfo.html_safe  %>
+                </div>   
             </div>
-            <div class="job_summary_display">
-                <h3><%= @employer.compDesc  %></h3>
-            </div>  
-        </div>
+        <% end %>
+
+        <% if @employer.compDesc && @employer.compDesc.length > 0 %>
+            <div class="row job_display_desc_row">
+               <div class="job_summary_title_display">
+                    <h2>Company Description:</h2>
+                </div>
+                <div class="job_summary_display">
+                    <h3><%= @employer.compDesc  %></h3>
+                </div>  
+            </div>
+        <% end %>
         <% if @job.deptSize && @job.deptSize > 0 %>
             <div class="row job_display_desc_row">
                <div class="job_summary_title_display">

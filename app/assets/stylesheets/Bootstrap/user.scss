@@ -633,6 +633,9 @@ html {
   width: 15vw;
   font-size: 2em;
 }
+.job_summary_title_display h2{
+  font-weight: bold;
+}
 .job_summary_display {
   // border-style: solid;
   padding: 15px;
@@ -1120,6 +1123,15 @@ html {
       font-size: 3.8vw;
     }
     .job_display_desc h3 {
+      font-size: 3vw;
+    }
+    .job_summary_display li {
+      font-size: 3vw;
+    }
+    .job_summary_display ul {
+      padding: 0;
+    }
+    .job_summary_display {
       font-size: 3vw;
     }
     .job_display_desc_row {
