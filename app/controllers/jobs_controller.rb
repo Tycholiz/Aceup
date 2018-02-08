@@ -90,7 +90,7 @@ class JobsController < ApplicationController
     user = User.where(id: current_user.id).first
     employer = Employer.where(user_id: user.id).first
 
-    if @job.update_attributes(job_params) && employer
+    if @job.update_attributes(job_params) && employer && current_user.role == "Employer" 
       redirect_to employer_path(employer), notice: "#{@job.title} was updated successfully!"
     elsif @job.update_attributes(job_params) && current_user.role == "Admin" 
       redirect_to admin_jobs_path, notice: "#{@job.title} was updated successfully!"

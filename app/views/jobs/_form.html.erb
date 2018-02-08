@@ -427,46 +427,32 @@
           if (childCheck.is(":checked")) {
             childCheck.prop('checked', false);
             $(this).removeClass("ck-button_bg"); 
-              // if (childCheck.prop('id') == "job_status") {
-                
-              //   $(this).children('label').text('Inactive');
-                // $('#hiddenStatus').val("inactive");
-                // // $('#hiddenStatus').attr('value',"inactive");
-                // test = $('#hiddenStatus').val();
-                // // console.log("Status hidden value -> " test);
-                // } 
+
               if (childCheck.prop('id') == "job_driversLicence") {
                 $('#job_hasVehicle').prop("disabled", true).parent().addClass("disabled-button_bg");
               }
               if (childCheck.prop('id') == "job_salary") {
                 
-                  $('#hiddenSalary').val("Salary");
-                  HourlyButton.find("[type='checkbox']").prop('checked', true);
-                  HourlyButton.addClass("ck-button_bg");
+                  $('#hiddenSalary').val("100% Commission");
+                  // HourlyButton.find("[type='checkbox']").prop('checked', true);
+                  // HourlyButton.addClass("ck-button_bg");
                   // console.log("Salary clicked, hourly made true");
                   testSal = $('#hiddenSalary').val();
-                  // console.log("salary variable "+ testSal);
+                  console.log("salary variable "+ testSal);
                 } 
                 if (childCheck.prop('id') == "job_hourly") {
                 
-                  $('#hiddenSalary').val("Hourly");
-                  SalaryButton.find("[type='checkbox']").prop('checked', true);
-                  SalaryButton.addClass("ck-button_bg");
+                  $('#hiddenSalary').val("100% Commission");
+                  // SalaryButton.find("[type='checkbox']").prop('checked', true);
+                  // SalaryButton.addClass("ck-button_bg");
                   // console.log("Hourly clicked, salary made true");
                   testSal = $('#hiddenSalary').val();
-                  // console.log("salary variable "+ testSal);
+                  console.log("salary variable "+ testSal);
                 } 
                
             }else{
               childCheck.prop('checked', true);
               $(this).addClass("ck-button_bg");
-              // if (childCheck.prop('id') == "job_status") {
-              //   $(this).children('label').text('Active');
-              //   $('#hiddenStatus').val("active");
-              //   // $('#hiddenStatus').attr('value',"active");
-              //   test = $('#hiddenStatus').val();
-              //   // console.log("Status hidden value -> " test);
-              //   }
               if (childCheck.prop('id') == "job_driversLicence") {
                 $('#job_hasVehicle').prop("disabled", false).parent().removeClass("disabled-button_bg");
               }
@@ -477,7 +463,7 @@
                   HourlyButton.removeClass("ck-button_bg");
                   // console.log("Salary clicked, hourly made false");
                   testSal = $('#hiddenSalary').val();
-                  // console.log("salary variable "+ testSal);
+                  console.log("salary variable "+ testSal);
                 } 
                 if (childCheck.prop('id') == "job_hourly") {
                   $('#hiddenSalary').val("Hourly");
@@ -486,7 +472,7 @@
                   SalaryButton.removeClass("ck-button_bg");
                   // console.log("Hourly clicked, salary made false");
                                     testSal = $('#hiddenSalary').val();
-                  // console.log("salary variable "+ testSal);
+                  console.log("salary variable "+ testSal);
                 } 
               
           }

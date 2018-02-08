@@ -121,9 +121,9 @@
             <h1>Pay Structure</h1>  
         </div>
         <div class="row payShow">
-            <h2>Base Salary:&nbsp;</h2> <span style="font-size: 28px;"><%= @job.salary %></span> </br>
+           <span style="font-size: 28px;"><%= @job.salary %></span> </br>
             <div class="float-left"><h2>Commission:&nbsp;</h2></div>
-            <% if @commissions
+            <% if @commissions.length > 0
                  @commissions.each do |comm| %>
                     <div class="job_display_skills"><h2><%=comm%></h2></div>
                 <% end %>
