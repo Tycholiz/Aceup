@@ -31,9 +31,6 @@
     text-align: center;
     line-height: 1.6em;
   }
-// Place all the styles related to the seekers controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
 .slider 
 {
     width: 80%;
@@ -352,6 +349,7 @@
     box-shadow: 0 0 20px  #28b62c;
     // border: 5px solid  #28b62c;
 }
+
 @media screen and (max-width: 1000px) {
     .jobs_sidebar {
       min-height: 50px;
@@ -407,4 +405,17 @@
     .profile_form  {
       width: auto !important;
     }
+}
+
+@media screen and (max-width: 700px) {
+    #inSales_handle {
+        width: 2em;
+        height: 1.6em;
+      }
+
+      #outSales_handle {
+        width: 2em;
+        height: 1.6em;
+      }
+
 }

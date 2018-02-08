@@ -241,7 +241,7 @@
           <p class='error'><%= show_errors(@job, :functions) %></p>
         </div>
         <div class=job_skills_form>
-          <div class="custom_title_dropdown" style="margin-right: 25px;">
+          <div class="custom_title_dropdown">
                <%= f.select :title_skills, ["Skills", "Essential Functions", "Competencies", "Qualifications", "Benefits", "Additional Information"], {}, { class: "form form-group form-control"}  %>
             </div><br>
             <div style="clear:both"></div>
@@ -249,8 +249,8 @@
           <%= tinymce :content_css => asset_path('application.css')%>
           <p class='error'><%= show_errors(@job, :skills) %></p>
         </div>
-        <div style="float:left; width: 330px">
-          <div class="custom_title_dropdown" style="margin-right: 25px;">
+        <div class="job_skills_form" style="margin-right: 0;">
+          <div class="custom_title_dropdown">
                <%= f.select :title_comp, ["Competencies","Essential Functions", "Skills", "Qualifications", "Benefits", "Additional Information"], {}, { class: "form form-group form-control"}  %>
             </div><br>
             <div style="clear:both"></div>

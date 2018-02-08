@@ -49,3 +49,28 @@
     text-align: center;
     line-height: 1.6em;
   }
+
+  @media screen and (max-width: 700px) {
+
+        #inSales_job_handle {
+            width: 2em;
+            height: 1.6em;
+          }
+
+        #inSales_job_handle2 {
+            width: 2em;
+            height: 1.6em;
+          }
+
+        #outSales_job_handle {
+            width: 2em;
+            height: 1.6em;
+          }
+
+        #outSales_job_handle2 {
+            width: 2em;
+            height: 1.6em;
+          }
+
+
+  }
