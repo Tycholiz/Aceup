@@ -23,11 +23,9 @@ class SeekersController < ApplicationController
 
   def show
     @seeker = Seeker.where(user_id: current_user.id).first
-    unless @seeker.postalCode.first == "V"
-      # @user = User.where(id: @seeker.user_id).first
-      # @user.out_area = true
-      redirect_to "/pages/new_area"
-    end
+    # unless @seeker.postalCode.first == "V"
+    #   redirect_to "/pages/new_area"
+    # end
 
     
     @jobs = Job.filter(params[:filter_years], params[:filter_salary])
