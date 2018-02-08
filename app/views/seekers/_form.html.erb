@@ -40,7 +40,7 @@
           </div>
           <hr>
           <div>
-            
+            <%= f.label :certifications, "Certifications" %><br>
             <%= f.select :certifications, ['VSA', 'CFA (level 1)', 'CFA (level 2)', 'CFA (level 3)', 'CSC', 'CIP', 'LLQP', 'CAIB', 'Insurance Broker (level 1)', 'Insurance Broker (level 2)', 'Insurance Broker (level 3)'], {prompt: "Select Certifications"},{:multiple => true, class: "form-control multi-select"}%>
           </div>
           <div class="row">
