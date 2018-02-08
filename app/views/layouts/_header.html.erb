@@ -39,9 +39,9 @@
                     <li role="presentation"><%= link_to "Log In", new_session_path %></li>
                     <li role="presentation"><a href="/">Sign Up</a></li>
                   <% end %>
-                  <li role="presentation" class="active"><a href="/pages/about">About</a></li>
-                  <li role="presentation" class="active"><%= link_to "Contact", new_message_path%></li>
-                  <li role="presentation" class="active"><%= link_to "Blog", "https://www.blog.aceup.co" %></li>
+                  <li role="presentation" ><a href="/pages/about">About</a></li>
+                  <li role="presentation" ><%= link_to "Contact", new_message_path%></li>
+                  <li role="presentation" ><%= link_to "Blog", "https://www.blog.aceup.co" %></li>
                   <% if current_user %>
                     <li role="presentation"><%= link_to "Log out", session_path("current"), method: :delete %></li>
                   <% end %>

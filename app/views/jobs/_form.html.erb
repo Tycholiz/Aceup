@@ -321,10 +321,10 @@
       var outSalesHard = "<%= @job.outSalesHard %>";
 
 
-      var inSalesSoft_start = (inSalesSoft ? inSalesSoft  : 3);
-      var inSalesHard_start = (inSalesHard ? inSalesHard : 5);
-      var outSalesSoft_start = (outSalesSoft ? outSalesSoft : 3);
-      var outSalesHard_start = (outSalesHard ? outSalesHard: 5);
+      var inSalesSoft_start = (inSalesSoft ? inSalesSoft  : 0);
+      var inSalesHard_start = (inSalesHard ? inSalesHard : 1);
+      var outSalesSoft_start = (outSalesSoft ? outSalesSoft : 0);
+      var outSalesHard_start = (outSalesHard ? outSalesHard: 1);
 
       $("#job_inSalesSoft").val(inSalesSoft_start);
       $("#job_inSalesHard").val(inSalesHard_start);
@@ -345,6 +345,7 @@
           if ( ( ui.values[ 0 ] +  0.5) >= ui.values[ 1 ] ) {
             return false;
           }
+
           handle.text( ui.values[0] );
           handle2.text( ui.values[1] );
           $("#job_inSalesSoft").val(ui.values[1]);
@@ -502,7 +503,7 @@
         if ($(this).is(":checked")) {
           console.log("checekd")
           $( "#outSales_job_slider" ).slider( "disable" )
-          $('label[for=job_inSales]').text("General Sales (years")
+          $('label[for=job_inSales]').text("General Sales (years)")
           $("#job_outSalesSoft").val(0);
           $("#job_outSalesHard").val(0);
         } else {
