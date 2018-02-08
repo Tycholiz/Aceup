@@ -36,7 +36,8 @@ class SeekersController < ApplicationController
       
       jobSkills = job.slice(*skillsParams).select {|key, value| value == true }
       if job.general
-        seekerSalesYears = @seeker.inSales > @seeker.outSales ? @seeker.inSales : @seeker.outSales
+        # seekerSalesYears = @seeker.inSales > @seeker.outSales ? @seeker.inSales : @seeker.outSales
+        seekerSalesYears = @seeker.inSales + @seeker.outSales
         seekerSalesYears >= job.inSalesHard ? inSales = true : inSales = false
         seekerSalesYears >= job.outSalesHard ? outSales = true : outSales = false
       else 
