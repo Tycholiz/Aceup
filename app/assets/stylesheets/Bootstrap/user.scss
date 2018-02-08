@@ -552,8 +552,8 @@ html {
   line-height: 1.2px !important;
 }
 .job_show_title_display {
-  min-width: 840px;
-  // width: 70%;
+  // min-width: 840px;
+  width: 85%;
   height: 90%;
   float: left;
 }
@@ -589,7 +589,7 @@ html {
 }
 @media screen and (max-width: 1200px) {
   .job_show_title_display {
-    min-width: 70%;
+    min-width: 85%;
   }
 }
 .job_show_title_display h1 {
@@ -598,7 +598,7 @@ html {
 .job_show_img_display {
   // width: 400px;
   height: 280px;
-  width: 280px;
+  width: 15%;
   float: left;
 }
 .job_show_img_display img {
@@ -1045,8 +1045,8 @@ html {
     padding: 20px 20px 20px 5px;
   }
   .job_show_img_display {
-    width: 18vw;
-    height: 18vw;
+    width: 15%;
+    height: 15%;
     float: left;
   }
   .job_show_header_display {
@@ -1055,7 +1055,7 @@ html {
   }
   .job_show_title_display {
     height: 18vw;
-    width: 60%;
+    width: 85%;
     min-width: 25vw;
     // overflow: hidden;
   }
@@ -1087,6 +1087,28 @@ html {
     width: 90%;
     clear: both;
   }
+    .job_show_title h2 {
+      margin-top: 5px;
+    }
+    .job_show_title_display h1 {
+      font-size: 4.5vw;
+    }
+
+    .job_show_title_display h2 {
+      font-size: 3.5vw;
+      margin-top: 5px;
+    }
+     .job_show_img_display {
+        width: 25%;
+        height: 25%;
+        float: left;
+      }
+    .job_show_title_display {
+      height: 25vw;
+      width: 70%;
+
+      // min-width: 25vw;
+     }
 
 }
 
@@ -1103,23 +1125,7 @@ html {
       height: 30vw;
     }
 
-    .job_show_title h2 {
-      margin-top: 5px;
-    }
-    .job_show_title_display h1 {
-      font-size: 6vw;
-    }
-
-    .job_show_title_display h2 {
-      font-size: 5vw;
-      margin-top: 5px;
-    }
-    .job_show_title_display {
-      height: 25vw;
-      width: 70%;
-
-      // min-width: 25vw;
-     }
+  
     .job_show_header_text_display {
       font-size: 3.5vw;
     }
@@ -1127,8 +1133,8 @@ html {
       font-size: 3.8vw;
     }
     .job_show_img_display {
-      width: 25vw;
-      height: 25vw;
+      // width: 25vw;
+      // height: 25vw;
     }
     .job_display_desc h1 {
       font-size: 6vw;
