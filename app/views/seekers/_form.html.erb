@@ -175,8 +175,8 @@
       var inSales = "<%= @seeker.inSales %>";
       var outSales = "<%= @seeker.outSales %>";
 
-      var inSales_start = (inSales ? inSales : 1);
-      var outSales_start = (outSales ? outSales : 1);
+      var inSales_start = (inSales ? inSales : 0);
+      var outSales_start = (outSales ? outSales : 0);
       handle.value = inSales;
       handle2.value = outSales;
       $("#seeker_inSales").val(inSales_start);
