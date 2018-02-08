@@ -986,6 +986,21 @@ html {
   font-size: inherit;
 }
 
+.grey  a{
+  color: #555 !important;
+}
+.grey  a:hover {
+  color: #333 !important;
+  text-shadow: 0 0 15px #28b62c;
+  transition: all 0.5s ease;
+}
+
+.navbar-nav li > a:hover {
+  color: #333 !important;
+  text-shadow: 0 0 15px #28b62c;
+  transition: all 0.5s ease;
+  }
+
 @media screen and (max-width: 1000px) {
   // Job index page seeker#show
   .job_show_img img {
