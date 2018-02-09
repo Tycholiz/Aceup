@@ -10,6 +10,9 @@ class ApplicationsController < ApplicationController
     
 
     if @job.CompUrl
+      @application = @job.applications.build
+      @application.seeker_id = @seeker.id
+      @application.save 
       redirect_to @job.CompUrl, notice: "Good luck!, #{current_user.firstName}!"
     elsif @seeker && @resumeTest > 0 || @no_resume
       @application = @job.applications.build
