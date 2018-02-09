@@ -15,10 +15,14 @@ class Admin::SeekersController < Admin::BaseAdminController
   #   end
   # end
 
-  # def show
-  #   @seeker = seeker.find(params[:id])
-  #   @jobs = Job.where(seeker_id: @seeker.id)
-  # end
+  def show
+    @seeker = Seeker.find(params[:id])
+    @jobs = Job.where(seeker_id: @seeker.id)
+    @user = User.where(id: @seeker.user_id).first
+    skillsParams = [:driversLicence, :hasVehicle, :coldCall, :doorToDoor, :custService, :acctManagment,:negotiation, :presenting, :leadership, :closing, :hunterBased, :farmerBased, :commBased, :B2C, :B2B]
+    @seekSkills = @seeker.slice(*skillsParams).select {|key, value| value == true }
+    @resumes = @seeker.resumes
+  end
 
   def index
     @seekers = Seeker.all

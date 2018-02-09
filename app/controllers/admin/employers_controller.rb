@@ -40,6 +40,12 @@ class Admin::EmployersController < Admin::BaseAdminController
   #   end
   # end
 
+  def jobs
+    @employer = Employer.find(params[:id])
+    @jobs = Job.where(employer_id: @employer.id)
+    @jobs = @jobs.order(:created_at).reverse_order.page(params[:page]).per(15) 
+  end
+
   def destroy
       @employer  = Employer.find(params[:id])
       @employer.destroy

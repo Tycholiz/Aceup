@@ -21,14 +21,14 @@
        <% @seekers.each do |seek| 
            user = User.where(id: seek.user_id).first %>
       <tr>
-        <td><%= user.firstName %> <%= user.lastName %></td>
+        <td><%= link_to user.firstName, admin_seeker_path(seek) %></td>
         <td><%= seek.postalCode  %></td>
         <td class="active_link">Suspend?</td>
         <td>(<%= link_to "edit", edit_admin_seeker_path(seek) %>, <%= link_to "delete", admin_seeker_path(seek), method: :delete, data: {confirm: "Are you sure you want to delete #{seek.id}?"} %>)</td>
         <% 
            apps = Application.where(seeker_id: seek.id)%>
-        <td><%= apps.count %> <%= link_to "view",applications_admin_seeker_path(seek)%></td>
-        <td><%= Impression.where(user_id: user.id).count %> <%= link_to "view",job_views_admin_seeker_path(seek)%> </td>
+        <td><%= apps.count %> (<%= link_to "view",applications_admin_seeker_path(seek)%>)</td>
+        <td><%= Impression.where(user_id: user.id).count %> (<%= link_to "see jobs",job_views_admin_seeker_path(seek)%>) </td>
         <td><%= seek.created_at.strftime("%b %d, %Y")  %></td>
         <td><%= seek.updated_at.strftime("%b %d, %Y")  %></td>
         <td><%= seek.id%></td>

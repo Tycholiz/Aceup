@@ -33,6 +33,7 @@ Rails.application.routes.draw do
         get  :applications do
           get 'employer_apps', :on => :collection
         end
+        get   :jobs
       end
     end
 

@@ -1,0 +1,75 @@
+ <div class="container">
+   <div class="row">
+    <h1><%= @user.firstName %> <%= @user.lastName %></h1> 
+   </div>
+   <div class="col-md-6">
+     <div class="job_show_text">
+     <div class="editor">
+                  <h2>
+                    <i class="glyphicon glyphicon-list-alt"></i>
+                    Details
+                  </h2>
+                </div>
+       <h3>Postal Code:&nbsp;</h3> <%= @seeker.postalCode %> </br>
+       <h3>Driver's License:&nbsp;</h3> <%= @seeker.driversLicence %> </br>
+       <h3>Has Vehicle:&nbsp;</h3> <%= @seeker.hasVehicle %> </br>
+       <div class="editor">
+                <h2>
+                  <i class="glyphicon glyphicon-briefcase"></i>
+                    Sales Experience
+                </h2>
+              </div>
+       <h3>Inside Sales Experience:&nbsp;</h3><%= @seeker.inSales %> </br>
+       <h3>Outside Sales Experience:&nbsp;</h3><%= @seeker.outSales %> </br>
+       <div class="editor">
+                  <h2>
+                    <i class="glyphicon glyphicon-list-alt"></i>
+                    Sales Skills
+                  </h2>
+                </div>
+        <% @seekSkills.each do |key, val| %>
+          <h3><%= key %></h3> </br>
+        <% end %>
+
+        <div class="editor">
+                  <h2>
+                    <i class="glyphicon glyphicon-list-alt"></i>
+                    Education Level
+                  </h2>
+                </div>
+        <h3>Education Level:&nbsp;</h3><%= @seeker.educationLevel %> </br>
+            <div class="editor">
+                  <h2>
+                    <i class="glyphicon glyphicon-list-alt"></i>
+                    Certifications
+                  </h2>
+                </div> 
+
+               <% @seeker.certifications.each do |cert| %>
+                <h3><%= cert %></h3> </br>
+               <% end %>
+
+            <div class="editor">
+              <h2>
+                  <i class="glyphicon glyphicon-comment"></i> 
+                  Fluent Languages</h2> 
+              </div>
+
+               <% @seeker.languages.each do |lang| %>
+                <h3><%= lang %></h3> </br>
+               <% end %>
+      </div>
+
+  </div>
+
+  <div class="col-md-4" style="background-color: #dee8f9;">
+    <div class="job_show_text">
+      <h3>Email:&nbsp;</h3><%= @user.email %> </br>
+      <h3>Phone:&nbsp;</h3><%= @user.phoneNo %> </br>
+      <h3>Resumes:&nbsp;</h3>
+      <% @resumes.each do |resume| %>
+          <h3><%= resume.title %> (<%= link_to "View", resume.file_url if resume %>) </h3>
+      <% end %>
+    </div>
+  </div>
+</div>  
