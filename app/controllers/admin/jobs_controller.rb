@@ -1,7 +1,12 @@
 class Admin::JobsController < Admin::BaseAdminController
 	def index
-    	@jobs = Job.all
-    	@jobs = @jobs.order(:created_at).reverse_order.page(params[:page]).per(15) 
+		if params[:search]
+    		@jobs = Job.search(params[:search])
+    		@jobs = @jobs.order(:created_at).reverse_order.page(params[:page]).per(15) 
+    	else
+	    	@jobs = Job.all
+	    	@jobs = @jobs.order(:created_at).reverse_order.page(params[:page]).per(15) 
+    	end
   	end
 
   	def activate 

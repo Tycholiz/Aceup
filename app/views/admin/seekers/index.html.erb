@@ -1,0 +1,43 @@
+<div class="container-fluid content_dashboard">
+  <br />
+  <%= link_to "Add seeker", new_admin_seeker_path, class: "btn btn-primary" %>
+  <br />
+  <br />
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <tr>
+        <th>Name</th>
+        <th>Postal</th>
+        <th>Status</th>
+        <th>Manage</th>
+        <th>Total Applications</th>
+        <th>Sign Up</th>
+        <th>Updated</th>
+        <th>seek ID #</th>
+        <th>User ID #</th>
+      </tr>
+
+       <% @seekers.each do |seek| 
+           user = User.where(id: seek.user_id).first %>
+      <tr>
+        <td><%= user.firstName %> <%= user.lastName %></td>
+        <td><%= seek.postalCode  %></td>
+        <td class="active_link">Suspend?</td>
+        <td>(<%= link_to "edit", edit_admin_seeker_path(seek) %>, <%= link_to "delete", admin_seeker_path(seek), method: :delete, data: {confirm: "Are you sure you want to delete #{seek.id}?"} %>)</td>
+        <% 
+           apps = Application.where(seeker_id: seek.id)%>
+        <td><%= apps.count %></td>
+        <td><%= seek.created_at.strftime("%b %d, %Y")  %></td>
+        <td><%= seek.updated_at.strftime("%b %d, %Y")  %></td>
+        <td><%= seek.id%></td>
+        <td><%= seek.user_id%></td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+  <div style="clear: both">
+                <%= paginate @seekers %>
+                <%= page_entries_info @seekers %>
+            </div>
+            <hr>
+</div>

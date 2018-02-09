@@ -14,15 +14,18 @@ class Job < ApplicationRecord
         model.certifications.reject!(&:blank?) if model.certifications
       end
 
+      def self.search(search)
+        # where("title ILIKE ?", "%#{search}%") 
+        # where("summary ILIKE ?", "%#{search}%")
+        where('title ILIKE :search OR summary ILIKE :search OR competencies ILIKE :search', search: "%#{search}%")
+      end
+
       extend FriendlyId
       friendly_id :title, use: [:slugged, :history]
 
       validates :employer_id,
         presence: true
 
-      validates :title,
-        presence: true
-     
       validates :title,
         presence: true
 

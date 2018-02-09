@@ -11,6 +11,7 @@
           <th>Applicant</th>
           <th>Manage</th>
           <th>View Profile</th>
+          <th>Onsite</th>
           <th>Application Date</th>
           <th>Updated</th>
           <th>Resume</th>
@@ -27,6 +28,11 @@
           <td><%= user.firstName %></td>
           <td><%= link_to "delete", admin_job_application_path(app, :app_id => app.id), method: :delete, data: {confirm: "Are you sure you want to delete this app (#{app.id})?"} %></td>
           <td><%= link_to "Applicant Profile", public_seeker_path(seeker, :application => app.id) %></td>
+          <% if job.CompUrl %>
+            <td><%= link_to "link",job.CompUrl %> </td>
+          <% else %>
+             <td>Yes</td>
+          <% end %>
           <td><%= app.created_at.strftime("%b %d, %Y")  %></td>
           <td><%= app.updated_at.strftime("%b %d, %Y") %></td>
           <% if resume %>

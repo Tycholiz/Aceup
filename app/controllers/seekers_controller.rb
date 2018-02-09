@@ -108,8 +108,10 @@ class SeekersController < ApplicationController
     @seeker = Seeker.find(params[:id])
     @seeker.postalCode = @seeker.postalCode.upcase
 
-    if @seeker.update_attributes(seeker_params)
+    if @seeker.update_attributes(seeker_params) && current_user.role == "Seeker" 
       redirect_to seeker_path(@seeker), notice: "Updated successfully!"
+    elsif @seeker.update_attributes(seeker_params) && current_user.role == "Admin"
+      redirect_to admin_seekers_path, notice: "Updated successfully!"
     else
       flash[:error] = @seeker.errors.full_messages.to_sentence
       render :edit
