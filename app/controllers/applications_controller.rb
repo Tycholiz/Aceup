@@ -8,8 +8,9 @@ class ApplicationsController < ApplicationController
     @no_resume = params[:no_resume]
 
     
-
-    if @job.CompUrl
+    if @seeker.status == "suspended"
+      redirect_to "/pages/suspended", error: "Your account is suspended, #{current_user.firstName}!"
+    elsif @job.CompUrl
       @application = @job.applications.build
       @application.seeker_id = @seeker.id
       @application.save 
