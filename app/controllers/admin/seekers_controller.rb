@@ -40,6 +40,19 @@ class Admin::SeekersController < Admin::BaseAdminController
   #   end
   # end
 
+  def job_views
+    @seeker  = Seeker.find(params[:id])
+    @jobs = Array.new
+    user = User.where(id: @seeker.user_id).first
+    views = Impression.where(user_id: user.id)
+    views.each do |view|
+      job = Job.where(id: view.impressionable_id).first
+      @jobs.push job
+    end
+    @jobs = Kaminari.paginate_array(@jobs).page(params[:page]).per(10) 
+
+  end
+
   def destroy
       @seeker  = Seeker.find(params[:id])
       @seeker.destroy
@@ -47,14 +60,12 @@ class Admin::SeekersController < Admin::BaseAdminController
   end
 
   def applications
-    @seeker = Seeker.find(params[:id])
-    @jobs = Job.where(seeker_id: @seeker.id)
-    @applications = Array.new
-    @jobs.each do |job|
-      @applied = Application.where(job_id: job.id)
-      @applied.each do |app|
-        @applications.push app if @applied.length > 0
-      end
+   @seeker  = Seeker.find(params[:id])
+    @applications = Application.where(seeker_id: @seeker.id)
+    @appliedJobs = Array.new
+    @applications.each do |app|
+      job = Job.where(id: app.job_id).first
+      @appliedJobs.push job
     end
 
   end

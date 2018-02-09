@@ -1,0 +1,49 @@
+<div class="container-fluid content_dashboard">
+  <br />
+  <% user = User.where(id: @seeker.user_id).first %>
+  <H1>Applications for: <%= user.firstName %> <%= user.lastName %></H1>
+  <h3>Total: <%= @applications.count %></h3>
+  <br />
+  <br />
+      <table class="table table-hover">
+        <tr>
+          <th>Job Title</th>
+          <th>Posting</th>
+          <th>Applicant</th>
+          <th>Manage</th>
+          <th>View Profile</th>
+          <th>Onsite</th>
+          <th>Application Date</th>
+          <th>Updated</th>
+          <th>Resume</th>
+        </tr>
+
+         <% @applications.each do |app|  %>
+         <% job = Job.where(id: app.job_id).first %>
+         <% seeker = Seeker.where(id: app.seeker_id).first %>
+         <% employer = Employer.where(id: job.employer_id).first %>
+         <% resume = Resume.where(id: app.resume).first %>
+        <tr>
+          <td><%= link_to job.title, job_apps_admin_job_applications_path(job) %></td>
+          <td><%= link_to "view job", job_path(job) %></td>
+          <td><%= user.firstName %></td>
+          <td><%= link_to "delete", admin_job_application_path(app, :app_id => app.id), method: :delete, data: {confirm: "Are you sure you want to delete this app (#{app.id})?"} %></td>
+          <td><%= link_to "Applicant Profile", public_seeker_path(seeker, :application => app.id) %></td>
+          <% if job.CompUrl %>
+            <td><%= link_to "link",job.CompUrl %> </td>
+          <% else %>
+             <td>Yes</td>
+          <% end %>
+          <td><%= app.created_at.strftime("%b %d, %Y")  %></td>
+          <td><%= app.updated_at.strftime("%b %d, %Y") %></td>
+          <% if resume %>
+            <td><%= link_to resume.title, resume.file_url  %></td>
+          <% else %>
+            <td>none</td>
+          <% end %>
+        </tr>
+        <% end %>
+
+      </table>
+    </div>
+</div>    

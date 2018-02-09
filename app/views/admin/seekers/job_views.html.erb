@@ -1,0 +1,62 @@
+<div class="container-fluid content_dashboard">
+  <br />
+  <% user = User.where(id: @seeker.user_id).first %>
+  <H1>Job Views for: <%= user.firstName %> <%= user.lastName %></H1>
+  <h3>Total: <%= @jobs.count %></h3>
+  <br />
+  <br />
+      
+  <div class="table-responsive">
+    <table class="table table-hover">
+        <tr>
+          <th>Title</th>
+          <th>Company</th>
+          <th>Status</th>
+          <th>Manage</th>
+          <th>Views</th>
+          <th>Applications</th>
+          <th>Post Date</th>
+          <th>Expiry</th>
+          <th>ID #</th>
+        </tr>
+        <% if @jobs.present? %>
+
+         <% @jobs.each do |job|  %>
+         <% @employer = Employer.where(id: job.employer_id).first %>
+        <tr>
+          <td><%= link_to job.title, job_path(job) %></td>
+          <td><%= @employer.compName %></td>
+          <td class="active_link"><%= link_to job.status.capitalize,   activate_admin_job_path(job), data: {confirm: "Are you sure you want to change the status for  #{job.title}?"} %> </td>
+          <td>(<%= link_to "edit", edit_job_path(job) %>, <%= link_to "delete", admin_job_path(job), method: :delete, data: {confirm: "Are you sure you want to delete #{job.title}?"} %>)</td>
+          <td><%= job.impressionist_count %></td>
+          <td><%= job.applications.size%> (<%=link_to "view", job_apps_admin_job_applications_path(job)%>)</td>
+          <td><%= job.created_at.strftime("%b %d, %Y") %></td>
+          <td><%= job.expiry.strftime("%b %d, %Y") if job.expiry%></td>
+          <td><%= job.id %></td>
+        </tr>
+        <% end %>
+       <% else %>
+        <td>There are no posts containing the term(s) <%= params[:search] %>.</td>
+      <% end %>
+    </table>
+  </div>
+  <div style="clear: both">
+                <%= paginate @jobs if @jobs %>
+                <%= page_entries_info @jobs if @jobs %>
+            </div>
+            <hr>
+</div>
+
+
+<script>
+  $( function() {
+    $('.active_link a').each(function() {
+      test = $(this);
+      if (test.html() == "Active"){
+        test.css("color","green");
+      } else if (test.html() == "Inactive"){
+        test.css("color","red");
+      }
+    });
+  });
+</script>

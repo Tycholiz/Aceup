@@ -18,10 +18,13 @@ Rails.application.routes.draw do
     resources :seekers do
       resources :resumes, only: [:index, :new, :create, :destroy]
     	member do
-    		get   :applied
+    		get   :applications do
+          get 'seeker_apps', :on => :collection
+        end
         get   :saved_jobs
-        get   :public
-        get   :no_resume
+        # get   :public
+        # get   :no_resume
+        get   :job_views
     	end
     end
 

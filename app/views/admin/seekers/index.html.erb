@@ -11,6 +11,7 @@
         <th>Status</th>
         <th>Manage</th>
         <th>Total Applications</th>
+        <th>Job Views</th>
         <th>Sign Up</th>
         <th>Updated</th>
         <th>seek ID #</th>
@@ -26,7 +27,8 @@
         <td>(<%= link_to "edit", edit_admin_seeker_path(seek) %>, <%= link_to "delete", admin_seeker_path(seek), method: :delete, data: {confirm: "Are you sure you want to delete #{seek.id}?"} %>)</td>
         <% 
            apps = Application.where(seeker_id: seek.id)%>
-        <td><%= apps.count %></td>
+        <td><%= apps.count %> <%= link_to "view",applications_admin_seeker_path(seek)%></td>
+        <td><%= Impression.where(user_id: user.id).count %> <%= link_to "view",job_views_admin_seeker_path(seek)%> </td>
         <td><%= seek.created_at.strftime("%b %d, %Y")  %></td>
         <td><%= seek.updated_at.strftime("%b %d, %Y")  %></td>
         <td><%= seek.id%></td>

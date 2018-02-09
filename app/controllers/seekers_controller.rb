@@ -12,7 +12,9 @@ class SeekersController < ApplicationController
       @user.out_area = true
       @user.save
     end
-    if @seeker.save
+    if current_user.role == "Admin"  && @seeker.save  
+        redirect_to admin_seekers_path, notice: "#{@seeker.id} successfully!"
+    elsif @seeker.save
       redirect_to seeker_path(@seeker), success: "Welcome aboard, add a resume"
     else
       # flash[:error] = @seeker.errors.full_messages.to_sentence
