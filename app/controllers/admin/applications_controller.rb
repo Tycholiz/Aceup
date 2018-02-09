@@ -27,6 +27,7 @@ class Admin::ApplicationsController <  Admin::BaseAdminController
 
   def index
     @applications = Application.all
+    @applications = @applications.order(:created_at).reverse_order.page(params[:page]).per(15) 
   end
 
   def job_apps
