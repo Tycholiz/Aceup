@@ -1,6 +1,6 @@
 class JobsController < ApplicationController
 
-  impressionist actions: [:show], unique: [:impressionable_id, :session_hash]
+  # impressionist actions: [:show], unique: [:impressionable_id, :session_hash]
 
   def index
 	  @jobs = Job.all
@@ -27,6 +27,7 @@ class JobsController < ApplicationController
 
   def show
     @job = Job.friendly.find(params[:id])
+    impressionist(@job)
     @commissions = []
     @commissions.push "Direct" if @job.commDirect
     @commissions.push "Residual" if @job.commResidual

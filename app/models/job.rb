@@ -15,8 +15,6 @@ class Job < ApplicationRecord
       end
 
       def self.search(search)
-        # where("title ILIKE ?", "%#{search}%") 
-        # where("summary ILIKE ?", "%#{search}%")
         where('title ILIKE :search OR summary ILIKE :search OR competencies ILIKE :search', search: "%#{search}%")
       end
 
