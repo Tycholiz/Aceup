@@ -25,6 +25,7 @@ Rails.application.routes.draw do
         # get   :public
         # get   :no_resume
         get   :job_views
+        get   :activate
     	end
     end
 

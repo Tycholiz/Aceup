@@ -7,6 +7,7 @@ class SeekersController < ApplicationController
     @seeker = Seeker.new(seeker_params)
     @seeker.user_id = current_user.id
     @seeker.postalCode = @seeker.postalCode.upcase
+    @seeker.status = "active"
     unless @seeker.postalCode.first == "V"
       @user = User.where(id: @seeker.user_id).first
       @user.out_area = true

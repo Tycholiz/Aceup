@@ -71,8 +71,22 @@ class Admin::SeekersController < Admin::BaseAdminController
       job = Job.where(id: app.job_id).first
       @appliedJobs.push job
     end
-
   end
+
+  def activate 
+    @seeker  = Seeker.find(params[:id])
+    if @seeker.status == "active"
+      @seeker.status = "suspended"
+    else
+      @seeker.status = "active"
+    end
+    if @seeker.save
+      redirect_to admin_seekers_path,  notice: "Seeker:#{@seeker.id}'s' status has been changed to #{@seeker.status.capitalize}"
+    else
+      flash[:error] = "#{@seeker.errors.count} errors prevented this job from being updated"
+      redirect_to admin_seekers_path
+    end
+  end  
 
   protected
 
