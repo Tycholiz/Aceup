@@ -4,7 +4,9 @@ Rails.application.routes.draw do
     resources :applications, only: [:new, :index, :create, :edit, :update, :destroy]
     
     resources :jobs do
-    	resources :applications
+    	resources :applications do
+        get 'job_apps', :on => :collection
+      end
       resources :saved_jobs
       get 'activate', :on => :member  
     end
@@ -25,7 +27,9 @@ Rails.application.routes.draw do
 
     resources :employers, only: [:new, :create, :index, :edit, :update, :destroy]  do
       member do
-        get  :applications
+        get  :applications do
+          get 'employer_apps', :on => :collection
+        end
       end
     end
 

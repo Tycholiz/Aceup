@@ -1,6 +1,6 @@
 <div class="container-fluid content_dashboard">
  	<br />
-  <H1>All Applications </H1>
+  <H1>Applications for <%= @job.title %> </H1>
   <h3>Total: <%= @applications.count %></h3>
   <br />
   <br />
@@ -22,10 +22,9 @@
          <% seeker = Seeker.where(id: app.seeker_id).first %>
          <% user = User.where(id: seeker.user_id).first %>
          <% resume = Resume.where(id: app.resume).first %>
-        <tr>
           <td><%= link_to job.title, job_apps_admin_job_applications_path(job) %></td>
           <td><%= user.firstName %></td>
-          <td><%=link_to employer.compName, applications_admin_employer_path(employer) %></td>
+          <td><%= employer.compName %></td>
 
           <td><%= link_to "Applicant Profile", public_seeker_path(seeker, :application => app.id) %></td>
           <td><%= app.created_at.to_formatted_s(:short)  %></td>

@@ -29,6 +29,12 @@ class Admin::ApplicationsController <  Admin::BaseAdminController
     @applications = Application.all
   end
 
+  def job_apps
+    @job = Job.friendly.find(params[:job_id])
+    @applications = Application.where(job_id: @job.id)
+    render "jobs"
+  end
+
   def create
     @job = Job.friendly.find(params[:job_id])
     @application = Application.where(job_id: @job.id).first
@@ -46,7 +52,11 @@ class Admin::ApplicationsController <  Admin::BaseAdminController
     end
   end
 
-  def delete
+  def destroy
+    @application  = Application.find(params[:app_id])
+      @application.destroy
+      flash[:alert] =  "The application was deleted successfully!"
+      redirect_back(fallback_location: admin_applications_path)
   end
 
   def update
