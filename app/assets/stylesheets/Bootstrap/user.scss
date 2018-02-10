@@ -793,6 +793,7 @@ html {
   text-align: center;
   font-size: 14px;
   line-height: 1.2;
+  transition: all 0.8s ease;
 }
 
 /* Triangle hack to make tooltip look like a speech bubble */
@@ -1017,21 +1018,36 @@ html {
     margin-left:10%;
     width: 80%;
   }
+      [data-tooltip]:before {
+      position: absolute;
+      top:  auto;
+      left: -75px;
+      margin-left: 15%;
+      margin-right: 15%;
+      width: 200px;
+      max-height: 200px;
+      min-height: 50px;
+
+    }
 
 }
 
 @media screen and (max-width: 800px) {
    .ck-button {
-    margin-left: 20px;
+    margin-left: auto;
     margin-right: auto;
-    width: 90%;
+    width: 100%;
     clear: both;
  }
 
+  .ck-button label{
+    font-size: 1.1em;
+
+  }
    #ck-button-comm {
-    margin-left: 20px;
+    margin-left: auto;
     margin-right: auto;
-    width: 90%;
+    width: 100%;
     clear: both;
   }
     .job_show_title h2 {
@@ -1120,4 +1136,5 @@ html {
       width: auto;
       max-width: 317.78px;
     }
+
   }
