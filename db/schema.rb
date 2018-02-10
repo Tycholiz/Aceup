@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180209192753) do
+ActiveRecord::Schema.define(version: 20180210060851) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,10 +88,10 @@ ActiveRecord::Schema.define(version: 20180209192753) do
     t.string "salary"
     t.integer "payLow"
     t.integer "payHigh"
-    t.integer "inSalesSoft"
-    t.integer "inSalesHard"
-    t.integer "outSalesSoft"
-    t.integer "outSalesHard"
+    t.float "inSalesSoft"
+    t.float "inSalesHard"
+    t.float "outSalesSoft"
+    t.float "outSalesHard"
     t.text "summary"
     t.text "functions"
     t.text "skills"
@@ -161,8 +161,8 @@ ActiveRecord::Schema.define(version: 20180209192753) do
     t.string "degree"
     t.boolean "driversLicence"
     t.boolean "hasVehicle"
-    t.integer "inSales"
-    t.integer "outSales"
+    t.float "inSales"
+    t.float "outSales"
     t.boolean "inboundSales"
     t.boolean "outboundSales"
     t.boolean "coldCall"

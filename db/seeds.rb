@@ -94,6 +94,7 @@ p "Created #{Employer.count} employers"
 
 Seeker.create! [
 	user_id: 3,
+	status: "active",
 	postalCode: Faker::Address.postcode,
 	educationLevel: 5,
 	degree: Faker::Beer.style,
@@ -124,6 +125,7 @@ Seeker.create! [
 
 Seeker.create! [
 	user_id: 4,
+	status: "active",
 	postalCode: Faker::Address.postcode,
 	educationLevel: Faker::Number.between(1, 5),
 	degree: Faker::Beer.style,

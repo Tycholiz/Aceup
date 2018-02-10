@@ -1,7 +1,6 @@
 class Seeker < ApplicationRecord
 
 	belongs_to :user
-	has_one :skill
 	has_many :applications, dependent: :destroy
 	has_many :resumes, dependent: :destroy
 	has_many :saved_jobs, dependent: :destroy

@@ -110,6 +110,8 @@ class SeekersController < ApplicationController
    def update
     @seeker = Seeker.find(params[:id])
     @seeker.postalCode = @seeker.postalCode.upcase
+    @seeker.inSales  = @seeker.inSales.to_f
+    @seeker.outSales  = @seeker.outSales.to_f
 
     if @seeker.update_attributes(seeker_params) && current_user.role == "Seeker" 
       redirect_to seeker_path(@seeker), notice: "Updated successfully!"
