@@ -32,7 +32,6 @@ gem "chartkick"
 gem 'groupdate'
 gem 'tinymce-rails'
 gem 'friendly_id'
-gem 'yaml_db'
 # gem 'tinymce-rails', :git => 'git://github.com/spohlenz/tinymce-rails.git'
 
 gem 'faker'
