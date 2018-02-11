@@ -201,15 +201,22 @@
       };
       function custServiceCheck() {
           if( inSales > 0 || outSales > 0){
-              custService.find("[type='checkbox']").prop('checked', true);
+              custService.parent().find("[type='checkbox']").prop('checked', true);
               custService.parent().addClass("ck-button_bg");
-              custService.prop("disabled", true)
+              // custService.prop("disabled", true)
+              custService.prop('onclick', 'return false');
               console.log("custService checked")
+              test = custService.parent().find("[type='checkbox']").is(":checked")
+              console.log(test)
            } else {
-              custService.find("[type='checkbox']").prop('checked', false);
+              custService.parent().find("[type='checkbox']").prop('checked', false);
               custService.parent().removeClass("ck-button_bg");
-              custService.prop("disabled", false);
+              // custService.prop("disabled", false);
+              custService.prop('onclick', '');
+
               console.log("custService un-checked")
+              test = custService.parent().find("[type='checkbox']").is(":checked")
+              console.log(test)
             }
       };
       
@@ -280,7 +287,7 @@
       ckbutton.on('click',function(){
         var test = $(this).find("[type='checkbox']").prop('checked');
         var test2 = $(this).find("[type='checkbox']").prop('disabled');
-        console.log("tapped " + test + "status "+ test2);
+        console.log("tapped " + test + "     status "+ test2);
         var childCheck = $(this).find("[type='checkbox']")
         if (test2 == false) {
               if (childCheck.is(":checked")) {
