@@ -3,23 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-.landing_img {
-	width:100%;
-	height:auto;
-}
 
-.landing_img img {
-	// min-width:700px;
-	max-width:80%;
-	height:auto;
-	margin-top: 30px;
-}
-
-.hero_landing {
-  background-color: #fafafa;
-  /*background-size:cover;*/
-  border:none;
-}
 
 @media only screen and (max-device-width: 480px) {
 	.landing_img img {
@@ -54,7 +38,7 @@
   .hero_landing .get-it {
     // text-align:right;
     text-align:center;
-    margin-top:80px;
+    // margin-top:80px;
     // padding-right:30px;
   }
 }
