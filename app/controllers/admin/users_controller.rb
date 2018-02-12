@@ -9,7 +9,7 @@ class Admin::UsersController < Admin::BaseAdminController
         @users = @users.order(:updated_at).reverse_order.page(params[:page]).per(15)
       else
         @users = User.all
-        @users = User.filter(params[:fakes]).order(:updated_at).reverse_order
+        @users = User.filter(params[:fakes])
         @users = @users.order(:updated_at).reverse_order.page(params[:page]).per(15) 
       end
   	end

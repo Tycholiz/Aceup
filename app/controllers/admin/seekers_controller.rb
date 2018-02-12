@@ -31,7 +31,7 @@ class Admin::SeekersController < Admin::BaseAdminController
       @seekers = @seekers.order(:updated_at).reverse_order.page(params[:page]).per(15) 
     else
       @seekers = Seeker.all
-      @seekers = Seeker.filter(params[:fakes]).order(:updated_at).reverse_order
+      @seekers = Seeker.filter(params[:fakes])
       @seekers = @seekers.order(:updated_at).reverse_order.page(params[:page]).per(15) 
     end
   end
