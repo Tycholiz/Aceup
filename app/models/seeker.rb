@@ -33,6 +33,17 @@ class Seeker < ApplicationRecord
 	presence: true
 	# numericality: { only_integer: true }
 
+	def self.filter(fakes)
+        if fakes
+          joins(:user).where.not('"email" LIKE ?', "%#{fakes}%")
 
+        else
+          all
+        end
+      end
+
+     def self.search(search)
+        joins(:user).where('email ILIKE :search OR "firstName" ILIKE :search OR "lastName" ILIKE :search', search: "%#{search}%")
+      end
 
 end

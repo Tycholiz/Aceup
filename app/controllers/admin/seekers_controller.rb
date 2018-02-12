@@ -25,8 +25,15 @@ class Admin::SeekersController < Admin::BaseAdminController
   end
 
   def index
-    @seekers = Seeker.all
-    @seekers = @seekers.order(:updated_at).reverse_order.page(params[:page]).per(15) 
+
+    if params[:search]
+      @seekers= Seeker.search(params[:search])
+      @seekers = @seekers.order(:updated_at).reverse_order.page(params[:page]).per(15) 
+    else
+      @seekers = Seeker.all
+      @seekers = Seeker.filter(params[:fakes]).order(:updated_at).reverse_order
+      @seekers = @seekers.order(:updated_at).reverse_order.page(params[:page]).per(15) 
+    end
   end
 
   def edit
