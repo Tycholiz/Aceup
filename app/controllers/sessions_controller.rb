@@ -8,6 +8,9 @@ class SessionsController < ApplicationController
 
       if user && user.authenticate(params[:password])
         session[:user_id] = user.id
+        user.logged_in = true
+        user.last_seen = Time.now
+        user.save
         if user.role == "Employer"
           employer = Employer.where(user_id: current_user.id).first
           redirect_to employer_path(employer), success: "Welcome back, #{user.firstName}!"
@@ -24,7 +27,9 @@ class SessionsController < ApplicationController
     end
 
     def destroy
+      user = User.where(id: current_user.id).first
       session[:user_id] = nil
+      user.logged_in = false
       redirect_to "/pages/logout"
     end
 end
