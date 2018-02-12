@@ -26,6 +26,7 @@
                             <%= button_to "Save",new_job_saved_job_path(job), :method => "get",  class: "btn btn-default", id: "save_jobs_button" %>
                                 
                               <h3>Location:&nbsp;</h3><%= employer.city %> </br>
+                              <h3>Posted:&nbsp;</h3><%= job.created_at.strftime("%b %d, %Y") %> </br>
                             </div>
                         </div>
 
