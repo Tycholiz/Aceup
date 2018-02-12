@@ -489,9 +489,13 @@
       });
 
       $('#job_general').change(function() {
-        // var childCheck = $(this).find("[type='checkbox']")
-        if ($(this).is(":checked")) {
-          console.log("checekd")
+        general_check()
+      });
+      general_check()
+
+      function general_check() {
+        check = $('#job_general')
+         if (check.is(":checked")) {
           $( "#outSales_job_slider" ).slider( "disable" )
           $('label[for=job_inSales]').text("General Sales (years)")
           $("#job_outSalesSoft").val(0);
@@ -500,8 +504,7 @@
           $( "#outSales_job_slider" ).slider( "enable" )
           $('label[for=job_inSales]').text("Inside Sales (years)")
         }
-      });
-
+      };
       // var tagbutton = $("#tags_button");
 
       //  $('#tags_build').keypress(function (e) {
