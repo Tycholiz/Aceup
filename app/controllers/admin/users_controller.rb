@@ -1,7 +1,17 @@
 class Admin::UsersController < Admin::BaseAdminController
 	def index
-    	@users = User.all
-    	@users = @users.order(:updated_at).reverse_order.page(params[:page]).per(15) 
+    	# @users = User.all
+     #  @users = User.filter(params[:fakes]).order(:updated_at).reverse_order
+    	# @users = @users.order(:updated_at).reverse_order.page(params[:page]).per(15) 
+
+      if params[:search]
+        @users= User.search(params[:search])
+        @users = @users.order(:updated_at).reverse_order.page(params[:page]).per(15)
+      else
+        @users = User.all
+        @users = User.filter(params[:fakes]).order(:updated_at).reverse_order
+        @users = @users.order(:updated_at).reverse_order.page(params[:page]).per(15) 
+      end
   	end
 
   	def new

@@ -27,4 +27,16 @@ class User < ApplicationRecord
 	length: { in: 6..20 }, on: :create
 
 	validates_presence_of :password_confirmation, :if => :password_digest_changed?
+
+	def self.filter(fakes)
+        if fakes
+          where.not('"email" LIKE ?', "%#{fakes}%")
+        else
+          all
+        end
+      end
+
+     def self.search(search)
+        where('email ILIKE :search OR "firstName" ILIKE :search OR "lastName" ILIKE :search', search: "%#{search}%")
+      end
 end

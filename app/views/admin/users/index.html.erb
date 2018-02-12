@@ -1,6 +1,13 @@
 <div class="container-fluid content_dashboard">
  	<br />
-  <%= link_to "Add User", new_admin_user_path, class: "btn btn-primary" %>
+  <%= link_to "Add User", new_admin_user_path, class: "btn btn-primary", style: "width:auto;float: left"  %>
+  <%= link_to "Remove ace.co", admin_users_path(:fakes => "ace.co"), class: "btn btn-primary", style: "width:auto;float: left;margin-left: 20px"  %>
+  <div style="float: left; margin-left: 50px;">
+      <%= form_tag admin_users_path, :method => 'get' do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Search Users", class: "form-control", style: "width:auto;float: left" %>
+      <%= submit_tag "Search", class: "form-control", style: "width:auto;float: left" %>
+      <% end %>
+  </div>
   <br />
   <br />
   <div class="table-responsive">
@@ -32,7 +39,7 @@
     </table>
   </div>
   <div style="clear: both">
-                <%= paginate @users if @userss %>
+                <%= paginate @users if @users %>
                 <%= page_entries_info @users if @users %>
             </div>
             <hr>
