@@ -21,8 +21,15 @@ class Admin::EmployersController < Admin::BaseAdminController
   # end
 
   def index
-    @employers = Employer.all
-    @employers = @employers.order(:updated_at).reverse_order.page(params[:page]).per(15) 
+
+    if params[:search]
+      @employers= Employer.search(params[:search])
+      @employers = @employers.order(:updated_at).reverse_order.page(params[:page]).per(15) 
+    else
+      @employers = Employer.all
+      @employers = Employer.filter(params[:fakes])
+      @employers = @employers.order(:updated_at).reverse_order.page(params[:page]).per(15) 
+    end
   end
 
   def edit
