@@ -102,6 +102,8 @@ class SeekersController < ApplicationController
     app_id = params[:application]
     @application = Application.where(id: app_id).first
     @resume = Resume.where(id: @application.resume).first
+    logger.info @application
+    logger.info @resume
     skillsParams = [:driversLicence, :hasVehicle, :coldCall, :doorToDoor, :custService, :acctManagment,:negotiation, :presenting, :leadership, :closing, :hunterBased, :farmerBased, :commBased, :B2C, :B2B]
     @seekSkills = @seeker.slice(*skillsParams).select {|key, value| value == true }
   end

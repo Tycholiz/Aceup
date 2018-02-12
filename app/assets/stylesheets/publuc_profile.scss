@@ -1,0 +1,134 @@
+$textSize: 30px;
+.profile_image_holder {
+	position: relative;
+	width: 100%;
+	border-radius: 50%;
+	background-color: #e7e7e7;
+	max-width: 200px;
+}
+.profile_img {
+	width: 80%;
+	 padding-top: 8%;
+	 padding-bottom: 12%;
+	 margin-left: 10%;
+	 display: block;
+}
+
+.overlay  {   
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  opacity: 0;
+  transition: all .5s ease;
+  background-color: #28b62c;}
+
+.profile_image_holder:hover .overlay {
+  opacity: 0.95;
+  box-shadow: 0 0 50px  #28b62c;
+  text-shadow: 0 0 10px #000;
+}
+.text {
+  color: white;
+  font-size: $textSize;
+  font-weight: 900;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.text a {
+	color: white;
+	text-decoration: none;
+}
+
+.user_title_bar {
+	width: 100%;
+	background-color: #e7e7e7;
+}
+
+.user_title_bar h1 {
+	font-size: $textSize;
+	font-weight: 900;
+	color: #000;
+	// float:left;
+	margin-left: 5%;
+}
+
+#profile_box {
+	box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+    border: 2px solid #e7e7e7;
+}
+
+.profile_table {
+	font-size: $textSize;
+	font-weight: 700;
+	width: 100%;
+}
+.profile_table td {
+	width: 50%;
+	border-bottom: 1px solid #ddd;
+	}
+#left_col td {
+	width: 25%;
+	}
+#right_col {
+	width: 75% 	!important;
+	}
+
+.bg-warning {
+	background-color: orange;
+}
+.sales_years_profile {
+	font-size: $textSize;
+	font-weight: 700;
+	color: #000;
+}
+.progress {
+	height: 36px;
+}
+.progress-bar {
+	font-size: 30px;
+	line-height: 36px;
+}
+.no_margins {
+	margin: 0;
+}
+.profile_check {
+	height: 50px;
+	margin-left: 10%;
+}
+.profile_hr {
+	// margin-top: 30px;
+  margin-bottom: 20px;
+  border-top: 6px solid black;
+}
+.profile_display_skills {
+  background-color:black;
+  color:white;
+  float: left;
+  margin: 5px 15px;
+  padding: 4px 15px;
+  border-radius: 15px;
+}
+@media screen and (max-width: 700px) {
+		.profile_image_holder {
+			max-width: 120px;
+		}
+
+		.profile_table, .sales_years_profile  {
+			font-size: 18px;
+		}
+		.profile_check {
+	height: 35px;
+	margin-left: 10%;
+}
+
+	}

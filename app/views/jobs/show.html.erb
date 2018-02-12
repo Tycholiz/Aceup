@@ -122,15 +122,15 @@
         </div>
         <div class="row payShow">
            <span style="font-size: 28px;"><%= @job.salary %></span> </br>
+           <% if @commissions.length > 0 %>
             <div class="float-left"><h2>Commission:&nbsp;</h2></div>
-            <% if @commissions.length > 0
-                 @commissions.each do |comm| %>
+            
+                 <% @commissions.each do |comm| %>
                     <div class="job_display_skills"><h2><%=comm%></h2></div>
                 <% end %>
-            <% else %>   
-                <div class="job_display_skills"><h2>None</h2></div> 
-            <% end %>
-        </div>
+            
+            </div>
+        <% end %>
         <div class="job_display_bar">
           <h1> MATCHED RESULTS </h1>
         </div>

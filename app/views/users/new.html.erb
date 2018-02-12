@@ -30,9 +30,7 @@
                 <p class='error'><%= show_errors(@user, :phoneNo) %></p>
                 </div>
                 <%= f.hidden_field :role, value: @role  %>
-                <div class="form-group">
-                    <div class="checkbox"><label class="control-label"><input type="checkbox">I agree to the license terms.</label></div>
-                </div>
+
                 <div >
                 <%= f.submit "Get Started", class: 'btn btn-primary btn-block', style: "font-size: 30px; font-weight: bolder;" %>
                 </div>  
