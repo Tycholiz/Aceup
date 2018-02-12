@@ -81,9 +81,19 @@
       opacity: 0.9;
       text-decoration: none;
     }
+    
+    input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px #e7e7e7 inset;
+}
   }
 }
 
+#register-photo-white {
+background: #fff;
+  .form-container {
+    box-shadow: none;
+  }
+}
 @media screen and (max-width: 800px) {
   .register-photo form {
     padding: 40px;
