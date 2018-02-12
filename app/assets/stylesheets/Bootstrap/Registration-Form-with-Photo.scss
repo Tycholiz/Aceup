@@ -1,5 +1,6 @@
 .register-photo {
-  background: #f1f7fc;
+  // background: #f1f7fc;
+  background: #fff;
   padding: 80px 0;
    // background-size: 90%;
    
@@ -9,8 +10,8 @@
     display: table-cell;
     max-width: 500px;
     min-width: 350px;
-    background: image-url("up_logotrans.png");
-    background-repeat: no-repeat;
+    background: image-url("up_logotrans.png") no-repeat center center;
+    // background-repeat: no-repeat center center;
     background-size: contain;
     max-height: 500px;
     min-height: 350px;
@@ -25,7 +26,9 @@
     // float: left;
     margin: 0 auto;
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+    border: 2px solid black;
     // margin-right: 25px;
+    padding: 15px;
   }
   form {
     display: table-cell;
@@ -88,12 +91,12 @@
   }
 }
 
-#register-photo-white {
-background: #fff;
-  .form-container {
-    box-shadow: none;
-  }
-}
+// #register-photo-white {
+// background: #fff;
+//   .form-container {
+//     box-shadow: none;
+//   }
+// }
 @media screen and (max-width: 800px) {
   .register-photo form {
     padding: 40px;
@@ -108,6 +111,9 @@ background: #fff;
     background-size: contain;
     background-position: center; 
     // height: 100vw;
+    .form-container {
+      border: none;
+    }
 
   }
   .image-holder {
