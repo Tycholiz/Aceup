@@ -72,10 +72,10 @@ class Job < ApplicationRecord
       # validates :competencies,
       #   presence: true
 
-      validates :deptSize,
+      # validates :deptSize,
         # presence: false,
         # numericality: { only_integer: true }
-        numericality: {allow_blank: true}
+        # numericality: {allow_blank: true}
 
       # validates :benefits,
       #   presence: true

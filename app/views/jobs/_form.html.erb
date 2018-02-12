@@ -262,9 +262,10 @@
           <%= tinymce :content_css => asset_path('application.css')%>
           <p class='error'><%= show_errors(@job, :competencies) %></p>
         </div>
-         <div style="width: 100px">
+         <div style="width: 180px">
           <%= f.label :deptSize, "Size of Team" %><br>
-          <%= f.number_field :deptSize, class: "form-control"  %>
+          <%= f.select :deptSize, ["1-5", "5-10", "10-30", "30-60", "60-100", "100-150", "150-200", "200-300", "300-500", "500-750", "750-1000", "1000+"
+], {}, { class: "form form-group form-control" }%>
           <p class='error'><%= show_errors(@job, :deptSize) %></p>
         </div>
         <div>
