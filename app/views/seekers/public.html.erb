@@ -7,11 +7,11 @@
      </div>
    </div>
 
-<%  if @resume 
-      resume_link = @resume.file_url
-      resume_text = "View Resume"
-    elsif @resumes
+<%  if @resumes && @resumes.length > 0
       resume_link = @resumes.first.file_url
+      resume_text = "View Resume"
+    elsif @resume
+      resume_link = @resume.file_url
       resume_text = "View Resume"
     else
       resume_link = ""
