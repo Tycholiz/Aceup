@@ -14,3 +14,26 @@
 .chart-wide {
 	width: 80%; 
 }
+
+.admin_floater {
+	width:45%; 
+	float:left;
+}
+
+.admin_floater {
+	width:45%; 
+	float:left;
+}
+.dash_table {
+	font-size: 20px;
+	text-align: left;
+}
+
+@media screen and (max-width: 700px) {
+.admin_floater {
+	width:90%; 
+	float:left;
+}
+
+
+}
