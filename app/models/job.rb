@@ -38,7 +38,7 @@ class Job < ApplicationRecord
 
       validates :payLow,
         presence: true,
-        numericality: { only_integer: true }
+        numericality: { only_integer: true, less_than: :payHigh}
 
       validates :payHigh,
         presence: true,
