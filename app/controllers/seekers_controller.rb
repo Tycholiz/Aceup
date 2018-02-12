@@ -30,8 +30,7 @@ class SeekersController < ApplicationController
     #   redirect_to "/pages/new_area"
     # end
 
-    
-    @jobs = Job.filter(params[:filter_years], params[:filter_salary])
+    @jobs = Job.filter(params[:filter_years], params[:filter_salary]).order(:created_at).reverse_order
 
     @resume = @seeker.resumes.first.file_url if @seeker.resumes.first
 
