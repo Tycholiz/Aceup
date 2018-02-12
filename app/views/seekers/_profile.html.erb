@@ -1,0 +1,153 @@
+
+
+ <div class="container">
+   <div class="row">
+      <div class="user_title_bar">
+        <h1><%= @user.firstName %> <%= @user.lastName %></h1> 
+     </div>
+   </div>
+
+<%  if @resumes && @resumes.length > 0
+      resume_link = @resumes.first.file_url
+      resume_text = "View Resume"
+    elsif @resume
+      resume_link = @resume.file_url
+      resume_text = "View Resume"
+    else
+      resume_link = ""
+      resume_text = "No Resume"
+   end
+  %>
+
+    <div class="col-md-3">
+    <div class="profile_image_holder">
+      <%= image_tag "profile.png", class: "profile_img" %>
+       <a href=<%= resume_link %>><div class='overlay'><span class='text'><%= resume_text%></span></div></a>
+
+    </div>
+  </div>
+   <div class="col-md-9">
+
+        <table class="table table-hover profile_table">
+          <tr>
+            <td>Email:</td>
+            <td><%= @user.email %></td>
+          </tr>
+          <% if @user.phoneNo %>
+            <tr>
+              <td>Phone:</td>
+              <td><%= @user.phoneNo %></td>
+            </tr>
+           <% end %>
+          <tr>
+            <td>Postal Code:</td>
+            <td><%= @seeker.postalCode %></td>
+          </tr>
+          <%if @resumes && @resumes.length > 0 %>
+            <% @resumes.each do |resume| %>
+            <tr>
+              <td>Resume:</td>
+              <td><%= resume.title %> (<%= link_to "View", resume.file_url if resume %>)</td>
+            </tr>
+            <% end %>
+          <% elsif @resume %>
+             <tr>
+              <td>Resume:</td>
+              <td><%= @resume.title %> (<%= link_to "View", @resume.file_url if @resume %>)</td>
+            </tr>
+            <% end %>
+        
+        </table>
+      <div class="sales_years_profile">
+        Inside Sales (years):
+              <div class="progress">
+                <div class="progress-bar progress-bar-striped bg-success " role="progressbar" style="width: <%= @seeker.inSales*10 %>%" aria-valuenow="" aria-valuemin="0" aria-valuemax="10">
+                  <span><%= @seeker.inSales.round %></span>
+                </div>
+              </div>
+          Outside Sales (years):
+          <div class="progress">
+              <div class="progress-bar progress-bar-striped  bg-warning" role="progressbar" style="width: <%= @seeker.outSales*10 %>%" aria-valuenow="" aria-valuemin="0" aria-valuemax="10">
+                  <span><%= @seeker.outSales.round %></span>
+              </div>
+          </div>
+    <hr size="6" noshade class="profile_hr">  
+       
+       <% selectSkills = {
+        # driversLicence: "Has drivers license",
+        # hasVehicle:"Has vehicle",                   
+        coldCall: "Cold Calling",                  
+        doorToDoor: "Door to door",
+        custService: "Customer Service",                 
+        acctManagment: "Account Management",                 
+        negotiation: "Negotiation",   
+        leadership: "Leadership",    
+        closing: "Closing", 
+        } 
+
+        filter_skills = selectSkills.select{ |k ,v| @seekSkills.has_key? k}.map {|k, v| v} 
+        %>
+        <% if filter_skills && filter_skills.length > 0 %>
+                <div class="row no_margins">
+                    Sales Skills:
+                    <div>
+                        <% filter_skills.each do |skill| %>
+                            <div class="job_display_skills"><%=skill%></div>
+                        <% end %>
+
+                    </div>
+                </div>
+          
+        <% end %>
+    </div>
+    <hr size="6" noshade class="profile_hr">  
+
+    <table class="table table-hover profile_table">
+          <tr>
+            <td>Access to Vehicle:</td>
+            <td><%= image_tag @seeker.hasVehicle ? "check.png": "error.png", class: "profile_check" %> </td>
+          </tr>
+          <tr>
+            <td>Driver's License:</td>
+            <td><%= image_tag @seeker.driversLicence ? "check.png": "error.png", class: "profile_check" %> </td>
+          </tr>
+          <tr>
+            <td style="width: 200px;">Education:</td>
+            <% education_words = ['High School', 1], ['Some Post-Secondary Experience', 2],[ "Diploma", 3], ["Bachelor's", 4], ["Master's", 5] %>
+            <td id="right_col"><%= education_words[@seeker.educationLevel-1][0] %>  </td>
+          </tr>
+    </table>
+    <hr size="6" noshade class="profile_hr"> 
+    <div class="sales_years_profile"> 
+     <% if @seeker.certifications && @seeker.certifications.length > 0 %>
+                <div class="row no_margins">
+                    Certifications:
+                    <div>
+                        <% @seeker.certifications.each do |cert| %>
+                            <div class="job_display_skills"><%=cert%></div>
+                        <% end %>
+
+                    </div>
+                </div>
+          
+        <% end %>
+      </div>
+
+      <hr size="6" noshade class="profile_hr">       
+      <div class="sales_years_profile"> 
+     <% if @seeker.languages && @seeker.languages.length > 0 %>
+                <div class="row no_margins">
+                    Proficient Languages:
+                    <div>
+                        <% @seeker.languages.each do |lang| %>
+                            <div class="job_display_skills" style="background-color: #337ab7;"><%=lang%></div>
+                        <% end %>
+
+                    </div>
+                </div>
+          
+        <% end %>
+      </div>     
+      <hr size="6" noshade class="profile_hr">
+    </div> 
+</div>  
