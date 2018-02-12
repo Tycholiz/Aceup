@@ -1,5 +1,26 @@
 <div class="container-fluid content_dashboard">
 	<h1>Admin Dashboard</h1>
+	<div class="sales_years_profile">
+	<% logged_in = User.where(logged_in: true).count %>
+	<% logged_seek = User.where(logged_in: true, role: "Seeker").count %>
+	<% logged_emp = User.where(logged_in: true, role: "Employer").count %>
+	Currently Logged in Users : <%= logged_in %> </br>
+		Seekers:
+		<div class="progress">
+			
+	              <div class="progress-bar progress-bar-striped  bg-warning" role="progressbar" style="width: <%= logged_seek %>%" aria-valuenow="" aria-valuemin="0" aria-valuemax="<%= logged_in %>">
+	                  <span><%= logged_seek %></span>
+	              </div>
+	          </div>
+	          Employers:
+	      <div class="progress">
+	      	
+	          <div class="progress-bar progress-bar-striped  bg-warning" role="progressbar" style="width: <%= logged_emp %>%" aria-valuenow="" aria-valuemin="0" aria-valuemax="<%= logged_in %>">
+	              <span><%= logged_emp %></span>
+	          </div>
+	      </div>
+  </div>
+
 
 	<div class="row">
 
