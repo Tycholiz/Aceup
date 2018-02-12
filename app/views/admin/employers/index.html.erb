@@ -19,6 +19,8 @@
         <th>Manage</th>
         <th>No. Jobs</th>
         <th>Total Applications</th>
+        <th>Last Seen</th>
+        <th>Logged In</th>
         <th>Sign Up</th>
         <th>Updated</th>
         <th>Emp ID #</th>
@@ -26,6 +28,7 @@
       </tr>
 
        <% @employers.each do |emp|  %>
+       <% user = User.where(id: emp.user_id).first %>
       <tr>
         <td><%= emp.compName %></td>
         <td><%= emp.city %></td>
@@ -38,6 +41,8 @@
           applications = applications + apps
         end %>
         <td><%= applications %> (<%=link_to "view", applications_admin_employer_path(emp) %>)</td>
+        <td><%= user.last_seen ? user.last_seen.strftime("%b %d, %Y") : "not logged"  %></td>
+        <td><%= user.logged_in  %></td>
         <td><%= emp.created_at.strftime("%b %d, %Y")  %></td>
         <td><%= emp.updated_at.strftime("%b %d, %Y")  %></td>
         <td><%= emp.id%></td>

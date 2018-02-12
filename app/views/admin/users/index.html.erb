@@ -17,7 +17,8 @@
         <th>Email</th>
         <th>Manage</th>
         <th>Role</th>
-        <th>Applications</th>
+        <th>Last Seen</th>
+        <th>Logged In</th>
         <th>Sign Up</th>
         <th>Updated</th>
         <th>ID #</th>
@@ -29,7 +30,8 @@
         <td><%= user.email %></td>
         <td>(<%= link_to "edit", edit_admin_user_path(user) %>, <%= link_to "delete", admin_user_path(user), method: :delete, data: {confirm: "Are you sure you want to delete #{user.firstName}?"} %>)</td>
         <td><%= user.role %></td>
-        <td>app</td>
+        <td><%= user.last_seen ? user.last_seen.strftime("%b %d, %Y") : "not logged"  %></td>
+        <td><%= user.logged_in  %></td>
         <td><%= user.created_at.strftime("%b %d, %Y")  %></td>
         <td><%= user.updated_at.strftime("%b %d, %Y")  %></td>
         <td><%= user.id%></td>
