@@ -48,7 +48,9 @@
 	            <tr>
 	              <td><%= job%></td>
 	              <td><%= user.firstName %></td>
-	              <td><%= (app.updated_at.strftime("%M")).to_i - (Time.now.strftime("%M").to_i) %> minutes ago</td>
+	              <td><%= TimeDifference.between(app.updated_at, Time.now).in_minutes.round %> minutes ago</td>
+	              
+
 	            </tr>
 	            <% end %>
 	            <% end %>
