@@ -1,60 +1,63 @@
 <div class="container-fluid content_dashboard">
 	<h1>Admin Dashboard</h1>
-	<div class="sales_years_profile admin_floater">
-	<% logged_in = User.where(logged_in: true).count %>
-	<% logged_seek = User.where(logged_in: true, role: "Seeker").count %>
-	<% logged_emp = User.where(logged_in: true, role: "Employer").count %>
-	<% logged_admin = User.where(logged_in: true, role: "Admin").count %>
-	Currently Logged in Users :   <%= logged_in %> </br>
-		Seekers:
-		<div class="progress">
-			
-	              <div class="progress-bar progress-bar-striped"  role="progressbar" style="width: <%= (logged_seek.to_f / logged_in.to_f) *100   %>%;background-color: green;" aria-valuenow="" aria-valuemin="0" aria-valuemax="2">
-	                  <span><%= logged_seek %></span>
-	              </div>
-	          </div>
+	<div class="row">
+		<div class=" admin_floater">
+		<% logged_in = User.where(logged_in: true).count %>
+		<% logged_seek = User.where(logged_in: true, role: "Seeker").count %>
+		<% logged_emp = User.where(logged_in: true, role: "Employer").count %>
+		<% logged_admin = User.where(logged_in: true, role: "Admin").count %>
+		Currently Logged in Users :   <%= logged_in %> </br></br>
+			Seekers:
+			<div class="progress">
+				
+		              <div class="progress-bar progress-bar-striped"  role="progressbar" style="width: <%= (logged_seek.to_f / logged_in.to_f) *100   %>%;background-color: green;" aria-valuenow="" aria-valuemin="0" aria-valuemax="2">
+		                  <span><%= logged_seek %></span>
+		              </div>
+		          </div>
 
-	          Employers:
-	      <div class="progress">
-	      	
-	          <div class="progress-bar progress-bar-striped  bg-warning" role="progressbar" style="width: <%= (logged_emp.to_f/logged_in.to_f)*100  %>%;background-color: red;" aria-valuenow="" aria-valuemin="0" aria-valuemax="<%= logged_in  %>">
-	              <span><%= logged_emp %></span>
-	          </div>
-	      </div>
-	      Admin:
-	      <div class="progress">
-	      	
-	          <div class="progress-bar progress-bar-striped  bg-warning" role="progressbar" style="width: <%= (logged_admin.to_f/logged_in.to_f)*100  %>%;background-color: red;" aria-valuenow="" aria-valuemin="0" aria-valuemax="<%= logged_in  %>">
-	              <span><%= logged_admin %></span>
-	          </div>
-	      </div>
-  </div>
-  <div class="chart">
-  		<h2>Latest Applications</h2>
-		<table class="table table-hover dash_table">
-		<tr>
-          <th>Job Title</th>
-          <th>Applicant</th>
-          <th>Time</th>
-        </tr>
-  			
-          <%if @applications && @applications.length > 0 %>
-            <% @applications.each do |app| %>
-            <% seeker = Seeker.where(id: app.seeker_id).first %>
-         <% user = User.where(id: seeker.user_id).first %>
-            <% job = Job.where(id: app.job_id).first.title %>
-            <% seeker = Seeker.where(id: app.seeker_id).first.id %>
-            <tr>
-              <td><%= job%></td>
-              <td><%= user.firstName %></td>
-              <td><%= (app.created_at.strftime("%M")).to_i - (Time.now.strftime("%M").to_i) %> minutes ago</td>
-            </tr>
-            <% end %>
-            <% end %>
-        
-        </table>
-  </div>
+		          Employers:
+		      <div class="progress">
+		      	
+		          <div class="progress-bar progress-bar-striped  bg-warning" role="progressbar" style="width: <%= (logged_emp.to_f/logged_in.to_f)*100  %>%;background-color: red;" aria-valuenow="" aria-valuemin="0" aria-valuemax="<%= logged_in  %>">
+		              <span><%= logged_emp %></span>
+		          </div>
+		      </div>
+		      Admin:
+		      <div class="progress">
+		      	
+		          <div class="progress-bar progress-bar-striped  bg-warning" role="progressbar" style="width: <%= (logged_admin.to_f/logged_in.to_f)*100  %>%;background-color: red;" aria-valuenow="" aria-valuemin="0" aria-valuemax="<%= logged_in  %>">
+		              <span><%= logged_admin %></span>
+		          </div>
+		      </div>
+	  </div>
+	  <div class="chart">
+	  		<h2>Latest Applications</h2>
+			<table class="table table-hover dash_table">
+			<tr>
+	          <th>Job Title</th>
+	          <th>Applicant</th>
+	          <th>Time</th>
+	        </tr>
+	  			
+	          <%if @applications && @applications.length > 0 %>
+	            <% @applications.each do |app| %>
+	            <% seeker = Seeker.where(id: app.seeker_id).first %>
+	         <% user = User.where(id: seeker.user_id).first %>
+	            <% job = Job.where(id: app.job_id).first.title %>
+	            <% seeker = Seeker.where(id: app.seeker_id).first.id %>
+	            <tr>
+	              <td><%= job%></td>
+	              <td><%= user.firstName %></td>
+	              <td><%= (app.updated_at.strftime("%M")).to_i - (Time.now.strftime("%M").to_i) %> minutes ago</td>
+	            </tr>
+	            <% end %>
+	            <% end %>
+	        
+	        </table>
+	  </div>
+	</div>
 
+<hr size="6" noshade class="profile_hr"> 
 
 	<div class="row">
 
@@ -69,6 +72,7 @@
 		<%= pie_chart User.group(:role).count %>
 		</div>
 	</div>
+	<hr size="6" noshade class="profile_hr"> 
 	<div class="row">
 		<div class="chart chart-wide">
 			<h2> Applications by Weekday </h2>
