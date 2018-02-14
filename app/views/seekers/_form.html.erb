@@ -62,9 +62,10 @@
           </div>  
           <div class="row">
             <div >
-               <%= f.label :inSales, "Inside Sales (years)" %>
+               <%= f.label :inSales, "Inside Sales (years)"%>
+               <span data-tooltip= "This is any sales role that is carried out at the employer’s place of business. If customers are coming into your store, if you are closing sales over the phone, or if you are selling over email or the internet, you are doing Inside Sales."}><%= image_tag "tooltip.svg", class: "info-tip" %></span>
+             
 
-                <span class="tool_question" data-tooltip="This is any sales role that is carried out at the employer’s place of business. If customers are coming into your store, if you are closing sales over the phone, or if you are selling over email or the internet, you are doing Inside Sales."}>  ?</span>
 
                 <br>
               <div id="inSales_slider" class="slider">
@@ -85,8 +86,7 @@
             </div>
             <div>
               <%= f.label :outSales, "Outside Sales (years)" %>
-
-              <span class="tool_question" data-tooltip="This is any sales role that is carried out at the client’s place of business. If you are prospecting for new clients, or receiving warm leads and closing those deals in an environment other than your own office, you are doing Outside Sales.""}>  ?</span>
+              <span data-tooltip= "This is any sales role that is carried out at the client’s place of business. If you are prospecting for new clients, or receiving warm leads and closing those deals in an environment other than your own office, you are doing Outside Sales."}><%= image_tag "tooltip.svg", class: "info-tip" %></span>
 
               <br>
               <div id="outSales_slider" class="slider">
@@ -96,11 +96,11 @@
               <%= f.hidden_field :outSales %>
             </div>
             <div class="ck-button">
-              <%= f.label :B2B, "B2B" %><br>
+              <%= f.label :B2B, "B2B", data: {tooltip: "Business-to-Business." } %><br>
               <%= f.check_box :B2B %>
             </div>
         <div class="ck-button">
-          <%= f.label :B2C, "B2C" %><br>
+          <%= f.label :B2C, "B2C", data: {tooltip: "Business-to-Consumer." } %><br>
           <%= f.check_box :B2C %>
         </div>
            

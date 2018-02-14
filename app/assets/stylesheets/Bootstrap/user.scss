@@ -767,7 +767,7 @@ html {
 }
 
 /* Add this attribute to the element that needs a tooltip */
-[data-tooltip] {
+[data-tooltip]{
   position: relative;
   z-index: 2;
   cursor: pointer;
@@ -847,6 +847,12 @@ html {
     padding-top: 0px;
     padding-bottom: 0px;
     // padding-right: 25px;
+}
+
+.info-tip {
+  height: 15px;
+  margin-bottom:4px; 
+  margin-left:10px; 
 }
 
 #save_jobs_button:hover {
