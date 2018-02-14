@@ -1,8 +1,9 @@
-<% if current_user.role == "Seeker" && Seeker.where(user_id: current_user.id).first %>
+<% if current_user && current_user.role == "Seeker" && Seeker.where(user_id: current_user.id).first %>
     <%= render 'seekers/header' %>
-<% elsif current_user.role == "Employer" %>
+<% elsif current_user && current_user.role == "Employer" %>
     <%= render 'employers/header' %>
 <% end %>
+
 <div class="container">
         <div class="job_show_header_display">
             <div class="job_show_img_display">
