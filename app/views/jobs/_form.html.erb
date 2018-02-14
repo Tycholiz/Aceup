@@ -99,7 +99,7 @@
             </div>
         <div style="clear:both;"></div>
          <div>
-          <%= f.label :inSales, "Inside Sales (years)"%><span data-tooltip= "This is any sales role that is carried out at the employer’s place of business. If customers are coming into your store, if you are closing sales over the phone, or if you are selling over email or the internet, you are doing Inside Sales.">     <%= image_tag "tooltip.svg", class: "info-tip" %></span><br>
+          <%= f.label :inSales, "Inside Sales (years)"%><span data-tooltip= "This is any sales role that is carried out at the employer’s place of business. If customers are coming into your store, if you are closing sales over the phone, or if you are selling over email or the internet, you are doing Inside Sales."><%= image_tag "tooltip.svg", class: "info-tip" %></span><br>
           <div id="inSales_job_slider" class="slider">
             <div id="inSales_job_handle" class="ui-slider-handle"></div>
             <div id="inSales_job_handle2" class="ui-slider-handle"></div>
@@ -110,7 +110,7 @@
           <%= f.hidden_field :inSalesHard %>
         </div>
         <div>
-          <%= f.label :outSales, "Outside Sales (years)" %><span data-tooltip= "This is any sales role that is carried out at the client’s place of business. If you are prospecting for new clients, or receiving warm leads and closing those deals in an environment other than your own office, you are doing Outside Sales.">     <%= image_tag "tooltip.svg", class: "info-tip" %></span><br>
+          <%= f.label :outSales, "Outside Sales (years)" %><span data-tooltip= "This is any sales role that is carried out at the client’s place of business. If you are prospecting for new clients, or receiving warm leads and closing those deals in an environment other than your own office, you are doing Outside Sales."><%= image_tag "tooltip.svg", class: "info-tip" %></span><br>
           <div id="outSales_job_slider" class="slider">
             <div id="outSales_job_handle" class="ui-slider-handle"></div>
             <div id="outSales_job_handle2" class="ui-slider-handle"></div>
@@ -320,10 +320,10 @@
       
 
 
-      var inSalesSoft = "<%= @job.inSalesSoft %>";
-      var inSalesHard =  "<%= @job.inSalesHard %>";
-      var outSalesSoft = "<%= @job.outSalesSoft %>";
-      var outSalesHard = "<%= @job.outSalesHard %>";
+      var inSalesHard = "<%= @job.inSalesSoft %>";
+      var inSalesSoft =  "<%= @job.inSalesHard %>";
+      var outSalesHard = "<%= @job.outSalesSoft %>";
+      var outSalesSoft = "<%= @job.outSalesHard %>";
 
 
       var inSalesSoft_start = (inSalesSoft ? inSalesSoft  : 0);
