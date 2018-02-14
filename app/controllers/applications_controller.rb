@@ -8,22 +8,22 @@ class ApplicationsController < ApplicationController
     @no_resume = params[:no_resume]
 
     
-    if current_user && @seeker.status == "suspended"
+    if @seeker && @seeker.status == "suspended"
       redirect_to "/pages/suspended", error: "Your account is suspended, #{current_user.firstName}!"
-    elsif current_user && @job.CompUrl
+    elsif @seeker && @job.CompUrl
       @application = @job.applications.build
       @application.seeker_id = @seeker.id
       @application.save 
       redirect_to @job.CompUrl, notice: "Good luck!, #{current_user.firstName}!"
-    elsif current_user && @seeker && @resumeTest > 0 || @no_resume
+    elsif @seeker && @resumeTest > 0 || @no_resume
       @application = @job.applications.build
       @application.seeker_id = @seeker.id
       @application.save
-    elsif current_user && @seeker && @resumeTest < 1
+    elsif  @seeker && @resumeTest < 1
       flash[:alert] = "No RESUME!"
       redirect_to no_resume_seeker_path(@seeker, job_id: @job.id)
     else
-      flash[:alert] = "You need to be a Job Hunter to apply for jobs!"
+      flash[:alert] = "You need to be a signed in Job Hunter to apply for jobs!"
       redirect_back(fallback_location: root_path)
     # @application = Application.new(job_id: @job.id)
     end

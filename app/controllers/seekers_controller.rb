@@ -135,12 +135,17 @@ class SeekersController < ApplicationController
   end
 
   def saved_jobs
-    @seeker  = Seeker.find(params[:id])
-    @savedJobsSeeker = SavedJob.where(seeker_id: @seeker.id)
-    @savedJobsList = Array.new
-    @savedJobsSeeker.each do |saved|
-      job = Job.where(id: saved.job_id).first
-      @savedJobsList.push job
+      @seeker  = Seeker.find(params[:id])
+      if @seeker
+        @savedJobsSeeker = SavedJob.where(seeker_id: @seeker.id)
+        @savedJobsList = Array.new
+        @savedJobsSeeker.each do |saved|
+          job = Job.where(id: saved.job_id).first
+          @savedJobsList.push job
+        end
+    else
+      flash[:alert] = "You need to be a signed in Job Hunter to save jobs!"
+      redirect_back(fallback_location: root_path)
     end
   end
 
