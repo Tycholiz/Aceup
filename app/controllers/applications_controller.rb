@@ -28,8 +28,8 @@ class ApplicationsController < ApplicationController
         redirect_back(fallback_location: root_path)
       end
      else
-        flash[:alert] = "You need to be a signed in Job Hunter to apply for jobs!"
-        redirect_back(fallback_location: root_path)
+      flash[:alert] = "You need to be a signed in Job Hunter to save jobs!"
+      redirect_to "/pages/seeker_landing"
       end
   end
 

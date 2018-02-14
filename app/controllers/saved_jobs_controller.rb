@@ -14,7 +14,7 @@ class SavedJobsController < ApplicationController
       end
      else
       flash[:alert] = "You need to be a signed in Job Hunter to save jobs!"
-      redirect_back(fallback_location: root_path)
+      redirect_to "/pages/seeker_landing"
     end
 
   end
