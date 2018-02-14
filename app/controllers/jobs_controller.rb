@@ -34,7 +34,7 @@ class JobsController < ApplicationController
     @commissions.push "Lead" if @job.commLead
     @commissions.push "Bonus" if @job.bonusSales
     @employer = Employer.where(id: @job.employer_id).first
-    if current_user.role == "Seeker"
+    if current_user && current_user.role == "Seeker"
         @seeker = Seeker.where(user_id: current_user.id).first
     end
     skillsParams = [:driversLicence, :hasVehicle, :coldCall, :doorToDoor, :custService, :acctManagment,:negotiation, :presenting, :leadership, :closing, :hunterBased, :farmerBased, :commBased, :B2C, :B2B]
