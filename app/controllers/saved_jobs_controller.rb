@@ -1,11 +1,22 @@
 class SavedJobsController < ApplicationController
   def new
-  	@job = Job.friendly.find(params[:job_id])
-    @seeker = Seeker.where(user_id: current_user.id).first
-    @saved_job = @job.saved_jobs.build
-    @saved_job.seeker_id = @seeker.id
-    @saved_job.save
-    redirect_to seeker_path(@seeker), notice: "Saved job created, #{current_user.firstName}!"
+    if current_user
+    	@job = Job.friendly.find(params[:job_id])
+      @seeker = Seeker.where(user_id: current_user.id).first
+      if @seeker
+        @saved_job = @job.saved_jobs.build
+        @saved_job.seeker_id = @seeker.id
+        @saved_job.save
+        redirect_to seeker_path(@seeker), notice: "Saved job created, #{current_user.firstName}!"
+       else
+        flash[:alert] = "You need to be a signed in Job Hunter to save jobs!"
+        redirect_back(fallback_location: root_path)
+      end
+     else
+      flash[:alert] = "You need to be a signed in Job Hunter to save jobs!"
+      redirect_back(fallback_location: root_path)
+    end
+
   end
 
   def create
