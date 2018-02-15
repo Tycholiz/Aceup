@@ -34,7 +34,7 @@
         <td><%= emp.compName %></td>
         <td><%= emp.city %></td>
         <td><%= emp.metro %></td>
-        <td class="active_link">Suspend?</td>
+        <td class="active_link"><%= link_to emp.status.capitalize,   activate_admin_employer_path(emp), data: {confirm: "Are you sure you want to change the status for  #{emp.id}?"} %> </td>
         <td>(<%= link_to "edit", edit_admin_employer_path(emp) %>, <%= link_to "delete", admin_employer_path(emp), method: :delete, data: {confirm: "Are you sure you want to delete #{emp.compName}?"} %>)</td>
         <td><%= emp.jobs.count %> (<%=link_to "view", jobs_admin_employer_path(emp) %>)</td>
         <% applications = 0
@@ -59,3 +59,16 @@
             </div>
             <hr>
 </div>
+
+<script>
+  $( function() {
+    $('.active_link a').each(function() {
+      test = $(this);
+      if (test.html() == "Active"){
+        test.css("color","green");
+      } else {
+        test.css("color","red");
+      }
+    });
+  });
+</script>

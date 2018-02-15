@@ -35,6 +35,7 @@ Rails.application.routes.draw do
           get 'employer_apps', :on => :collection
         end
         get   :jobs
+        get   :activate
       end
     end
 

@@ -71,6 +71,21 @@ class Admin::EmployersController < Admin::BaseAdminController
     end
 
   end
+   def activate 
+    @employer  = Employer.find(params[:id])
+    if @employer.status == "active"
+      @employer.status = "suspended"
+    else
+      @employer.status = "active"
+    end
+    @employer.save
+    if @employer.save
+      redirect_to admin_employers_path,  notice: "Employer:#{@employer.id}'s' status has been changed to #{@employer.status.capitalize}"
+    else
+      flash[:error] = "#{@employer.errors.count} errors prevented this job from being updated"
+      redirect_to admin_employers_path
+    end
+  end  
 
   protected
 
