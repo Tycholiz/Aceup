@@ -1,5 +1,5 @@
 <%= render 'header' %>
-<% unless @seeker.postalCode.first == "V" %>
+<% unless @seeker.postalCode.first == "V" || @seeker.postalCode.first == "M" || @seeker.postalCode.first == "L" %>
 
 <div class="add_row" id="add_row_top">
 	<div class="col-md-3 col-xs-12">

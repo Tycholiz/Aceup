@@ -8,7 +8,7 @@ class SeekersController < ApplicationController
     @seeker.user_id = current_user.id
     @seeker.postalCode = @seeker.postalCode.upcase
     @seeker.status = "active"
-    unless @seeker.postalCode.first == "V"
+    unless @seeker.postalCode.first == "V" || @seeker.postalCode.first == "M" || @seeker.postalCode.first == "L"
       @user = User.where(id: @seeker.user_id).first
       @user.out_area = true
       @user.save
@@ -34,13 +34,35 @@ class SeekersController < ApplicationController
 
     @resume = @seeker.resumes.first.file_url if @seeker.resumes.first
 
+    case @seeker.postalCode.first
+        when "V"
+          seek_metro = "Van"
+        when "M"
+          seek_metro = "Tor"
+        when "L"
+          seek_metro = "Tor"
+        else
+          seek_metro = "N/A"
+        end
+
     
     skillsParams = [:driversLicence, :hasVehicle, :coldCall, :doorToDoor, :custService, :acctManagment,:negotiation, :presenting, :leadership, :closing, :hunterBased, :farmerBased, :commBased, :B2C, :B2B]
     @seekSkills = @seeker.slice(*skillsParams).select {|key, value| value == true }
     seekLang = @seeker.languages
     @matchJobs = Array.new
     @jobs.each do |job|
-      
+      employer = Employer.where(id: job.employer_id).first
+      case employer.metro
+        when "Vancouver"
+          job_metro = "Van"
+        when "Toronto"
+          job_metro = "Tor"
+        else
+          job_metro = "N/A"
+        end
+
+      seek_metro == job_metro ? metroMatch = true : metroMatch = false
+
       jobSkills = job.slice(*skillsParams).select {|key, value| value == true }
       if job.general
         # seekerSalesYears = @seeker.inSales > @seeker.outSales ? @seeker.inSales : @seeker.outSales
@@ -58,7 +80,8 @@ class SeekersController < ApplicationController
       end
 
       job.educationLevel.to_int <= @seeker.educationLevel.to_int ? educationMatch = true : educationMatch = false
-        
+        logger.info seek_metro
+        logger.info job_metro
       # logger.info "Seeker Skills"
       # logger.info @seekSkills
       # logger.info "Job Skills"
@@ -83,9 +106,9 @@ class SeekersController < ApplicationController
 
       if params[:filter_skills]
         filter_skills_test = params[:filter_skills].any? {|s| jobSkills.key? s}
-        @matchJobs.push job if (jobSkills <= @seekSkills &&! filter_skills_test && inSales && outSales && langMatch && certMatch && educationMatch)
+        @matchJobs.push job if (jobSkills <= @seekSkills &&! filter_skills_test && inSales && outSales && langMatch && certMatch && educationMatch && metroMatch)
       else
-        @matchJobs.push job if (jobSkills <= @seekSkills && inSales && outSales && langMatch && certMatch && educationMatch)
+        @matchJobs.push job if (jobSkills <= @seekSkills && inSales && outSales && langMatch && certMatch && educationMatch && metroMatch)
       end    
     end
     @matchJobs = Kaminari.paginate_array(@matchJobs).page(params[:page]).per(10) 

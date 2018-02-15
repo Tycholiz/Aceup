@@ -53,6 +53,6 @@ class EmployersController < ApplicationController
   protected
 
   def employer_params
-    params.require(:employer).permit(:compName, :compSize, :city, :logo, :compDesc)
+    params.require(:employer).permit(:compName, :compSize, :city, :logo, :compDesc, :metro)
   end
 end
