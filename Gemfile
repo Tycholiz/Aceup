@@ -33,6 +33,7 @@ gem 'groupdate'
 gem 'tinymce-rails'
 gem 'friendly_id'
 gem 'time_difference'
+gem 'sitemap_generator'
 # gem 'tinymce-rails', :git => 'git://github.com/spohlenz/tinymce-rails.git'
 
 gem 'faker'
