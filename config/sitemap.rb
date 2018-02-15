@@ -13,7 +13,7 @@ SitemapGenerator::Sitemap.create do
     add job_path(job), :changefreq => 'daily', :lastmod => job.updated_at
   end
 
-  SitemapGenerator::Sitemap.ping_search_engines
+  SitemapGenerator::Sitemap.ping_search_engines('http://aceup.co/public/sitemap.xml.gz')
   # Put links creation logic here.
   #
   # The root path '/' and sitemap index file are added automatically for you.
