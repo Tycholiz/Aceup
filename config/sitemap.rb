@@ -1,5 +1,5 @@
 # Set the host name for URL creation
-SitemapGenerator::Sitemap.default_host = "http://aceup.co/public"
+SitemapGenerator::Sitemap.default_host = "http://aceup.co/"
 
 SitemapGenerator::Sitemap.create do
 

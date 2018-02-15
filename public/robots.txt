@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: http://aceup.co/sitemap.xml.gz
+Sitemap: http://aceup.co/public/sitemap.xml.gz
