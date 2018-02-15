@@ -6,7 +6,11 @@
         <div class="checkmark">
           <%= image_tag "jail.png" %></a>
           <h3>Your account has been suspended</h3>
-          <h3>You cannot apply for jobs while suspended</h3>
+          <% if current_user.role == "Seeker" %>
+            <h3>You cannot apply for jobs while suspended</h3>
+          <% elsif current_user.role == "Employer" %>
+            <h3>You cannot post jobs while suspended</h3>
+          <% end %>
       </br>
       </br>
       </br>

@@ -43,7 +43,12 @@ class JobsController < ApplicationController
   end
 
   def new
-    @job = Job.new
+    employer = Employer.where(user_id: current_user.id).first
+    if employer && employer.status == "suspended"
+        redirect_to "/pages/suspended", error: "Your account is suspended, #{current_user.firstName}!"
+    else
+      @job = Job.new
+    end
   end
 
   def edit
