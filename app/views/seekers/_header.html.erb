@@ -2,7 +2,7 @@
 <div class="dash_header">
 	<%= image_tag "up_logotrans.png", class: "dash_header_logo" %>
 	<ol class="breadcrumb dash_breadcrumb" id="dash_breadcrumb">
-		<li><%= link_to "Current Jobs", seeker_path(@seeker) %></li>
+		<li><%= link_to "Prequalified Jobs", seeker_path(@seeker) %></li>
 		<li><%= link_to "Applied Jobs", applied_seeker_path(@seeker) %></li>
 		<li><%= link_to "My Resumes", seeker_resumes_path(@seeker) %></li>
 		<li><%= link_to "Saved Jobs", saved_jobs_seeker_path(@seeker) %></li>
@@ -30,7 +30,7 @@
         activate("Saved Jobs");
       break;
       case seekerID:
-        activate("Current Jobs");
+        activate("Prequalified Jobs");
       break;
       default:
     		var link = ""

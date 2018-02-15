@@ -6,6 +6,7 @@ class EmployersController < ApplicationController
   def create
     @employer = Employer.new(employer_params)
     @employer.user_id = current_user.id
+    @employer.status = "active"
 
     if current_user.role == "Admin"  && @employer.save       
           redirect_to admin_employers_path, notice: "#{@employer.compName} successfully!"
