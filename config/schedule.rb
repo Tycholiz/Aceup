@@ -20,6 +20,6 @@
 # Learn more: http://github.com/javan/whenever
 every :day, at: '10pm' do
   # specify the task name as a string
-  rake  "-s sitemap:refresh"
+  rake  "-s sitemap:refresh:no_ping"
 
 end
