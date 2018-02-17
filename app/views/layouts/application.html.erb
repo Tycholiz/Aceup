@@ -44,7 +44,7 @@
     <% unless current_page?(root_path) %>
       <%= render 'layouts/header' %>
     <% else %>
-      <div id="main_bg">
+      <%= render 'layouts/header_landing' %>
     <% end %>
       	
 
@@ -57,12 +57,8 @@
 
 
         <%= yield %>
-        <% unless current_page?(root_path) %>
+      
           <%= render 'layouts/footer' %>
-        <% end %>
-    <% if controller_name == "sessions" %>
-      </div>
-    <% end %>
 
 
     <script type="text/javascript">

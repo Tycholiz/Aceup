@@ -1,0 +1,43 @@
+<nav class="navbar navbar-default">
+      <div class="container">
+          <% if current_user
+               if current_user.role == "Employer" && Employer.where(user_id: current_user.id).first
+                employer = Employer.where(user_id: current_user.id).first
+                logo_link = employer_path(employer)
+              elsif current_user.role == "Seeker" && Seeker.where(user_id: current_user.id).first
+                seeker = Seeker.where(user_id: current_user.id).first
+                logo_link = seeker_path(seeker)
+               end 
+            else  
+              logo_link = "/"
+             end %>
+
+             
+          <div class="navbar-header"><%= link_to (image_tag "up_logotrans.png" , style: 'height:45px;width:auto;margin-right:25px'), logo_link, class: "navbar-left" %>
+
+            
+
+
+
+              <button data-toggle="collapse" data-target="#navcol-1" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+          </div>
+          <div class="collapse navbar-collapse" id="navcol-1">
+            <%= form_tag sessions_path, class: 'header_form'  do  %>
+              <%= text_field_tag :email, nil, placeholder: "Email", class: 'login_fields inputBgOpaque' %>
+              <%= password_field_tag :password, nil,  placeholder: "Password", class: 'login_fields inputBgOpaque' %>
+        
+              
+              <ul class="nav navbar-nav navbar-right">
+                  
+                  <li role="presentation"><%= submit_tag "Log in", id: 'login_btn' %></li>
+                  <% end %>
+                  <li role="presentation" class="grey" ><a href="/pages/about">About</a></li>
+                  <li role="presentation" class="grey" ><%= link_to "Contact", new_message_path%></li>
+                  <li role="presentation" class="grey" ><%= link_to "Blog", "https://www.blog.aceup.co" %></li>
+                  <% if current_user %>
+                    <li role="presentation"><%= link_to "Log out", session_path("current"), method: :delete %></li>
+                  <% end %>
+              </ul>
+          </div>
+      </div>
+  </nav>
