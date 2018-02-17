@@ -45,7 +45,7 @@ class UsersController < ApplicationController
         redirect_to admin_users_path, notice: "Updated successfully!"
       else
         flash[:error] = @user.errors.full_messages.to_sentence
-        redirect_to seeker_path(@seeker)
+        redirect_back(fallback_location: root_path)
       end
     end
  
