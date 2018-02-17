@@ -3,7 +3,7 @@
   background-color: #fff;
   /*background-size:cover;*/
   border:none;
-  height: 90%;
+  // height: 90%;
 }
 
 #main_bg {
@@ -60,6 +60,15 @@
 }
 #sub_title_text {
   margin-top: -40px;
+}
+.tagline {
+  text-align: center;
+  margin-top: 20px;
+}
+.tagline p{
+  font-size: 35px;
+  color: #515151;
+  font-weight: 400;
 }
 .landing_icon_row {
   margin: 0 10% ;
@@ -138,6 +147,48 @@
 	background-color:#28b62c;
 }
 
+////////////////// Seeker Profile Stuff //////////////////////
+
+.job_header_img_landing {
+  height: 110px;
+  width: 100%;
+  /* display: inline-block; */
+  margin-left: auto;
+  margin-right: auto;
+  // margin-top: 10px;
+  text-align: center;
+  background-color: black;
+  color: white;
+  
+}
+
+.landing_form-container {
+    // display: table;
+    // max-width: 900px;
+    // min-width: 200px;
+    width: 800px !important;
+    // float: left;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+    border: 2px solid #d4d2d2;
+    // margin-right: 25px;
+     padding: 40px 60px;
+     background-color: #ffffff;
+     color: #505e6c;
+  }
+// form {
+//     display: table-cell;
+//     // width: 400px;
+//     background-color: #ffffff;
+//     padding: 40px 60px;
+//     color: #505e6c;
+//     float: left;
+    // h2 {
+    //   font-size: 24px;
+    //   line-height: 1.5;
+    //   margin-bottom: 30px;
+    // }
 @media screen and (max-width: 1200px) {
 	.landing_buttons {
 		// margin-left:20vh;
