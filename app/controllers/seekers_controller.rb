@@ -20,7 +20,7 @@ class SeekersController < ApplicationController
       end
 
       @seeker.user_id = @user.id
-      @seeker.status = "active"
+      @seeker.status = "pending"
       if @seeker.save
         # redirect_to controller: 'users', action: 'edit', id: @user.id, landing: "#{@seeker.id}"
         # redirect_to edit_landing_seeker_path(@seeker), seeker_id: @seeker.id , notice: "Updated successfully!"
@@ -175,17 +175,19 @@ class SeekersController < ApplicationController
       # @seeker.postalCode = @seeker.postalCode.upcase if @seeker.postalCode
       @seeker.inSales  = @seeker.inSales.to_f
       @seeker.outSales  = @seeker.outSales.to_f
-      if @seeker.temp
+      # if @seeker.temp
+      if  @seeker.status == "pending"
+        @seeker.temp = false
+        @seeker.save
         # @user = User.where(id: @seeker.user_id).first
         # @user.temp = false
         # @user.role = "Seeker"
         # @user.save
         # @seeker.temp = false
         if @seeker.update_attributes(seeker_params)
-          # redirect_to controller: 'users', action: 'edit', id: @seeker.user_id, landing: "#{@seeker.id}"
           redirect_to controller: 'users', action: 'edit', id: @seeker.user_id
         else
-          flash[:error] = @seeker.errors.full_messages.to_sentence
+          # flash[:error] = @seeker.errors.full_messages.to_sentence
           render :edit_landing
         end
       else

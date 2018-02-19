@@ -36,6 +36,7 @@ class UsersController < ApplicationController
     end
     def update
       @user  = User.find(params[:id])
+      @role = @user.role
       unless @user.role == "Landing"
         if @user.update_attributes(user_params) && current_user.role == "Seeker"
           @seeker = Seeker.where(user_id: @user.id).first
@@ -47,7 +48,8 @@ class UsersController < ApplicationController
           redirect_to admin_users_path, notice: "Updated successfully!"
         else
           # flash[:error] = @user.errors.full_messages.to_sentence
-          flash[:error] = "Role didn't work"
+          # flash[:error] = "Role didn't work"
+          flash[:error] = "User could not be updated!"
           redirect_back(fallback_location: root_path)
         end
       else
@@ -61,8 +63,9 @@ class UsersController < ApplicationController
           redirect_to seeker_path(@seeker), notice: "Updated successfully!"
           # redirect_to edit_landing_seeker_path(@seeker), seeker_id: @seeker.id , notice: "Updated successfully!"
         else
-          flash[:error] = @user.errors.full_messages.to_sentence
-          render :edit, notice: "User could not be created!"
+          # flash[:error] = @user.errors.full_messages.to_sentence
+          flash[:error] = "User could not be created!"
+          render :edit
         end
       end
     end
