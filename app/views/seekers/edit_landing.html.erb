@@ -29,10 +29,12 @@
               </div>
             </div>
   </div>
-
-  <div class="tagline">
+</div>
+ <div class="tagline">
     <a href="#second_seeker" class="to-continue"></a>
   </div>
+<div class="register-photo" >
+ 
   <div class="landing_form-container" id="second_seeker" >
 
             <div class="editor">
@@ -73,7 +75,10 @@
           <% end %>
   </div> 
 </div> 
-
+</div>
 <script> 
   <%= render(:partial => 'seekers/formjs', :formats => [:js] ) %>
   </script>
+  <script>
+  <%= render(:partial => 'seekers/smooth_scroll', :formats => [:js] ) %>
+</script>
