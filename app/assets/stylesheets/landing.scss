@@ -187,6 +187,33 @@
 .to-continue:hover:before{
   transform: rotate(360deg);
 }
+.employer_landing_box {
+  width: 300px;
+  float: right;
+  margin-right: 4%;
+  text-align: center;
+}
+.employer_landing_box h3 {
+  font-weight: 900;
+  }
+
+#employer_landing_button {
+  font-size: 24px;
+  color: #fff;
+  font-weight: bolder;
+  padding: 3px 11px;
+  background-color: #686868;
+  width: 100%;
+}
+#employer_landing_button:hover {
+  background-color:#28b62c;
+  color: white;
+  // color: #28b62c;
+    text-shadow: 0 0 15px #28b62c;
+    transition: all 0.5s ease;
+    box-shadow: 0 0 20px  #28b62c;
+    // border: 5px solid  #28b62c;
+}
 ////////////////// Seeker Profile Stuff //////////////////////
 
 .job_header_img_landing {
