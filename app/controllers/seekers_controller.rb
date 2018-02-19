@@ -23,7 +23,8 @@ class SeekersController < ApplicationController
       @seeker.status = "active"
       if @seeker.save
         # redirect_to controller: 'users', action: 'edit', id: @user.id, landing: "#{@seeker.id}"
-        redirect_to edit_landing_seeker_path(@seeker), seeker_id: @seeker.id , notice: "Updated successfully!"
+        # redirect_to edit_landing_seeker_path(@seeker), seeker_id: @seeker.id , notice: "Updated successfully!"
+        redirect_to edit_landing_seeker_path(@seeker), notice: "Updated successfully!"
      else   
         render :new, error: "#{@seeker.errors.count} errors prevented this profile from being created"
       end
@@ -181,7 +182,8 @@ class SeekersController < ApplicationController
         # @user.save
         # @seeker.temp = false
         if @seeker.update_attributes(seeker_params)
-          redirect_to controller: 'users', action: 'edit', id: @seeker.user_id, landing: "#{@seeker.id}"
+          # redirect_to controller: 'users', action: 'edit', id: @seeker.user_id, landing: "#{@seeker.id}"
+          redirect_to controller: 'users', action: 'edit', id: @seeker.user_id
         else
           flash[:error] = @seeker.errors.full_messages.to_sentence
           render :edit_landing

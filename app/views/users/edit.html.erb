@@ -5,7 +5,11 @@
             <div class="image-holder"></div>
             <%= form_for @user, :html => { :class => "article-form" } do |f| %>
               
-                <h2 class="text-center"><strong>Edit</strong> account details.</h2>
+                <% if @role == "Landing" %>
+                    <h2 class="text-center"><strong>Create</strong> an account.</h2>
+                <% else %>
+                    <h2 class="text-center"><strong>Edit</strong> account details.</h2>
+                <% end %>
                 <div class="form-group">
                   <%= f.text_field :email, placeholder: "Email", class: 'form-control' %>
                   <p class='error'><%= show_errors(@user, :email) %></p>
