@@ -12,7 +12,9 @@ class UsersController < ApplicationController
     def create
       @user = User.new(user_params)
       @user.email = @user.email.downcase
-      seeker_params = params[:seeker] if params[:seeker]
+      # seeker_params = params[:seeker] if params[:seeker]
+      @user.logged_in = true
+      @user.last_seen = Time.now
 
       if @user.save
         session[:user_id] = @user.id  unless current_user && current_user.role == "Admin" # auto log in 
