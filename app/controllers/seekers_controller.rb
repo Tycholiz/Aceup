@@ -185,6 +185,8 @@ class SeekersController < ApplicationController
         # @user.save
         # @seeker.temp = false
         if @seeker.update_attributes(seeker_params)
+          @seeker.status = "active"
+          @seeker.save
           redirect_to controller: 'users', action: 'edit', id: @seeker.user_id
         else
           # flash[:error] = @seeker.errors.full_messages.to_sentence
