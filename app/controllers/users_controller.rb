@@ -24,6 +24,7 @@ class UsersController < ApplicationController
           
           redirect_to admin_users_path, notice: "User #{@user.firstName} successfully!"
         else
+          # flash[:error] = @user.errors.full_messages.to_sentence
           flash[:error] = @user.errors.full_messages.to_sentence
           render :new, notice: "User could not be created!"
         end
@@ -35,7 +36,7 @@ class UsersController < ApplicationController
     end
     def update
       @user  = User.find(params[:id])
-      unless @user.temp
+      unless @user.role == "Landing"
         if @user.update_attributes(user_params) && current_user.role == "Seeker"
           @seeker = Seeker.where(user_id: @user.id).first
           redirect_to seeker_path(@seeker), notice: "Updated successfully!"
@@ -45,15 +46,19 @@ class UsersController < ApplicationController
         elsif @user.update_attributes(user_params) && current_user.role == "Admin"
           redirect_to admin_users_path, notice: "Updated successfully!"
         else
-          flash[:error] = @user.errors.full_messages.to_sentence
+          # flash[:error] = @user.errors.full_messages.to_sentence
+          flash[:error] = "Role didn't work"
           redirect_back(fallback_location: root_path)
         end
-      else @user.update_attributes(user_params) && @user.role == "Seeker"
+      else
+        @user.temp = false
+        if @user.update_attributes(user_params)
           @seeker = Seeker.where(user_id: @user.id).first
           redirect_to edit_landing_seeker_path(@seeker), seeker_id: @seeker.id , notice: "Updated successfully!"
-      # else
-      #   flash[:error] = @user.errors.full_messages.to_sentence
-      #   redirect_back(fallback_location: root_path)
+        else
+          flash[:error] = @user.errors.full_messages.to_sentence
+          render :edit, notice: "User could not be created!"
+        end
       end
     end
  
@@ -61,6 +66,6 @@ class UsersController < ApplicationController
   protected
 
   def user_params
-    params.require(:user).permit(:temp, :seeker, :email, :firstName, :lastName, :password, :password_confirmation, :role, :phoneNo)
+    params.require(:user).permit(:landing, :temp, :seeker, :email, :firstName, :lastName, :password, :password_confirmation, :role, :phoneNo)
   end
 end

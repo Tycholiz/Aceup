@@ -22,15 +22,19 @@
 
                 <div class="tagline">
                     <p>Lets create your profile in <span style="color: #000;">90 seconds</span></p>
+                  </br></br></br>
+                    <a href="#first_seeker" class="to-continue"></a>
                 </div>
+                
             </div>
         </div>
 </div>
+
   
     <% @seeker = Seeker.new %>
     <%= form_for @seeker do |f| %>
  
-      <div class="landing_form-container " >
+      <div class="landing_form-container" id="first_seeker" >
 
             
               <div class="job_header_img">
@@ -85,10 +89,12 @@
         </div>
   
 </div>
-
+<div class="tagline">
+  <a href="#second_seeker" class="to-continue"></a>
+</div>
 
     <div class="register-photo" >
-      <div class="landing_form-container " >
+      <div class="landing_form-container" id="second_seeker" >
             <div class="editor">
             <h2>
                <%= image_tag "JH_form/Experience.png" %>
@@ -142,7 +148,7 @@
 
          <div>
             <%= f.hidden_field :temp, value: 1 %>
-            <%= f.submit "Start Hunting", class: "btn btn-primary btn-block", id: "seeker_submit_button" %></div>
+            <%= f.submit "Submit", class: "btn btn-primary btn-block", id: "seeker_submit_button" %></div>
         <% end %>
     </div>
 </div>

@@ -20,8 +20,8 @@ class User < ApplicationRecord
 	# presence: true
 
 
-	validates :role,
-	presence: true, unless: :temp
+	# validates :role,
+	# presence: true
 
 	validates :password, length: { in: 6..20 }, on: :create
 

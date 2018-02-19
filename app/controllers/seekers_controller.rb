@@ -13,7 +13,7 @@ class SeekersController < ApplicationController
       @user.temp = true
       @user.password = "testtest"
       @user.password_confirmation = "testtest"
-      @user.role = "Seeker"
+      @user.role = "Landing"
       @user.save
       if @user.save
         session[:user_id] = @user.id  unless current_user && current_user.role == "Admin" # auto log in 
@@ -39,7 +39,7 @@ class SeekersController < ApplicationController
       end
     end
      if @seeker.save
-      redirect_to controller: 'users', action: 'edit', id: @user.id, notice: "#{@seeker.id} successfully!"
+      redirect_to controller: 'users', action: 'edit', id: @user.id, landing: "#{@seeker.id}"
      else   
       render :new, error: "#{@seeker.errors.count} errors prevented this profile from being created"
       end
@@ -55,134 +55,141 @@ class SeekersController < ApplicationController
     #   redirect_to "/pages/new_area"
     # end
 
-    @jobs = Job.filter(params[:filter_years], params[:filter_salary]).order(:created_at).reverse_order
+    unless @seeker.temp
 
-    @resume = @seeker.resumes.first.file_url if @seeker.resumes.first
+        @jobs = Job.filter(params[:filter_years], params[:filter_salary]).order(:created_at).reverse_order
 
-    case @seeker.postalCode.first
-        when "V"
-          seek_metro = "Van"
-        when "M"
-          seek_metro = "Tor"
-        when "L"
-          seek_metro = "Tor"
-        else
-          seek_metro = "N/A"
+        @resume = @seeker.resumes.first.file_url if @seeker.resumes.first
+
+        case @seeker.postalCode.first
+            when "V"
+              seek_metro = "Van"
+            when "M"
+              seek_metro = "Tor"
+            when "L"
+              seek_metro = "Tor"
+            else
+              seek_metro = "N/A"
         end
 
-    
-    skillsParams = [:driversLicence, :hasVehicle, :coldCall, :doorToDoor, :custService, :acctManagment,:negotiation, :presenting, :leadership, :closing, :hunterBased, :farmerBased, :commBased, :B2C, :B2B]
-    @seekSkills = @seeker.slice(*skillsParams).select {|key, value| value == true }
-    seekLang = @seeker.languages
-    @matchJobs = Array.new
-    @jobs.each do |job|
-      employer = Employer.where(id: job.employer_id).first
-      case employer.metro
-        when "Vancouver"
-          job_metro = "Van"
-        when "Toronto"
-          job_metro = "Tor"
-        else
-          job_metro = "N/A"
+        
+        skillsParams = [:driversLicence, :hasVehicle, :coldCall, :doorToDoor, :custService, :acctManagment,:negotiation, :presenting, :leadership, :closing, :hunterBased, :farmerBased, :commBased, :B2C, :B2B]
+        @seekSkills = @seeker.slice(*skillsParams).select {|key, value| value == true }
+        seekLang = @seeker.languages
+        @matchJobs = Array.new
+        @jobs.each do |job|
+          employer = Employer.where(id: job.employer_id).first
+          case employer.metro
+            when "Vancouver"
+              job_metro = "Van"
+            when "Toronto"
+              job_metro = "Tor"
+            else
+              job_metro = "N/A"
+          end
+
+          seek_metro == job_metro ? metroMatch = true : metroMatch = false
+
+          jobSkills = job.slice(*skillsParams).select {|key, value| value == true }
+          if job.general
+            # seekerSalesYears = @seeker.inSales > @seeker.outSales ? @seeker.inSales : @seeker.outSales
+            seekerSalesYears = @seeker.inSales + @seeker.outSales
+            seekerSalesYears >= job.inSalesHard ? inSales = true : inSales = false
+            seekerSalesYears >= job.outSalesHard ? outSales = true : outSales = false
+          else 
+            @seeker.inSales >= job.inSalesHard ? inSales = true : inSales = false
+            @seeker.outSales >= job.outSalesHard ? outSales = true : outSales = false
+          end
+          if job.languages
+            job.languages.all? { |i| @seeker.languages.include? i } ? langMatch = true : langMatch = false
+          else
+            langMatch = true
+          end
+
+          job.educationLevel.to_int <= @seeker.educationLevel.to_int ? educationMatch = true : educationMatch = false
+            logger.info seek_metro
+            logger.info job_metro
+          # logger.info "Seeker Skills"
+          # logger.info @seekSkills
+          # logger.info "Job Skills"
+          # logger.info jobSkills
+          # if job.general
+          #  logger.info "Job Years XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+          # logger.info job.inSalesHard
+          # logger.info job.inSalesHard
+          # logger.info "in sales" 
+          # logger.info inSales
+          # logger.info "out sales" 
+          # logger.info outSales
+          # logger.info "General?"
+          # logger.info job.general
+          # end
+
+          if job.certifications
+            job.certifications.all? { |i| @seeker.certifications.include? i } ? certMatch = true : certMatch = false
+          else 
+            certMatch = true
+          end
+
+          if params[:filter_skills]
+            filter_skills_test = params[:filter_skills].any? {|s| jobSkills.key? s}
+            @matchJobs.push job if (jobSkills <= @seekSkills &&! filter_skills_test && inSales && outSales && langMatch && certMatch && educationMatch && metroMatch)
+          else
+            @matchJobs.push job if (jobSkills <= @seekSkills && inSales && outSales && langMatch && certMatch && educationMatch && metroMatch)
+          end    
         end
-
-      seek_metro == job_metro ? metroMatch = true : metroMatch = false
-
-      jobSkills = job.slice(*skillsParams).select {|key, value| value == true }
-      if job.general
-        # seekerSalesYears = @seeker.inSales > @seeker.outSales ? @seeker.inSales : @seeker.outSales
-        seekerSalesYears = @seeker.inSales + @seeker.outSales
-        seekerSalesYears >= job.inSalesHard ? inSales = true : inSales = false
-        seekerSalesYears >= job.outSalesHard ? outSales = true : outSales = false
-      else 
-        @seeker.inSales >= job.inSalesHard ? inSales = true : inSales = false
-        @seeker.outSales >= job.outSalesHard ? outSales = true : outSales = false
-      end
-      if job.languages
-        job.languages.all? { |i| @seeker.languages.include? i } ? langMatch = true : langMatch = false
+        @matchJobs = Kaminari.paginate_array(@matchJobs).page(params[:page]).per(10) 
       else
-        langMatch = true
+        flash[:error] = @seeker.errors.full_messages.to_sentence
+        redirect_to("/pages/construction")
       end
 
-      job.educationLevel.to_int <= @seeker.educationLevel.to_int ? educationMatch = true : educationMatch = false
-        logger.info seek_metro
-        logger.info job_metro
-      # logger.info "Seeker Skills"
-      # logger.info @seekSkills
-      # logger.info "Job Skills"
-      # logger.info jobSkills
-      # if job.general
-      #  logger.info "Job Years XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-      # logger.info job.inSalesHard
-      # logger.info job.inSalesHard
-      # logger.info "in sales" 
-      # logger.info inSales
-      # logger.info "out sales" 
-      # logger.info outSales
-      # logger.info "General?"
-      # logger.info job.general
-      # end
-
-      if job.certifications
-        job.certifications.all? { |i| @seeker.certifications.include? i } ? certMatch = true : certMatch = false
-      else 
-        certMatch = true
-      end
-
-      if params[:filter_skills]
-        filter_skills_test = params[:filter_skills].any? {|s| jobSkills.key? s}
-        @matchJobs.push job if (jobSkills <= @seekSkills &&! filter_skills_test && inSales && outSales && langMatch && certMatch && educationMatch && metroMatch)
-      else
-        @matchJobs.push job if (jobSkills <= @seekSkills && inSales && outSales && langMatch && certMatch && educationMatch && metroMatch)
-      end    
     end
-    @matchJobs = Kaminari.paginate_array(@matchJobs).page(params[:page]).per(10) 
 
-  end
+    def edit
+      @seeker  = Seeker.find(params[:id])
+    end
 
-  def edit
-    @seeker  = Seeker.find(params[:id])
-  end
+    def edit_landing
+      @seeker  = Seeker.find(params[:id])
+    end
 
-  def edit_landing
-    @seeker  = Seeker.find(params[:id])
-  end
-
-  def public
-    @seeker  = Seeker.find(params[:id])
-    @user = User.where(id: @seeker.user_id).first
-    app_id = params[:application]
-    @application = Application.where(id: app_id).first
-    @resume = Resume.where(id: @application.resume).first
-    logger.info @application
-    logger.info @resume
-    skillsParams = [:driversLicence, :hasVehicle, :coldCall, :doorToDoor, :custService, :acctManagment,:negotiation, :presenting, :leadership, :closing, :hunterBased, :farmerBased, :commBased, :B2C, :B2B]
-    @seekSkills = @seeker.slice(*skillsParams).select {|key, value| value == true }
-  end
-
-   def update
-    @seeker = Seeker.find(params[:id])
-    
-    # @seeker.postalCode = @seeker.postalCode.upcase if @seeker.postalCode
-    @seeker.inSales  = @seeker.inSales.to_f
-    @seeker.outSales  = @seeker.outSales.to_f
-    if @seeker.temp
+    def public
+      @seeker  = Seeker.find(params[:id])
       @user = User.where(id: @seeker.user_id).first
-      @user.temp = false
-      @user.save
-      @seeker.temp = false
+      app_id = params[:application]
+      @application = Application.where(id: app_id).first
+      @resume = Resume.where(id: @application.resume).first
+      logger.info @application
+      logger.info @resume
+      skillsParams = [:driversLicence, :hasVehicle, :coldCall, :doorToDoor, :custService, :acctManagment,:negotiation, :presenting, :leadership, :closing, :hunterBased, :farmerBased, :commBased, :B2C, :B2B]
+      @seekSkills = @seeker.slice(*skillsParams).select {|key, value| value == true }
     end
 
+     def update
+      @seeker = Seeker.find(params[:id])
+      
+      # @seeker.postalCode = @seeker.postalCode.upcase if @seeker.postalCode
+      @seeker.inSales  = @seeker.inSales.to_f
+      @seeker.outSales  = @seeker.outSales.to_f
+      if @seeker.temp
+        @user = User.where(id: @seeker.user_id).first
+        @user.temp = false
+        @user.role = "Seeker"
+        @user.save
+        @seeker.temp = false
+      end
 
-    if @seeker.update_attributes(seeker_params) && current_user.role == "Seeker" 
-      redirect_to seeker_path(@seeker), notice: "Updated successfully!"
-    elsif @seeker.update_attributes(seeker_params) && current_user.role == "Admin"
-      redirect_to admin_seekers_path, notice: "Updated successfully!"
-    else
-      flash[:error] = @seeker.errors.full_messages.to_sentence
-      render :edit
+
+      if @seeker.update_attributes(seeker_params) && current_user.role == "Seeker" 
+        redirect_to seeker_path(@seeker), notice: "Updated successfully!"
+      elsif @seeker.update_attributes(seeker_params) && current_user.role == "Admin"
+        redirect_to admin_seekers_path, notice: "Updated successfully!"
+      else
+        flash[:error] = @seeker.errors.full_messages.to_sentence
+        render :edit
+      end
     end
-  end
 
   def applied
     @seeker  = Seeker.find(params[:id])
