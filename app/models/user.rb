@@ -7,13 +7,13 @@ class User < ApplicationRecord
 
 	validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create },
 	presence: true,
-	uniqueness: true
+	uniqueness: true, unless: :temp
 
 	validates :firstName,
-	presence: true
+	presence: true, unless: :temp
 
 	validates :lastName,
-	presence: true
+	presence: true, unless: :temp
 
 	validates :phoneNo, format: { with: /\d{3}-\d{3}-\d{4}/, message: "Phone number invalid, must be xxx-xxx-xxxx"}, if: 'phoneNo.present?'
 	# validates :phoneNo,
@@ -21,10 +21,9 @@ class User < ApplicationRecord
 
 
 	validates :role,
-	presence: true
+	presence: true, unless: :temp
 
-	validates :password,
-	length: { in: 6..20 }, on: :create
+	validates :password, length: { in: 6..20 }, on: :create
 
 	validates_presence_of :password_confirmation, :if => :password_digest_changed?
 

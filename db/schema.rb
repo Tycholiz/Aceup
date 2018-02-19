@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180215042755) do
+ActiveRecord::Schema.define(version: 20180218003230) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -199,6 +199,7 @@ ActiveRecord::Schema.define(version: 20180215042755) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "status"
+    t.boolean "temp"
     t.index ["user_id"], name: "index_seekers_on_user_id"
   end
 
@@ -214,6 +215,7 @@ ActiveRecord::Schema.define(version: 20180215042755) do
     t.boolean "out_area"
     t.datetime "last_seen"
     t.boolean "logged_in"
+    t.boolean "temp"
   end
 
   create_table "visits", force: :cascade do |t|

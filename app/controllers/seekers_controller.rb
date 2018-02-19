@@ -1,31 +1,56 @@
 class SeekersController < ApplicationController
   def new
+    if params[:seeker]
+      @seeker = Seeker.new(params[:seeker])
+    end
     @seeker = Seeker.new
   end
 
   def create
     @seeker = Seeker.new(seeker_params)
-    @seeker.user_id = current_user.id
-    @seeker.postalCode = @seeker.postalCode.upcase
-    @seeker.status = "active"
-    unless @seeker.postalCode.first == "V" || @seeker.postalCode.first == "M" || @seeker.postalCode.first == "L"
-      @user = User.where(id: @seeker.user_id).first
-      @user.out_area = true
+    if @seeker.temp
+      @user = User.new
+      @user.temp = true
+      @user.password = "testtest"
+      @user.password_confirmation = "testtest"
+      @user.role = "Seeker"
       @user.save
-    end
-    if current_user.role == "Admin"  && @seeker.save  
-        redirect_to admin_seekers_path, notice: "#{@seeker.id} successfully!"
-    elsif @seeker.save
-      redirect_to seeker_path(@seeker), success: "Welcome aboard, add a resume"
+      if @user.save
+        session[:user_id] = @user.id  unless current_user && current_user.role == "Admin" # auto log in 
+      end
+
+      @seeker.user_id = @user.id
+      @seeker.status = "active"
     else
-      # flash[:error] = @seeker.errors.full_messages.to_sentence
-      
-      render :new, error: "#{@seeker.errors.count} errors prevented this profile from being created"
+      @seeker.user_id = current_user.id
+      @seeker.postalCode = @seeker.postalCode.upcase
+      @seeker.status = "active"
+      unless @seeker.postalCode.first == "V" || @seeker.postalCode.first == "M" || @seeker.postalCode.first == "L"
+        @user = User.where(id: @seeker.user_id).first
+        @user.out_area = true
+        @user.save
+      end
+      if current_user.role == "Admin"  && @seeker.save  
+          redirect_to admin_seekers_path, notice: "#{@seeker.id} successfully!"
+      elsif @seeker.save
+        redirect_to seeker_path(@seeker), success: "Welcome aboard, add a resume"
+      else
+        flash[:error] = @seeker.errors.full_messages.to_sentence
+      end
     end
+     if @seeker.save
+      redirect_to controller: 'users', action: 'edit', id: @user.id, notice: "#{@seeker.id} successfully!"
+     else   
+      render :new, error: "#{@seeker.errors.count} errors prevented this profile from being created"
+      end
   end
 
   def show
-    @seeker = Seeker.where(user_id: current_user.id).first
+    if current_user
+      @seeker = Seeker.where(user_id: current_user.id).first
+    elsif params[:seeker_id]
+      @seeker = Seeker.where(user_id: params[:seeker_id]).first
+    end
     # unless @seeker.postalCode.first == "V"
     #   redirect_to "/pages/new_area"
     # end
@@ -119,6 +144,10 @@ class SeekersController < ApplicationController
     @seeker  = Seeker.find(params[:id])
   end
 
+  def edit_landing
+    @seeker  = Seeker.find(params[:id])
+  end
+
   def public
     @seeker  = Seeker.find(params[:id])
     @user = User.where(id: @seeker.user_id).first
@@ -133,9 +162,17 @@ class SeekersController < ApplicationController
 
    def update
     @seeker = Seeker.find(params[:id])
-    @seeker.postalCode = @seeker.postalCode.upcase
+    
+    # @seeker.postalCode = @seeker.postalCode.upcase if @seeker.postalCode
     @seeker.inSales  = @seeker.inSales.to_f
     @seeker.outSales  = @seeker.outSales.to_f
+    if @seeker.temp
+      @user = User.where(id: @seeker.user_id).first
+      @user.temp = false
+      @user.save
+      @seeker.temp = false
+    end
+
 
     if @seeker.update_attributes(seeker_params) && current_user.role == "Seeker" 
       redirect_to seeker_path(@seeker), notice: "Updated successfully!"
@@ -180,6 +217,6 @@ class SeekersController < ApplicationController
   protected
 
   def seeker_params
-    params.require(:seeker).permit(:postalCode, :educationLevel, :degree, :driversLicence, :hasVehicle, :inSales, :outSales, :inboundSales, :outboundSales, :coldCall, :doorToDoor, :custService, :acctManagment, :negotiation, :presenting, :leadership, :closing, :hunterBased, :farmerBased, :commBased, :B2C, :B2B, :consSales, :directSales, :solutionSales, :certifications => [], :languages => [])
+    params.require(:seeker).permit(:temp, :postalCode, :educationLevel, :degree, :driversLicence, :hasVehicle, :inSales, :outSales, :inboundSales, :outboundSales, :coldCall, :doorToDoor, :custService, :acctManagment, :negotiation, :presenting, :leadership, :closing, :hunterBased, :farmerBased, :commBased, :B2C, :B2B, :consSales, :directSales, :solutionSales, :certifications => [], :languages => [])
   end
 end         

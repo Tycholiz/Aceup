@@ -27,7 +27,7 @@
         </div>
 </div>
   
-    <% @seeker = Seeker.first %>
+    <% @seeker = Seeker.new %>
     <%= form_for @seeker do |f| %>
  
       <div class="landing_form-container " >
@@ -139,7 +139,10 @@
                 <%= f.check_box :B2C %>
             </div>
         </div>
-         <div><%= f.submit "Start Hunting", class: "btn btn-primary btn-block", id: "seeker_submit_button" %></div>
+
+         <div>
+            <%= f.hidden_field :temp, value: 1 %>
+            <%= f.submit "Start Hunting", class: "btn btn-primary btn-block", id: "seeker_submit_button" %></div>
         <% end %>
     </div>
 </div>

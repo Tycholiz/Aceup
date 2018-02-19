@@ -13,14 +13,16 @@ class Seeker < ApplicationRecord
         model.certifications.reject!(&:blank?) if model.certifications
       end
 
-	validates :postalCode, format: { with: /\A[ABCEGHJKLMNPRSTVXY]{1}\d{1}[A-Z]{1}[ -]?\d{1}[A-Z]{1}\d{1}\z/, message: "Postal code invalid, must be (X1X 1X1)", on: :create },
-	presence: true
 
+    before_save { |seeker| seeker.postalCode = seeker.postalCode.upcase }
+
+	validates :postalCode, format: { with: /\A[ABCEGHJKLMNPRSTVXY]{1}\d{1}[A-Z]{1}[ -]?\d{1}[A-Z]{1}\d{1}\z/, message: "Postal code invalid, must be (X1X 1X1)", on: :create },
+	presence: true, unless: :temp
 	validates :languages,
-	presence: true
+	presence: true, unless: :temp
 
 	validates :educationLevel,
-	presence: true
+	presence: true, unless: :temp
 
 	# validates :degree,
 	# presence: true

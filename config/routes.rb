@@ -61,6 +61,7 @@ Rails.application.routes.draw do
         get   :saved_jobs
         get   :public
         get   :no_resume
+        get   :edit_landing
       end
     end
 
