@@ -54,6 +54,8 @@ class UsersController < ApplicationController
         end
       else
         @user.temp = false
+        @user.logged_in = true
+        @user.last_seen = Time.now
         if @user.update_attributes(user_params)
           @seeker = Seeker.where(user_id: @user.id).first
           @seeker.temp = false
