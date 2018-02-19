@@ -21,6 +21,12 @@ class SeekersController < ApplicationController
 
       @seeker.user_id = @user.id
       @seeker.status = "active"
+      if @seeker.save
+        # redirect_to controller: 'users', action: 'edit', id: @user.id, landing: "#{@seeker.id}"
+        redirect_to edit_landing_seeker_path(@seeker), seeker_id: @seeker.id , notice: "Updated successfully!"
+     else   
+        render :new, error: "#{@seeker.errors.count} errors prevented this profile from being created"
+      end
     else
       @seeker.user_id = current_user.id
       @seeker.postalCode = @seeker.postalCode.upcase
@@ -36,13 +42,9 @@ class SeekersController < ApplicationController
         redirect_to seeker_path(@seeker), success: "Welcome aboard, add a resume"
       else
         flash[:error] = @seeker.errors.full_messages.to_sentence
+        render :new, error: "#{@seeker.errors.count} errors prevented this profile from being created"
       end
     end
-     if @seeker.save
-      redirect_to controller: 'users', action: 'edit', id: @user.id, landing: "#{@seeker.id}"
-     else   
-      render :new, error: "#{@seeker.errors.count} errors prevented this profile from being created"
-      end
   end
 
   def show
@@ -173,21 +175,28 @@ class SeekersController < ApplicationController
       @seeker.inSales  = @seeker.inSales.to_f
       @seeker.outSales  = @seeker.outSales.to_f
       if @seeker.temp
-        @user = User.where(id: @seeker.user_id).first
-        @user.temp = false
-        @user.role = "Seeker"
-        @user.save
-        @seeker.temp = false
-      end
-
-
-      if @seeker.update_attributes(seeker_params) && current_user.role == "Seeker" 
-        redirect_to seeker_path(@seeker), notice: "Updated successfully!"
-      elsif @seeker.update_attributes(seeker_params) && current_user.role == "Admin"
-        redirect_to admin_seekers_path, notice: "Updated successfully!"
+        # @user = User.where(id: @seeker.user_id).first
+        # @user.temp = false
+        # @user.role = "Seeker"
+        # @user.save
+        # @seeker.temp = false
+        if @seeker.update_attributes(seeker_params)
+          redirect_to controller: 'users', action: 'edit', id: @seeker.user_id, landing: "#{@seeker.id}"
+        else
+          flash[:error] = @seeker.errors.full_messages.to_sentence
+          render :edit_landing
+        end
       else
-        flash[:error] = @seeker.errors.full_messages.to_sentence
-        render :edit
+
+
+        if @seeker.update_attributes(seeker_params) && current_user.role == "Seeker" 
+          redirect_to seeker_path(@seeker), notice: "Updated successfully!"
+        elsif @seeker.update_attributes(seeker_params) && current_user.role == "Admin"
+          redirect_to admin_seekers_path, notice: "Updated successfully!"
+        else
+          flash[:error] = @seeker.errors.full_messages.to_sentence
+          render :edit
+        end
       end
     end
 

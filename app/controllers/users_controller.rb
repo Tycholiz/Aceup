@@ -54,7 +54,12 @@ class UsersController < ApplicationController
         @user.temp = false
         if @user.update_attributes(user_params)
           @seeker = Seeker.where(user_id: @user.id).first
-          redirect_to edit_landing_seeker_path(@seeker), seeker_id: @seeker.id , notice: "Updated successfully!"
+          @seeker.temp = false
+          @seeker.save
+          @user.role = "Seeker"
+          @user.save
+          redirect_to seeker_path(@seeker), notice: "Updated successfully!"
+          # redirect_to edit_landing_seeker_path(@seeker), seeker_id: @seeker.id , notice: "Updated successfully!"
         else
           flash[:error] = @user.errors.full_messages.to_sentence
           render :edit, notice: "User could not be created!"
