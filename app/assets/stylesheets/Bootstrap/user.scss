@@ -382,7 +382,7 @@ html {
 
 }
 .ck-center {
-  margin: 25px 25%;
+  margin: 25px 29%;
   }
 
 #ck-button-comm {
@@ -393,6 +393,7 @@ html {
 
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
   }
+  
 
 .ck-button:active {
   background-color: #3e8e41;
@@ -440,6 +441,18 @@ html {
 .ck-button_bg{
     background-color:#186f1b;
     color: #fff;
+}
+
+.hr_aspect {
+  border: 0;
+  border-top: 3px solid #000;
+  margin-bottom: 0;
+  margin-top: 10px;
+}
+.p_aspect {
+  font-weight: 700;
+  font-size: 20px;
+  color: #000;
 }
 
 .pagination {
