@@ -217,6 +217,94 @@
             </div>
           </div>
           <hr>
+
+          <div class="editor">
+            <h2>
+              <%= image_tag "EmpForm/Experience.png"%>
+              Aspects of the Job
+            </h2>
+          </div>
+
+          <div class="row">
+            <p>Sales Cycle</p><hr>
+          
+              <div class="ck-button ck-center" >
+                <%= f.label :coldCall, "Prospecting" %><br>
+                <%= f.check_box :coldCall %>
+              </div>
+           
+         
+            <div class="ck-button">
+              <%= f.label :coldCall, "Cold Calling" %><br>
+              <%= f.check_box :coldCall %>
+            </div>
+            <div class="ck-button">
+              <%= f.label :doorToDoor, "Door to Door" %><br>
+              <%= f.check_box :doorToDoor %>
+            </div>
+            <div class="ck-button">
+              <%= f.label :coldCall, "Warm Leads" %><br>
+              <%= f.check_box :coldCall %>
+            </div>
+            <div class="ck-button">
+              <%= f.label :doorToDoor, "Networking" %><br>
+              <%= f.check_box :doorToDoor %>
+            </div>
+          
+          <div style="clear:both;"></br></br></div>
+            <div class="ck-button">
+              <%= f.label :presenting %><br>
+              <%= f.check_box :presenting %>
+            </div>
+            <div class="ck-button">
+              <%= f.label :closing %><br>
+              <%= f.check_box :closing %>
+            </div>
+            <div class="ck-button">
+              <%= f.label :negotiation %><br>
+              <%= f.check_box :negotiation %>
+            </div>
+            <div class="ck-button">
+              <%= f.label :acctManagment, "Account Management" %><br>
+              <%= f.check_box :acctManagment %>
+            </div>
+            <p>Sales Types</p><hr>
+            <div class="ck-button">
+              <%= f.label :B2B, "B2B", data: {tooltip: "Business-to-Business." } %><br>
+              <%= f.check_box :B2B %>
+            </div>
+            <div class="ck-button">
+              <%= f.label :B2C, "B2C", data: {tooltip: "Business-to-Consumer." } %><br>
+              <%= f.check_box :B2C %>
+            </div>
+            <div class="ck-button">
+              <%= f.label :B2B, "Inside Sales" %><br>
+              <%= f.check_box :B2B %>
+            </div>
+            <div class="ck-button">
+              <%= f.label :B2B, "Outside Sales" %><br>
+              <%= f.check_box :B2B %>
+            </div>
+            <div class="ck-button">
+              <%= f.label :B2B, "Inbound" %><br>
+              <%= f.check_box :B2B %>
+            </div>
+            <div class="ck-button">
+              <%= f.label :B2B, "Outbound" %><br>
+              <%= f.check_box :B2B %>
+            </div>
+            <p>Travel</p><hr>
+            <div class="ck-button">
+              <%= f.label :B2B, "Overnight Travel" %><br>
+              <%= f.check_box :B2B %>
+            </div>
+            <div class="ck-button">
+              <%= f.label :B2B, "Local Travel" %><br>
+              <%= f.check_box :B2B %>
+            </div>
+
+          </div>
+          <hr>
         
         <div class="editor">
             <h2>
