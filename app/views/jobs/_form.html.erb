@@ -511,66 +511,70 @@
       }
 
       ckbutton.on('click',function(){
-        prospectingCheck();
         
-        // console.log("tapped");
-        var childCheck = $(this).find("[type='checkbox']")
-        // console.log(childCheck.prop('id'));
-        // console.log(childCheck.prop('checked'));
+              // console.log("tapped");
+              var childCheck = $(this).find("[type='checkbox']")
+              // console.log("id --> " + childCheck.prop('id'));
+              // console.log("status --> " + childCheck.prop('checked'));
+          if (childCheck.prop("disabled") !== true) {
+                if (childCheck.is(":checked")) {
+                  childCheck.prop('checked', false);
+                  $(this).removeClass("ck-button_bg"); 
+                  prospectingCheck();
+                  // console.log("status --> " + childCheck.prop('checked'));
+                  // prospectingCheck();
+                    if (childCheck.prop('id') == "job_driversLicence") {
+                      $('#job_hasVehicle').prop("disabled", true).parent().addClass("disabled-button_bg");
+                    }
+                    if (childCheck.prop('id') == "job_salary") {
+                      
+                        $('#hiddenSalary').val("100% Commission");
+                        // HourlyButton.find("[type='checkbox']").prop('checked', true);
+                        // HourlyButton.addClass("ck-button_bg");
+                        // console.log("Salary clicked, hourly made true");
+                        testSal = $('#hiddenSalary').val();
+                        console.log("salary variable "+ testSal);
+                      } 
+                      if (childCheck.prop('id') == "job_hourly") {
+                      
+                        $('#hiddenSalary').val("100% Commission");
+                        // SalaryButton.find("[type='checkbox']").prop('checked', true);
+                        // SalaryButton.addClass("ck-button_bg");
+                        // console.log("Hourly clicked, salary made true");
+                        testSal = $('#hiddenSalary').val();
+                        console.log("salary variable "+ testSal);
+                      } 
+                     
+                  }else{
+                    childCheck.prop('checked', true);
+                    $(this).addClass("ck-button_bg");
+                    prospectingCheck();
+                    // console.log("status --> " + childCheck.prop('checked'));
 
-          if (childCheck.is(":checked")) {
-            childCheck.prop('checked', false);
-            $(this).removeClass("ck-button_bg"); 
-            // prospectingCheck();
-              if (childCheck.prop('id') == "job_driversLicence") {
-                $('#job_hasVehicle').prop("disabled", true).parent().addClass("disabled-button_bg");
-              }
-              if (childCheck.prop('id') == "job_salary") {
-                
-                  $('#hiddenSalary').val("100% Commission");
-                  // HourlyButton.find("[type='checkbox']").prop('checked', true);
-                  // HourlyButton.addClass("ck-button_bg");
-                  // console.log("Salary clicked, hourly made true");
-                  testSal = $('#hiddenSalary').val();
-                  console.log("salary variable "+ testSal);
-                } 
-                if (childCheck.prop('id') == "job_hourly") {
-                
-                  $('#hiddenSalary').val("100% Commission");
-                  // SalaryButton.find("[type='checkbox']").prop('checked', true);
-                  // SalaryButton.addClass("ck-button_bg");
-                  // console.log("Hourly clicked, salary made true");
-                  testSal = $('#hiddenSalary').val();
-                  console.log("salary variable "+ testSal);
-                } 
-               
-            }else{
-              childCheck.prop('checked', true);
-              $(this).addClass("ck-button_bg");
-
-              if (childCheck.prop('id') == "job_driversLicence") {
-                $('#job_hasVehicle').prop("disabled", false).parent().removeClass("disabled-button_bg");
-              }
-               if (childCheck.prop('id') == "job_salary") {
-                  $('#hiddenSalary').val("Salary");
-                  
-                  HourlyButton.find("[type='checkbox']").prop('checked', false);
-                  HourlyButton.removeClass("ck-button_bg");
-                  // console.log("Salary clicked, hourly made false");
-                  testSal = $('#hiddenSalary').val();
-                  console.log("salary variable "+ testSal);
-                } 
-                if (childCheck.prop('id') == "job_hourly") {
-                  $('#hiddenSalary').val("Hourly");
-                  // $('#hiddenSalary').val("Salary");
-                  SalaryButton.find("[type='checkbox']").prop('checked', false);
-                  SalaryButton.removeClass("ck-button_bg");
-                  // console.log("Hourly clicked, salary made false");
-                                    testSal = $('#hiddenSalary').val();
-                  console.log("salary variable "+ testSal);
-                } 
-              
-          }
+                    if (childCheck.prop('id') == "job_driversLicence") {
+                      $('#job_hasVehicle').prop("disabled", false).parent().removeClass("disabled-button_bg");
+                    }
+                     if (childCheck.prop('id') == "job_salary") {
+                        $('#hiddenSalary').val("Salary");
+                        
+                        HourlyButton.find("[type='checkbox']").prop('checked', false);
+                        HourlyButton.removeClass("ck-button_bg");
+                        // console.log("Salary clicked, hourly made false");
+                        testSal = $('#hiddenSalary').val();
+                        console.log("salary variable "+ testSal);
+                      } 
+                      if (childCheck.prop('id') == "job_hourly") {
+                        $('#hiddenSalary').val("Hourly");
+                        // $('#hiddenSalary').val("Salary");
+                        SalaryButton.find("[type='checkbox']").prop('checked', false);
+                        SalaryButton.removeClass("ck-button_bg");
+                        // console.log("Hourly clicked, salary made false");
+                                          testSal = $('#hiddenSalary').val();
+                        console.log("salary variable "+ testSal);
+                      } 
+                    
+                }
+            }
         });
       $('#job_languages').find("option[value='English']").prop('selected', true);
       $('option').mousedown(function(e) {
@@ -679,28 +683,34 @@
 
 
       var prospecting = $('#job_AspProspecting')
-      var coldCall = $('#job_AspcoldCall')
-      var doorToDoor = $('#job_AspdoorToDoor')
-      var warmLeads = $('#job_AspWarmLeads')
-      var networking = $('#job_AspNetworking')
+      // var prospecting_disabled
       function prospectingCheck() {
+        var coldCall = $('#job_AspcoldCall').parent().find("[type='checkbox']").is(":checked")
+        var doorToDoor = $('#job_AspdoorToDoor').parent().find("[type='checkbox']").is(":checked")
+        var warmLeads = $('#job_AspWarmLeads').parent().find("[type='checkbox']").is(":checked")
+        var networking = $('#job_AspNetworking').parent().find("[type='checkbox']").is(":checked")
+        // console.log(coldCall)
           if( coldCall || doorToDoor || warmLeads || networking){
+
               prospecting.parent().find("[type='checkbox']").prop('checked', true);
               prospecting.parent().addClass("ck-button_bg");
-              prospecting.prop('onclick', 'return false');
-              console.log("prospecting checked")
-              console.log(prospecting.prop('onclick'))
+              // prospecting.prop('onclick', 'return false');
+              prospecting.prop("disabled", true);
+              // console.log("prospecting checked")
+              // console.log(prospecting.prop('onclick'))
               test = prospecting.parent().find("[type='checkbox']").is(":checked")
-              console.log(test)
+              // var prospecting_disabled = true
+              // console.log(test)
            } else {
-              prospecting.parent().find("[type='checkbox']").prop('checked', false);
-              prospecting.parent().removeClass("ck-button_bg");
-              prospecting.prop('onclick', '');
-
-              console.log("prospecting un-checked")
-              console.log(prospecting.prop('onclick'))
-              test = prospecting.parent().find("[type='checkbox']").is(":checked")
-              console.log(test)
+            prospecting.prop("disabled", false);
+           //    prospecting.parent().find("[type='checkbox']").prop('checked', false);
+           //    prospecting.parent().removeClass("ck-button_bg");
+           //    // prospecting.prop('onclick', '');
+           //    prospecting.prop("disabled", false);
+           //    console.log("prospecting un-checked")
+           //    // console.log(prospecting.prop('onclick'))
+           //    test = prospecting.parent().find("[type='checkbox']").is(":checked")
+           //    // console.log(test)
             }
       };
       prospectingCheck();
