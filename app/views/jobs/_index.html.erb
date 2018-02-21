@@ -17,6 +17,33 @@
                             </div>
                         </div>
                         <div class="job_show_text">
+                            <% aspects = {
+                                AspProspecting: "Prospecting",
+                                AspcoldCall: "Cold Calling",
+                                AspdoorToDoor: "Door to Door",
+                                AspWarmLeads: "Warm Leads",
+                                AspNetworking: "Networking",
+                                AspPresenting: "Presenting",
+                                AspClosing: "Closing",
+                                AspNegotiation: "Negotiation",
+                                AspacctManagment: "Management",
+                                AspB2B: "B2B",
+                                AspB2C: "B2C",
+                                AspInSales: "Inside Sales",
+                                AspOutSales: "Outside Sales",
+                                AspInbound: "Inbound Sales",
+                                AspOutbound: "Outbound Sales",
+                                AspOvernight: "Overnight Travel",
+                                AspLocal: "Local Travel",
+                              }
+                                aspects_options = aspects.map {|k, v| k} 
+                                @jobApects = job.slice(*aspects_options).select {|key, value| value == true }
+                               aspects_list = aspects.select{ |k ,v| @jobApects.has_key? k}.map {|k, v| v} 
+                            %>
+                                <span data-tooltip-aspect= "Job Aspects:&#xa;<% aspects_list.each do |asp| %><%= asp %>&#xa; <% end %>"><%=  image_tag "up_logotrans_red.png", class: "aspect_hover_img" %></span>
+                                
+            
+                           <div style="clear:both;"></div>
                             <%= button_to "View Job",job_path(job), :method => "get",  class: "btn btn-default", id: "save_jobs_button" %>
                             <h3>Job Type:&nbsp;</h3><%= job.jobType.capitalize %> </br>
                             

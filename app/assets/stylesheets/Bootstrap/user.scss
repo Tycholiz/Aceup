@@ -393,7 +393,6 @@ html {
 
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
   }
-  
 
 .ck-button:active {
   background-color: #3e8e41;
@@ -454,7 +453,28 @@ html {
   font-size: 20px;
   color: #000;
 }
-
+.aspect_hover {
+  margin: 0;    
+  margin-right: 65px;
+  margin-bottom: 15px;
+  overflow:visible;
+}
+// .aspect_hover img {
+ .aspect_hover_img { 
+  height:45px;
+  width:auto;
+  float:right;
+  margin-right: 65px;
+  margin-bottom: 15px;
+}
+.aspect_hover_img:hover{
+  // filter: hue-rotate(180deg)
+  // -webkit-filter: invert(100%);
+  -webkit-filter: invert(40%) grayscale(100%) brightness(40%) sepia(100%) hue-rotate(-50deg) saturate(400%) contrast(2);
+      filter: grayscale(100%) brightness(40%) sepia(100%) hue-rotate(180deg) saturate(600%) contrast(0.8);
+  transition: all 0.8s ease;
+  cursor: pointer;
+}
 .pagination {
   font-size: 24px;
   clear: both;
@@ -803,8 +823,8 @@ html {
   bottom: 150%;
   top:  -700%;
   left: 10%;
-  // word-wrap: break-word;
-  white-space:normal;
+  word-wrap: normal;
+  // white-space:normal;
   margin-bottom: 5px;
   margin-left: -80px;
   padding: 7px;
@@ -818,7 +838,7 @@ html {
   color: #fff;
   content: attr(data-tooltip);
   text-align: center;
-  font-size: 14px;
+  font-size: 20px;
   line-height: 1.2;
   transition: all 0.8s ease;
 }
@@ -845,6 +865,76 @@ html {
   visibility: visible;
   opacity: 1;
 }
+///////////////////////
+[data-tooltip-aspect]{
+  position: relative;
+  z-index: 2;
+  cursor: pointer;
+}
+
+/* Hide the tooltip content by default */
+[data-tooltip-aspect]:before,
+[data-tooltip-aspect]:after {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Position tooltip above the element */
+[data-tooltip-aspect]:before {
+  position: absolute;
+  bottom: 150%;
+  top:  -700%;
+  left: 10%;
+  // word-wrap: normal
+  // white-space:normal;
+  display: block;
+  white-space: pre-wrap;
+  overflow:visible;
+  margin-bottom: 5px;
+  margin-left: 150px;
+  padding: 7px;
+  width: 200px;
+  min-height: 200px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #000;
+  background-color: hsla(0, 0%, 20%, 0.9);
+  color: #fff;
+  content: attr(data-tooltip-aspect);
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.2;
+  transition: all 0.8s ease;
+}
+
+// /* Triangle hack to make tooltip look like a speech bubble */
+// [data-tooltip-aspect]:after {
+//   position: absolute;
+//   bottom: 150%;
+//   left: 10%;
+//   // margin-left: -5px;
+//   width: 0;
+//   border-top: 5px solid #000;
+//   border-top: 5px solid hsla(0, 0%, 20%, 0.9);
+//   border-right: 5px solid transparent;
+//   border-left: 5px solid transparent;
+//   content: " ";
+//   font-size: 0;
+//   line-height: 0;
+// }
+
+/* Show tooltip content on hover */
+[data-tooltip-aspect]:hover:before,
+[data-tooltip-aspect]:hover:after {
+  display: block;
+  white-space: pre-wrap;
+  visibility: visible;
+  opacity: 1;
+}
+
+///////////////////////
 
 .error {
   color: #d80404;
@@ -1171,6 +1261,9 @@ html {
       margin: 0px;
       width: auto;
       max-width: 317.78px;
+    }
+    .aspect_hover {
+      margin-right: 15px;
     }
 
   }

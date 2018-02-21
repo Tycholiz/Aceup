@@ -113,7 +113,7 @@ class SeekersController < ApplicationController
           seek_metro == job_metro ? metroMatch = true : metroMatch = false
 
           jobSkills = job.slice(*skillsParams).select {|key, value| value == true }
-          jobApects = job.slice(*aspectsParams).select {|key, value| value == true }
+          @jobApects = job.slice(*aspectsParams).select {|key, value| value == true }
           if job.general
             # seekerSalesYears = @seeker.inSales > @seeker.outSales ? @seeker.inSales : @seeker.outSales
             seekerSalesYears = @seeker.inSales + @seeker.outSales
@@ -130,7 +130,7 @@ class SeekersController < ApplicationController
           end
 
           job.educationLevel.to_int <= @seeker.educationLevel.to_int ? educationMatch = true : educationMatch = false
-            logger.info jobApects
+            logger.info @jobApects
             asptest = params[:filter_aspects]
             logger.info asptest
           # logger.info "Seeker Skills"
@@ -158,10 +158,10 @@ class SeekersController < ApplicationController
           matchQuery = jobSkills <= @seekSkills && inSales && outSales && langMatch && certMatch && educationMatch && metroMatch
           if params[:filter_skills] && params[:filter_aspects]
             filter_skills_test = params[:filter_skills].any? {|s| jobSkills.key? s}
-            aspects_test = params[:filter_aspects].any? {|s| jobApects.key? s}
+            aspects_test = params[:filter_aspects].any? {|s| @jobApects.key? s}
             @matchJobs.push job if ( matchQuery &&! filter_skills_test  &&! aspects_test)
           elsif params[:filter_aspects]
-            aspects_test = params[:filter_aspects].any? {|s| jobApects.key? s}
+            aspects_test = params[:filter_aspects].any? {|s| @jobApects.key? s}
             @matchJobs.push job if ( matchQuery &&! aspects_test)
           elsif params[:filter_skills]
             filter_skills_test = params[:filter_skills].any? {|s| jobSkills.key? s}
