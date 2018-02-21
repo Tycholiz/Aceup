@@ -41,6 +41,35 @@
                     %>
 
                       <%= select_tag :filter_skills, options_for_select(filter_skills_options, selected: params[:filter_skills]),{:multiple => true, class: "form-control multi-select"} %>
+
+                    </br>
+                    <h3>Job Aspects:</h3>
+
+          
+                    <% aspects = {
+                    AspProspecting: "Prospecting",
+                    AspcoldCall: "Cold Calling",
+                    AspdoorToDoor: "Door to Door",
+                    AspWarmLeads: "Customer Service",
+                    AspNetworking: "Networking",
+                    AspPresenting: "Presenting",
+                    AspClosing: "Closing",
+                    AspNegotiation: "Negotiation",
+                    AspacctManagment: "Management",
+                    AspB2B: "B2B",
+                    AspB2C: "B2C",
+                    AspInSales: "Inside Sales",
+                    AspOutSales: "Outside Sales",
+                    AspInbound: "Inbound Sales",
+                    AspOutbound: "Outbound Sales",
+                    AspOvernight: "Overnight Travel",
+                    AspLocal: "Local Travel",
+                  }
+
+                  aspects_options = aspects.map {|k, v| [v, k]} 
+
+                  %>              
+                      <%= select_tag :filter_aspects, options_for_select(aspects_options, selected: params[:filter_aspects]),{:multiple => true, class: "form-control multi-select"} %>
              
                     <h3>Minimum Pay:</h3>
                     

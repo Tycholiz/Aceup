@@ -77,6 +77,25 @@ class SeekersController < ApplicationController
 
         
         skillsParams = [:driversLicence, :hasVehicle, :coldCall, :doorToDoor, :custService, :acctManagment,:negotiation, :presenting, :leadership, :closing, :hunterBased, :farmerBased, :commBased, :B2C, :B2B]
+        aspectsParams = [ :AspProspecting,
+                          :AspcoldCall,
+                          :AspdoorToDoor, 
+                          :AspWarmLeads,
+                          :AspNetworking, 
+                          :AspPresenting, 
+                          :AspClosing,
+                          :AspNegotiation,
+                          :AspacctManagment,
+                          :AspB2B,
+                          :AspB2C,
+                          :AspInSales,
+                          :AspOutSales,
+                          :AspInbound,
+                          :AspOutbound,
+                          :AspOvernight,
+                          :AspLocal
+                        ]
+
         @seekSkills = @seeker.slice(*skillsParams).select {|key, value| value == true }
         seekLang = @seeker.languages
         @matchJobs = Array.new
@@ -94,6 +113,7 @@ class SeekersController < ApplicationController
           seek_metro == job_metro ? metroMatch = true : metroMatch = false
 
           jobSkills = job.slice(*skillsParams).select {|key, value| value == true }
+          jobApects = job.slice(*aspectsParams).select {|key, value| value == true }
           if job.general
             # seekerSalesYears = @seeker.inSales > @seeker.outSales ? @seeker.inSales : @seeker.outSales
             seekerSalesYears = @seeker.inSales + @seeker.outSales
@@ -110,8 +130,9 @@ class SeekersController < ApplicationController
           end
 
           job.educationLevel.to_int <= @seeker.educationLevel.to_int ? educationMatch = true : educationMatch = false
-            logger.info seek_metro
-            logger.info job_metro
+            logger.info jobApects
+            asptest = params[:filter_aspects]
+            logger.info asptest
           # logger.info "Seeker Skills"
           # logger.info @seekSkills
           # logger.info "Job Skills"
@@ -134,11 +155,19 @@ class SeekersController < ApplicationController
             certMatch = true
           end
 
-          if params[:filter_skills]
+          matchQuery = jobSkills <= @seekSkills && inSales && outSales && langMatch && certMatch && educationMatch && metroMatch
+          if params[:filter_skills] && params[:filter_aspects]
             filter_skills_test = params[:filter_skills].any? {|s| jobSkills.key? s}
-            @matchJobs.push job if (jobSkills <= @seekSkills &&! filter_skills_test && inSales && outSales && langMatch && certMatch && educationMatch && metroMatch)
+            aspects_test = params[:filter_aspects].any? {|s| jobApects.key? s}
+            @matchJobs.push job if ( matchQuery &&! filter_skills_test  &&! aspects_test)
+          elsif params[:filter_aspects]
+            aspects_test = params[:filter_aspects].any? {|s| jobApects.key? s}
+            @matchJobs.push job if ( matchQuery &&! aspects_test)
+          elsif params[:filter_skills]
+            filter_skills_test = params[:filter_skills].any? {|s| jobSkills.key? s}
+            @matchJobs.push job if ( matchQuery &&! filter_skills_test)
           else
-            @matchJobs.push job if (jobSkills <= @seekSkills && inSales && outSales && langMatch && certMatch && educationMatch && metroMatch)
+            @matchJobs.push job if (matchQuery)
           end    
         end
         @matchJobs = Kaminari.paginate_array(@matchJobs).page(params[:page]).per(10) 
