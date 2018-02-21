@@ -511,6 +511,8 @@
       }
 
       ckbutton.on('click',function(){
+        prospectingCheck();
+        
         // console.log("tapped");
         var childCheck = $(this).find("[type='checkbox']")
         // console.log(childCheck.prop('id'));
@@ -519,7 +521,7 @@
           if (childCheck.is(":checked")) {
             childCheck.prop('checked', false);
             $(this).removeClass("ck-button_bg"); 
-
+            // prospectingCheck();
               if (childCheck.prop('id') == "job_driversLicence") {
                 $('#job_hasVehicle').prop("disabled", true).parent().addClass("disabled-button_bg");
               }
@@ -545,6 +547,7 @@
             }else{
               childCheck.prop('checked', true);
               $(this).addClass("ck-button_bg");
+
               if (childCheck.prop('id') == "job_driversLicence") {
                 $('#job_hasVehicle').prop("disabled", false).parent().removeClass("disabled-button_bg");
               }
@@ -673,4 +676,32 @@
       });
 
     } );
+
+
+      var prospecting = $('#job_AspProspecting')
+      var coldCall = $('#job_AspcoldCall')
+      var doorToDoor = $('#job_AspdoorToDoor')
+      var warmLeads = $('#job_AspWarmLeads')
+      var networking = $('#job_AspNetworking')
+      function prospectingCheck() {
+          if( coldCall || doorToDoor || warmLeads || networking){
+              prospecting.parent().find("[type='checkbox']").prop('checked', true);
+              prospecting.parent().addClass("ck-button_bg");
+              prospecting.prop('onclick', 'return false');
+              console.log("prospecting checked")
+              console.log(prospecting.prop('onclick'))
+              test = prospecting.parent().find("[type='checkbox']").is(":checked")
+              console.log(test)
+           } else {
+              prospecting.parent().find("[type='checkbox']").prop('checked', false);
+              prospecting.parent().removeClass("ck-button_bg");
+              prospecting.prop('onclick', '');
+
+              console.log("prospecting un-checked")
+              console.log(prospecting.prop('onclick'))
+              test = prospecting.parent().find("[type='checkbox']").is(":checked")
+              console.log(test)
+            }
+      };
+      prospectingCheck();
  </script>
