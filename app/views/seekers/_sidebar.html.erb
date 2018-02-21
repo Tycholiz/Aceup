@@ -48,10 +48,10 @@
           
                     <% aspects = {
                     AspProspecting: "Prospecting",
-                    AspcoldCall: "Cold Calling",
-                    AspdoorToDoor: "Door to Door",
-                    AspWarmLeads: "Customer Service",
-                    AspNetworking: "Networking",
+                    AspcoldCall: "- - Cold Calling",
+                    AspdoorToDoor: "- - Door to Door",
+                    AspWarmLeads: "- - Warm Leads",
+                    AspNetworking: "- - Networking",
                     AspPresenting: "Presenting",
                     AspClosing: "Closing",
                     AspNegotiation: "Negotiation",
@@ -105,12 +105,32 @@
         $(this).prop('selected', $(this).prop('selected') ? false : true);
         var test = $(this).val();
         var test2 = $(this).prop('selected');
-        console.log(test + test2);
+        // console.log(test + test2);
         var test3 = $(this).parent().find('select');
         // test3.multiselect("refresh"); 
-        console.log(test3);
+        // console.log(test3);
         return false;
       });
          
     });
+
+      // $('#filter_aspects').on('click',function(){
+        $('#filter_aspects option[value=AspProspecting]').on('click',function(){
+        
+        // var aspects_check = $('#filter_aspects option[value=AspProspecting]').prop('selected', true);
+        var aspects_check = $(this).prop('selected');
+        if (aspects_check) {
+          console.log("aspects clicked");
+          $('#filter_aspects option[value=AspcoldCall]').prop('selected', true);
+          $('#filter_aspects option[value=AspdoorToDoor]').prop('selected', true);
+          $('#filter_aspects option[value=AspWarmLeads]').prop('selected', true);
+          $('#filter_aspects option[value=AspNetworking]').prop('selected', true);
+        } else if ( aspects_check == false) {
+          $('#filter_aspects option[value=AspcoldCall]').prop('selected', false);
+          $('#filter_aspects option[value=AspdoorToDoor]').prop('selected', false);
+          $('#filter_aspects option[value=AspWarmLeads]').prop('selected', false);
+          $('#filter_aspects option[value=AspNetworking]').prop('selected', false);
+        }
+      });
+      // $('#filter_aspects option[value=AspProspecting]').prop('selected', true);
  </script>
