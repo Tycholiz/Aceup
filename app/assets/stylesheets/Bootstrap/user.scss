@@ -805,8 +805,9 @@ html {
 /* Add this attribute to the element that needs a tooltip */
 [data-tooltip]{
   position: relative;
-  z-index: 2;
+  z-index: 10;
   cursor: pointer;
+  display: block;
 }
 
 /* Hide the tooltip content by default */
@@ -820,16 +821,23 @@ html {
 /* Position tooltip above the element */
 [data-tooltip]:before {
   position: absolute;
-  bottom: 150%;
-  top:  -700%;
-  left: 10%;
+  // bottom: 150%;
+  // top:  -700%;
   word-wrap: normal;
+  display: block;
+  white-space: pre-line;
   // white-space:normal;
-  margin-bottom: 5px;
-  margin-left: -80px;
+  // margin-bottom: 200px;
+  // margin-top: 25px;
+  // margin-left: 50px;
+  margin: 25px 0;
   padding: 7px;
-  width: 400px;
-  height: auto;
+  // width: 400px;
+  min-width: 200px;
+  max-width: 400px;
+  // height: auto;
+  min-height: 50px;
+
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
@@ -838,7 +846,7 @@ html {
   color: #fff;
   content: attr(data-tooltip);
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1.2;
   transition: all 0.8s ease;
 }
@@ -846,8 +854,8 @@ html {
 /* Triangle hack to make tooltip look like a speech bubble */
 [data-tooltip]:after {
   position: absolute;
-  bottom: 150%;
-  left: 10%;
+  // bottom: 150%;
+  // left: 10%;
   margin-left: -5px;
   width: 0;
   border-top: 5px solid #000;
@@ -1127,18 +1135,6 @@ html {
     margin-left:10%;
     width: 80%;
   }
-      [data-tooltip]:before {
-      position: absolute;
-      top:  auto;
-      left: -75px;
-      margin-left: 15%;
-      margin-right: 15%;
-      width: 200px;
-      max-height: 200px;
-      min-height: 50px;
-
-    }
-
 }
 
 @media screen and (max-width: 800px) {
@@ -1256,6 +1252,11 @@ html {
       margin-bottom: -50px;
       min-width: 200px;
       font-size: 18px;
+    }
+    [data-tooltip]:before {
+        margin-right: 100px;
+        font-size: 14px;
+        left: -10%;
 
     }
 
