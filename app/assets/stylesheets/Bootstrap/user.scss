@@ -883,9 +883,9 @@ html {
 /* Position tooltip above the element */
 [data-tooltip-aspect]:before {
   position: absolute;
-  bottom: 150%;
-  top:  -700%;
-  left: 10%;
+  // bottom: 150%;
+  // top:  -700%;
+  // left: 10%;
   // word-wrap: normal
   // white-space:normal;
   display: block;
@@ -894,8 +894,9 @@ html {
   margin-bottom: 5px;
   margin-left: 150px;
   padding: 7px;
-  width: 200px;
-  min-height: 200px;
+  // width: 200px;
+  min-height: 50px;
+  min-width: 100px;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
@@ -1251,7 +1252,7 @@ html {
     }
     [data-tooltip-aspect]:before {
       margin-left: 5px;
-      width: 150px;
+      // width: 150px;
       // bottom: 150%;
       // top:  -700%;
       margin-bottom: -50px;

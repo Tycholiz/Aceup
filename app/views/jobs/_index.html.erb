@@ -40,8 +40,10 @@
                                 @jobApects = job.slice(*aspects_options).select {|key, value| value == true }
                                aspects_list = aspects.select{ |k ,v| @jobApects.has_key? k}.map {|k, v| v} 
                             %>
+
+                                <% if aspects_list.length > 0 %>
                                 <span data-tooltip-aspect= "Job Aspects:&#xa;<% aspects_list.each do |asp| %><%= asp %>&#xa; <% end %>"><%=  image_tag "up_logotrans_red.png", class: "aspect_hover_img" %></span>
-                                
+                                <% end %>
             
                            <div style="clear:both;"></div>
                             <%= button_to "View Job",job_path(job), :method => "get",  class: "btn btn-default", id: "save_jobs_button" %>
