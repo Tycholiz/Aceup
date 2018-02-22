@@ -896,7 +896,7 @@ html {
   padding: 7px;
   // width: 200px;
   min-height: 50px;
-  min-width: 200px;
+  min-width: 400px;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
@@ -1253,10 +1253,10 @@ html {
     }
     [data-tooltip-aspect]:before {
       margin-left: 5px;
-      // width: 150px;
-      // bottom: 150%;
-      // top:  -700%;
       margin-bottom: -50px;
+      min-width: 200px;
+      font-size: 18px;
+
     }
 
   }
