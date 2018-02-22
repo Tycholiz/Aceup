@@ -406,16 +406,20 @@
       
 
 
-      var inSalesHard = "<%= @job.inSalesSoft %>";
-      var inSalesSoft =  "<%= @job.inSalesHard %>";
-      var outSalesHard = "<%= @job.outSalesSoft %>";
-      var outSalesSoft = "<%= @job.outSalesHard %>";
+      var inSalesHard = "<%= @job.inSalesHard %>";
+      var inSalesSoft =  "<%= @job.inSalesSoft %>";
+      var outSalesHard = "<%= @job.outSalesHard %>";
+      var outSalesSoft = "<%= @job.outSalesSoft %>";
 
 
       var inSalesSoft_start = (inSalesSoft ? inSalesSoft  : 0);
+      console.log("in - soft start => "+ inSalesSoft_start)
       var inSalesHard_start = (inSalesHard ? inSalesHard : 1);
+      console.log("in - hard start => "+ inSalesHard_start)
       var outSalesSoft_start = (outSalesSoft ? outSalesSoft : 0);
+      console.log("out - soft start => "+ outSalesSoft_start)
       var outSalesHard_start = (outSalesHard ? outSalesHard: 1);
+      console.log("out - hard start => "+ outSalesHard_start)
 
       $("#job_inSalesSoft").val(inSalesSoft_start);
       $("#job_inSalesHard").val(inSalesHard_start);
@@ -431,7 +435,7 @@
             min: 0,
             max: 10,
             step: 0.5,
-            values: [inSalesSoft_start, inSalesHard_start],
+            values: [inSalesHard_start, inSalesSoft_start],
         slide: function( event, ui ) {
           if ( ( ui.values[ 0 ] +  0.5) >= ui.values[ 1 ] ) {
             return false;
@@ -457,7 +461,7 @@
             min: 0,
             max: 10,
             step: 0.5,
-            values: [outSalesSoft_start, outSalesHard_start],
+            values: [outSalesHard_start, outSalesSoft_start],
         slide: function( event, ui ) {
           if ( ( ui.values[ 0 ] +  0.5) >= ui.values[ 1 ] ) {
             return false;
