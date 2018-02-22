@@ -909,22 +909,6 @@ html {
   transition: all 0.8s ease;
 }
 
-// /* Triangle hack to make tooltip look like a speech bubble */
-// [data-tooltip-aspect]:after {
-//   position: absolute;
-//   bottom: 150%;
-//   left: 10%;
-//   // margin-left: -5px;
-//   width: 0;
-//   border-top: 5px solid #000;
-//   border-top: 5px solid hsla(0, 0%, 20%, 0.9);
-//   border-right: 5px solid transparent;
-//   border-left: 5px solid transparent;
-//   content: " ";
-//   font-size: 0;
-//   line-height: 0;
-// }
-
 /* Show tooltip content on hover */
 [data-tooltip-aspect]:hover:before,
 [data-tooltip-aspect]:hover:after {
@@ -1264,6 +1248,13 @@ html {
     }
     .aspect_hover {
       margin-right: 15px;
+    }
+    [data-tooltip-aspect]:before {
+      margin-left: 5px;
+      width: 150px;
+      // bottom: 150%;
+      // top:  -700%;
+      margin-bottom: -50px;
     }
 
   }

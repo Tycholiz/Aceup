@@ -23,26 +23,7 @@
                   </div>
 
             		</br>
-                    <h3>Sales Skills:</h3>
 
-                    <% selectSkills = {
-                    # driversLicence: "Has drivers license",
-                    # hasVehicle:"Has vehicle",                   
-                    coldCall: "Cold Calling",                  
-                    doorToDoor: "Door to Door",
-                    custService: "Customer Service",                 
-                    acctManagment: "Account Management",                 
-                    negotiation: "Negotiation",   
-                    # leadership: "Leadership",    
-                    closing: "Closing", 
-                    } 
-
-                    filter_skills_options = selectSkills.select{ |k ,v| @seekSkills.has_key? k}.map {|k, v| [v, k]} 
-                    %>
-
-                      <%= select_tag :filter_skills, options_for_select(filter_skills_options, selected: params[:filter_skills]),{:multiple => true, class: "form-control multi-select"} %>
-
-                    </br>
                     <h3>Job Aspects:</h3>
 
           
