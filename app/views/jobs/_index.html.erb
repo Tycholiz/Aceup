@@ -17,32 +17,11 @@
                             </div>
                         </div>
                         <div class="job_show_text">
-                            <% aspects = {
-                                AspProspecting: "Prospecting",
-                                AspcoldCall: "Cold Calling",
-                                AspdoorToDoor: "Door to Door",
-                                AspWarmLeads: "Warm Leads",
-                                AspNetworking: "Networking",
-                                AspPresenting: "Presenting",
-                                AspClosing: "Closing",
-                                AspNegotiation: "Negotiation",
-                                AspacctManagment: "Management",
-                                AspB2B: "B2B",
-                                AspB2C: "B2C",
-                                AspInSales: "Inside Sales",
-                                AspOutSales: "Outside Sales",
-                                AspInbound: "Inbound Sales",
-                                AspOutbound: "Outbound Sales",
-                                AspOvernight: "Overnight Travel",
-                                AspLocal: "Local Travel",
-                              }
-                                aspects_options = aspects.map {|k, v| k} 
-                                @jobApects = job.slice(*aspects_options).select {|key, value| value == true }
-                               aspects_list = aspects.select{ |k ,v| @jobApects.has_key? k}.map {|k, v| v} 
-                            %>
 
-                                <% if aspects_list.length > 0 %>
-                                <span data-tooltip-aspect= "This position requires industry related experience:&#xa;<% aspects_list.each do |asp| %><%= asp %>&#xa; <% end %>"><%=  image_tag "faq.png", class: "aspect_hover_img" %></span>
+
+                                <% if job.industry_related  %>
+                                <span data-tooltip-aspect= "This position requires industry related experience:&#xa;<%=  job.industry_related   %>"><%=  image_tag "faq.png", class: "aspect_hover_img" %></span>
+
                                 <% end %>
             
                            <div style="clear:both;"></div>

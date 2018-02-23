@@ -876,7 +876,7 @@ html {
 ///////////////////////
 [data-tooltip-aspect]{
   position: relative;
-  z-index: 2;
+  z-index: 10;
   cursor: pointer;
 }
 
@@ -913,7 +913,7 @@ html {
   color: #fff;
   content: attr(data-tooltip-aspect);
   text-align: center;
-  font-size: 28px;
+  font-size: 20px;
   font-weight: 400;
   line-height: 1.2;
   transition: all 0.8s ease;
@@ -1251,7 +1251,7 @@ html {
       margin-left: 5px;
       margin-bottom: -50px;
       min-width: 200px;
-      font-size: 18px;
+      font-size: 14px;
     }
     [data-tooltip]:before {
         margin-right: 100px;

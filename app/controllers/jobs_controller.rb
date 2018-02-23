@@ -154,6 +154,8 @@ class JobsController < ApplicationController
       :AspOutbound,
       :AspOvernight,
       :AspLocal,
+      :industry_related,
+      :title_additionalInfo,
       :languages => [], :certifications => []
     )                             
   end
