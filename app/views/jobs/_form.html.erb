@@ -451,6 +451,7 @@
           $("#job_inSalesHard").val(ui.values[0]);
           console.log("hard " + ui.values[0]);
           console.log("soft" + ui.values[1]);
+          if( ui.values[1]  > 0) {checkBox("AspInSales")};
         }
       });
 
@@ -476,6 +477,8 @@
           $("#job_outSalesHard").val(ui.values[0]);
           console.log("hard " + ui.values[0]);
           console.log("soft" + ui.values[1]);
+          
+        if( ui.values[1]  > 0) {checkBox("AspOutSales")};
         }
       });
       var checkbox = $(".ck-button :checkbox");
@@ -529,26 +532,18 @@
                   childCheck.prop('checked', false);
                   $(this).removeClass("ck-button_bg"); 
                   prospectingCheck();
-                  // console.log("status --> " + childCheck.prop('checked'));
-                  // prospectingCheck();
                     if (childCheck.prop('id') == "job_driversLicence") {
                       $('#job_hasVehicle').prop("disabled", true).parent().addClass("disabled-button_bg");
                     }
                     if (childCheck.prop('id') == "job_salary") {
                       
                         $('#hiddenSalary').val("100% Commission");
-                        // HourlyButton.find("[type='checkbox']").prop('checked', true);
-                        // HourlyButton.addClass("ck-button_bg");
-                        // console.log("Salary clicked, hourly made true");
                         testSal = $('#hiddenSalary').val();
                         console.log("salary variable "+ testSal);
                       } 
                       if (childCheck.prop('id') == "job_hourly") {
                       
                         $('#hiddenSalary').val("100% Commission");
-                        // SalaryButton.find("[type='checkbox']").prop('checked', true);
-                        // SalaryButton.addClass("ck-button_bg");
-                        // console.log("Hourly clicked, salary made true");
                         testSal = $('#hiddenSalary').val();
                         console.log("salary variable "+ testSal);
                       } 
@@ -557,6 +552,7 @@
                     childCheck.prop('checked', true);
                     $(this).addClass("ck-button_bg");
                     prospectingCheck();
+                    buttonLink(childCheck) 
                     // console.log("status --> " + childCheck.prop('checked'));
 
                     if (childCheck.prop('id') == "job_driversLicence") {
@@ -608,77 +604,7 @@
           $('label[for=job_inSales]').text("Inside Sales (years)")
         }
       };
-      // var tagbutton = $("#tags_button");
 
-      //  $('#tags_build').keypress(function (e) {
-      //    var key = e.which;
-      //    if(key == 13)  // the enter key code
-      //     {
-      //       console.log("ENTER")
-      //       tagbutton.trigger("click")
-      //       return false;  
-      //     }
-      //   });
-
-
-      // $(tagbutton).on('click',function(){
-      //   // console.log("tags clicked");
-      //   var tags_result = $('#tags_result');
-      //   var tags_build = $('#tags_build').val()
-      //   tags_array.push(tags_build);
-      //   // test = JSON.stringify(tags_array)
-      //   // $('#job_benefits').val(test);
-      //   // $('#hiddenTags').val(test);
-      //   var test_hidden = $('#job_benefits').val();
-      //   console.log(tags_array);
-      //   // $('<p>'+ tags_array + '</p>').appendTo(tags_result)
-      //   $('<div class="job_edit_skills"><h3 data-tooltip="Delete tag?">'+ tags_build +'</h3></div>').appendTo(tags_result)
-      // });
-      
-
-      //   $(document).delegate(".job_edit_skills", 'click', function() {
-      //   var h3 =  $(this).find("h3").text();
-      //   $(this).remove();
-      //   console.log("h3 text " + h3);
-      //   console.log("array before");
-      //   console.log(tags_array);
-      //   test = tags_array.indexOf(h3);
-      //   console.log(test);
-      //   // tags_array = tags_array.splice(test, 1);
-      //   tags_array = tags_array.filter(function(item) { 
-      //         return item !== h3
-      //     })
-      //   console.log("array after");
-      //   console.log(tags_array);
-      //   $('#job_benefits').val(tags_array);
-      // });  
-
-        // $('#employer_job_submit_button').on('click',function(e){
-          // e.preventDefault();
-          // var form_data = $('form').serialize()
-          // $.ajax({
-          //   url:"/jobs",
-          //   type:'POST',
-          //   dataType:'json',
-          //   data:{
-          //     job: {
-          //       benefits: tags_array
-          //           }
-          //         }
-          //     });
-          //   });
-
-      //     $.ajax({
-      //       url:"/jobs/<%= @job.id %>",
-      //       type:'PATCH',
-      //       dataType:'json',
-      //       data:{
-      //         job: {
-      //           benefits: tags_array
-      //         }
-      //       }
-      //   });
-      // });
         $('#employer_job_submit_button').submit(function(e){
           // If a submit is requested, and it's done via keyboard enter, stop it.
           if ((e.keyCode || e.which) == 13) { // Try to use normalized enter key code
@@ -688,7 +614,47 @@
       });
 
     } );
+      function buttonLink(check) {
+        check = check.prop("id");
+        // console.log("button link triggered " + check)
 
+        Object.keys(button_link_list).forEach(function(key) {
+          jobKey = "job_" + key
+          if ("job_" + button_link_list[key] == check) {
+            checkBox(key);
+          // } else if (jobKey == check) {
+          //   checkBox(button_link_list[key]);
+          } else {
+            // console.log("no match");
+          }
+        });
+      };
+      function checkBox(id){
+          id = $('#job_'+id);
+          id.parent().find("[type='checkbox']").prop('checked', true);
+          id.parent().addClass("ck-button_bg");
+          // console.log("checkbox function triggered " + id.prop("id"));
+
+        };
+      var button_link_list = {
+                              // "AspProspecting": "Prospecting",
+                              "AspcoldCall": "coldCall",
+                              "AspdoorToDoor": "doorToDoor",
+                              // "AspWarmLeads": "Warm Leads",
+                              // "AspNetworking": "Networking",
+                              "AspPresenting": "presenting",
+                              "AspClosing": "closing",
+                              "AspNegotiation": "negotiation",
+                              "AspacctManagment": "acctManagment",
+                              "AspB2B": "B2B",
+                              "AspB2C": "B2C",
+                              "AspInSales": "Inside Sales",
+                              "AspOutSales": "Outside Sales",
+                              "AspInbound": "Inbound Sales",
+                              "AspOutbound": "Outbound Sales",
+                              "AspOvernight": "Overnight Travel",
+                              "AspLocal": "driversLicence",
+                            }
 
       var prospecting = $('#job_AspProspecting')
       // var prospecting_disabled
@@ -702,23 +668,11 @@
 
               prospecting.parent().find("[type='checkbox']").prop('checked', true);
               prospecting.parent().addClass("ck-button_bg");
-              // prospecting.prop('onclick', 'return false');
               prospecting.prop("disabled", true);
-              // console.log("prospecting checked")
-              // console.log(prospecting.prop('onclick'))
               test = prospecting.parent().find("[type='checkbox']").is(":checked")
-              // var prospecting_disabled = true
-              // console.log(test)
-           } else {
+
             prospecting.prop("disabled", false);
-           //    prospecting.parent().find("[type='checkbox']").prop('checked', false);
-           //    prospecting.parent().removeClass("ck-button_bg");
-           //    // prospecting.prop('onclick', '');
-           //    prospecting.prop("disabled", false);
-           //    console.log("prospecting un-checked")
-           //    // console.log(prospecting.prop('onclick'))
-           //    test = prospecting.parent().find("[type='checkbox']").is(":checked")
-           //    // console.log(test)
+
             }
       };
       prospectingCheck();
