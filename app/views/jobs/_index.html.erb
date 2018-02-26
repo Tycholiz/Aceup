@@ -19,7 +19,7 @@
                         <div class="job_show_text">
 
 
-                                <% if job.industry_related  %>
+                                <% if job.industry_related && job.industry_related.length > 0  %>
                                 <span data-tooltip-aspect= "This position requires industry related experience:&#xa;<%=  job.industry_related   %>"><%=  image_tag "faq.png", class: "aspect_hover_img" %></span>
 
                                 <% end %>
