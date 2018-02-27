@@ -1,57 +1,39 @@
-<div class="landing_img_box">
-  <div class="landing_img_box_text">
-    <span>Welcome to the future</span></br>
-    <span>of job hunting.</span>
+<div class="employer_landing_box">
+  <h3>Employer?</h3>
+  <%= link_to("Post Job", '/pages/employer_landing', class: "btn btn-default", id: "employer_landing_button" )%>
   </div>
+
+
+<div class="jumbotron hero_landing" style="margin-top:-40px; clear:both;">
+        <div class="container">
+            <div class="row">
+                <div class=" get-it landing_img">
+                	<%= image_tag("aceupco_logo_TRANS.png") %>
+                  
+                    <p id="sub_title_text" class="sub_title">welcome to the future</p>
+                    <p class="sub_title">of job hunting.</p>
+                   </div>
+                <div class="row landing_icon_row">
+                    <div class="col-md-4 col-sm-6 item landing_icon_container"><%= image_tag "HuntLand1.png", class: "icon landing_icon" %>
+                        <h3 class="name">Mark off your qualifications.</h3>
+                    </div>
+                    <div class="col-md-4 col-sm-6 item landing_icon_container"><%= image_tag "HuntLand2.png", class: "icon landing_icon" %>
+                        <h3 class="name">View only jobs custom to your experience.</h3>
+                  
+                    </div>
+                    <div class="col-md-4 col-sm-6 item landing_icon_container"><%= image_tag "HuntLand3.png", class: "icon landing_icon" %>
+                        <h3 class="name">Refine your list by personal preferences.</h3>
+                    </div>
+                 </div>
+
+                <div class="tagline">
+                    <p>Let's create your profile in <span style="color: #000;">90 seconds.</span></p>               
+                </div>
+                
+            </div>
+        </div>
 </div>
 
-<div class="landing_color_box">
-  <div class="landing_box_inner">
-    <div class="landing_color_box_text">
-      <span>01.</span></br>
-      <span>Mark off your qualifications</span></br>
-      <span>in 90 seconds.</span></br>
-    </div>
-    <div class="landing_color_box_img">
-      <%= image_tag "HuntLand1.png" %>
-    </div>
-  </div>
-  
-</div>
-<div class="landing_color_box_dark">
-  <div class="landing_box_inner">
-    <div class="landing_color_box_img_dark">
-      <%= image_tag "HuntLand2.png" %>
-    </div>
-    <div class="landing_color_box_text_dark">
-      <span>02.</span></br>
-      <span>View only jobs</span></br>
-      <span>custom to your experience.</span></br>
-    </div>
-  </div>
-</div>
-
-<div class="landing_color_box">
-  <div class="landing_box_inner">
-    <div class="landing_color_box_text">
-      <span>03.</span></br>
-      <span>Refine your list by personal</span></br>
-      <span>preferences.</span></br>
-    </div>
-    <div class="landing_color_box_img">
-      <%= image_tag "HuntLand3.png" %>
-    </div>
-  </div>
-</div>
-
-<div class="landing_color_90sec">
-    <div class="landing_color_box_text_90sec">
-      <span>Let's take</span> <span style="color:rgb(49, 148, 64)
-;">90 seconds to</span></br>
-      <span>create your profile.</span></br>
-    </div>
-  </div>
-</div>
   
     <% @seeker = Seeker.new %>
     <%= form_for @seeker do |f| %>

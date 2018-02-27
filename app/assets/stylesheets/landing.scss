@@ -1,4 +1,108 @@
+////////////////////  New Landing Stuff Feb 27 ///////////////////////
+.landing_img_box{
+  height: 500px;
+  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ),image-url("landing_main.png") no-repeat center center;
+  background-size: cover;
 
+}
+
+.landing_img_box_text {
+  width: 70%;
+  height: auto;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 8%;
+}
+
+.landing_img_box_text span{
+  font-size: 80px;
+  font-weight: 800;
+  font-family: poppins-semibold, poppins, sans-serif;
+  color: rgb(216, 216, 216);
+}
+
+.landing_box_inner{
+  width: 1000px;
+  margin: 0 auto;
+}
+.landing_color_box {
+  height: 400px;
+  background-color:  rgb(216, 216, 216);
+  padding-top: 6%;
+  padding-left: 40px;
+  padding-right: 40px;
+
+}
+.landing_color_box_text {
+  float: left;
+  width: 70%;
+
+}
+.landing_color_box_text span{
+  color: #000;
+  font-weight: 700;
+  font-family: poppins-semibold, poppins, sans-serif;
+  font-size: 45px;
+}
+.landing_color_box_img {
+  float: right;
+  // max-width: 30%;
+}
+.landing_color_box_img img {
+  height: 190px;
+  width: 190px;
+  -webkit-filter: contrast(100);
+  filter: contrast(100);
+}
+.landing_color_box_dark {
+  height: 450px;
+  background-color: rgb(81, 81, 81);
+  padding-top: 6%;
+  padding-left: 40px;
+  padding-right: 40px;
+
+}
+.landing_color_box_text_dark {
+  float: right;
+  // width: 70%;
+
+}
+.landing_color_box_text_dark span{
+  color: #fff;
+  font-weight: 700;
+  font-family: poppins-semibold, poppins, sans-serif;
+  font-size: 45px;
+}
+.landing_color_box_img_dark {
+  float: left;
+}
+.landing_color_box_img_dark img {
+  height: 190px;
+  width: 190px;
+  -webkit-filter: brightness(0) invert(1);
+  filter: brightness(0) invert(1);
+}
+
+.landing_color_90sec {
+  height: 400px;
+  background-color: #000;
+  padding: 9% 40px;
+  margin: 40px 0;
+}
+
+.landing_color_box_text_90sec {
+  width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.landing_color_box_text_90sec span{
+  color: #fff;
+  font-weight: 700;
+  font-family: poppins-semibold, poppins, sans-serif;
+  font-size: 60px;
+  }
+///////////////////////////////////////////////////////////////////////
 .hero_landing {
   background-color: #fff;
   /*background-size:cover;*/
