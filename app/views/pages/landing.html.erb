@@ -1,183 +1,184 @@
-<div class="landing_img_box">
-  <div class="landing_img_box_text">
-    <span>Welcome to the future</span></br>
-    <span>of job hunting.</span>
-  </div>
-</div>
 
-<div class="landing_color_box">
-  <div class="landing_box_inner">
-    <div class="landing_color_box_text">
-      <span>01.</span></br>
-      <span>Mark off your qualifications</span></br>
-      <span>in 90 seconds.</span></br>
+ <div class="landing_img_box_text">
+      <span>Welcome to the future</span></br>
+      <span>of job hunting.</span>
     </div>
-    <div class="landing_color_box_img">
-      <%= image_tag "HuntLand1.png" %>
-    </div>
+  <div class="landing_img_box">
+   
   </div>
-  
-</div>
-<div class="landing_color_box_dark">
-  <div class="landing_box_inner">
-    <div class="landing_color_box_img_dark">
-      <%= image_tag "HuntLand2.png" %>
-    </div>
-    <div class="landing_color_box_text_dark">
-      <span>02.</span></br>
-      <span>View only jobs</span></br>
-      <span>custom to your experience.</span></br>
-    </div>
-  </div>
-</div>
 
-<div class="landing_color_box">
-  <div class="landing_box_inner">
-    <div class="landing_color_box_text">
-      <span>03.</span></br>
-      <span>Refine your list by personal</span></br>
-      <span>preferences.</span></br>
+  <div class="landing_color_box">
+    <div class="landing_box_inner">
+      <div class="landing_color_box_text">
+        <span>01.</span></br>
+        <span>Mark off your qualifications</span></br>
+        <span>in 90 seconds.</span></br>
+      </div>
+      <div class="landing_color_box_img">
+        <%= image_tag "HuntLand1.png" %>
+      </div>
     </div>
-    <div class="landing_color_box_img">
-      <%= image_tag "HuntLand3.png" %>
+    
+  </div>
+  <div class="landing_color_box_dark">
+    <div class="landing_box_inner">
+      <div class="landing_color_box_img_dark">
+        <%= image_tag "HuntLand2.png" %>
+      </div>
+      <div class="landing_color_box_text_dark">
+        <span>02.</span></br>
+        <span>View only jobs</span></br>
+        <span>custom to your experience.</span></br>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="landing_color_90sec">
-    <div class="landing_color_box_text_90sec">
-      <span>Let's take</span> <span style="color:rgb(49, 148, 64)
-;">90 seconds to</span></br>
-      <span>create your profile.</span></br>
+  <div class="landing_color_box">
+    <div class="landing_box_inner">
+      <div class="landing_color_box_text">
+        <span>03.</span></br>
+        <span>Refine your list by personal</span></br>
+        <span>preferences.</span></br>
+      </div>
+      <div class="landing_color_box_img">
+        <%= image_tag "HuntLand3.png" %>
+      </div>
     </div>
   </div>
-</div>
-  
-    <% @seeker = Seeker.new %>
-    <%= form_for @seeker do |f| %>
-<div class="register-photo" >
-      <div class="landing_form-container" id="first_seeker" >
 
-            
-              <div class="job_header_img">
-              <%= image_tag "JH_form/ProfileEditor.png" %>
-            </div>
+  <div class="landing_color_90sec">
+      <div class="landing_color_box_text_90sec">
+        <span>Let's take</span> <span style="color:rgb(49, 148, 64)
+  ;">90 seconds to</span></br>
+        <span>create your profile.</span></br>
+      </div>
+    </div>
+ 
+    
+      <% @seeker = Seeker.new %>
+      <%= form_for @seeker do |f| %>
+  <div class="register-photo" >
+        <div class="landing_form-container" id="first_seeker" >
 
+              
+                <div class="job_header_img">
+                <%= image_tag "JH_form/ProfileEditor.png" %>
+              </div>
+
+                <div class="editor">
+                    <h2>
+                      <%= image_tag "JH_form/Skills.png" %>
+                      Sales Skills
+                    </h2>
+                  </div>
+                <div class="row">
+                  <div class="ck-button">
+                    <%= f.label :coldCall, "Cold Calling" %><br>
+                    <%= f.check_box :coldCall %>
+                  </div>
+                  <div class="ck-button">
+                    <%= f.label :doorToDoor, "Door to Door" %><br>
+                    <%= f.check_box :doorToDoor %>
+                  </div>
+                  <div class="ck-button">
+                    <%= f.label :custService, "Customer Service" %><br>
+                    <%= f.check_box :custService %>
+                  </div>
+                  <div class="ck-button">
+                    <%= f.label :acctManagment, "Account Management" %><br>
+                    <%= f.check_box :acctManagment %>
+                  </div>
+                  <div class="ck-button">
+                    <%= f.label :negotiation %><br>
+                    <%= f.check_box :negotiation %>
+                  </div>
+                  <div class="ck-button">
+                    <%= f.label :presenting %><br>
+                    <%= f.check_box :presenting %>
+                  </div>
+                  <div class="ck-button">
+                    <%= f.label :leadership, "Leading a Team" %><br>
+                    <%= f.check_box :leadership %>
+                  </div>
+                  <div class="ck-button">
+                    <%= f.label :closing %><br>
+                    <%= f.check_box :closing %>
+                  </div>
+              
+                  <div class="ck-button">
+                    <%= f.label :commBased, "Commission-Based Sales"  %><br>
+                    <%= f.check_box :commBased %>
+                  </div>
+    
+          </div>
+    </div>
+  </div>
+  <div class="register-photo" >
+        <div class="landing_form-container" id="second_seeker" >
               <div class="editor">
-                  <h2>
-                    <%= image_tag "JH_form/Skills.png" %>
-                    Sales Skills
-                  </h2>
-                </div>
-              <div class="row">
-                <div class="ck-button">
-                  <%= f.label :coldCall, "Cold Calling" %><br>
-                  <%= f.check_box :coldCall %>
-                </div>
-                <div class="ck-button">
-                  <%= f.label :doorToDoor, "Door to Door" %><br>
-                  <%= f.check_box :doorToDoor %>
-                </div>
-                <div class="ck-button">
-                  <%= f.label :custService, "Customer Service" %><br>
-                  <%= f.check_box :custService %>
-                </div>
-                <div class="ck-button">
-                  <%= f.label :acctManagment, "Account Management" %><br>
-                  <%= f.check_box :acctManagment %>
-                </div>
-                <div class="ck-button">
-                  <%= f.label :negotiation %><br>
-                  <%= f.check_box :negotiation %>
-                </div>
-                <div class="ck-button">
-                  <%= f.label :presenting %><br>
-                  <%= f.check_box :presenting %>
-                </div>
-                <div class="ck-button">
-                  <%= f.label :leadership, "Leading a Team" %><br>
-                  <%= f.check_box :leadership %>
-                </div>
-                <div class="ck-button">
-                  <%= f.label :closing %><br>
-                  <%= f.check_box :closing %>
-                </div>
-            
-                <div class="ck-button">
-                  <%= f.label :commBased, "Commission-Based Sales"  %><br>
-                  <%= f.check_box :commBased %>
-                </div>
-  
-        </div>
-  </div>
-</div>
-<div class="register-photo" >
-      <div class="landing_form-container" id="second_seeker" >
-            <div class="editor">
-            <h2>
-               <%= image_tag "JH_form/Experience.png" %>
-                Sales Experience
-            </h2>
-          </div>  
-          <div class="row">
-            <div >
-               <%= f.label :inSales, "Inside Sales (years)"%>
-               <span data-tooltip= "This is any sales role that is carried out at the employer’s place of business. If customers are coming into your store, if you are closing sales over the phone, or if you are selling over email or the internet, you are doing Inside Sales."}><%= image_tag "tooltip.svg", class: "info-tip" %></span>
-             
+              <h2>
+                 <%= image_tag "JH_form/Experience.png" %>
+                  Sales Experience
+              </h2>
+            </div>  
+            <div class="row">
+              <div >
+                 <%= f.label :inSales, "Inside Sales (years)"%>
+                 <span data-tooltip= "This is any sales role that is carried out at the employer’s place of business. If customers are coming into your store, if you are closing sales over the phone, or if you are selling over email or the internet, you are doing Inside Sales."}><%= image_tag "tooltip.svg", class: "info-tip" %></span>
+               
 
+
+                  <br>
+                <div id="inSales_slider" class="slider">
+                  <div id="inSales_handle" class="ui-slider-handle"></div>
+                </div>
+                <p class='error'><%= show_errors(@seeker, :inSales) %></p>
+                <%= f.hidden_field :inSales %>
+                <div class="row"> 
+                  <div class="ck-button">
+                    <%= f.label :inboundSales, "Inbound Sales" %><br>
+                    <%= f.check_box :inboundSales %>
+                  </div>
+                  <div class="ck-button">
+                    <%= f.label :outboundSales, "Outbound Sales" %><br>
+                    <%= f.check_box :outboundSales %>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <%= f.label :outSales, "Outside Sales (years)" %>
+                <span data-tooltip= "This is any sales role that is carried out at the client’s place of business. If you are prospecting for new clients, or receiving warm leads and closing those deals in an environment other than your own office, you are doing Outside Sales."}><%= image_tag "tooltip.svg", class: "info-tip" %></span>
 
                 <br>
-              <div id="inSales_slider" class="slider">
-                <div id="inSales_handle" class="ui-slider-handle"></div>
-              </div>
-              <p class='error'><%= show_errors(@seeker, :inSales) %></p>
-              <%= f.hidden_field :inSales %>
-              <div class="row"> 
-                <div class="ck-button">
-                  <%= f.label :inboundSales, "Inbound Sales" %><br>
-                  <%= f.check_box :inboundSales %>
+                <div id="outSales_slider" class="slider">
+                  <div id="outSales_handle" class="ui-slider-handle"></div>
                 </div>
-                <div class="ck-button">
-                  <%= f.label :outboundSales, "Outbound Sales" %><br>
-                  <%= f.check_box :outboundSales %>
-                </div>
+                <p class='error'><%= show_errors(@seeker, :outSales) %></p>
+                <%= f.hidden_field :outSales %>
               </div>
-            </div>
-            <div>
-              <%= f.label :outSales, "Outside Sales (years)" %>
-              <span data-tooltip= "This is any sales role that is carried out at the client’s place of business. If you are prospecting for new clients, or receiving warm leads and closing those deals in an environment other than your own office, you are doing Outside Sales."}><%= image_tag "tooltip.svg", class: "info-tip" %></span>
-
-              <br>
-              <div id="outSales_slider" class="slider">
-                <div id="outSales_handle" class="ui-slider-handle"></div>
+              <div class="ck-button">
+                <%= f.label :B2B, "B2B", data: {tooltip: "Business-to-Business." } %><br>
+                <%= f.check_box :B2B %>
               </div>
-              <p class='error'><%= show_errors(@seeker, :outSales) %></p>
-              <%= f.hidden_field :outSales %>
-            </div>
-            <div class="ck-button">
-              <%= f.label :B2B, "B2B", data: {tooltip: "Business-to-Business." } %><br>
-              <%= f.check_box :B2B %>
-            </div>
-            <div class="ck-button">
-                <%= f.label :B2C, "B2C", data: {tooltip: "Business-to-Consumer." } %><br>
-                <%= f.check_box :B2C %>
-            </div>
-        </div>
+              <div class="ck-button">
+                  <%= f.label :B2C, "B2C", data: {tooltip: "Business-to-Consumer." } %><br>
+                  <%= f.check_box :B2C %>
+              </div>
+          </div>
 
-         <div>
-            <%= f.hidden_field :temp, value: 1 %>
-            <%= f.submit "Submit", class: "btn btn-primary btn-block", id: "seeker_submit_button" %></div>
-        <% end %>
-    </div>
-</div>
-             
+           <div>
+              <%= f.hidden_field :temp, value: 1 %>
+              <%= f.submit "Submit", class: "btn btn-primary btn-block", id: "seeker_submit_button" %></div>
+          <% end %>
+      </div>
+  </div>    
 
 
-   
+     
 
- <script> 
-  <%= render(:partial => 'seekers/formjs', :formats => [:js] ) %>
+   <script> 
+    <%= render(:partial => 'seekers/formjs', :formats => [:js] ) %>
+    </script>
+  <script>
+    <%= render(:partial => 'seekers/smooth_scroll', :formats => [:js] ) %>
   </script>
-<script>
-  <%= render(:partial => 'seekers/smooth_scroll', :formats => [:js] ) %>
-</script>

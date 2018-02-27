@@ -54,6 +54,7 @@
     <% unless current_page?(root_path) %>
       <%= render 'layouts/header' %>
     <% else %>
+      <div class="landing_container">
       <%= render 'layouts/header_landing' %>
     <% end %>
       	
@@ -83,5 +84,8 @@
     <noscript>
       <img height="1" width="1" style="display:none;" alt="" src="https://dc.ads.linkedin.com/collect/?pid=238892&fmt=gif" />
     </noscript>
+    <% if current_page?(root_path) %>
+    <div>
+    <% end %>
   </body>
 </html>

@@ -1,8 +1,23 @@
 ////////////////////  New Landing Stuff Feb 27 ///////////////////////
+
+.landing_container {
+  perspective: 1px;
+  transform-style: preserve-3d;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
 .landing_img_box{
   height: 500px;
   background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ),image-url("landing_main.png") no-repeat center center;
   background-size: cover;
+
+  display: flex;
+  flex: 1 0 auto;
+  position: relative;
+  transform: translateZ(-1px) scale(2.2);
+  z-index: -1;
+  margin-top: -400px;
 
 }
 
@@ -15,7 +30,7 @@
 }
 
 .landing_img_box_text span{
-  font-size: 80px;
+  font-size: 55px;
   font-weight: 800;
   font-family: poppins-semibold, poppins, sans-serif;
   color: rgb(216, 216, 216);
