@@ -1,14 +1,14 @@
 
  <div class="landing_img_box_text">
-      <span>Welcome to the future</span></br>
-      <span>of job hunting.</span>
+      <div class="animation-element title-right"><span>Welcome to the future</span></div>
+      <div class="animation-element title-left"><span>of job hunting.</span></div>
     </div>
   <div class="landing_img_box">
    
   </div>
 
   <div class="landing_color_box">
-    <div class="landing_box_inner">
+    <div class="landing_box_inner animation-element slide-right">
       <div class="landing_color_box_text">
         <span>01.</span></br>
         <span>Mark off your qualifications</span></br>
@@ -21,7 +21,7 @@
     
   </div>
   <div class="landing_color_box_dark">
-    <div class="landing_box_inner">
+    <div class="landing_box_inner animation-element slide-left">
       <div class="landing_color_box_img_dark">
         <%= image_tag "HuntLand2.png" %>
       </div>
@@ -34,7 +34,7 @@
   </div>
 
   <div class="landing_color_box">
-    <div class="landing_box_inner">
+    <div class="landing_box_inner animation-element slide-right">
       <div class="landing_color_box_text">
         <span>03.</span></br>
         <span>Refine your list by personal</span></br>
@@ -57,7 +57,7 @@
     
       <% @seeker = Seeker.new %>
       <%= form_for @seeker do |f| %>
-  <div class="register-photo" >
+  <div class="register-photo" id="landing_forms" >
         <div class="landing_form-container" id="first_seeker" >
 
               
@@ -113,7 +113,7 @@
           </div>
     </div>
   </div>
-  <div class="register-photo" >
+  <div class="register-photo" id="landing_forms" >
         <div class="landing_form-container" id="second_seeker" >
               <div class="editor">
               <h2>
@@ -182,3 +182,46 @@
   <script>
     <%= render(:partial => 'seekers/smooth_scroll', :formats => [:js] ) %>
   </script>
+
+<script>
+  $( function() {
+
+  //window and animation items
+  var animation_elements = $.find('.animation-element');
+  var web_window = $(window);
+
+  //check to see if any animation containers are currently in view
+  function check_if_in_view() {
+    //get current window information
+    var window_height = web_window.height();
+    var window_top_position = web_window.scrollTop();
+    var window_bottom_position = (window_top_position + window_height);
+
+    //iterate through elements to see if its in view
+    $.each(animation_elements, function() {
+
+      //get the element sinformation
+      var element = $(this);
+      var element_height = $(element).outerHeight();
+      var element_top_position = $(element).offset().top;
+      var element_bottom_position = (element_top_position + element_height);
+
+      //check to see if this current container is visible (its viewable if it exists between the viewable space of the viewport)
+      if ((element_bottom_position >= window_top_position) && (element_top_position <= window_bottom_position)) {
+        element.addClass('in-view');
+      } else {
+        element.removeClass('in-view');
+      }
+    });
+
+  }
+
+  //on or scroll, detect elements in view
+  $(window).on('scroll resize', function() {
+      check_if_in_view()
+    })
+    //trigger our scroll event on initial load
+  $(window).trigger('scroll');
+
+});
+</script>
