@@ -43,7 +43,10 @@ ul.horizontal-list {
 		padding-left: 0.5em;
 		padding-right: 0.5em;
 	}
-
+	ul.horizontal-list li:hover {
+		text-shadow:  2px 2px 10px #186f1b;
+  transition: all 500ms linear;
+	}
 #li_first { border-left: none; padding-left: 0; }
 
 .header_landing_buttons{
@@ -72,14 +75,18 @@ ul.horizontal-list {
     color: #fff;
 
 }
-#header_landing_btn:hover {
+.header_landing_btn:hover {
   background: #186f1b;
+  transition: all 500ms linear;
 }
 
 #header_landing_post_btn {
     background-color: rgba(57, 63, 68, 0.89);
 }
-
+#header_landing_post_btn:hover {
+	background: #186f1b;
+	transition: all 500ms linear;
+}
 
 @media screen and (max-width: 1050px) {
 
