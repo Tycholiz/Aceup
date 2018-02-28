@@ -252,12 +252,18 @@
 });
 
   $(document).ready(function() {
-    if (document.body.offsetWidth <= 850) {
-   $("body").prepend("<%= j render partial: 'layouts/header_landing' %>");
-   console.log("old landing");
- } else {
-   $("body").prepend("<%= j render partial: 'layouts/header_landing_new' %>");
-   console.log("new landing");
- }
+   
+
+  function headerSwitch() {
+      if (document.body.offsetWidth <= 850) {
+       $("body").prepend("<%= j render partial: 'layouts/header_landing' %>");
+       console.log("old landing");
+     } else {
+       $("body").prepend("<%= j render partial: 'layouts/header_landing_new' %>");
+       console.log("new landing");
+     }
+  }
+
+ headerSwitch()
 });
 </script>
