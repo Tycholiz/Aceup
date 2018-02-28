@@ -1,5 +1,6 @@
 ////////////////////  New Landing Stuff Feb 27 ///////////////////////
 
+
 .landing_container {
   // perspective: 0.5px;
   // // transform-style: preserve-3d;
@@ -9,6 +10,10 @@
   // overflow-x: hidden;
   // overflow-y: scroll;
   // // scroll-behavior: smooth;
+    overflow-x:hidden;
+    width:100%;
+    position:relative;
+
 
 }
 
@@ -211,6 +216,89 @@
   -ms-transform: translate(0px, 0px);
   transform: translate3d(0px, 0px, 0px);
 }
+
+@media screen and (max-width: 700px) {
+
+  .landing_img_box_text {
+    width: 100%;
+    height: 200px;
+    // margin: 0 auto;
+    // text-align: center;
+    padding-top: 80px;
+    // position: absolute;
+  }
+  .landing_img_box_text span{
+    font-size: 8vw;
+  }
+  .landing_img_box{
+    height: 300px;
+    // background-size: contain;
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ),image-url("landing_mobile.png") no-repeat center center;
+    background-size: cover;
+  }
+  .landing_color_box {
+    height: 250px;
+    padding-top: 6%;
+    padding-left: 20px;
+    padding-right: 20px;
+
+  }
+  .landing_color_box_text span{
+    font-size: 6.5vw;
+    width: 50%;
+  }
+  .landing_color_box_img {
+    float: left;
+    margin-left: -25px;
+  }
+  .landing_color_box_img img {
+    height: 25vw;
+    width: 25vw;
+  }
+  .landing_color_box_dark {
+    height: 250px;
+    padding-top: 6%;
+    padding-left: 20px;
+    padding-right: 20px;
+
+  }
+  .landing_color_box_text_dark{
+    float: right;
+    height: 100%;
+    width: 60%;
+  }
+  .landing_color_box_text_dark span{
+    font-size: 6.5vw;
+  }
+  .landing_color_box_img_dark {
+    float: left;
+    height: 100%;
+  }
+  .landing_color_box_img_dark img {
+    height: 25vw;
+    width: 25vw;
+  }
+  .landing_box_inner{
+    // width: 100vw;
+    margin: 0 auto;
+    max-width: 100%
+  }
+  .landing_color_90sec {
+    height: 250px;
+    padding: 9% 20px;
+    margin: 20px 0;
+  }
+
+  .landing_color_box_text_90sec {
+    width: 90vw;
+  }
+
+  .landing_color_box_text_90sec span{
+    font-size: 7.5vw;
+    }
+
+}
+  ////////////////////  End of New Landing Stuff ///////////////////////
 ///////////////////////////////////////////////////////////////////////
 .hero_landing {
   background-color: #fff;
