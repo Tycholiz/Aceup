@@ -7,8 +7,8 @@
     <meta name="description" content="Create a profile in 90 seconds or less. Search jobs that are custom to your experience. Filter through high interest jobs."/>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:200,400,500,600,700,800">
  
     <%= favicon_link_tag 'favicon.ico' %>
     <%= javascript_include_tag 'application'%>
@@ -56,7 +56,6 @@
       <%= render 'layouts/header' %>
     <% else %>
       <div class="landing_container">
-      <%= render 'layouts/header_landing' %>
     <% end %>
       	
 
@@ -86,7 +85,7 @@
       <img height="1" width="1" style="display:none;" alt="" src="https://dc.ads.linkedin.com/collect/?pid=238892&fmt=gif" />
     </noscript>
     <% if current_page?(root_path) %>
-    <div>
+    </div>
     <% end %>
   </body>
 </html>

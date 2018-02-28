@@ -1,4 +1,5 @@
 
+ 
  <div class="landing_img_box_text">
       <div class="animation-element title-right"><span>Welcome to the future</span></div>
       <div class="animation-element title-left"><span>of job hunting.</span></div>
@@ -53,8 +54,6 @@
         <span>create your profile.</span></br>
       </div>
     </div>
- 
-    
       <% @seeker = Seeker.new %>
       <%= form_for @seeker do |f| %>
   <div class="register-photo" id="landing_forms" >
@@ -224,6 +223,8 @@
   $(window).trigger('scroll');
 
 
+
+
 //////////////  Checks if anything is too wide /////////////
 // var docWidth = document.documentElement.offsetWidth;
 // [].forEach.call(
@@ -248,5 +249,15 @@
 // window.addEventListener("scroll", scrollEventHandler, false);
 //////////////  Prevents scroll on mobile /////////////
 
+});
+
+  $(document).ready(function() {
+    if (document.body.offsetWidth <= 850) {
+   $("body").prepend("<%= j render partial: 'layouts/header_landing' %>");
+   console.log("old landing");
+ } else {
+   $("body").prepend("<%= j render partial: 'layouts/header_landing_new' %>");
+   console.log("new landing");
+ }
 });
 </script>
