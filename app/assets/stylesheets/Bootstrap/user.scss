@@ -25,14 +25,6 @@
   margin-right: auto;
 }
 
-.navbar {
-  margin-bottom: 0;
-  border: none;
-}
-
-.navbar-brand .glyphicon {
-  margin-right: 6px;
-}
 
 .hero {
   /*background:url(../../assets/img/city_bg.jpg) no-repeat center;*/
@@ -182,14 +174,7 @@ section.testimonials {
   }
 }
 
-@media (min-width: 768px) {
-  .navbar > {
-    .container .navbar-brand, .container-fluid .navbar-brand {
-      margin-left: -15px;
-      color: #0c516c;
-    }
-  }
-}
+
 
 @media (min-width: 992px) {
   .col-md-6 {
@@ -197,14 +182,7 @@ section.testimonials {
   }
 }
 
-.navbar-default {
-  background-color: #f8f8f8;
-  border-color: #0c516c;
-  background-color: #f8f8f8;
-  border-color: #e7e7e7;
-  background-color: #f8f8f8;
-  border-color: #e7e7e7;
-}
+
 
 
 .btn-default {
@@ -338,17 +316,7 @@ html {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-.navbar-default .navbar-nav > li > a {
-  color: #186f1b;
-}
 
- .navbar > {
-    .container {
-      width: auto;
-      margin-left: 20px;
-      margin-right: 20px;
-    }
-}
 .ck-button {
    
     background: #fff;
@@ -1060,11 +1028,7 @@ html {
   transition: all 0.5s ease;
 }
 
-.navbar-nav li > a:hover {
-  color: #333 !important;
-  text-shadow: 0 0 15px #28b62c;
-  transition: all 0.5s ease;
-  }
+
 
 @media screen and (max-width: 1000px) {
   // Job index page seeker#show
