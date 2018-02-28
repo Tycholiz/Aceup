@@ -62,9 +62,7 @@
 .landing_color_box {
   height: 400px;
   background-color:  rgb(216, 216, 216);
-  padding-top: 6%;
-  padding-left: 40px;
-  padding-right: 40px;
+  padding: 85px 40px;
 
 }
 .landing_color_box_text {
@@ -81,6 +79,7 @@
 .landing_color_box_img {
   float: right;
   // max-width: 30%;
+  margin: 20px;
 }
 .landing_color_box_img img {
   height: 190px;
@@ -89,11 +88,9 @@
   filter: contrast(100);
 }
 .landing_color_box_dark {
-  height: 450px;
+  height: 400px;
   background-color: rgb(81, 81, 81);
-  padding-top: 6%;
-  padding-left: 40px;
-  padding-right: 40px;
+  padding: 85px 40px;
 
 }
 .landing_color_box_text_dark {
@@ -109,6 +106,7 @@
 }
 .landing_color_box_img_dark {
   float: left;
+  margin: 20px;
 }
 .landing_color_box_img_dark img {
   height: 190px;
@@ -120,7 +118,7 @@
 .landing_color_90sec {
   height: 400px;
   background-color: #000;
-  padding: 9% 40px;
+  padding: 110px 40px;
   margin: 40px 0;
 }
 
@@ -235,9 +233,7 @@
   }
   .landing_color_box {
     height: 250px;
-    padding-top: 6%;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 55px 40px;
 
   }
   .landing_color_box_text span{
@@ -246,7 +242,7 @@
   }
   .landing_color_box_img {
     float: left;
-    margin-left: -25px;
+    margin: 10px;
   }
   .landing_color_box_img img {
     height: 120px;
@@ -254,9 +250,7 @@
   }
   .landing_color_box_dark {
     height: 250px;
-    padding-top: 6%;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 55px 40px;
 
   }
   .landing_color_box_text_dark{
@@ -270,6 +264,7 @@
   .landing_color_box_img_dark {
     float: left;
     height: 100%;
+    margin: 10px;
   }
   .landing_color_box_img_dark img {
     height: 120px;
@@ -282,7 +277,7 @@
   }
   .landing_color_90sec {
     height: 250px;
-    padding: 9% 20px;
+    padding:  52px;
     margin: 20px 0;
   }
 
@@ -319,18 +314,17 @@
   }
   .landing_color_box {
     height: 250px;
-    padding-top: 6%;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 55px 20px;
 
   }
   .landing_color_box_text span{
-    font-size: 6.5vw;
-    width: 50%;
+    font-size: 5.5vw;
+    width: 48%;
   }
   .landing_color_box_img {
     float: left;
-    margin-left: -25px;
+    margin: 14px;
+    margin-right: -10px;
   }
   .landing_color_box_img img {
     height: 25vw;
@@ -338,9 +332,7 @@
   }
   .landing_color_box_dark {
     height: 250px;
-    padding-top: 6%;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 55px 20px;
 
   }
   .landing_color_box_text_dark{
@@ -349,11 +341,12 @@
     width: 60%;
   }
   .landing_color_box_text_dark span{
-    font-size: 6.5vw;
+    font-size: 5.5vw;
   }
   .landing_color_box_img_dark {
     float: left;
     height: 100%;
+    margin: 14px;
   }
   .landing_color_box_img_dark img {
     height: 25vw;
@@ -366,7 +359,7 @@
   }
   .landing_color_90sec {
     height: 250px;
-    padding: 9% 20px;
+    padding: 60px 20px;
     margin: 20px 0;
   }
 
@@ -375,8 +368,46 @@
   }
 
   .landing_color_box_text_90sec span{
-    font-size: 7.5vw;
+    font-size: 6.5vw;
     }
+
+}
+
+@media screen and (max-width: 420px) {
+.landing_color_box_text span{
+    font-size: 6.5vw;
+    width: 48%;
+  }
+  .landing_color_box_img {
+    margin: 10% 0;
+  }
+
+  .landing_color_box_img img {
+    height: 20vw;
+    width: 20vw;
+  }
+
+  .landing_color_box_text_dark span{
+    font-size: 6.5vw;
+    width: 48%;
+  }
+  .landing_color_box_img_dark {
+    margin: 10% 0;
+  }
+  .landing_color_box_img_dark img {
+    height: 20vw;
+    width: 20vw;
+  }
+  .landing_color_box_text_90sec span{
+    font-size: 7vw;
+    }
+
+    .landing_color_90sec {
+    height: 200px;
+    padding: 60px 0;
+    margin: 20px 0;
+  }
+
 
 }
   ////////////////////  End of New Landing Stuff ///////////////////////
