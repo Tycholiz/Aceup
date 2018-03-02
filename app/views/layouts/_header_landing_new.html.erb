@@ -26,7 +26,7 @@
                   <li  ><%= link_to "Contact", new_message_path%></li>
                   <li  ><%= link_to "Blog", "https://www.blog.aceup.co" %></li>
                   <% if current_user %>
-                    <li ><%= link_to "Log out", session_path("current"), method: :delete %></li>
+                    <li id="header_new_logout"><%= link_to "Log out", session_path("current"), method: :delete %></li>
                   <% end %>
               </ul>
 	</div>
@@ -37,3 +37,18 @@
 
 	</div>
 </div>
+
+
+<script>
+
+
+  $(document).ready(function() {
+  	logout = $('header_new_logout')
+   if (logout) {
+   	console.log("logout link present");
+   	$('.header_landing_links').css('margin-left: calc(50vw - 410px); margin-left: calc(50vw - 410px;')
+   	console.log("css modified");
+   }
+
+});
+</script>
