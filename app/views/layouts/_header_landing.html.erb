@@ -35,9 +35,23 @@
                   <li role="presentation" class="grey" ><%= link_to "Contact", new_message_path%></li>
                   <li role="presentation" class="grey" ><%= link_to "Blog", "https://www.blog.aceup.co" %></li>
                   <% if current_user %>
-                    <li role="presentation"><%= link_to "Log out", session_path("current"), method: :delete %></li>
+                    <li id="header_new_logout" role="presentation"><%= link_to "Log out", session_path("current"), method: :delete %></li>
                   <% end %>
               </ul>
           </div>
       </div>
   </nav>
+
+  <script>
+
+
+  $(document).ready(function() {
+    logout = $('header_new_logout')
+   if (logout) {
+    console.log("logout link present");
+    $('.login_fields').css("width", "calc(42% - 220px)")
+    console.log("css modified");
+   }
+
+});
+</script>
