@@ -135,11 +135,13 @@
                 <%= f.hidden_field :inSales %>
                 <div class="row"> 
                   <div class="ck-button">
-                    <%= f.label :inboundSales, "Inbound Sales" %><br>
+                    <%= f.label :inboundSales, "Inbound Sales", data: {tooltip: "This is any sales role that involves prospecting for new customers. The job of the outbound rep is either to close the sale, or to create opportunities for the account executives." } %><br>
                     <%= f.check_box :inboundSales %>
+
+                    
                   </div>
                   <div class="ck-button">
-                    <%= f.label :outboundSales, "Outbound Sales" %><br>
+                    <%= f.label :outboundSales, "Outbound Sales", data: {tooltip: "This is any sales role that involves customers coming to you. Any time you get a referral, a lead, or even get interest via the company’s marketing efforts, you are doing inbound sales." } %><br>
                     <%= f.check_box :outboundSales %>
                   </div>
                 </div>
