@@ -47,7 +47,7 @@
 
   $(document).ready(function() {
     logout = $('header_new_logout')
-   if (logout) {
+   if (logout.length) {
     console.log("logout link present");
     $('.login_fields').css("width", "calc(42% - 220px)")
     console.log("css modified");

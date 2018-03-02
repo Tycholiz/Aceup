@@ -44,7 +44,7 @@
 
   $(document).ready(function() {
   	logout = $('header_new_logout')
-   if (logout) {
+   if (logout.length) {
    	console.log("logout link present");
    	$('.header_landing_links').css({"margin-left": "calc(50vw - 510px)", "margin-right": "calc(50vw - 510px"})
    	console.log("css modified");
