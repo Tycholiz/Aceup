@@ -11,17 +11,21 @@
                     <h2 class="text-center"><strong>Edit</strong> account details.</h2>
                 <% end %>
                 <div class="form-group">
-                  <%= f.text_field :email, placeholder: "Email", class: 'form-control' %>
-                  <p class='error'><%= show_errors(@user, :email) %></p>
+                  <%= f.text_field :username, placeholder: "Username", class: 'form-control' %>
+                  <p class='error'><%= show_errors(@user, :username) %></p>
                 </div>
                 <div class="form-group">
+                  <%= f.text_field :email, placeholder: "Email (optional)", class: 'form-control' %>
+                  <p class='error'><%= show_errors(@user, :email) %></p>
+                </div>
+         <!--        <div class="form-group">
                 <%= f.text_field :firstName, placeholder: "First Name", class: 'form-control' %>
                 <p class='error'><%= show_errors(@user, :firstName) %></p>
                 </div>
                 <div class="form-group">
                 <%= f.text_field :lastName, placeholder: "Last Name", class: 'form-control' %>
                 <p class='error'><%= show_errors(@user, :lastName) %></p>
-                </div>
+                </div>      -->
                 <div class="form-group">
                 <%= f.password_field :password, placeholder: "Password", class: 'form-control' %>
                 <p class='error'><%= show_errors(@user, :password) %></p>
@@ -30,10 +34,11 @@
                 <%= f.password_field :password_confirmation, placeholder: "Password Confirmation", class: 'form-control' %>
                 <p class='error'><%= show_errors(@user, :password_confirmation) %></p>
                 </div>
-                <div class="form-group">
+                   <div class="form-group">
+         <!--      <div class="form-group">
                 <%= f.text_field :phoneNo, placeholder: "Phone Number (optional)", class: 'form-control' %>
                 <p class='error'><%= show_errors(@user, :phoneNo) %></p>
-                </div>
+                </div>      -->
                 <%= f.hidden_field :role, value: @role  %>
               <!--  <div class="form-group">
                     <div class="checkbox"><label class="control-label"><input type="checkbox">I agree to the license terms.</label></div>

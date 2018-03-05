@@ -15,10 +15,8 @@ class SeekersController < ApplicationController
       @user.password_confirmation = "testtest"
       @user.role = "Landing"
       @user.save
-      if @user.save
-        session[:user_id] = @user.id  unless current_user && current_user.role == "Admin" # auto log in 
-      end
 
+      logger.info "$$$$$$$$$$$$$$$$  #{@user.errors.full_messages.to_sentence} $$$$$$$$$$$$$$$$$$$$$$$"
       @seeker.user_id = @user.id
       @seeker.status = "pending"
       if @seeker.save
@@ -26,7 +24,9 @@ class SeekersController < ApplicationController
         # redirect_to edit_landing_seeker_path(@seeker), seeker_id: @seeker.id , notice: "Updated successfully!"
         redirect_to edit_landing_seeker_path(@seeker), notice: "Updated successfully!"
      else   
-        render :new, error: "#{@seeker.errors.count} errors prevented this profile from being created"
+      flash[:error] = "#{@seeker.errors.count} errors prevented this profile from being created"
+      flash[:error] = @seeker.errors.full_messages.to_sentence
+        render :new
       end
     else
       @seeker.user_id = current_user.id
@@ -53,6 +53,7 @@ class SeekersController < ApplicationController
       @seeker = Seeker.where(user_id: current_user.id).first
     elsif params[:seeker_id]
       @seeker = Seeker.where(user_id: params[:seeker_id]).first
+    else @seeker  = Seeker.find(params[:id])
     end
     # unless @seeker.postalCode.first == "V"
     #   redirect_to "/pages/new_area"

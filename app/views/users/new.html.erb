@@ -6,18 +6,22 @@
                 <%= hidden_field_tag :role, @role %>
                 <h2 class="text-center"><strong>Create</strong> an account.</h2>
                 <div class="form-group">
-                  <%= f.text_field :email, placeholder: "Email", class: 'form-control' %>
+                  <%= f.text_field :username, placeholder: "Username", class: 'form-control' %>
                   <p class='error'><%= show_errors(@user, :email) %></p>
                 </div>
                 <div class="form-group">
+                  <%= f.text_field :email, placeholder: "Email (optional)", class: 'form-control' %>
+                  <p class='error'><%= show_errors(@user, :email) %></p>
+                </div>
+        <!--        <div class="form-group">
                 <%= f.text_field :firstName, placeholder: "First Name", class: 'form-control' %>
                 <p class='error'><%= show_errors(@user, :firstName) %></p>
                 </div>
                 <div class="form-group">
                 <%= f.text_field :lastName, placeholder: "Last Name", class: 'form-control' %>
                 <p class='error'><%= show_errors(@user, :lastName) %></p>
-                </div>
-                <div class="form-group">
+                </div>      -->
+                <div class="form-group">   
                 <%= f.password_field :password, placeholder: "Password", class: 'form-control' %>
                 <p class='error'><%= show_errors(@user, :password) %></p>
                 </div>
@@ -25,10 +29,10 @@
                 <%= f.password_field :password_confirmation, placeholder: "Password Confirmation", class: 'form-control' %>
                 <p class='error'><%= show_errors(@user, :password_confirmation) %></p>
                 </div>
-                <div class="form-group">
+        <!--        <div class="form-group">
                 <%= f.text_field :phoneNo, placeholder: "Phone Number (optional)", class: 'form-control' %>
                 <p class='error'><%= show_errors(@user, :phoneNo) %></p>
-                </div>
+                </div>   -->
                 <%= f.hidden_field :role, value: @role  %>
 
                 <div >
