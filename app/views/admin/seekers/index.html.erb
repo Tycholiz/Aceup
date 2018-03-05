@@ -13,7 +13,7 @@
   <div class="table-responsive">
     <table class="table table-hover">
       <tr>
-        <th>Name</th>
+        <th>Username</th>
         <th>Postal</th>
         <th>Status</th>
         <th>Manage</th>
@@ -30,7 +30,7 @@
        <% @seekers.each do |seek| 
            user = User.where(id: seek.user_id).first %>
       <tr>
-        <td><%= link_to user.firstName, admin_seeker_path(seek) %></td>
+        <td><%= link_to user.username, admin_seeker_path(seek) %></td>
         <td><%= seek.postalCode  %></td>
         <td class="active_link"><%= link_to seek.status.capitalize,   activate_admin_seeker_path(seek), data: {confirm: "Are you sure you want to change the status for  #{seek.id}?"} %> </td>
         <td>(<%= link_to "edit", edit_admin_seeker_path(seek) %>, <%= link_to "delete", admin_seeker_path(seek), method: :delete, data: {confirm: "Are you sure you want to delete #{seek.id}?"} %>)</td>

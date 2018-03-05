@@ -15,8 +15,6 @@ class SeekersController < ApplicationController
       @user.password_confirmation = "testtest"
       @user.role = "Landing"
       @user.save
-
-      logger.info "$$$$$$$$$$$$$$$$  #{@user.errors.full_messages.to_sentence} $$$$$$$$$$$$$$$$$$$$$$$"
       @seeker.user_id = @user.id
       @seeker.status = "pending"
       if @seeker.save

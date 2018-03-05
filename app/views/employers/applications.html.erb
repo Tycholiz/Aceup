@@ -16,7 +16,7 @@
          <% user = User.where(id: seeker.user_id).first %>
         <tr>
           <td><%= link_to job.title, job_path(job) %></td>
-          <td><%= user.firstName %></td>
+          <td><%= user.username %></td>
           <td><%= link_to "Applicant Profile", public_seeker_path(seeker, :application => app.id) %></td>
           <td><%= app.created_at.to_formatted_s(:short)  %></td>
         </tr>

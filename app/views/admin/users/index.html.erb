@@ -13,7 +13,7 @@
   <div class="table-responsive">
     <table class="table table-hover">
       <tr>
-        <th>Name</th>
+        <th>Username</th>
         <th>Email</th>
         <th>Manage</th>
         <th>Role</th>
@@ -26,7 +26,7 @@
 
        <% @users.each do |user|  %>
       <tr>
-        <td><%= user.firstName %> <%= user.lastName %></td>
+        <td><%= user.username %></td>
         <td><%= user.email %></td>
         <td>(<%= link_to "edit", edit_admin_user_path(user) %>, <%= link_to "delete", admin_user_path(user), method: :delete, data: {confirm: "Are you sure you want to delete #{user.firstName}?"} %>)</td>
         <td><%= user.role %></td>
