@@ -18,7 +18,6 @@ class UsersController < ApplicationController
 
       if @user.save
         session[:user_id] = @user.id  unless current_user && current_user.role == "Admin" # auto log in 
-        logger.info "$$$$$$$$$$$$$$$$  USER SAVED $$$$$$$$$$$$$$$$$$$$$$$"
         if current_user.role == "Seeker"
         	redirect_to new_seeker_path, notice: "Welcome aboard, #{@user.firstName}!"
         elsif current_user.role == "Employer"
@@ -28,12 +27,10 @@ class UsersController < ApplicationController
           redirect_to admin_users_path, notice: "User #{@user.firstName} successfully!"
         else
           # flash[:error] = @user.errors.full_messages.to_sentence
-          logger.info "$$$$$$$$$$$$$$$$  USER NOT SAVED $$$$$$$$$$$$$$$$$$$$$$$"
           flash[:error] = @user.errors.full_messages.to_sentence
           render :new, notice: "User could not be created!"
         end
       else
-        logger.info "$$$$$$$$$$$$$$$$  USER NOT SAVED $$$$$$$$$$$$$$$$$$$$$$$"
         @role = params[:role]
         flash[:error] = @user.errors.full_messages.to_sentence
         render :new, notice: "User could not be created!"
@@ -67,6 +64,8 @@ class UsersController < ApplicationController
           @seeker.temp = false
           @seeker.save
           @user.role = "Seeker"
+          @user.logged_in = true
+          @user.last_seen = Time.now
           @user.save
           if @user.save
             session[:user_id] = @user.id  unless current_user && current_user.role == "Admin" # auto log in 

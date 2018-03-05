@@ -40,6 +40,8 @@ class Admin::UsersController < Admin::BaseAdminController
 
     def update
       @user  = User.find(params[:id])
+      @user.username = @user.username.downcase
+      @user.email = @user.email.downcase.presence
 
       if @user.update_attributes(user_params)
         redirect_to admin_users_path, notice: "Updated successfully!"
