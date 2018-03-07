@@ -18,6 +18,7 @@
         <th>Status</th>
         <th>Manage</th>
         <th>Total Applications</th>
+        <th>No. Visits</th>
         <th>Job Views</th>
         <th>Last Seen</th>
         <th>Logged In</th>
@@ -37,6 +38,7 @@
         <% 
            apps = Application.where(seeker_id: seek.id)%>
         <td><%= apps.count %> (<%= link_to "view",applications_admin_seeker_path(seek)%>)</td>
+        <td><%= user.visits %></td>
         <td><%= Impression.where(user_id: user.id).count %> (<%= link_to "see jobs",job_views_admin_seeker_path(seek)%>) </td>
         <td><%= user.last_seen ? user.last_seen.strftime("%b %d, %Y") : "not logged"  %></td>
         <td><%= user.logged_in  %></td>

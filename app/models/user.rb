@@ -1,5 +1,6 @@
 class User < ApplicationRecord
 	has_secure_password
+	before_save :update_visits
 
 	has_one :seeker, dependent: :destroy
 
@@ -66,10 +67,18 @@ class User < ApplicationRecord
 			# 	errors.add(:password, :invalid)
 			# end
 
-	if password != password_confirmation
-      errors.add(:password, "Passwords don't match")
+		if password != password_confirmation
+	      errors.add(:password, "Passwords don't match")
+	    end
     end
-			
-
-	end
+    private 
+	    def update_visits
+		    if last_seen_changed?
+		    	if self.visits
+		    		self.visits += 1
+		    	else 
+		    		self.visits = 1
+		    	end
+		  	end
+		end
 end

@@ -15,6 +15,7 @@ class UsersController < ApplicationController
       # seeker_params = params[:seeker] if params[:seeker]
       @user.logged_in = true
       @user.last_seen = Time.now
+      @user.username = @user.username.downcase
 
       if @user.save
         session[:user_id] = @user.id  unless current_user && current_user.role == "Admin" # auto log in 
@@ -39,6 +40,8 @@ class UsersController < ApplicationController
     def update
       @user  = User.find(params[:id])
       @role = @user.role
+      @user.username = @user.username.downcase
+      @user.email = @user.email.downcase.presence
       unless @user.role == "Landing"
         if @user.update_attributes(user_params) && current_user.role == "Seeker"
           @seeker = Seeker.where(user_id: @user.id).first
