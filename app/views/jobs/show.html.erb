@@ -69,7 +69,7 @@
                     <h2><%=@job.title_comp && @job.title_comp.length > 0  ? @job.title_comp : "Competencies" %>: </h2>
                 </div>
                 <div class="job_summary_display">
-                    <%= @job.competencies.html_safe)  %>
+                    <%= @job.competencies.html_safe  %>
                 </div>  
             </div>
         <% end %>

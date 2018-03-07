@@ -627,7 +627,7 @@ html {
 .job_display_desc {
   // background: #f1f7fc;
   background: #e7e7e7;
-  padding: 0px 50px;
+  padding: 0px 30px;
 }
 .job_display_desc hr {
   margin-top: 30px;
@@ -656,7 +656,7 @@ html {
   padding: 15px;
   float: left;
   // margin-left:100px;
-  width: 95%;
+  // width: 95%;
   overflow: hidden;
   font-size: 24px;
 }
@@ -667,6 +667,7 @@ html {
 .job_summary_display li {
   font-weight: normal;
   font-size: 24px;
+  margin: 15px 0;
 }
 
 .job_display_skills {
@@ -1097,8 +1098,8 @@ html {
   }
   .job_summary_display {
     // float: left;
-    margin-left:10%;
-    width: 80%;
+    // margin-left:10%;
+    // width: 80%;
   }
 }
 
