@@ -13,19 +13,19 @@
   <div class="table-responsive">
     <table class="table table-hover">
       <tr>
-        <th>Username</th>
+        <th><%= sort_link "username" %></th>
         <th>Postal</th>
-        <th>Status</th>
+        <th><%= sort_link "status" %></th>     
         <th>Manage</th>
-        <th>Total Applications</th>
-        <th>No. Visits</th>
+        <th><%= sort_link "applications", "Applications" %></th>
+        <th><%= sort_link "visits", "No. Visits" %></th>
         <th>Job Views</th>
-        <th>Last Seen</th>
-        <th>Logged In</th>
-        <th>Sign Up</th>
-        <th>Updated</th>
-        <th>seek ID #</th>
-        <th>User ID #</th>
+        <th><%= sort_link "last_seen", "Last Seen" %></th>
+        <th><%= sort_link "logged_in", "Logged In" %></th>
+        <th><%= sort_link "created_at", "Sign Up" %></th>
+        <th><%= sort_link "updated_at", "Updated" %></th>
+        <th><%= sort_link "id", "seek ID #" %></th>
+        <th><%= sort_link "user_id", "User ID #" %></th>
       </tr>
 
        <% @seekers.each do |seek| 

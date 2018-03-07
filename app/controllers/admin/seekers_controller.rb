@@ -1,4 +1,5 @@
 class Admin::SeekersController < Admin::BaseAdminController
+  helper_method :sort_column, :sort_direction
 
   def new
     @seeker = Seeker.new
@@ -28,11 +29,16 @@ class Admin::SeekersController < Admin::BaseAdminController
 
     if params[:search]
       @seekers= Seeker.search(params[:search])
-      @seekers = @seekers.order(:updated_at).reverse_order.page(params[:page]).per(15) 
+      # @seekers = @seekers.order(:updated_at).reverse_order.page(params[:page]).per(15) 
+      @seekers = @seekers.order("#{sort_column} #{sort_direction}").page(params[:page]).per(15)
     else
       @seekers = Seeker.all
       @seekers = Seeker.filter(params[:fakes])
-      @seekers = @seekers.order(:updated_at).reverse_order.page(params[:page]).per(15) 
+       if sort_column == "applications"
+        @seekers = @seekers.joins(:user, :applications).group(:id).order("COUNT(applications) DESC").page(params[:page]).per(15)
+      else
+        @seekers = @seekers.joins(:user).order("#{sort_column} #{sort_direction}").page(params[:page]).per(15)
+      end
     end
   end
 
@@ -95,9 +101,29 @@ class Admin::SeekersController < Admin::BaseAdminController
     end
   end  
 
-  protected
+  private
 
-  def seeker_params
-    params.require(:seeker).permit(:compName, :compSize, :city, :logo, :compDesc)
+  # def sortable_columns
+  #   ["name", "price"]
+  # end
+
+  def sort_column
+    # sortable_columns.include?(params[:column]) ? params[:column] : "name"
+    # if params[:column] == "postalCode"
+    #   logger.info "##0###############  POSTAL   ##################"
+    #   "postalCode"
+    # else
+      params[:column] ? params[:column] : "updated_at"
+    # end
   end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
+  end
+
+  # protected
+
+  # def seeker_params
+  #   params.require(:seeker).permit(:compName, :compSize, :city, :logo, :compDesc)
+  # end
 end
