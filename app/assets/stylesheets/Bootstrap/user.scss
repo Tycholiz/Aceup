@@ -626,7 +626,8 @@ html {
 }
 .job_display_desc {
   // background: #f1f7fc;
-  background: #e7e7e7;
+  // background: #e7e7e7;
+  background: #f9f9f9;
   padding: 0px 30px;
 }
 .job_display_desc hr {
@@ -659,15 +660,22 @@ html {
   // margin-left:100px;
   // width: 95%;
   overflow: hidden;
-  font-size: 24px;
+  // font-size: 24px;
+  font-size: 28px;
 }
 .job_summary_display p {
-  font-size: 24px;
+  // font-size: 24px;
+  font-size: 28px;
+}
+.job_summary_display h3 {
+  // font-size: 24px;
+  font-size: 28px;
 }
 
 .job_summary_display li {
   font-weight: normal;
-  font-size: 24px;
+  // font-size: 24px;
+  font-size: 28px;
   margin: 15px 0;
 }
 
@@ -1092,6 +1100,8 @@ html {
   }
   .job_show_text h3 {
   font-size: 4vw;
+      margin-top: 10px;
+    margin-bottom: 10px;
  }
  // Single Job page job#show
   .job_show_img_display img {
@@ -1208,19 +1218,19 @@ html {
       font-size: 3.8vw;
     }
     .job_display_desc h3 {
-      font-size: 3vw;
+      font-size: 3.5vw;
     }
     .job_display_desc p {
-      font-size: 3vw;
+      font-size: 3.5vw;
     }
     .job_summary_display li {
-      font-size: 3vw;
+      font-size: 3.5vw;
     }
     .job_summary_display ul {
       padding: 0;
     }
     .job_summary_display {
-      font-size: 3vw;
+      font-size: 3.5vw;
     }
     .job_display_desc_row {
       margin-top: 10px;
