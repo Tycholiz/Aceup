@@ -2,6 +2,7 @@ menubar: false
 branding: false
 force_br_newlines : true
 force_p_newlines : false
+# forced_root_block : "p"
 forced_root_block : "p"
 invalid_elements: "div"
 toolbar:

@@ -49,7 +49,7 @@
                     <h2><%=@job.title_functions && @job.title_functions.length > 0 ? @job.title_functions : "Responsibilities" %>: </h2>
                 </div>
                 <div class="job_summary_display">
-                    <h3><%= @job.functions.html_safe  %></h3>
+                    <h3><%= @job.functions.html_safe %></h3>
                 </div>  
             </div>
         <% end %>
@@ -69,7 +69,7 @@
                     <h2><%=@job.title_comp && @job.title_comp.length > 0  ? @job.title_comp : "Competencies" %>: </h2>
                 </div>
                 <div class="job_summary_display">
-                    <%= @job.competencies.html_safe  %>
+                    <%= @job.competencies.html_safe)  %>
                 </div>  
             </div>
         <% end %>
@@ -92,7 +92,7 @@
                     <h2><%=@job.title_additionalInfo && @job.title_additionalInfo.length > 0  ? @job.title_additionalInfo : "Additional Info" %>: </h2>
                 </div>
                <div class="job_summary_display">
-                    <%= @job.additionalInfo.html_safe  %>
+                    <%= @job.additionalInfo.html_safe %>
                 </div>   
             </div>
         <% end %>
