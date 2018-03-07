@@ -18,23 +18,64 @@
                         </div>
                         <div class="job_show_text">
 
+                            <% aspects = {
+                                AspProspecting: "Prospecting",
+                                AspcoldCall: "Cold Calling",
+                                AspdoorToDoor: "Door to Door",
+                                AspWarmLeads: "Warm Leads",
+                                AspNetworking: "Networking",
+                                AspPresenting: "Presenting",
+                                AspClosing: "Closing",
+                                AspNegotiation: "Negotiation",
+                                AspacctManagment: "Management",
+                                AspB2B: "B2B",
+                                AspB2C: "B2C",
+                                AspInSales: "Inside Sales",
+                                AspOutSales: "Outside Sales",
+                                AspInbound: "Inbound Sales",
+                                AspOutbound: "Outbound Sales",
+                                AspOvernight: "Overnight Travel",
+                                AspLocal: "Local Travel",
+                              }
+                                aspects_options = aspects.map {|k, v| k} 
+                                @jobApects = job.slice(*aspects_options).select {|key, value| value == true }
+                               aspects_list = aspects.select{ |k ,v| @jobApects.has_key? k}.map {|k, v| v} 
+                            %>
+                            <% if @jobApects && @jobApects.length > 0  %>
+                                <h3>Job Aspects:&nbsp;</h3>
+                                 <div>
 
+                                    <% aspects_list.each do |asp| %>
+                                        <div class="job_display_aspects"><h4><%=asp%></h4></div>
+                                    <% end %>
+
+                                </div>
+                            <% end %>
+
+                  
+
+
+                            <div style="clear:both;"></div>
                                 <% if job.industry_related && job.industry_related.length > 0  %>
                                 <span data-tooltip-aspect= "This position requires industry related experience:&#xa;<%=  job.industry_related   %>"><%=  image_tag "faq.png", class: "aspect_hover_img" %></span>
 
                                 <% end %>
             
                            <div style="clear:both;"></div>
-                            <%= button_to "View Job",job_path(job), :method => "get",  class: "btn btn-default", id: "save_jobs_button" %>
+                            
                             <h3>Job Type:&nbsp;</h3><%= job.jobType.capitalize %> </br>
                             
                             <h3>Pay Range:&nbsp;</h3><%= number_to_currency(job.payLow, locale: :en, precision: 0)   %> to <%= number_to_currency(job.payHigh, locale: :en, precision: 0)   %>                    
                             <div>
 
-                            <%= button_to "Save",new_job_saved_job_path(job), :method => "get",  class: "btn btn-default", id: "save_jobs_button" %>
+                            
                                 
                               <h3>Location:&nbsp;</h3><%= employer.city %> </br>
                               <h3>Posted:&nbsp;</h3><%= job.created_at.strftime("%b %d, %Y") %> </br>
+                            </div>
+                            <div class="job_index_btn_holder">
+                                <%= button_to "View Job",job_path(job), :method => "get",  class: "btn btn-default", id: "save_jobs_button" %>
+                                <%= button_to "Save",new_job_saved_job_path(job), :method => "get",  class: "btn btn-default", id: "save_jobs_button" %>
                             </div>
                         </div>
 

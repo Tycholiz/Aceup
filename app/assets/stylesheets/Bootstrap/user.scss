@@ -684,6 +684,20 @@ html {
   font-weight: bold;
 }
 
+.job_display_aspects {
+  background-color:black;
+  color:white;
+  float: left;
+  margin: 5px 5px;
+  padding: 4px 8px;
+  border-radius: 15px;
+}
+
+.job_display_aspects h4 {
+  margin: 0px;
+  font-weight: bold;
+}
+
 .job_display_bar h1{
   font-family:inherit;
   font-weight:bolder;
@@ -903,14 +917,23 @@ html {
   color: #d80404;
 }
 
+.job_index_btn_holder {
+  margin-left: calc((100% - (400px + 80px)) / 2);
+  margin-right: calc((100% - (400px + 80px)) / 2);
+  margin-top: 25px;
+  
+}
+
 #save_jobs_button{
     color: white;
     background-color: #686868;
     border-color: #686868;
     font-weight: bold;
     // line-height: 1.5;
-    min-width: 90px;
-    margin-right: 65px;
+    // min-width: 90px;
+    width: 200px;
+    margin-right: 20px;
+    margin-left: 20px;
     float: right;
     font-size: 1em;
     padding-top: 0px;
@@ -1101,6 +1124,9 @@ html {
     // margin-left:10%;
     // width: 80%;
   }
+  .job_display_aspects h4 {
+  font-size: 4vw;
+}
 }
 
 @media screen and (max-width: 800px) {
@@ -1204,7 +1230,16 @@ html {
     #save_jobs_button{
 
     margin-right: 15px;
+    margin-left: 15px;
+    width: 25vw;
+
     }
+
+    .job_index_btn_holder {
+      margin-left: calc((100% - (50vw + 60px)) / 4);
+      margin-right: calc((100% - (50vw + 60px)) / 4);
+    }
+
     .custom_title_dropdown {
       margin-right: 25px;
     }
