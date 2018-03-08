@@ -28,7 +28,11 @@
           <div >
       
             <%= f.select :temp, [['Temporary', true], ['Permanent', false]], {selected: ['Permanent', false]}, { class: "form form-group form-control" }%>
-            <p class='error'><%= show_errors(@job, :temp) %></p>
+            <p class='error'><%= show_errors(@job, :temp) %></
+
+          <div >
+              <%= f.label :metro, "Metropolitan Area" %>
+              <%= f.select :metro, ['Vancouver', 'Toronto'], {}, { class: "form form-group form-control" }%>
           </div>
             
           </div>

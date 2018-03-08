@@ -137,6 +137,7 @@ class JobsController < ApplicationController
   def job_params
     params.require(:job).permit(
       :title, :jobType, :expiry, :bonusSales,  :additionalInfo, :general, :title_functions, :title_skills, :title_comp, :title_benefits, :driversLicence, :hasVehicle, :status, :temp, :salary, :commDirect, :commResidual, :commLead, :payLow, :payHigh, :inSalesSoft, :inSalesHard, :outSalesSoft, :outSalesHard, :functions, :skills, :summary, :competencies, :deptSize, :coldCall, :doorToDoor, :custService, :acctManagment, :negotiation, :presenting, :leadership, :closing, :hunterBased, :farmerBased, :commBased, :B2C, :B2B, :consSales, :directSales, :solutionSales, :CompUrl, :educationLevel, :benefits, 
+      :metro,
       :AspProspecting,
       :AspcoldCall,
       :AspdoorToDoor, 
@@ -156,7 +157,8 @@ class JobsController < ApplicationController
       :AspLocal,
       :industry_related,
       :title_additionalInfo,
-      :languages => [], :certifications => []
+      :languages => [], :certifications => [],
+      
     )                             
   end
 

@@ -100,7 +100,7 @@ class SeekersController < ApplicationController
         @matchJobs = Array.new
         @jobs.each do |job|
           employer = Employer.where(id: job.employer_id).first
-          case employer.metro
+          case job.metro
             when "Vancouver"
               job_metro = "Van"
             when "Toronto"

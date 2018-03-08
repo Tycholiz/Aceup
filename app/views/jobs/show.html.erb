@@ -16,7 +16,7 @@
             </div>
             <div class="job_show_header_text_display">
                 <%= button_to "Apply",new_job_application_path(@job), :method => "get",  class: "btn btn-default", id: "save_jobs_button_display" %>
-                    <h2>Location:&nbsp;</h2><%= @employer.city %> </br>
+                    <h2>Location:&nbsp;</h2><%= @job.metro ? @job.metro : @employer.city %> </br>
 
                     <h2>Job Type:&nbsp;</h2><%= @job.jobType.capitalize %> </br>
                     <% if current_user && current_user.role == "Employer" || current_user && current_user.role == "Admin" %>
