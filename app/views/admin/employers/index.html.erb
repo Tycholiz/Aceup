@@ -14,18 +14,22 @@
     <table class="table table-hover">
       <tr>
         <th>Company</th>
-        <th>City</th>
-        <th>Metro Area</th>
-        <th>Status</th>
+        <th><%= sort_link "city" %></th>
+        <th><%= sort_link "metro", "Metro Area" %></th>
+        <th><%= sort_link "status" %></th>
         <th>Manage</th>
-        <th>No. Jobs</th>
-        <th>Total Applications</th>
-        <th>Last Seen</th>
-        <th>Logged In</th>
-        <th>Sign Up</th>
-        <th>Updated</th>
-        <th>Emp ID #</th>
-        <th>User ID #</th>
+        <th><%= sort_link "No. Jobs" %></th>
+        <th><%= sort_link "applications", "Applications" %></th>
+        <th><%= sort_link "last_seen", "Last Seen" %></th>
+        <th><%= sort_link "logged_in", "Logged In" %></th>
+        <th><%= sort_link "created_at", "Sign Up" %></th>
+        <th><%= sort_link "updated_at", "Updated" %></th>
+        <th><%= sort_link "id", "Emp ID #" %></th>
+        <th><%= sort_link "user_id", "User ID #" %></th>
+        
+        
+        
+        
       </tr>
 
        <% @employers.each do |emp|  %>

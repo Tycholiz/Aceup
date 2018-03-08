@@ -1,4 +1,5 @@
 class Admin::EmployersController < Admin::BaseAdminController
+  helper_method :sort_column, :sort_direction
 
   def new
     @employer = Employer.new
@@ -24,11 +25,18 @@ class Admin::EmployersController < Admin::BaseAdminController
 
     if params[:search]
       @employers= Employer.search(params[:search])
-      @employers = @employers.order(:updated_at).reverse_order.page(params[:page]).per(15) 
+      # @employers = @employers.order(:updated_at).reverse_order.page(params[:page]).per(15) 
     else
       @employers = Employer.all
       @employers = Employer.filter(params[:fakes])
-      @employers = @employers.order(:updated_at).reverse_order.page(params[:page]).per(15) 
+      # @employers = @employers.order(:updated_at).reverse_order.page(params[:page]).per(15) 
+    end
+    if sort_column == "No. Jobs"
+        @employers = @employers.joins(:user, :jobs).group(:id).order("COUNT(jobs) #{sort_direction}").page(params[:page]).per(15)
+    elsif sort_column == "applications"
+        @employers = @employers.joins(jobs: :applications).group(:id).order("COUNT(applications) #{sort_direction}").page(params[:page]).per(15)
+      else
+      @employers = @employers.joins(:user).order("#{sort_column} #{sort_direction}").page(params[:page]).per(15)
     end
   end
 
@@ -87,9 +95,18 @@ class Admin::EmployersController < Admin::BaseAdminController
     end
   end  
 
-  protected
+  private
+   def sort_column
+      params[:column] ? params[:column] : "updated_at"
+   end
 
-  def employer_params
-    params.require(:employer).permit(:compName, :compSize, :city, :logo, :compDesc)
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
   end
+
+  # protected
+
+  # def employer_params
+  #   params.require(:employer).permit(:compName, :compSize, :city, :logo, :compDesc)
+  # end
 end

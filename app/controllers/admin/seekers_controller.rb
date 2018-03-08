@@ -35,7 +35,7 @@ class Admin::SeekersController < Admin::BaseAdminController
       @seekers = Seeker.all
       @seekers = Seeker.filter(params[:fakes])
        if sort_column == "applications"
-        @seekers = @seekers.joins(:user, :applications).group(:id).order("COUNT(applications) DESC").page(params[:page]).per(15)
+        @seekers = @seekers.joins(:user, :applications).group(:id).order("COUNT(applications) #{sort_direction}").page(params[:page]).per(15)
       else
         @seekers = @seekers.joins(:user).order("#{sort_column} #{sort_direction}").page(params[:page]).per(15)
       end
